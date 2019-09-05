@@ -56,7 +56,8 @@ create table servico_fornecedor (
 	id_serv_forn int(11) primary key auto_increment,
     nm_serv_forn varchar(250) not null,
     desc_serv_forn varchar(250) not null,
-    valor_serv_forn decimal(10,2) not null
+    valor_serv_forn decimal(10,2) not null,
+    und_medida_serv_forn enum('Unidade','Peso')
 );
 
 create table fornecedor_servico (
@@ -64,18 +65,6 @@ create table fornecedor_servico (
     id_fornecedor int(11) not null,
     foreign key (id_serv_forn) references servico_fornecedor (id_serv_forn),
     foreign key(id_fornecedor) references fornecedor (id_fornecedor)
-);
-
-create table produto (
-	id_produto int(11) primary key auto_increment,
-    desc_produto varchar(250) not null,
-    cor_produto int(11) not null,
-    material_produto int(11) not null,
-    estampa_produto int(11) not null,
-    valor_produto decimal(10,2) not null,
-    foreign key (cor_produto) references cor (id_cor),
-    foreign key (material_produto) references material (id_material),
-    foreign key (estampa_produto) references estampa (id_estampa)
 );
 
 create table cor(
@@ -96,6 +85,20 @@ create table estampa(
     valor_estampa decimal(10,2) not null
 );
 
+
+create table produto (
+	id_produto int(11) primary key auto_increment,
+    desc_produto varchar(250) not null,
+    cor_produto int(11) not null,
+    material_produto int(11) not null,
+    estampa_produto int(11) not null,
+    valor_produto decimal(10,2) not null,
+    foreign key (cor_produto) references cor (id_cor),
+    foreign key (material_produto) references material (id_material),
+    foreign key (estampa_produto) references estampa (id_estampa)
+);
+
+
 #------------------------------Estoque---------------------------------------------------
 
 create table estoque (
@@ -108,13 +111,14 @@ create table estoque (
 
 create table compra (
 	id_compra int(11) primary key auto_increment,
-    id_prod_fornecedor int(11) not null,
+    id_prod_forn int(11) not null,
+    id_fornecedor int(11) not null,
     qtd_compra decimal (10,3) not null,
-    valor_prod_forn decimal(10,2) not null,
-    tipo_prod enum('Unidade','Comprimento','Peso') not null,
     valor_total decimal(10,2) not null,
     data_compra TIMESTAMP not null,
-    data_venc DATE not null
+    data_venc DATE not null,
+    foreign key (id_prod_forn) references produto_fornecedor (id_prod_forn),
+    foreign key ( id_fornecedor ) references fornecedor (id_fornecedor)
 );
 
 #-------------------------Venda----------------------------------------------------------
@@ -150,11 +154,15 @@ create table pedido_produto (
 
 create table venda (
 	id_venda int(11) primary key auto_increment,
-    cod_venda int(11) not null,
-    id_pedido int(11) not null unique,
-    valor_total decimal(10,2) not null,
-    data_pagamento DATE not null,
-    data_venda TIMESTAMP not null,
+    valor_total decimal(10,2),
+    data_pagamento DATE ,
+    data_venda TIMESTAMP not null
+);
+
+create table venda_pedido (
+	id_venda int(11) not null,
+    id_pedido int(11) not null,
+    foreign key (id_venda) references venda (id_venda),
     foreign key (id_pedido) references pedido (id_pedido)
 );
 
@@ -166,11 +174,35 @@ create table ordem_servico (
     status_ordem enum('Aberto','Fechado','Pendente') not null,
     data_abertura TIMESTAMP not null,
     data_entrega DATE not null,
-    valor_total decimal(10,2) not null,
+    valor_total decimal(10,3) not null,
     foreign key (id_fornecedor) references fornecedor(id_fornecedor),
     foreign key (id_serv_forn) references servico_fornecedor (id_serv_forn)
 );
 
-
+create table ordem_pedido (
+	id_ordem_pedido int(11) primary key auto_increment,
+    id_ordem int(11) not null,
+	id_pedido int(11) not null,
+    id_produto int(11) not null,
+    qtd decimal(10,2) not null,
+    foreign key (id_ordem) references ordem_servico (id_ordem),
+    foreign key (id_pedido) references pedido (id_pedido),
+    foreign key (id_produto) references produto (id_produto)
+);
 
 #--------------------------Financeiro-----------------------------------
+
+create table conta_receber (
+	id_conta_receber int(11) primary key auto_increment,
+    id_venda int(11) not null,
+    status_financeiro_receber enum('Pago','Pendente', 'Atrasado') not null,
+    foreign key (id_venda) references venda(id_venda)
+);
+
+create table conta_pagar (
+	id_conta_pagar int(11) primary key auto_increment,
+    id_compra int(11) not null,
+    status_financeiro_pagar enum('Pago','Pendente', 'Atrasado') not null,
+	foreign key(id_compra) references compra(id_compra)
+);
+
