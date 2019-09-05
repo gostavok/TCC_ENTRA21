@@ -17,7 +17,7 @@ create table cliente (
     tel_cliente int(11) not null,
     tel2_cliente int(11),
     email_cliente varchar(30),
-    dt_cad_cliente DATE not null
+    dt_cad_cliente TIMESTAMP not null
 );
 
 create table fornecedor (
@@ -33,7 +33,7 @@ create table fornecedor (
     tel_fornecedor int(11) not null,
     tel2_fornecedor int(11) not null,
     email_fornecedor varchar(30),
-    dt_cad_fornecedor DATE not null,
+    dt_cad_fornecedor TIMESTAMP not null,
     tipo_fornecedor enum('Produto','Serviço')
 );
 
@@ -98,9 +98,79 @@ create table estampa(
 
 #------------------------------Estoque---------------------------------------------------
 
+create table estoque (
+	id_estoque int(11) primary key auto_increment,
+    id_prod_forn int(11) not null,
+    qtd_estoque decimal(10,3) not null,
+    data_registro TIMESTAMP not null,
+    foreign key (id_prod_forn) references produto_fornecedor (id_prod_forn)
+);
+
+create table compra (
+	id_compra int(11) primary key auto_increment,
+    id_prod_fornecedor int(11) not null,
+    qtd_compra decimal (10,3) not null,
+    valor_prod_forn decimal(10,2) not null,
+    tipo_prod enum('Unidade','Comprimento','Peso') not null,
+    valor_total decimal(10,2) not null,
+    data_compra TIMESTAMP not null,
+    data_venc DATE not null
+);
+
+#-------------------------Venda----------------------------------------------------------
+
+create table orcamento (
+	id_orcamento int(11) primary key auto_increment,
+    id_cor int(11) not null,
+    id_estampa int(11) not null,
+    id_material int(11) not null,
+    valor_base decimal(10,2) not null,
+    valor_orcamento decimal(10,2),
+    foreign key (id_cor) references cor (id_cor),
+    foreign key (id_estampa) references estampa (id_estampa),
+    foreign key (id_material) references material (id_material)
+);
+
+create table pedido(
+	id_pedido int(11) primary key auto_increment,
+    id_cliente int(11) not null,
+    qtd_prod int(11) not null,
+    valor_total decimal(10,2) not null,
+    data_pedido TIMESTAMP not null,
+    status_pedido enum('Aberto','Pendente','Fechado') not null,
+    foreign key (id_cliente) references cliente(id_cliente)
+);
+
+create table pedido_produto (
+	id_pedido int(11) not null,
+    id_produto int(11) not null unique,
+    foreign key (id_pedido) references pedido (id_pedido),
+    foreign key (id_produto) references produto (id_produto)
+);
+
+create table venda (
+	id_venda int(11) primary key auto_increment,
+    cod_venda int(11) not null,
+    id_pedido int(11) not null unique,
+    valor_total decimal(10,2) not null,
+    data_pagamento DATE not null,
+    data_venda TIMESTAMP not null,
+    foreign key (id_pedido) references pedido (id_pedido)
+);
+
+create table ordem_servico (
+	id_ordem int(11) primary key auto_increment,
+    id_fornecedor int(11) not null,
+    id_serv_forn int(11) not null,
+    qtd_servico decimal(10,3) not null,
+    status_ordem enum('Aberto','Fechado','Pendente') not null,
+    data_abertura TIMESTAMP not null,
+    data_entrega DATE not null,
+    valor_total decimal(10,2) not null,
+    foreign key (id_fornecedor) references fornecedor(id_fornecedor),
+    foreign key (id_serv_forn) references servico_fornecedor (id_serv_forn)
+);
 
 
 
-
-
-
+#--------------------------Financeiro-----------------------------------
