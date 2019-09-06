@@ -19,7 +19,7 @@ public class CorDAO {
 	}
 
 	public void insert(Cor cor) throws SQLException, ClassNotFoundException {
-		String sqlQuery = "INSERT INTO cor (nm_cor, nm_cor) VALUES (?, ?) ";
+		String sqlQuery = "INSERT INTO cor (nm_cor, valor_cor) VALUES (?, ?) ";
 
 		try {
 			PreparedStatement stmt = this.conexao.getConnection().prepareStatement(sqlQuery);
@@ -97,6 +97,7 @@ public class CorDAO {
 			stmt.setString(1, cor.getNmCor());
 			stmt.setDouble(2, cor.getValorCor());
 			stmt.setInt(3, cor.getIdCor());
+			stmt.execute();
 			this.conexao.commit();
 		} catch (SQLException e) {
 			this.conexao.rollback();
