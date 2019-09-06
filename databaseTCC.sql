@@ -1,6 +1,6 @@
-create database tcc;
+create database textilsoft;
 
-use tcc;
+use textilsoft;
 
 #----------------------------------------Cadastro--------------------------------------------
 
@@ -13,7 +13,7 @@ create table cliente (
     bairro_cliente varchar(30) not null,
     cidade_cliente varchar(30) not null, 
     estado_cliente varchar(30) not null,
-    comp_cliente varchar(50) not null,
+    comp_cliente varchar(50),
     tel_cliente int(11) not null,
     tel2_cliente int(11),
     email_cliente varchar(30),
@@ -29,7 +29,7 @@ create table fornecedor (
     bairro_fornecedor varchar(50) not null,
     cidade_fornecedor varchar(50) not null,
     estado_fornecedor varchar(50) not null,
-    comp_fornecedor varchar(50) not null,
+    comp_fornecedor varchar(50),
     tel_fornecedor int(11) not null,
     tel2_fornecedor int(11) not null,
     email_fornecedor varchar(30),
