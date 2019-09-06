@@ -3,10 +3,10 @@
 
 # Nome: TextilSoft
 
-A TextilSoft pretende atualizar os modelos de software utilizados na gestão de Confecções Texteis da cidade de Blumenau.
+A TextilSoft pretende atualizar os modelos de software utilizados na gestão de Confecções Têxteis da cidade de Blumenau.
 Rodando em um ambiente WEB os usuários são livres para acessar a aplicação de qualquer lugar do mundo. Reduzindo custos fixos e criando oportunidades de escalabilidade e melhorias o TextilSoft é o Software ideal para Negócios Locais.
-A aplicação em seu estado prototipal conta com módulos contemplando Cadastro, Estoque, Vendas, Financeiro e a gereção de relatórios.
-Um software de gestão empresarial(ERP), com soluçoes focadas no setor Textil.
+A aplicação em seu estado de protótipo conta com módulos contemplando Cadastro, Estoque, Vendas, Financeiro e a geração de relatórios.
+Um software de gestão empresarial(ERP), com soluções focadas no setor Têxtil.
 
 
 
