@@ -7,15 +7,15 @@ use tcc;
 create table cliente (
 	id_cliente int(11) primary key auto_increment,
     nm_cliente varchar(250) not null,
-    cnpj_cliente varchar(30) not null,
-    end_cliente varchar(50) not null,
-    cep_cliente int(11) not null,
+    cnpj_cliente varchar(14) not null, -- Tamanho 14 padrão NACIONAL
+    end_cliente varchar(250) not null, -- Aumentar de 50 para 250
+    cep_cliente int(8) not null, -- Tamanho 8 padrão NACIONAL
     bairro_cliente varchar(30) not null,
     cidade_cliente varchar(30) not null, 
-    estado_cliente varchar(30) not null,
-    comp_cliente varchar(50) not null,
-    tel_cliente int(11) not null,
-    tel2_cliente int(11),
+    estado_cliente varchar(30) not null, -- Tamanho 2 padrão NACIONAL sigla
+    comp_cliente varchar(250) not null, -- Aumentar de 50 para 250
+    tel_cliente int(15) not null, -- Aumentar para 15, eventual DDD + código país
+    tel2_cliente int(15), -- Aumentar para 15, eventual DDD + código país
     email_cliente varchar(30),
     dt_cad_cliente TIMESTAMP not null
 );
