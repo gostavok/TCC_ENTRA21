@@ -104,14 +104,6 @@ public class CorDAO {
 			throw e;
 		}
 	}
-	
-	
-	
-	
-	
-	
-	
-	
 
 	private Cor parser(ResultSet resultSet) throws SQLException {
 		Cor c = new Cor();
