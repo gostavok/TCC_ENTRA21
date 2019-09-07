@@ -29,7 +29,7 @@ create table fornecedor (
     estado_fornecedor varchar(50) not null,
     comp_fornecedor varchar(50),
     tel_fornecedor int(11) not null,
-    tel2_fornecedor int(11) not null,
+    tel2_fornecedor int(11),
     email_fornecedor varchar(30),
     dt_cad_fornecedor TIMESTAMP not null,
     tipo_fornecedor enum('Produto','Serviço')
@@ -45,7 +45,7 @@ create table produto_fornecedor (
     foreign key (id_fornecedor) references fornecedor(id_fornecedor)
     
 );
-SELECT * FROM produto_fornecedor inner join fornecedor using(id_fornecedor) where id_fornecedor = 2
+
 insert into produto_fornecedor values(1,'Malha','Malha de algodão',19.99,'Comprimento',1);
 insert into produto_fornecedor values(2,'Embalagem','Embalagem de plástico',5.23,'Unidade',1);
 
@@ -55,7 +55,9 @@ create table servico_fornecedor (
     nm_serv_forn varchar(250) not null,
     desc_serv_forn varchar(250) not null,
     valor_serv_forn decimal(10,2) not null,
-    und_medida_serv_forn enum('Unidade','Peso')
+    und_medida_serv_forn enum('Unidade','Peso'),
+    id_fornecedor int(11) not null,
+    foreign key (id_fornecedor) references fornecedor(id_fornecedor)
 );
 
 insert into servico_fornecedor values(1,'Tingimento','Lavagem a seco',5.90,'Peso');
