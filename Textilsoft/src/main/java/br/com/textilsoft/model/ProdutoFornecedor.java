@@ -1,5 +1,5 @@
 package br.com.textilsoft.model;
-import br.com.textilsoft.model.util.UndMedidaProdForn;;
+import br.com.textilsoft.model.util.UndMedidaProdForn;
 
 public class ProdutoFornecedor {
 	

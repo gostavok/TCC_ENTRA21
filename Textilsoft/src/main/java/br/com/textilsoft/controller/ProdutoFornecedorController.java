@@ -59,7 +59,7 @@ public class ProdutoFornecedorController {
 			ProdutoFornecedorDAO produtoFornecedorDAO = new ProdutoFornecedorDAO();
 			return produtoFornecedorDAO.listarFornecedor(id);
 		} catch (Exception ex) {
-			Logger.getLogger(FornecedorController.class.getName()).log(Level.SEVERE, null, ex);
+			Logger.getLogger(ProdutoFornecedorController.class.getName()).log(Level.SEVERE, null, ex);
 			throw new WebApplicationException(Response.Status.INTERNAL_SERVER_ERROR);
 		}
 	}
@@ -90,7 +90,7 @@ public class ProdutoFornecedorController {
 			produtoFornecedorDAO.alterar(produtofornecedor);
 			return Response.status(Response.Status.ACCEPTED).build();
 		} catch (Exception ex) {
-			Logger.getLogger(FornecedorController.class.getName()).log(Level.SEVERE, null, ex);
+			Logger.getLogger(ProdutoFornecedorController.class.getName()).log(Level.SEVERE, null, ex);
 			throw new WebApplicationException(Response.Status.INTERNAL_SERVER_ERROR);
 		}
 	}
@@ -103,7 +103,7 @@ public class ProdutoFornecedorController {
 			produtoFornecedorDAO.excluir(id);
 			return Response.status(Response.Status.OK).build();
 		} catch (Exception ex) {
-			Logger.getLogger(FornecedorController.class.getName()).log(Level.SEVERE, null, ex);
+			Logger.getLogger(ProdutoFornecedorController.class.getName()).log(Level.SEVERE, null, ex);
 			throw new WebApplicationException(Response.Status.INTERNAL_SERVER_ERROR);
 		}
 	}
