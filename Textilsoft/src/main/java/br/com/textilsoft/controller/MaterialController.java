@@ -79,7 +79,6 @@ public class MaterialController {
 	}
 	
 	@DELETE
-	@Produces(MediaType.APPLICATION_JSON)
 	@Path("{id}/")
 	public Response deleteMateriala(@PathParam("id")int id) {
 		try {

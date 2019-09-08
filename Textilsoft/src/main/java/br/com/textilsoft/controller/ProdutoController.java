@@ -16,80 +16,80 @@ import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
-import br.com.textilsoft.dao.EstampaDAO;
-import br.com.textilsoft.model.Estampa;
+import br.com.textilsoft.dao.ProdutoDAO;
+import br.com.textilsoft.model.Produto;
 
-@Path("estampas")
-public class EstampaController {
+@Path("Produtos")
+public class ProdutoController {
+
 
 	
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("/")
-	public List<Estampa> listEstampa(){
-	try {
-		EstampaDAO estampaDao = new EstampaDAO();
-		return estampaDao.selectAll();
-	} catch (Exception e) {
-		Logger.getLogger(CorController.class.getName()).log(Level.SEVERE, null, e);
-		throw new WebApplicationException(Response.Status.INTERNAL_SERVER_ERROR);
-	}
-	}
-	
-	@GET
-	@Produces(MediaType.APPLICATION_JSON)
-	@Path("{id}/")
-	public Estampa selectEstampa(@PathParam("id") int id) {
+	public List<Produto> listProduto(){
 		try {
-			EstampaDAO estampaDao = new EstampaDAO();
-			return estampaDao.select(id);	
+			ProdutoDAO produtoDao =  new ProdutoDAO();
+			return produtoDao.selectAll();
 		} catch (Exception e) {
 			Logger.getLogger(CorController.class.getName()).log(Level.SEVERE, null, e);
 			throw new WebApplicationException(Response.Status.INTERNAL_SERVER_ERROR);
 		}
 	}
-	
+
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	@Path("{id}/")
+	public Produto selectProduto(@PathParam("id") int id) {
+		try {
+			ProdutoDAO produtoDao =  new ProdutoDAO();
+			return produtoDao.select(id);
+		} catch (Exception e) {
+			Logger.getLogger(CorController.class.getName()).log(Level.SEVERE, null, e);
+			throw new WebApplicationException(Response.Status.INTERNAL_SERVER_ERROR);
+		}
+	}
+
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Path("/")
-	public Response insertEstampa(Estampa estampa) {
+	public Response insertProduto(Produto produto) {
 		try {
-			EstampaDAO estampaDao = new EstampaDAO();
-			estampaDao.insert(estampa);
+			ProdutoDAO produtoDao =  new ProdutoDAO();
+			produtoDao.insert(produto);
 			return Response.status(Response.Status.ACCEPTED).build();
 		} catch (Exception e) {
 			Logger.getLogger(CorController.class.getName()).log(Level.SEVERE, null, e);
 			throw new WebApplicationException(Response.Status.INTERNAL_SERVER_ERROR);
 		}
 	}
-	
+
 	@PUT
 	@Consumes(MediaType.APPLICATION_JSON)
-	@Path("/")
-	public Response updateEstampa(Estampa estampa) {
+	@Path("{id}/")
+	public Response updateProduto(Produto produto) {
 		try {
-			EstampaDAO estampaDao = new EstampaDAO();
-			estampaDao.update(estampa);
+			ProdutoDAO produtoDao =  new ProdutoDAO();
+			produtoDao.update(produto);
 			return Response.status(Response.Status.ACCEPTED).build();
 		} catch (Exception e) {
 			Logger.getLogger(CorController.class.getName()).log(Level.SEVERE, null, e);
 			throw new WebApplicationException(Response.Status.INTERNAL_SERVER_ERROR);
 		}
 	}
-	
-	
+
 	@DELETE
 	@Path("{id}/")
-	public Response deleteEstampa(@PathParam("id") int id) {
+	public Response deleteProduto(@PathParam("id") int id) {
 		try {
-			EstampaDAO estampaDao = new EstampaDAO();
-			estampaDao.delete(id);
+			ProdutoDAO produtoDao =  new ProdutoDAO();
+			produtoDao.delete(id);
 			return Response.status(Response.Status.ACCEPTED).build();
 		} catch (Exception e) {
 			Logger.getLogger(CorController.class.getName()).log(Level.SEVERE, null, e);
 			throw new WebApplicationException(Response.Status.INTERNAL_SERVER_ERROR);
 		}
-		
 	}
 	
 }
+
