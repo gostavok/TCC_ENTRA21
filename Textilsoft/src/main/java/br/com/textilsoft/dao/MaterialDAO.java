@@ -103,6 +103,9 @@ public class MaterialDAO {
 	
 	
 	
+	
+	
+	
 	private Material parser(ResultSet resultSet) throws SQLException {
 		Material m = new Material();
 

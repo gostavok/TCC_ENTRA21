@@ -4,7 +4,7 @@ public class Estampa {
 
 	private int idEstampa;
 	private String codEstampa;
-	private int valorEstampa;
+	private double valorEstampa;
 	
 	public int getIdEstampa() {
 		return idEstampa;
@@ -18,19 +18,23 @@ public class Estampa {
 	public void setCodEstampa(String codEstampa) {
 		this.codEstampa = codEstampa;
 	}
-	public int getValorEstampa() {
+	public double getValorEstampa() {
 		return valorEstampa;
 	}
-	public void setValorEstampa(int valorEstampa) {
+	public void setValorEstampa(double valorEstampa) {
 		this.valorEstampa = valorEstampa;
 	}
+
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((codEstampa == null) ? 0 : codEstampa.hashCode());
 		result = prime * result + idEstampa;
-		result = prime * result + valorEstampa;
+		long temp;
+		temp = Double.doubleToLongBits(valorEstampa);
+		result = prime * result + (int) (temp ^ (temp >>> 32));
 		return result;
 	}
 	@Override
@@ -49,7 +53,7 @@ public class Estampa {
 			return false;
 		if (idEstampa != other.idEstampa)
 			return false;
-		if (valorEstampa != other.valorEstampa)
+		if (Double.doubleToLongBits(valorEstampa) != Double.doubleToLongBits(other.valorEstampa))
 			return false;
 		return true;
 	}

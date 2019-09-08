@@ -17,7 +17,8 @@ public class CorDAO {
 	public CorDAO() throws SQLException, ClassNotFoundException {
 		this.conexao = new ConexaoMysqlJDBC();
 	}
-
+	//-----------------------------------------------------------------------------------------------------------\\
+	
 	public void insert(Cor cor) throws SQLException, ClassNotFoundException {
 		String sqlQuery = "INSERT INTO cor (nm_cor, valor_cor) VALUES (?, ?) ";
 
@@ -32,7 +33,8 @@ public class CorDAO {
 			throw e;
 		}
 	}
-
+	//-----------------------------------------------------------------------------------------------------------\\
+	
 	public List<Cor> selectAll() throws SQLException, ClassNotFoundException {
 
 		String sqlQuery = "SELECT id_cor,nm_cor,valor_cor FROM cor";
@@ -52,7 +54,8 @@ public class CorDAO {
 		}
 
 	}
-
+	//-----------------------------------------------------------------------------------------------------------\\
+	
 	public Cor select(int id) throws SQLException, ClassNotFoundException {
 
 		String sqlQuery = "SELECT id_cor,nm_cor,valor_cor FROM cor WHERE id_cor = ?";
@@ -72,6 +75,7 @@ public class CorDAO {
 			}
 			return null;
 			}
+	//-----------------------------------------------------------------------------------------------------------\\
 	
 	public void delete(int id) throws SQLException, ClassNotFoundException{
 		
@@ -87,6 +91,7 @@ public class CorDAO {
 			throw e;
 		}
 		}
+	//-----------------------------------------------------------------------------------------------------------\\
 	
 	public void update(Cor cor) throws SQLException, ClassNotFoundException{
 		

@@ -16,85 +16,81 @@ import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
-import br.com.textilsoft.dao.CorDAO;
-import br.com.textilsoft.model.Cor;
+import br.com.textilsoft.dao.EstampaDAO;
+import br.com.textilsoft.model.Estampa;
 
+@Path("estampas")
+public class EstampaController {
 
-
-@Path("cores")
-public class CorController {
-
+	
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("/")
-	public List<Cor> listCor() {
+	public List<Estampa> listEstampa(){
+	try {
+		EstampaDAO estampaDao = new EstampaDAO();
+		return estampaDao.selectAll();
+	} catch (Exception e) {
+		Logger.getLogger(CorController.class.getName()).log(Level.SEVERE, null, e);
+		throw new WebApplicationException(Response.Status.INTERNAL_SERVER_ERROR);
+	}
+	}
+	
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	@Path("{id}/")
+	public Estampa selectEstampa(@PathParam("id") int id) {
 		try {
-			CorDAO corDAO = new CorDAO();
-			return corDAO.selectAll();
-		} catch (Exception ex) {
-			Logger.getLogger(CorController.class.getName()).log(Level.SEVERE, null, ex);
+			EstampaDAO estampaDao = new EstampaDAO();
+			return estampaDao.select(id);	
+		} catch (Exception e) {
+			Logger.getLogger(CorController.class.getName()).log(Level.SEVERE, null, e);
+			throw new WebApplicationException(Response.Status.INTERNAL_SERVER_ERROR);
+		}
+	}
+	
+	@POST
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Path("/")
+	public Response insertEstampa(Estampa estampa) {
+		try {
+			EstampaDAO estampaDao = new EstampaDAO();
+			estampaDao.insert(estampa);
+			return Response.status(Response.Status.ACCEPTED).build();
+		} catch (Exception e) {
+			Logger.getLogger(CorController.class.getName()).log(Level.SEVERE, null, e);
+			throw new WebApplicationException(Response.Status.INTERNAL_SERVER_ERROR);
+		}
+	}
+	
+	@PUT
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Path("/")
+	public Response updateEstampa(Estampa estampa) {
+		try {
+			EstampaDAO estampaDao = new EstampaDAO();
+			estampaDao.update(estampa);
+			return Response.status(Response.Status.ACCEPTED).build();
+		} catch (Exception e) {
+			Logger.getLogger(CorController.class.getName()).log(Level.SEVERE, null, e);
 			throw new WebApplicationException(Response.Status.INTERNAL_SERVER_ERROR);
 		}
 	}
 	
 	
-	@GET
-	@Produces(MediaType.APPLICATION_JSON)
+	@DELETE
+	@Consumes(MediaType.APPLICATION_JSON)
 	@Path("{id}/")
-	public Cor selectCor(@PathParam("id") int id) {
+	public Response deleteEstampa(@PathParam("id") int id) {
 		try {
-			CorDAO corDao = new CorDAO();
-			return corDao.select(id);
+			EstampaDAO estampaDao = new EstampaDAO();
+			estampaDao.delete(id);
+			return Response.status(Response.Status.ACCEPTED).build();
 		} catch (Exception e) {
 			Logger.getLogger(CorController.class.getName()).log(Level.SEVERE, null, e);
 			throw new WebApplicationException(Response.Status.INTERNAL_SERVER_ERROR);
 		}
 		
 	}
-
-	@PUT
-	@Consumes(MediaType.APPLICATION_JSON)
-	@Path("/")
-	public Response alterCor(Cor cor) {
-		try {
-			CorDAO corDAO = new CorDAO();
-			corDAO.update(cor);
-			return Response.status(Response.Status.ACCEPTED).build();
-		} catch (Exception e) {
-			Logger.getLogger(CorController.class.getName()).log(Level.SEVERE, null, e);
-			throw new WebApplicationException(Response.Status.INTERNAL_SERVER_ERROR);
-		}
-	} 
-
-	@POST
-	@Consumes(MediaType.APPLICATION_JSON)
-	@Path("/")
-	public Response insertCor(Cor cor) {
-		try {
-			CorDAO corDao = new CorDAO();
-			corDao.insert(cor);
-			return Response.status(Response.Status.ACCEPTED).build();
-		} catch (Exception e) {
-			Logger.getLogger(CorController.class.getName()).log(Level.SEVERE, null, e);
-			throw new WebApplicationException(Response.Status.INTERNAL_SERVER_ERROR);
-		}
-	}
-
-	@DELETE
-	@Path("{id}/")
-	public Response deleteCor(@PathParam("id") int id) {
-		try {
-			CorDAO corDAO = new CorDAO();
-			corDAO.delete(id);
-			return Response.status(Response.Status.ACCEPTED).build();
-				
-		} catch (Exception e) {
-			Logger.getLogger(CorController.class.getName()).log(Level.SEVERE, null, e);
-			throw new WebApplicationException(Response.Status.INTERNAL_SERVER_ERROR);
-		}
-	}
-
-
-
+	
 }
-
