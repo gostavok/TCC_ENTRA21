@@ -32,7 +32,7 @@ public class ProdutoFornecedorDAO {
 			stmt.setString(2, produtoFornecedor.getDescProdForn());
 			stmt.setDouble(3, produtoFornecedor.getValorProdForn());
 			stmt.setString(4, produtoFornecedor.getUndMedidaProdForn().toString());
-			stmt.setLong(5, produtoFornecedor.getIdFornecedor().getIdFornecedor());
+			stmt.setLong(5, produtoFornecedor.getfornecedor().getIdFornecedor());
 			
 			stmt.execute();
 			
@@ -56,7 +56,7 @@ public class ProdutoFornecedorDAO {
 			stmt.setString(2, produtoFornecedor.getDescProdForn());
 			stmt.setDouble(3, produtoFornecedor.getValorProdForn());
 			stmt.setString(4, produtoFornecedor.getUndMedidaProdForn().toString());
-			stmt.setLong(5, produtoFornecedor.getIdFornecedor().getIdFornecedor());
+			stmt.setLong(5, produtoFornecedor.getfornecedor().getIdFornecedor());
 			stmt.setLong(6, produtoFornecedor.getIdProdForn());
 			
 
@@ -172,7 +172,7 @@ public class ProdutoFornecedorDAO {
 		p.setDescProdForn(resultSet.getString("desc_prod_forn"));
 		p.setValorProdForn(resultSet.getDouble("valor_prod_forn"));
 		p.setUndMedidaProdForn(UndMedidaProdForn.valueOf(resultSet.getString("und_medida_prod_forn")));		
-		p.setIdFornecedor(f);
+		p.setfornecedor(f);
 
 		return p;
 	}

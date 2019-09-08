@@ -46,10 +46,6 @@ create table produto_fornecedor (
     
 );
 
-insert into produto_fornecedor values(1,'Malha','Malha de algodão',19.99,'Comprimento',1);
-insert into produto_fornecedor values(2,'Embalagem','Embalagem de plástico',5.23,'Unidade',1);
-
-
 create table servico_fornecedor (
 	id_serv_forn int(11) primary key auto_increment,
     nm_serv_forn varchar(250) not null,
@@ -59,10 +55,6 @@ create table servico_fornecedor (
     id_fornecedor int(11) not null,
     foreign key (id_fornecedor) references fornecedor(id_fornecedor)
 );
-
-insert into servico_fornecedor values(1,'Tingimento','Lavagem a seco',5.90,'Peso');
-insert into servico_fornecedor values(2,'Embalagem','Servico de embalagem', 0.15,'Unidade');
-
 
 create table cor(
 	id_cor int(11) primary key auto_increment,
@@ -109,13 +101,11 @@ create table estoque (
 create table compra (
 	id_compra int(11) primary key auto_increment,
     id_prod_forn int(11) not null,
-    id_fornecedor int(11) not null,
     qtd_compra decimal (10,3) not null,
     valor_total decimal(10,2) not null,
     data_compra TIMESTAMP not null,
     data_venc DATE not null,
-    foreign key (id_prod_forn) references produto_fornecedor (id_prod_forn),
-    foreign key ( id_fornecedor ) references fornecedor (id_fornecedor)
+    foreign key (id_prod_forn) references produto_fornecedor (id_prod_forn)	
 );
 
 #-------------------------Venda----------------------------------------------------------

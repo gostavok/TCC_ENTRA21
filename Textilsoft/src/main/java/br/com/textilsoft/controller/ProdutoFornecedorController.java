@@ -21,7 +21,7 @@ import javax.ws.rs.core.Response;
 import br.com.textilsoft.dao.ProdutoFornecedorDAO;
 import br.com.textilsoft.model.ProdutoFornecedor;
 
-@Path("produtofornecedor")
+@Path("produtosfornecedores")
 public class ProdutoFornecedorController {
 	
 	@GET

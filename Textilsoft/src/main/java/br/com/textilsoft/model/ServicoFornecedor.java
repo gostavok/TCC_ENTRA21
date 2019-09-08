@@ -8,7 +8,7 @@ public class ServicoFornecedor {
 	private String descServForn;
 	private double valorServForn;
 	private UndMedidaServForn UndMedidaServForn;
-	private Fornecedor idFornecedor;
+	private Fornecedor fornecedor;
 	
 	public int getIdServForn() {
 		return idServForn;
@@ -40,11 +40,11 @@ public class ServicoFornecedor {
 	public void setUndMedidaServForn(UndMedidaServForn undMedidaServForn) {
 		UndMedidaServForn = undMedidaServForn;
 	}
-	public Fornecedor getIdFornecedor() {
-		return idFornecedor;
+	public Fornecedor getfornecedor() {
+		return fornecedor;
 	}
-	public void setIdFornecedor(Fornecedor idFornecedor) {
-		this.idFornecedor = idFornecedor;
+	public void setfornecedor(Fornecedor fornecedor) {
+		this.fornecedor = fornecedor;
 	}
 	@Override
 	public int hashCode() {
@@ -52,7 +52,7 @@ public class ServicoFornecedor {
 		int result = 1;
 		result = prime * result + ((UndMedidaServForn == null) ? 0 : UndMedidaServForn.hashCode());
 		result = prime * result + ((descServForn == null) ? 0 : descServForn.hashCode());
-		result = prime * result + ((idFornecedor == null) ? 0 : idFornecedor.hashCode());
+		result = prime * result + ((fornecedor == null) ? 0 : fornecedor.hashCode());
 		result = prime * result + idServForn;
 		result = prime * result + ((nmServForn == null) ? 0 : nmServForn.hashCode());
 		long temp;
@@ -76,10 +76,10 @@ public class ServicoFornecedor {
 				return false;
 		} else if (!descServForn.equals(other.descServForn))
 			return false;
-		if (idFornecedor == null) {
-			if (other.idFornecedor != null)
+		if (fornecedor == null) {
+			if (other.fornecedor != null)
 				return false;
-		} else if (!idFornecedor.equals(other.idFornecedor))
+		} else if (!fornecedor.equals(other.fornecedor))
 			return false;
 		if (idServForn != other.idServForn)
 			return false;
@@ -97,7 +97,7 @@ public class ServicoFornecedor {
 	public String toString() {
 		return "ServicoFornecedor [idServForn=" + idServForn + ", nmServForn=" + nmServForn + ", descServForn="
 				+ descServForn + ", valorServForn=" + valorServForn + ", UndMedidaServForn=" + UndMedidaServForn
-				+ ", idFornecedor=" + idFornecedor + "]";
+				+ ", fornecedor=" + fornecedor + "]";
 	}
 	
 	
