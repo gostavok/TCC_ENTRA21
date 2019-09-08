@@ -4,11 +4,11 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import br.com.textilsoft.data.ConexaoJDBC;
 import br.com.textilsoft.data.ConexaoMysqlJDBC;
-import br.com.textilsoft.model.Compra;
 import br.com.textilsoft.model.Estoque;
 import br.com.textilsoft.model.Fornecedor;
 import br.com.textilsoft.model.ProdutoFornecedor;
@@ -26,14 +26,14 @@ public class EstoqueDAO {
 	public void inserir(Estoque estoque) throws SQLException, ClassNotFoundException {
 		
 		//java.util.Date now = new java.util.Date();
-		
-		String sqlQuery = "INSERT INTO estoque (id_prod_forn, qtd_estoque, data_registro) + VALUES (?, ?, ?) ";
+		Date hoje = new Date();
+		String sqlQuery = "INSERT INTO estoque (id_prod_forn, qtd_estoque, data_registro) VALUES (?, ?, ?) ";
 
 		try {
 			PreparedStatement stmt = this.conexao.getConnection().prepareStatement(sqlQuery);
 			stmt.setLong(1, estoque.getProdutoFornecedor().getIdProdForn());
 			stmt.setDouble(2, estoque.getQtdEstoque());					
-			stmt.setTimestamp(3, new java.sql.Timestamp(estoque.getDataRegistro().getTime()));	
+			stmt.setTimestamp(3, new java.sql.Timestamp(hoje.getTime()));	
 			
 			stmt.execute();			
 			this.conexao.commit();

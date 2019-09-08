@@ -20,7 +20,7 @@ import br.com.textilsoft.dao.EstoqueDAO;
 import br.com.textilsoft.model.Estoque;
 
 
-@Path("estoques")
+@Path("estoque")
 public class EstoqueController {
 
 	@GET

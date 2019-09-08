@@ -4,6 +4,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import br.com.textilsoft.data.ConexaoJDBC;
@@ -24,6 +25,10 @@ public class FornecedorDAO {
 		
 		//java.util.Date now = new java.util.Date();
 		
+		Date hoje = new Date();
+		
+		
+		
 		String sqlQuery = "INSERT INTO fornecedor (nm_fornecedor, cnpj_fornecedor, "
 				+ "end_fornecedor, cep_fornecedor, bairro_fornecedor, cidade_fornecedor, "
 				+ "estado_fornecedor, comp_fornecedor, tel_fornecedor, tel2_fornecedor, "
@@ -42,8 +47,8 @@ public class FornecedorDAO {
 			stmt.setLong(9, fornecedor.getTelFornecedor());
 			stmt.setLong(10, fornecedor.getTel2Fornecedor());
 			stmt.setString(11, fornecedor.getEmailFornecedor());
-			stmt.setTimestamp(12, new java.sql.Timestamp(fornecedor.getDtCadFornecedor().getTime()));	
-			
+			stmt.setTimestamp(12, new java.sql.Timestamp(hoje.getTime()));	
+
 			stmt.execute();			
 			this.conexao.commit();
 		} catch (SQLException e) {
@@ -52,11 +57,6 @@ public class FornecedorDAO {
 		}
 	
 	}
-
-	String sqlQuery = "INSERT INTO fornecedor (nm_fornecedor, cnpj_fornecedor, "
-			+ "end_fornecedor, cep_fornecedor, bairro_fornecedor, cidade_fornecedor, "
-			+ "estado_fornecedor, comp_fornecedor, tel_fornecedor, tel2_fornecedor, "
-			+ "email_fornecedor, dt_cad_fornecedor) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) ";
 	
 	public int alterar(Fornecedor fornecedor) throws SQLException, ClassNotFoundException {
 		String sqlQuery = "UPDATE fornecedor SET nm_fornecedor = ?, cnpj_fornecedor = ?, end_fornecedor = ?,"
@@ -108,7 +108,7 @@ public class FornecedorDAO {
 	}
 
 	public Fornecedor selecionar(long id) throws SQLException, ClassNotFoundException {
-		String sqlQuery = "SELECT * FROM fornecedor WHERE id_fornecedor = ?";
+		String sqlQuery = "SELECT *,date_format(`dt_cad_fornecedor`,'%d/%m/%Y') FROM fornecedor WHERE id_fornecedor = ?";
 
 		try {
 			PreparedStatement stmt = this.conexao.getConnection().prepareStatement(sqlQuery);
@@ -126,7 +126,7 @@ public class FornecedorDAO {
 	}
 
 	public List<Fornecedor> listar() throws SQLException, ClassNotFoundException {
-		String sqlQuery = "SELECT * FROM fornecedor ORDER BY id_fornecedor";
+		String sqlQuery = "SELECT *,date_format(`dt_cad_fornecedor`,'%d/%m/%Y') FROM fornecedor ORDER BY id_fornecedor";
 
 		try {
 			PreparedStatement stmt = this.conexao.getConnection().prepareStatement(sqlQuery);
@@ -145,6 +145,9 @@ public class FornecedorDAO {
 	}
 
 	private Fornecedor parser(ResultSet resultSet) throws SQLException {
+		
+		
+		
 		Fornecedor f = new Fornecedor();
 		f.setIdFornecedor(resultSet.getLong("id_fornecedor"));
 		f.setNmFornecedor(resultSet.getString("nm_fornecedor"));
@@ -157,9 +160,10 @@ public class FornecedorDAO {
 		f.setCompFornecedor(resultSet.getString("comp_fornecedor"));
 		f.setTelFornecedor(resultSet.getInt("tel_fornecedor"));
 		f.setTel2Fornecedor(resultSet.getInt("tel2_fornecedor"));
-		f.setEmailFornecedor(resultSet.getString("email_fornecedor"));	
+		f.setEmailFornecedor(resultSet.getString("email_fornecedor"));		
 		f.setDtCadFornecedor(resultSet.getDate("dt_cad_fornecedor"));	
-
+	
+		
 		return f;
 	}
 }
