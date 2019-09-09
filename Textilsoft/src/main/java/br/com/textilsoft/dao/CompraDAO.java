@@ -112,7 +112,7 @@ public class CompraDAO {
 	
 	public List<Compra> listarcompras() throws SQLException, ClassNotFoundException {
 		String sqlQuery = "SELECT * FROM compra inner join produto_fornecedor using(id_prod_forn) " + 
-				"inner join  fornecedor using(id_fornecedor) ORDER BY id_compra";
+				"inner join fornecedor using(id_fornecedor) ORDER BY id_compra";
 
 		try {
 			PreparedStatement stmt = this.conexao.getConnection().prepareStatement(sqlQuery);
