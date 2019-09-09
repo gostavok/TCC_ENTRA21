@@ -1,6 +1,6 @@
 package br.com.textilsoft.dao;
 
-import java.sql.Date;
+import java.util.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -26,6 +26,8 @@ public class CompraDAO {
 	
 	public Long inserir(Compra compra) throws SQLException, ClassNotFoundException {
 		Long id = null;
+		Date hoje = new Date();
+		
 		String sqlQuery = "INSERT INTO compra (id_prod_forn, qtd_compra, valor_total, data_compra, data_venc) VALUES (?, ?, ?, ?, ?) ";
 
 		try {
@@ -33,9 +35,9 @@ public class CompraDAO {
 			stmt.setLong(1, compra.getProdutoFornecedor().getIdProdForn());
 			stmt.setDouble(2, compra.getQtdCompra());
 			stmt.setDouble(3, compra.getValorTotal());
-			stmt.setTimestamp(4, new java.sql.Timestamp( compra.getDataCompra().getTime()));
+			stmt.setTimestamp(4, new java.sql.Timestamp(hoje.getTime()));	
 			stmt.setDate(5, new java.sql.Date( compra.getDataVenc().getTime()));
-			
+		
 			stmt.execute();
 			
 			this.conexao.commit();
@@ -59,7 +61,7 @@ public class CompraDAO {
 			stmt.setDouble(2, compra.getQtdCompra());
 			stmt.setDouble(3, compra.getValorTotal());
 			stmt.setDate(4, new java.sql.Date( compra.getDataVenc().getTime()));
-			
+			stmt.setLong(5, compra.getIdCompra());
 
 			linhasAfetadas = stmt.executeUpdate();
 			this.conexao.commit();
