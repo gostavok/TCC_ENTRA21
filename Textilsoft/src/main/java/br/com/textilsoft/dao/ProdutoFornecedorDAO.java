@@ -9,6 +9,7 @@ import java.util.List;
 
 import br.com.textilsoft.data.ConexaoJDBC;
 import br.com.textilsoft.data.ConexaoMysqlJDBC;
+import br.com.textilsoft.model.Fornecedor;
 import br.com.textilsoft.model.ProdutoFornecedor;
 import br.com.textilsoft.model.util.UndMedidaProdForn;
 
@@ -31,7 +32,7 @@ public class ProdutoFornecedorDAO {
 			stmt.setString(2, produtoFornecedor.getDescProdForn());
 			stmt.setDouble(3, produtoFornecedor.getValorProdForn());
 			stmt.setString(4, produtoFornecedor.getUndMedidaProdForn().toString());
-			stmt.setLong(5, produtoFornecedor.getIdFornecedor().getIdFornecedor());
+			stmt.setLong(5, produtoFornecedor.getfornecedor().getIdFornecedor());
 			
 			stmt.execute();
 			
@@ -55,7 +56,7 @@ public class ProdutoFornecedorDAO {
 			stmt.setString(2, produtoFornecedor.getDescProdForn());
 			stmt.setDouble(3, produtoFornecedor.getValorProdForn());
 			stmt.setString(4, produtoFornecedor.getUndMedidaProdForn().toString());
-			stmt.setLong(5, produtoFornecedor.getIdFornecedor().getIdFornecedor());
+			stmt.setLong(5, produtoFornecedor.getfornecedor().getIdFornecedor());
 			stmt.setLong(6, produtoFornecedor.getIdProdForn());
 			
 
@@ -126,7 +127,7 @@ public class ProdutoFornecedorDAO {
 		}
 	}
 	
-	public List<ProdutoFornecedor> listarFornecedores(long id) throws SQLException, ClassNotFoundException {
+	public List<ProdutoFornecedor> listarFornecedor(long id) throws SQLException, ClassNotFoundException {
 		String sqlQuery = "SELECT * FROM produto_fornecedor inner join fornecedor using(id_fornecedor) where id_fornecedor = ?";
 
 		try {
@@ -152,15 +153,26 @@ public class ProdutoFornecedorDAO {
 	private ProdutoFornecedor parser(ResultSet resultSet) throws SQLException {
 		ProdutoFornecedor p = new ProdutoFornecedor();
 		Fornecedor f = new Fornecedor();
-		
+		f.setIdFornecedor(resultSet.getInt("id_fornecedor"));
+		f.setNmFornecedor(resultSet.getString("nm_fornecedor"));
+		f.setCnpjFornecedor(resultSet.getString("cnpj_fornecedor"));
+		f.setEndFornecedor(resultSet.getString("end_fornecedor"));
+		f.setCepFornecedor(resultSet.getInt("cep_fornecedor"));
+		f.setBairroFornecedor(resultSet.getString("bairro_fornecedor"));
+		f.setCidadeFornecedor(resultSet.getString("cidade_fornecedor"));
+		f.setEstadoFornecedor(resultSet.getString("estado_fornecedor"));
+		f.setCompFornecedor(resultSet.getString("comp_fornecedor"));
+		f.setTelFornecedor(resultSet.getInt("tel_fornecedor"));
+		f.setTel2Fornecedor(resultSet.getInt("tel2_fornecedor"));
+		f.setEmailFornecedor(resultSet.getString("email_fornecedor"));	
+		f.setDtCadFornecedor(resultSet.getDate("dt_cad_fornecedor"));
 		
 		p.setIdProdForn(resultSet.getInt("id_prod_forn"));
 		p.setNmProdForn(resultSet.getString("nm_prod_forn"));
 		p.setDescProdForn(resultSet.getString("desc_prod_forn"));
 		p.setValorProdForn(resultSet.getDouble("valor_prod_forn"));
 		p.setUndMedidaProdForn(UndMedidaProdForn.valueOf(resultSet.getString("und_medida_prod_forn")));		
-		f.getIdFornecedor(resultSet.getInt("id_fornecedor"));
-		p.setIdFornecedor(f);
+		p.setfornecedor(f);
 
 		return p;
 	}

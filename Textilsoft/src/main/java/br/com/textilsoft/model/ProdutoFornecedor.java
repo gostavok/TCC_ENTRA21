@@ -1,5 +1,5 @@
 package br.com.textilsoft.model;
-import br.com.textilsoft.model.util.UndMedidaProdForn;;
+import br.com.textilsoft.model.util.UndMedidaProdForn;
 
 public class ProdutoFornecedor {
 	
@@ -8,7 +8,7 @@ public class ProdutoFornecedor {
 	private String descProdForn;
 	private  UndMedidaProdForn UndMedidaProdForn;
 	private double valorProdForn;
-	private Fornecedor idFornecedor;
+	private Fornecedor fornecedor;
 	
 	
 	
@@ -42,11 +42,11 @@ public class ProdutoFornecedor {
 	public void setValorProdForn(double valorProdForn) {
 		this.valorProdForn = valorProdForn;
 	}
-	public Fornecedor getIdFornecedor() {
-		return idFornecedor;
+	public Fornecedor getfornecedor() {
+		return fornecedor;
 	}
-	public void setIdFornecedor(Fornecedor idFornecedor) {
-		this.idFornecedor = idFornecedor;
+	public void setfornecedor(Fornecedor fornecedor) {
+		this.fornecedor = fornecedor;
 	}
 	@Override
 	public int hashCode() {
