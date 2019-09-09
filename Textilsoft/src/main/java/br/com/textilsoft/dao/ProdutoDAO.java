@@ -25,7 +25,10 @@ public class ProdutoDAO {
 	
 	
 	public List<Produto> selectAll() throws SQLException, ClassNotFoundException{
-		String sqlQuery = "SELECT id_produto,desc_produto,cor_produto,material_produto,estampa_produto,valor_produto FROM produto";
+		String sqlQuery = "SELECT * FROM produto INNER JOIN cor  INNER JOIN estampa  INNER JOIN material "
+				+ "where id_cor = cor_produto"
+				+ "	and id_estampa = estampa_produto"
+				+ "	and id_material = material_produto";
 		
 		try {
 			PreparedStatement stmt = this.conexao.getConnection().prepareStatement(sqlQuery);
@@ -44,7 +47,7 @@ public class ProdutoDAO {
 	
 	
 	public Produto select(int id) throws SQLException, ClassNotFoundException{
-		String sqlQuery = "SELECT id_produto,desc_produto,cor_produto,material_produto,estampa_produto,valor_produto FROM produto WHERE id_produto = ?";
+		String sqlQuery = "SELECT * FROM produto INNER JOIN cor  INNER JOIN estampa  INNER JOIN material where id_cor = cor_produto and id_estampa = estampa_produto and id_material = material_produto AND id_produto = ? ";
 		
 		try {
 			PreparedStatement stmt = this.conexao.getConnection().prepareStatement(sqlQuery);
@@ -89,6 +92,8 @@ public class ProdutoDAO {
 			stmt.setInt(4,produto.getEstampaProduto().getIdEstampa());
 			stmt.setDouble(5, produto.getValorProduto());
 			stmt.setInt(6, produto.getIdProduto());
+			stmt.execute();
+			this.conexao.commit();
 		} catch (Exception e) {
 			this.conexao.rollback();
 			throw e;

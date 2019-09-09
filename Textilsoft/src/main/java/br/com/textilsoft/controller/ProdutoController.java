@@ -19,7 +19,7 @@ import javax.ws.rs.core.Response;
 import br.com.textilsoft.dao.ProdutoDAO;
 import br.com.textilsoft.model.Produto;
 
-@Path("Produtos")
+@Path("produtos")
 public class ProdutoController {
 
 
@@ -66,7 +66,7 @@ public class ProdutoController {
 
 	@PUT
 	@Consumes(MediaType.APPLICATION_JSON)
-	@Path("{id}/")
+	@Path("/")
 	public Response updateProduto(Produto produto) {
 		try {
 			ProdutoDAO produtoDao =  new ProdutoDAO();

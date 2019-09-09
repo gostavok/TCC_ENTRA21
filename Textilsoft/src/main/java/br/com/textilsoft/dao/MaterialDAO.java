@@ -54,7 +54,7 @@ public class MaterialDAO {
 	public Material select(int id) throws SQLException,ClassNotFoundException{
 		String sql = "SELECT id_material,nm_material,valor_material FROM material WHERE id_material = ?";
 		try {
-			PreparedStatement stmt = this.conexao.getConnection().prepareStatement(sqlQuery);
+			PreparedStatement stmt = this.conexao.getConnection().prepareStatement(sql);
 			stmt.setInt(1, id);
 			ResultSet rs = stmt.executeQuery();
 			
@@ -65,13 +65,14 @@ public class MaterialDAO {
 		} catch (Exception e) {
 			throw e;
 		}
+		return null;
 	}
 	//-----------------------------------------------------------------------------------------------------------\\
 	public void delete(int id) throws SQLException, ClassNotFoundException {
 		String sql = "DELETE FROM material WHERE id_material = ?";
 		
 		try {
-			PreparedStatement stmt = this.conexao.getConnection().prepareStatement(sqlQuery);
+			PreparedStatement stmt = this.conexao.getConnection().prepareStatement(sql);
 			stmt.setInt(1, id);
 			stmt.execute();
 			this.conexao.commit();
