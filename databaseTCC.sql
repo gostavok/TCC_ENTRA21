@@ -188,8 +188,11 @@ create table conta_receber (
 
 create table conta_pagar (
 	id_conta_pagar int(11) primary key auto_increment,
-    id_compra int(11) not null,
-    status_financeiro_pagar enum('Pago','Pendente', 'Atrasado') not null,
-	foreign key(id_compra) references compra(id_compra)
+	desc_conta_pagar varchar(200) not null,
+    	complemento varchar(200) not null,
+	valor_conta_pagar decimal(10,2) not null,
+	data_vencimento date not null,
+	data_inclusao timestamp not null,
+    	status_financeiro_pagar enum('Pago','Pendente', 'Atrasado') not null
 );
 
