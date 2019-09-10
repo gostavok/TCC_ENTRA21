@@ -182,7 +182,7 @@ create table ordem_pedido (
 create table conta_receber (
 	id_conta_receber int(11) primary key auto_increment,
     id_venda int(11) not null,
-    status_financeiro_receber enum('Pago','Pendente', 'Atrasado') not null,
+    status_conta_receber enum('Pago','Pendente', 'Atrasado') not null,
     foreign key (id_venda) references venda(id_venda)
 );
 
@@ -193,6 +193,6 @@ create table conta_pagar (
 	valor_conta_pagar decimal(10,2) not null,
 	data_vencimento date not null,
 	data_inclusao timestamp not null,
-    	status_financeiro_pagar enum('Pago','Pendente', 'Atrasado') not null
+    	status_conta_pagar enum('Pago','Pendente', 'Atrasado') not null
 );
 
