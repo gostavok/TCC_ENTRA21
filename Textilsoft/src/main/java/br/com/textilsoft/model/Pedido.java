@@ -4,6 +4,11 @@ import br.com.textilsoft.model.util.StatusPedido;
 import java.util.Date;
 
 public class Pedido {
+
+	
+	//HASH CODE E TO STRING COM CLIENTE FALTANDO
+	
+	
 	
 	private int idPedido;
 	private Cliente cliente;

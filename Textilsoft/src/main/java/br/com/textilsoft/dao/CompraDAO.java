@@ -1,6 +1,10 @@
 package br.com.textilsoft.dao;
 
+<<<<<<< HEAD
 import java.util.Date;
+=======
+import java.sql.Date;
+>>>>>>> servGui
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -26,8 +30,11 @@ public class CompraDAO {
 	
 	public Long inserir(Compra compra) throws SQLException, ClassNotFoundException {
 		Long id = null;
+<<<<<<< HEAD
 		Date hoje = new Date();
 		
+=======
+>>>>>>> servGui
 		String sqlQuery = "INSERT INTO compra (id_prod_forn, qtd_compra, valor_total, data_compra, data_venc) VALUES (?, ?, ?, ?, ?) ";
 
 		try {
@@ -35,9 +42,15 @@ public class CompraDAO {
 			stmt.setLong(1, compra.getProdutoFornecedor().getIdProdForn());
 			stmt.setDouble(2, compra.getQtdCompra());
 			stmt.setDouble(3, compra.getValorTotal());
+<<<<<<< HEAD
 			stmt.setTimestamp(4, new java.sql.Timestamp(hoje.getTime()));	
 			stmt.setDate(5, new java.sql.Date( compra.getDataVenc().getTime()));
 		
+=======
+			stmt.setTimestamp(4, new java.sql.Timestamp( compra.getDataCompra().getTime()));
+			stmt.setDate(5, new java.sql.Date( compra.getDataVenc().getTime()));
+			
+>>>>>>> servGui
 			stmt.execute();
 			
 			this.conexao.commit();
@@ -61,7 +74,11 @@ public class CompraDAO {
 			stmt.setDouble(2, compra.getQtdCompra());
 			stmt.setDouble(3, compra.getValorTotal());
 			stmt.setDate(4, new java.sql.Date( compra.getDataVenc().getTime()));
+<<<<<<< HEAD
 			stmt.setLong(5, compra.getIdCompra());
+=======
+			
+>>>>>>> servGui
 
 			linhasAfetadas = stmt.executeUpdate();
 			this.conexao.commit();
@@ -93,8 +110,12 @@ public class CompraDAO {
 	
 	
 	public Compra selecionar(long id) throws SQLException, ClassNotFoundException {
+<<<<<<< HEAD
 		String sqlQuery = "SELECT * FROM compra inner join produto_fornecedor using(id_prod_forn) inner join"
 				+ " fornecedor using(id_fornecedor) WHERE id_compra = ?";
+=======
+		String sqlQuery = "SELECT * FROM compra inner join produto_fornecedor using(id_prod_forn) WHERE id_compra = ?";
+>>>>>>> servGui
 
 		try {
 			PreparedStatement stmt = this.conexao.getConnection().prepareStatement(sqlQuery);
@@ -113,8 +134,12 @@ public class CompraDAO {
 	
 	
 	public List<Compra> listarcompras() throws SQLException, ClassNotFoundException {
+<<<<<<< HEAD
 		String sqlQuery = "SELECT * FROM compra inner join produto_fornecedor using(id_prod_forn) " + 
 				"inner join fornecedor using(id_fornecedor) ORDER BY id_compra";
+=======
+		String sqlQuery = "SELECT * FROM compra inner join produto_fornecedor using(id_prod_forn) ORDER BY id_compra";
+>>>>>>> servGui
 
 		try {
 			PreparedStatement stmt = this.conexao.getConnection().prepareStatement(sqlQuery);
