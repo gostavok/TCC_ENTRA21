@@ -42,14 +42,72 @@ public class OrcamentoDAO {
 	}
 	
 	public Orcamento select(int id)throws SQLException,ClassNotFoundException{
+		String sqlQuery = "SELECT id_orcamento,id_cor,id_estampa,id_material,valor_base,valor_orcamento FROM orcamento INNER JOIN cor USING(id_cor) INNER JOIN estampa USING(id_estampa) INNER JOIN material USING(id_material) WHERE id_orcamento = ?";
+
+		try {
+			PreparedStatement stmt = this.conexao.getConnection().prepareStatement(sqlQuery);
+			stmt.setInt(1, id);
+			ResultSet rs = stmt.executeQuery();
+			
+			if(rs.next()) {
+				return parser(rs);
+			}
+		} catch (Exception e) {
+			throw e;
+		}
+		return null;
+	}
+	
+	public void insert(Orcamento orcamento) throws SQLException, ClassNotFoundException{
+		String sqlQuery = "INSERT INTO orcamento (id_cor,id_estampa,id_material,valor_base,valor_orcamento) VALUES (?,?,?,?,?)";
 		
+		try {
+			PreparedStatement stmt = this.conexao.getConnection().prepareStatement(sqlQuery);
+			stmt.setInt(1, orcamento.getCorOrcamento().getIdCor());
+			stmt.setInt(2, orcamento.getEstampaOrcamento().getIdEstampa());
+			stmt.setInt(3, orcamento.getMaterialOrcamento().getIdMaterial());
+			stmt.setDouble(4, orcamento.getValorBase());
+			stmt.setDouble(5, orcamento.getValorOrcamento());
+			stmt.execute();
+			this.conexao.commit();
+		} catch (Exception e) {
+			this.conexao.rollback();
+			throw e;
+		}
 	}
 	
 	
+	public void update(Orcamento orcamento) throws SQLException,ClassNotFoundException{
+		String sqlQuery = "UPDATE orcamento SET id_cor = ?, id_estampa = ?, id_material = ?, valor_base = ?, valor_orcamento= ? WHERE id_orcamento = ?";
+
+		try {
+			PreparedStatement stmt = this.conexao.getConnection().prepareStatement(sqlQuery);
+			stmt.setInt(1, orcamento.getCorOrcamento().getIdCor());
+			stmt.setInt(2, orcamento.getEstampaOrcamento().getIdEstampa());
+			stmt.setInt(3, orcamento.getMaterialOrcamento().getIdMaterial());
+			stmt.setDouble(4, orcamento.getValorBase());
+			stmt.setDouble(5, orcamento.getValorOrcamento());
+			stmt.setInt(6, orcamento.getIdOrcamento());
+			stmt.execute();
+			this.conexao.commit();
+		} catch (Exception e) {
+			this.conexao.rollback();
+			throw e;
+		}
+	}
 	
-	
-	
-	
+	public void delete(int id) throws SQLException,ClassNotFoundException{
+		String sqlQuery = "DELETE FROM orcamento WHERE id_orcamento = ?";
+		try {
+			PreparedStatement stmt = this.conexao.getConnection().prepareStatement(sqlQuery);
+			stmt.setInt(1, id);
+			stmt.execute();
+			this.conexao.commit();
+		} catch (Exception e) {
+			this.conexao.rollback();
+			throw e;
+		}
+	}
 	
 	
 	
