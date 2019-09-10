@@ -26,7 +26,7 @@ public class ContaPagarDAO {
 		
 		//java.util.Date now = new java.util.Date();
 		
-		Date hoje = new Date();
+//		Date hoje = new Date();
 		
 		
 		
@@ -41,7 +41,7 @@ public class ContaPagarDAO {
 			stmt.setDouble(3, contaPagar.getValorContaPagar());
 			stmt.setDate(4, new java.sql.Date(contaPagar.getDataVencimento().getTime()));				
 			stmt.setTimestamp(5, new java.sql.Timestamp(contaPagar.getDataInclusao().getTime()));
-			stmt.setString(5, contaPagar.getStatusContaPagar().toString());
+			stmt.setString(6, contaPagar.getStatusContaPagar().toString());
 
 			stmt.execute();			
 			this.conexao.commit();
@@ -65,7 +65,7 @@ public class ContaPagarDAO {
 			stmt.setDouble(3, contaPagar.getValorContaPagar());
 			stmt.setDate(4, new java.sql.Date(contaPagar.getDataVencimento().getTime()));			
 			stmt.setString(5, contaPagar.getStatusContaPagar().toString());
-			stmt.setLong(5, contaPagar.getIdContaPagar());
+			stmt.setLong(6, contaPagar.getIdContaPagar());
 			
 			linhasAfetadas = stmt.executeUpdate();
 			this.conexao.commit();
