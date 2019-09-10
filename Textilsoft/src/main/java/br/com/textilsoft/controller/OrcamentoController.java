@@ -25,7 +25,7 @@ public class OrcamentoController {
 	
 
 	
-	
+	//Não esta funcionando
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("/")
