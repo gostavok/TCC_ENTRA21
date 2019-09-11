@@ -4,9 +4,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
-
 import br.com.textilsoft.data.ConexaoJDBC;
 import br.com.textilsoft.data.ConexaoMysqlJDBC;
 import br.com.textilsoft.model.ContaPagar;
@@ -22,12 +20,7 @@ public class ContaPagarDAO {
 		this.conexao = new ConexaoMysqlJDBC();
 	}
 
-	public void inserir(ContaPagar contaPagar) throws SQLException, ClassNotFoundException {
-		
-		//java.util.Date now = new java.util.Date();
-		
-//		Date hoje = new Date();
-		
+	public void inserir(ContaPagar contaPagar) throws SQLException, ClassNotFoundException {		
 		
 		
 		String sqlQuery = "INSERT INTO conta_pagar (desc_conta_pagar, complemento, "
