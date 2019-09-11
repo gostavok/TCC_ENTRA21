@@ -33,7 +33,7 @@ public class OrcamentoDAO {
 			List<Orcamento> orcamento = new ArrayList<Orcamento>();
 			
 			while(rs.next()) {
-				orcamento.add(parser(rs));
+ 				orcamento.add(parser(rs));
 			}
 			return orcamento;
 		} catch (Exception e) {
@@ -115,26 +115,20 @@ public class OrcamentoDAO {
 	
 	
 	private Orcamento parser(ResultSet resultSet) throws SQLException {
-		Orcamento o = new Orcamento();
+		
 		Cor c = new Cor();
 		Estampa e = new Estampa();
 		Material m = new Material();
+		Orcamento o = new Orcamento();
+	
 
-		c.setIdCor(resultSet.getInt("id_cor"));
-		c.setNmCor(resultSet.getString("nm_cor"));
-		c.setValorCor(resultSet.getDouble("valor_cor"));
-		
-		e.setIdEstampa(resultSet.getInt("id_estampa"));
-		e.setCodEstampa(resultSet.getString("codigo_estampa"));
-		e.setValorEstampa(resultSet.getDouble("valor_estampa"));
-		
-		m.setIdMaterial(resultSet.getInt("id_material"));
-		m.setNmMatarial(resultSet.getString("nm_material"));
-		m.setValorMaterial(resultSet.getDouble("valor_material"));
 
 		o.setIdOrcamento(resultSet.getInt("id_orcamento"));
 		o.setValorBase(resultSet.getDouble("valor_base"));
 		o.setValorOrcamento(resultSet.getDouble("valor_orcamento"));
+		c.setIdCor(resultSet.getInt("id_cor"));		
+		e.setIdEstampa(resultSet.getInt("id_estampa"));		
+		m.setIdMaterial(resultSet.getInt("id_material"));
 		o.setCorOrcamento(c);
 		o.setEstampaOrcamento(e);
 		o.setMaterialOrcamento(m);
