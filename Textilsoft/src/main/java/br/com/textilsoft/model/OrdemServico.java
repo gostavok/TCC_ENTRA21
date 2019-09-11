@@ -1,5 +1,6 @@
 package br.com.textilsoft.model;
 
+import java.util.Calendar;
 import java.util.Date;
 
 import br.com.textilsoft.model.util.StatusOrdemServico;

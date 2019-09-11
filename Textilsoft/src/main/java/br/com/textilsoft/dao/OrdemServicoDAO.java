@@ -3,15 +3,16 @@ package br.com.textilsoft.dao;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 import br.com.textilsoft.data.ConexaoJDBC;
 import br.com.textilsoft.data.ConexaoMysqlJDBC;
 import br.com.textilsoft.model.OrdemServico;
-
-
 
 public class OrdemServicoDAO {
 
@@ -21,9 +22,13 @@ public class OrdemServicoDAO {
 		this.conexao = new ConexaoMysqlJDBC();
 	}
 
+	Locale vmLocale = Locale.getDefault();
+	
 	public Long inserir(OrdemServico ordemServico) throws SQLException, ClassNotFoundException {
 		Long id = null;
-		Date hoje = new Date();
+		Timestamp hoje = new Timestamp(System.currentTimeMillis());
+		java.sql.Date entregaSQL = convertUtilToSql(ordemServico.getDataEntregaOrdemServico());
+		Date entrega = new Date();
 		String sqlQuery = 
 		
 		"INSERT INTO textilsoft.cliente "+
@@ -35,16 +40,16 @@ public class OrdemServicoDAO {
 		"`data_entrega`, "+
 		"`valor_total`) "+		
 		"VALUES(?, ?, ?, ?, ?, ?, ?)";
-
 		
+		Calendar.getInstance(vmLocale);
 		try {
 			PreparedStatement stmt = this.conexao.getConnection().prepareStatement(sqlQuery);
 			stmt.setLong(1, ordemServico.getFornecedor().getIdFornecedor());
 			stmt.setLong(2, ordemServico.getServicoFornecedor().getIdServForn());
 			stmt.setDouble(3, ordemServico.getQtdServico());
 			stmt.setString(4, ordemServico.getStatusOrdem().toString());
-			stmt.setTimestamp(5, new java.sql.Timestamp(hoje.getTime()));	
-			stmt.set(6, ordemServico.getDataEntregaOrdemServico());
+			stmt.setTimestamp(5, hoje);	
+			stmt.setDate(6, new java.sql.Date(ordemServico.getDataEntregaOrdemServico()));
 			stmt.setString(7, ordemServico.getValorTotalOrdemServico());			
 						
 			stmt.execute();
