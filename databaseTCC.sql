@@ -1,21 +1,19 @@
-create database tcc;
-
-use tcc;
-
+create database textilsoft;
+use textilsoft;
 #----------------------------------------Cadastro--------------------------------------------
 
 create table cliente (
 	id_cliente int(11) primary key auto_increment,
     nm_cliente varchar(250) not null,
-    cnpj_cliente varchar(14) not null, -- Tamanho 14 padrão NACIONAL
-    end_cliente varchar(250) not null, -- Aumentar de 50 para 250
-    cep_cliente int(8) not null, -- Tamanho 8 padrão NACIONAL
+    cnpj_cliente varchar(30) not null,
+    end_cliente varchar(50) not null,
+    cep_cliente int(11) not null,
     bairro_cliente varchar(30) not null,
     cidade_cliente varchar(30) not null, 
-    estado_cliente varchar(30) not null, -- Tamanho 2 padrão NACIONAL sigla
-    comp_cliente varchar(250) not null, -- Aumentar de 50 para 250
-    tel_cliente int(15) not null, -- Aumentar para 15, eventual DDD + código país
-    tel2_cliente int(15), -- Aumentar para 15, eventual DDD + código país
+    estado_cliente varchar(30) not null,
+    comp_cliente varchar(50),
+    tel_cliente int(11) not null,
+    tel2_cliente int(11),
     email_cliente varchar(30),
     dt_cad_cliente TIMESTAMP not null
 );
@@ -29,9 +27,9 @@ create table fornecedor (
     bairro_fornecedor varchar(50) not null,
     cidade_fornecedor varchar(50) not null,
     estado_fornecedor varchar(50) not null,
-    comp_fornecedor varchar(50) not null,
+    comp_fornecedor varchar(50),
     tel_fornecedor int(11) not null,
-    tel2_fornecedor int(11) not null,
+    tel2_fornecedor int(11),
     email_fornecedor varchar(30),
     dt_cad_fornecedor TIMESTAMP not null,
     tipo_fornecedor enum('Produto','Serviço')
@@ -42,14 +40,10 @@ create table produto_fornecedor (
     nm_prod_forn varchar(250) not null,
     desc_prod_forn varchar(250) not null,
     valor_prod_forn decimal(10,2) not null,
-    und_medida_prod_forn enum('Unidade','Comprimento','Peso')
-);
-
-create table fornecedor_produto (
-	id_prod_forn int(11) not null,
+    und_medida_prod_forn enum('Unidade','Comprimento','Peso'),
     id_fornecedor int(11) not null,
-    foreign key(id_prod_forn) references produto_fornecedor(id_prod_forn),
-    foreign key(id_fornecedor) references fornecedor(id_fornecedor)
+    foreign key (id_fornecedor) references fornecedor(id_fornecedor)
+    
 );
 
 create table servico_fornecedor (
@@ -57,14 +51,9 @@ create table servico_fornecedor (
     nm_serv_forn varchar(250) not null,
     desc_serv_forn varchar(250) not null,
     valor_serv_forn decimal(10,2) not null,
-    und_medida_serv_forn enum('Unidade','Peso')
-);
-
-create table fornecedor_servico (
-	id_serv_forn int(11) not null,
+    und_medida_serv_forn enum('Unidade','Peso'),
     id_fornecedor int(11) not null,
-    foreign key (id_serv_forn) references servico_fornecedor (id_serv_forn),
-    foreign key(id_fornecedor) references fornecedor (id_fornecedor)
+    foreign key (id_fornecedor) references fornecedor(id_fornecedor)
 );
 
 create table cor(
@@ -112,13 +101,11 @@ create table estoque (
 create table compra (
 	id_compra int(11) primary key auto_increment,
     id_prod_forn int(11) not null,
-    id_fornecedor int(11) not null,
     qtd_compra decimal (10,3) not null,
     valor_total decimal(10,2) not null,
     data_compra TIMESTAMP not null,
     data_venc DATE not null,
-    foreign key (id_prod_forn) references produto_fornecedor (id_prod_forn),
-    foreign key ( id_fornecedor ) references fornecedor (id_fornecedor)
+    foreign key (id_prod_forn) references produto_fornecedor (id_prod_forn)	
 );
 
 #-------------------------Venda----------------------------------------------------------
