@@ -6,11 +6,9 @@ import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
-import br.com.proway.api.model.util.Status;
 import br.com.textilsoft.data.ConexaoJDBC;
 import br.com.textilsoft.data.ConexaoMysqlJDBC;
 import br.com.textilsoft.model.Fornecedor;
