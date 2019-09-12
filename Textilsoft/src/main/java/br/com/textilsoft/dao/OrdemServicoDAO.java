@@ -10,9 +10,13 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
+import br.com.proway.api.model.util.Status;
 import br.com.textilsoft.data.ConexaoJDBC;
 import br.com.textilsoft.data.ConexaoMysqlJDBC;
+import br.com.textilsoft.model.Fornecedor;
 import br.com.textilsoft.model.OrdemServico;
+import br.com.textilsoft.model.ServicoFornecedor;
+import br.com.textilsoft.model.util.StatusOrdemServico;
 
 public class OrdemServicoDAO {
 
@@ -25,10 +29,7 @@ public class OrdemServicoDAO {
 	Locale vmLocale = Locale.getDefault();
 	
 	public Long inserir(OrdemServico ordemServico) throws SQLException, ClassNotFoundException {
-		Long id = null;
 		Timestamp hoje = new Timestamp(System.currentTimeMillis());
-		java.sql.Date entregaSQL = convertUtilToSql(ordemServico.getDataEntregaOrdemServico());
-		Date entrega = new Date();
 		String sqlQuery = 
 		
 		"INSERT INTO textilsoft.cliente "+
@@ -49,8 +50,8 @@ public class OrdemServicoDAO {
 			stmt.setDouble(3, ordemServico.getQtdServico());
 			stmt.setString(4, ordemServico.getStatusOrdem().toString());
 			stmt.setTimestamp(5, hoje);	
-			stmt.setDate(6, new java.sql.Date(ordemServico.getDataEntregaOrdemServico()));
-			stmt.setString(7, ordemServico.getValorTotalOrdemServico());			
+			stmt.setDate(6, new java.sql.Date(ordemServico.getDataEntregaOrdemServico().getDate()));
+			stmt.setDouble(7, ordemServico.getValorTotalOrdemServico());			
 						
 			stmt.execute();
 			
@@ -60,43 +61,35 @@ public class OrdemServicoDAO {
 			throw e;
 		}
 
-		return id;
+		return ordemServico.getIdOrdem();
 	}
 
 	public int alterar(OrdemServico ordemServico) throws SQLException, ClassNotFoundException {
 		
+		Timestamp hoje = new Timestamp(System.currentTimeMillis());
+		
 		int linhasAfetadas = 0;
 		String sqlQuery = 
 				
-		"UPDATE textilsoft.cliente SET"+
+		"UPDATE textilsoft.ordem_servico SET"+
 		
-		"nm_cliente = ?,"+
-		"cnpj_cliente = ?,"+
-		"end_cliente = ?,"+
-		"cep_cliente = ?,"+
-		"bairro_cliente = ?,"+
-		"cidade_cliente = ?,"+
-		"estado_cliente = ?,"+
-		"comp_cliente = ?,"+
-		"tel_cliente = ?,"+
-		"tel2_cliente = ?,"+
-		"email_cliente = ?,"+
+		"id_fornecedor = ?, "+
+		"id_serv_forn = ?, "+
+		"qtd_servico = ?, "+
+		"status_ordem = ?, "+
+		"data_entrega =?, "+
+		"valor_total =?, "+			
 
-		"WHERE id_cliente = ?";
+		"WHERE id_ordem = ?";
 	
 		try {
 			PreparedStatement stmt = this.conexao.getConnection().prepareStatement(sqlQuery);
-			stmt.setString(1, ordemServico.getNmCliente());
-			stmt.setString(2, ordemServico.getCnpjCliente());
-			stmt.setString(3, ordemServico.getEndCliente());
-			stmt.setLong(4, ordemServico.getCepCliente());
-			stmt.setString(5, ordemServico.getBairroCliente());
-			stmt.setString(6, ordemServico.getCidadeCliente());
-			stmt.setString(7, ordemServico.getEstadoCliente());
-			stmt.setString(8, ordemServico.getCompCliente());
-			stmt.setInt(9, ordemServico.getTelCliente1());
-			stmt.setInt(10, ordemServico.getTelCliente2());
-			stmt.setString(11, ordemServico.getEmailCliente());
+			stmt.setLong(1, ordemServico.getFornecedor().getIdFornecedor());
+			stmt.setLong(2, ordemServico.getServicoFornecedor().getIdServForn());
+			stmt.setDouble(3, ordemServico.getQtdServico());
+			stmt.setString(4, ordemServico.getStatusOrdem().toString());
+			stmt.setDate(5, new java.sql.Date(ordemServico.getDataEntregaOrdemServico().getDate()));
+			stmt.setDouble(6, ordemServico.getValorTotalOrdemServico());
 
 			linhasAfetadas = stmt.executeUpdate();
 			this.conexao.commit();
@@ -109,24 +102,24 @@ public class OrdemServicoDAO {
 	}
 
 	public int excluir(long idOrdemServico) throws SQLException, ClassNotFoundException {
-		int linhasAlfetadas = 0;
-		String sqlQuery = "DELETE FROM textilsoft.cliente WHERE id_cliente = ?";
+		int linhasAfetadas = 0;
+		String sqlQuery = "DELETE FROM textilsoft.ordem_servico WHERE id_ordem = ?";
 
 		try {
 			PreparedStatement stmt = this.conexao.getConnection().prepareStatement(sqlQuery);
 			stmt.setLong(1, idOrdemServico);
-			linhasAlfetadas = stmt.executeUpdate();
+			linhasAfetadas = stmt.executeUpdate();
 			this.conexao.commit();
 		} catch (SQLException e) {
 			this.conexao.rollback();
 			throw e;
 		}
 
-		return linhasAlfetadas;
+		return linhasAfetadas;
 	}
 
 	public OrdemServico selecionar(long idOrdemServico) throws SQLException, ClassNotFoundException {
-		String sqlQuery = "SELECT * FROM textilsoft.cliente WHERE id_cliente = ?";
+		String sqlQuery = "SELECT * FROM textilsoft.ordem_servico WHERE id_ordem = ?";
 
 		try {
 			PreparedStatement stmt = this.conexao.getConnection().prepareStatement(sqlQuery);
@@ -144,7 +137,7 @@ public class OrdemServicoDAO {
 	}
 
 	public List<OrdemServico> listar() throws SQLException, ClassNotFoundException {
-		String sqlQuery = "SELECT * FROM textilsoft.cliente ORDER BY id_cliente";
+		String sqlQuery = "SELECT * FROM textilsoft.ordem_servico ORDER BY id_ordem";
 
 		try {
 			PreparedStatement stmt = this.conexao.getConnection().prepareStatement(sqlQuery);
@@ -163,21 +156,19 @@ public class OrdemServicoDAO {
 	}
 
 	private OrdemServico parser(ResultSet resultSet) throws SQLException {
-		OrdemServico c = new OrdemServico();
+		OrdemServico ordem = new OrdemServico();
+		Fornecedor fornecedor = new Fornecedor();
+		ServicoFornecedor sv = new ServicoFornecedor();		
 
-		c.setIdCliente(resultSet.getLong("id_cliente"));
-		c.setNmCliente(resultSet.getString("nm_cliente"));
-		c.setCnpjCliente(resultSet.getString("cnpj_cliente"));
-		c.setEndCliente(resultSet.getString("end_cliente"));
-		c.setCepCliente(resultSet.getInt("cep_cliente"));
-		c.setBairroCliente(resultSet.getString("bairro_cliente"));
-		c.setCidadeCliente(resultSet.getString("cidade_cliente"));
-		c.setEstadoCliente(resultSet.getString("estado_cliente"));
-		c.setCompCliente(resultSet.getString("comp_cliente"));
-		c.setTelCliente1(resultSet.getInt("tel_cliente"));
-		c.setTelCliente2(resultSet.getInt("tel2_cliente"));
-		c.setEmailCliente(resultSet.getString("email_cliente"));
-		
-		return c;
+		ordem.setIdOrdem(resultSet.getLong("id_ordem"));
+		fornecedor.setIdFornecedor(resultSet.getLong("id_fornecedor"));
+		sv.setIdServForn(resultSet.getInt("id_serv_forn"));
+		ordem.setQtdServico(resultSet.getDouble("qtd_servico"));
+		ordem.setStatusOrdem(StatusOrdemServico.valueOf(resultSet.getString("status_ordem")));
+		ordem.setDataAberturaOrdemServico(resultSet.getDate("date_entrega"));
+		ordem.setDataEntregaOrdemServico(resultSet.getDate("data_entrega"));
+		ordem.setValorTotalOrdemServico(resultSet.getDouble("valor_total"));
+				
+		return ordem;
 	}
 }
