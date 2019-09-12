@@ -21,6 +21,7 @@ public class Fornecedor {
 	
 	
 	
+	
 	public long getIdFornecedor() {
 		return idFornecedor;
 	}
