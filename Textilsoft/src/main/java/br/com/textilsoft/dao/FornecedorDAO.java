@@ -23,7 +23,7 @@ public class FornecedorDAO {
 
 	public void inserir(Fornecedor fornecedor) throws SQLException, ClassNotFoundException {
 		
-		//java.util.Date now = new java.util.Date();
+		
 		
 		Date hoje = new Date();
 		
