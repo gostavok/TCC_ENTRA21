@@ -16,6 +16,9 @@ public class Pedido {
 	private double valorTotal;
 	private Date dataPedido;
 	private StatusPedido StatusPedido;
+	
+	
+	
 	public int getIdPedido() {
 		return idPedido;
 	}

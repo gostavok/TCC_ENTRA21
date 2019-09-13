@@ -81,7 +81,7 @@ public class VendaDAO {
 	
 	
 	public Venda selecionar(long id) throws SQLException, ClassNotFoundException {
-		String sqlQuery = "SELECT * FROM venda WHERE id_venda = ?";
+		String sqlQuery = "SELECT * FROM venda inner join venda_pedido using(id_venda) inner join pedido using(id_pedido) WHERE id_venda = ?";
 
 		try {
 			PreparedStatement stmt = this.conexao.getConnection().prepareStatement(sqlQuery);
@@ -100,7 +100,7 @@ public class VendaDAO {
 	
 	
 	public List<Venda> listarvendas() throws SQLException, ClassNotFoundException {
-		String sqlQuery = "SELECT * FROM venda ORDER BY id_venda";
+		String sqlQuery = "SELECT * FROM venda inner join venda_pedido using(id_venda) inner join pedido using(id_pedido)  ORDER BY id_venda";
 
 		try {
 			PreparedStatement stmt = this.conexao.getConnection().prepareStatement(sqlQuery);

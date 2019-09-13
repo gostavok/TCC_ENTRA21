@@ -8,6 +8,7 @@ import java.util.List;
 
 import br.com.textilsoft.data.ConexaoJDBC;
 import br.com.textilsoft.data.ConexaoMysqlJDBC;
+import br.com.textilsoft.model.Cliente;
 import br.com.textilsoft.model.Fornecedor;
 import br.com.textilsoft.model.Pedido;
 import br.com.textilsoft.model.ProdutoFornecedor;
@@ -55,7 +56,7 @@ public class PedidoDAO {
 
 		try {
 			PreparedStatement stmt = this.conexao.getConnection().prepareStatement(sqlQuery);
-			stmt.setString(1, pedido.getCliente().getIdCliente());
+			stmt.setLong(1, pedido.getCliente().getIdCliente());
 			stmt.setLong(2, pedido.getQtdProd());
 			stmt.setDouble(3, pedido.getValorTotal());
 			stmt.setString(4, pedido.getStatusPedido().toString());
@@ -165,8 +166,8 @@ public class PedidoDAO {
 		c.setCidadeCliente(resultSet.getString("cidade_cliente"));
 		c.setEstadoCliente(resultSet.getString("estado_cliente"));
 		c.setCompCliente(resultSet.getString("comp_cliente"));
-		c.setTelCliente(resultSet.getInt("tel_cliente"));
-		c.setTel2Cliente(resultSet.getInt("tel2_cliente"));
+		c.setTelCliente1(resultSet.getInt("tel_cliente"));
+		c.setTelCliente2(resultSet.getInt("tel2_cliente"));
 		c.setEmailCliente(resultSet.getString("email_cliente"));	
 		c.setDtCadCliente(resultSet.getDate("dt_cad_cliente"));
 		
@@ -175,7 +176,7 @@ public class PedidoDAO {
 		p.setValorTotal(resultSet.getDouble("valor_total"));
 		p.setDataPedido(resultSet.getDate("data_pedido"));
 		p.setStatusPedido(StatusPedido.valueOf(resultSet.getString("status_pedido")));		
-		p.setfornecedor(c);
+		p.setCliente(c);
 
 		return p;
 	}
