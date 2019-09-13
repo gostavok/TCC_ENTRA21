@@ -5,6 +5,8 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import br.com.textilsoft.data.ConexaoJDBC;
+
 
 public class ConexaoMysqlJDBC implements ConexaoJDBC {
 
@@ -17,7 +19,7 @@ public class ConexaoMysqlJDBC implements ConexaoJDBC {
 
 	// Dados de caminho, porta e nome da base de dados que irá ser feita a conexão
 
-	private static final String DATABASE_URL = "jdbc:mysql://localhost:3307/textilsoft?useTimezone=true&serverTimezone=UTC";
+	private static final String DATABASE_URL = "jdbc:mysql://localhost:3306/textilsoft?useTimezone=true&serverTimezone=UTC";
 
 	public ConexaoMysqlJDBC() throws SQLException, ClassNotFoundException {
 		Class.forName("com.mysql.jdbc.Driver"); 

@@ -33,6 +33,7 @@ public class OrcamentoDAO {
 			List<Orcamento> orcamento = new ArrayList<Orcamento>();
 			
 			while(rs.next()) {
+
 				orcamento.add(parser(rs));
 			}
 			return orcamento;
@@ -43,6 +44,7 @@ public class OrcamentoDAO {
 	
 	public Orcamento select(int id)throws SQLException,ClassNotFoundException{
 		String sqlQuery = "SELECT id_orcamento,id_cor,id_estampa,id_material,valor_base,valor_orcamento FROM orcamento INNER JOIN cor USING(id_cor) INNER JOIN estampa USING(id_estampa) INNER JOIN material USING(id_material) WHERE id_orcamento = ?";
+
 
 		try {
 			PreparedStatement stmt = this.conexao.getConnection().prepareStatement(sqlQuery);
@@ -115,6 +117,7 @@ public class OrcamentoDAO {
 	
 	
 	private Orcamento parser(ResultSet resultSet) throws SQLException {
+		
 		Orcamento o = new Orcamento();
 		Cor c = new Cor();
 		Estampa e = new Estampa();
@@ -135,6 +138,7 @@ public class OrcamentoDAO {
 		o.setIdOrcamento(resultSet.getInt("id_orcamento"));
 		o.setValorBase(resultSet.getDouble("valor_base"));
 		o.setValorOrcamento(resultSet.getDouble("valor_orcamento"));
+
 		o.setCorOrcamento(c);
 		o.setEstampaOrcamento(e);
 		o.setMaterialOrcamento(m);

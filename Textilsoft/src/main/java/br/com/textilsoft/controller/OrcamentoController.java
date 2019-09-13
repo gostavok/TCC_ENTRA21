@@ -23,9 +23,6 @@ import br.com.textilsoft.model.Orcamento;
 public class OrcamentoController {
 
 	
-
-	
-	
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("/")
@@ -34,7 +31,7 @@ public class OrcamentoController {
 			OrcamentoDAO orcamentoDao = new OrcamentoDAO();
 			return orcamentoDao.selectAll();
 		} catch (Exception e) {
-			Logger.getLogger(CorController.class.getName()).log(Level.SEVERE, null, e);
+			Logger.getLogger(OrcamentoController.class.getName()).log(Level.SEVERE, null, e);
 			throw new WebApplicationException(Response.Status.INTERNAL_SERVER_ERROR);
 		}
 		
@@ -48,7 +45,7 @@ public class OrcamentoController {
 			OrcamentoDAO orcamentoDao = new OrcamentoDAO();
 			return orcamentoDao.select(id);
 		} catch (Exception e) {
-			Logger.getLogger(CorController.class.getName()).log(Level.SEVERE, null, e);
+			Logger.getLogger(OrcamentoController.class.getName()).log(Level.SEVERE, null, e);
 			throw new WebApplicationException(Response.Status.INTERNAL_SERVER_ERROR);
 	}
 	}
@@ -62,7 +59,7 @@ public class OrcamentoController {
 			orcamentoDao.insert(orcamento);
 			return Response.status(Response.Status.ACCEPTED).build();
 		} catch (Exception e) {
-			Logger.getLogger(CorController.class.getName()).log(Level.SEVERE, null, e);
+			Logger.getLogger(OrcamentoController.class.getName()).log(Level.SEVERE, null, e);
 			throw new WebApplicationException(Response.Status.INTERNAL_SERVER_ERROR);
 		}	
 	}
@@ -76,7 +73,7 @@ public class OrcamentoController {
 			orcamentoDao.update(orcamento);
 			return Response.status(Response.Status.ACCEPTED).build();
 		} catch (Exception e) {
-			Logger.getLogger(CorController.class.getName()).log(Level.SEVERE, null, e);
+			Logger.getLogger(OrcamentoController.class.getName()).log(Level.SEVERE, null, e);
 			throw new WebApplicationException(Response.Status.INTERNAL_SERVER_ERROR);
 		}
 	}
@@ -91,7 +88,7 @@ public class OrcamentoController {
 			orcamentoDao.delete(id);
 			return Response.status(Response.Status.ACCEPTED).build();
 		} catch (Exception e) {
-			Logger.getLogger(CorController.class.getName()).log(Level.SEVERE, null, e);
+			Logger.getLogger(OrcamentoController.class.getName()).log(Level.SEVERE, null, e);
 			throw new WebApplicationException(Response.Status.INTERNAL_SERVER_ERROR);
 		}
 	}

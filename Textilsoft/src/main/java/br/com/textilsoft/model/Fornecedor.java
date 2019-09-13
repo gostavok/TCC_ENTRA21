@@ -20,7 +20,6 @@ public class Fornecedor {
 	private Date dtCadFornecedor;
 	
 	
-	
 	public long getIdFornecedor() {
 		return idFornecedor;
 	}
