@@ -2,9 +2,24 @@ appTextilsoft.controller("estoqueController", function($scope, $http) {
 
 	$scope.listaEstoque = [];
 	$scope.estoque = {};
+	$scope.estoque.produtoFornecedor = {};
 	$scope.idestoque = 0;
 	var url = 'http://localhost:8080/Textilsoft/rest/';
 
+	
+	$scope.listarNomeProduto = function(id) {
+		$http({
+			method : 'GET',
+			url : url + 'produtosfornecedores/'+id
+		}).then(function(response) {
+			$scope.estoque.produtoFornecedor = response.data;
+		}, function(response) {
+			console.log('error');
+			console.log(response.data);
+			console.log(response.status);
+		});
+	};
+	
 	$scope.listarEstoque = function() {
 		$http({
 			method : 'GET',

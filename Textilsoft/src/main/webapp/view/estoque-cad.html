@@ -7,11 +7,11 @@
 	</div>
 	<div class="form-group col-md-3">
 		<label for="campo1">ID do Produto</label>
-		<input type="text"  class= "form-control"  placeholder="ID do Produto" ng-model="estoque.produtoFornecedor.idProdForn">
+		<input type="text"  class= "form-control"  placeholder="ID do Produto" ng-model="estoque.produtoFornecedor.idProdForn" ng-blur = "listarNomeProduto(estoque.produtoFornecedor.idProdForn)">
 	</div>
 	<div class="form-group col-md-3">
 		<label for="campo1">Nome do produto</label>
-		<input type="text" class= "form-control" placeholder="E-mail" ng-model="estoque.produtoFornecedor.nmProdForn" disabled>
+		<input type="text" class= "form-control" placeholder="Produto" ng-model="estoque.produtoFornecedor.nmProdForn" disabled>
 	</div>
 	<div class="form-group col-md-3">
 		<label for="campo1">Quantidade</label>
@@ -20,7 +20,7 @@
 
 	<div class="form-group col-md-3">
 		<label for="campo1">Unidade Medida</label>
-		<input type="text"  class= "form-control"  placeholder="Quantidade" ng-model="estoque.produtoFornecedor.UndMedidaProdForn" disabled>
+		<input type="text"  class= "form-control"  placeholder="Unidade de Medida" ng-model="estoque.produtoFornecedor.undMedidaProdForn" disabled>
 	</div>
 	
 	
