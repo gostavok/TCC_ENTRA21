@@ -8,6 +8,7 @@ import java.util.List;
 import br.com.textilsoft.data.ConexaoJDBC;
 import br.com.textilsoft.data.ConexaoMysqlJDBC;
 import br.com.textilsoft.model.ContaReceber;
+import br.com.textilsoft.model.Venda;
 import br.com.textilsoft.model.util.StatusContaReceber;
 
 
@@ -122,11 +123,11 @@ public class ContaReceberDAO {
 		
 		
 		ContaReceber cr = new ContaReceber();		
-//		//Venda v = new Venda();
-//		v.setIdVenda(resultSet.getLong("id_venda"));
-//		cr.setIdContaReceber(resultSet.getLong("id_conta_receber"));
-//		cr.setVenda(v);
-//		cr.setStatusContaReceber(StatusContaReceber.valueOf(resultSet.getString("status_conta_receber")));
+		Venda v = new Venda();
+		v.setIdVenda(resultSet.getInt("id_venda"));
+		cr.setIdContaReceber(resultSet.getLong("id_conta_receber"));
+		cr.setVenda(v);
+		cr.setStatusContaReceber(StatusContaReceber.valueOf(resultSet.getString("status_conta_receber")));
 		
 	
 		
