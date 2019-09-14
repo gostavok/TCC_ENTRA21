@@ -1,12 +1,6 @@
 
 <meta charset="utf-8">
 
- <script type = "text/javascript">
- var numero;
- window.pegarID = function(){ 
-		 numero = fornecedor.id;
-		}
-</script>
 
 <div id="top" class="row">
  <div class="col-md-3">
@@ -25,7 +19,7 @@
        
     </div>
  	 <div class="col-md-3">
-        <a href="fornecedores"  class="btn btn-primary pull-right h2">Novo fornecedor</a>
+        <a href="fornecedores-cad"  class="btn btn-primary pull-right h2">Novo fornecedor</a>
     </div>
     
 </div>
@@ -42,20 +36,20 @@
             <thead>
 				<tr>
 					<th class="col-md-2" >ID</th>
-					<th class="col-md-2">Assunto</th>
-					<th class="col-md-2">Status</th>
-					<th class="col-md-3">Mensagem</th>
+					<th class="col-md-2">Razão Social</th>
+					<th class="col-md-2">E-mail</th>
+					<th class="col-md-3">Telefone</th>
 					<th class="actions">Ações</th>
 				</tr>
 			</thead>   
     	<tbody>
     
-		<tr ng-repeat="fornecedor in listaChamado">
+		<tr ng-repeat="fornecedor in listaFornecedor">
 		
-		<td >{{fornecedor.id }}</td>
-		<td> {{fornecedor.assunto }}</td>
-		<td >{{fornecedor.status }}</td>
-		<td >{{fornecedor.mensagem }}</td>
+		<td >{{fornecedor.idFornecedor }}</td>
+		<td> {{fornecedor.cnpjFornecedor }}</td>
+		<td >{{fornecedor.emailFornecedor }}</td>
+		<td >{{fornecedor.telFornecedor }}</td>
 		<td class="actions">
 		  <a class="btn btn-danger btn-xs"  type="button" ng-click = "procuraFornecedor(fornecedor)" data-toggle="modal" data-target="#delete-modal">Excluir</a>
 		<a class="btn btn-warning btn-xs" type="button" href = "fornecedores-editar/{{fornecedor.id}}">Alterar</a>

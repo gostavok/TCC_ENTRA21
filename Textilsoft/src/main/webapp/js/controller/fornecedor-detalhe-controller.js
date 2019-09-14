@@ -3,7 +3,7 @@ appTextilsoft.controller("fornecedorDetalheController", function($scope, $http,
 
 	$scope.fornecedorDetalhe = {};
 	
-	var url = 'http://localhost:8080/textilsoft/rest/fornecedores/';
+	var url = 'http://localhost:8080/Textilsoft/rest/fornecedores/';
 
 		$http.get(url + $routeParams.id).then(function(response) {
 			$scope.fornecedorDetalhe = response.data;
