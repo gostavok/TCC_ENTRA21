@@ -7,7 +7,13 @@ appTextilsoft.config(function($routeProvider, $locationProvider){
     .when("/fornecedores-lista",{templateUrl:'view/fornecedor.html', controller:'fornecedorController'})
     .when("/fornecedores-editar/:id",{templateUrl:'view/fornecedor-edit.html', controller:'fornecedorDetalheController'})
     .when("/fornecedores/:id",{templateUrl:'view/fornecedor-detalhe.html', controller:'fornecedorDetalheController'})
-    .when("/usuario",{templateUrl:'view/usuario.html', controller:'usuarioController'})
+    
+    .when("/estoque-cad",{templateUrl:'view/estoque-cad.html', controller:'estoqueController'})
+    .when("/estoque-lista",{templateUrl:'view/estoque.html', controller:'estoqueController'})
+    .when("/estoque-editar/:id",{templateUrl:'view/estoque-edit.html', controller:'estoqueDetalheController'})
+    .when("/estoque/:id",{templateUrl:'view/estoque-detalhe.html', controller:'estoqueDetalheController'})
+
+
     .otherwise({redirectTo:'/'});
 	
 	

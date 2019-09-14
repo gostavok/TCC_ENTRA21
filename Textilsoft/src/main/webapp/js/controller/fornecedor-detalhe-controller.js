@@ -37,8 +37,8 @@ appTextilsoft.controller("fornecedorDetalheController", function($scope, $http,
 				method : 'DELETE',
 				url : url + idFornecedor
 			}).then(function(response) {
-				$scope.listaFornecedor.splice(idFornecedor, 1);
 				
+				history.go(-1);
 			}, function(response) {
 				console.log('error do salvar');		
 			});
