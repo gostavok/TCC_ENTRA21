@@ -31,20 +31,20 @@ appTextilsoft.controller("fornecedorDetalheController", function($scope, $http,
 			});
 		};
 		
-		$scope.deleteFornecedor = function(id) {
+		$scope.deleteFornecedor = function(idFornecedor) {
 
 			$http({
 				method : 'DELETE',
-				url : url + id
+				url : url + idFornecedor
 			}).then(function(response) {
-				$scope.listaFornecedor.splice(id, 1);
-				$scope.listarFornecedors();
+				$scope.listaFornecedor.splice(idFornecedor, 1);
+				
 			}, function(response) {
 				console.log('error do salvar');		
 			});
 		};
 		$scope.procuraFornecedor = function(fornecedor) {
-			$scope.idfornecedor = angular.copy(fornecedor.id);
+			$scope.idfornecedor = angular.copy(fornecedor.idFornecedor);
 		}
 
 });

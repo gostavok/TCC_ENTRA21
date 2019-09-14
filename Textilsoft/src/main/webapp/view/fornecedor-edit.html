@@ -1,0 +1,68 @@
+<h3 class="page-header">Alterar Fornecedor</h3>
+<br>
+<div class = "row">
+	<div class="form-group col-md-1">
+		<label for="campo1">ID</label>
+		<input type="text" class= "form-control" placeholder="ID" ng-model="fornecedorDetalhe.idFornecedor" style="width: 50px" disabled>
+	</div>
+	<div class="form-group col-md-3">
+		<label for="campo1">Razão social</label>
+		<input type="text"  class= "form-control"  placeholder="Razão social" ng-model="fornecedorDetalhe.nmFornecedor">
+	</div>
+	<div class="form-group col-md-3">
+		<label for="campo1">CNPJ</label>
+		<input type="text"  class= "form-control"  placeholder="CNPJ" ng-model="fornecedorDetalhe.cnpjFornecedor">
+	</div>
+	<div class="form-group col-md-3">
+			<label for="campo1">E-mail</label>
+			<input type="text" class= "form-control" placeholder="E-mail" ng-model="fornecedorDetalhe.emailFornecedor">
+		</div>
+	<div class="form-group col-md-2">
+		<label for="campo1">Data cadastro</label>
+		<input type="text"  class= "form-control"  placeholder="Data cadastro" ng-model="fornecedorDetalhe.dtCadFornecedor" disabled>
+	</div>
+		
+		<div class="form-group col-md-2">
+			<label for="campo1">Telefone 1</label>
+			<input type="text" class= "form-control" placeholder="Telefone" ng-model="fornecedorDetalhe.telFornecedor" >
+		</div>
+		<div class="form-group col-md-2">
+			<label for="campo1">Telefone 2</label>
+			<input type="text" class= "form-control" placeholder="Telefone" ng-model="fornecedorDetalhe.tel2Fornecedor">
+		</div>
+		<div class="form-group col-md-2">
+			<label for="campo1">Complementos</label>
+			<input type="text" class= "form-control" placeholder="Complementos" ng-model="fornecedorDetalhe.compFornecedor">
+		</div>
+	
+		<div class="form-group col-md-2">
+			<label for="campo1">Cep</label>
+			<input type="text" class= "form-control" placeholder="Cep" ng-model="fornecedorDetalhe.cepFornecedor">
+		</div>
+		<div class="form-group col-md-3">
+			<label for="campo1">Endereço</label>
+			<input type="text" class= "form-control" placeholder="Endereço" ng-model="fornecedorDetalhe.endFornecedor" >
+		</div>
+		<div class="form-group col-md-2">
+			<label for="campo1">Bairro</label>
+			<input type="text" class= "form-control" placeholder="Bairro" ng-model="fornecedorDetalhe.bairroFornecedor">
+		</div>
+		<div class="form-group col-md-2">
+			<label for="campo1">Cidade</label>
+			<input type="text" class= "form-control" placeholder="Cidade" ng-model="fornecedorDetalhe.cidadeFornecedor">
+		</div>
+		<div class="form-group col-md-2">
+			<label for="campo1">Estado</label>
+			<input type="text" class= "form-control" placeholder="Estado" ng-model="fornecedorDetalhe.estadoFornecedor">
+		</div>
+	
+<form> 
+  <hr /> 
+	<div id="actions" class="row">
+  	  <div class="col-md-12">
+		<button type="submit" class="btn btn-primary" ng-click="updateFornecedor()" style="margin-left:12px">Salvar</button>
+		<button type="button" class="btn btn-default" onClick="history.go(-1)">Voltar</button>
+    	</div>
+    </div>
+ </form>
+</div>
