@@ -16,7 +16,7 @@ appTextilsoft.controller("estoqueDetalheController", function($scope, $http,
 		
 		});
 		
-		$scope.updateFornecedor = function() {			
+		$scope.updateEstoque = function() {			
 			metodo = 'PUT';		
 
 			$http({
@@ -31,7 +31,7 @@ appTextilsoft.controller("estoqueDetalheController", function($scope, $http,
 			});
 		};
 		
-		$scope.deleteFornecedor = function(idEstoque) {
+		$scope.deleteEstoque = function(idEstoque) {
 
 			$http({
 				method : 'DELETE',
@@ -43,8 +43,8 @@ appTextilsoft.controller("estoqueDetalheController", function($scope, $http,
 				console.log('error do salvar');		
 			});
 		};
-		
-		$scope.procuraFornecedor = function(estoque) {
+
+		$scope.procuraEstoque = function(estoque) {
 			$scope.idestoque = angular.copy(estoque.idEstoque);
 		}
 
