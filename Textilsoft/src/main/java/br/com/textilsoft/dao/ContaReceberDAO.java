@@ -122,11 +122,11 @@ public class ContaReceberDAO {
 		
 		
 		ContaReceber cr = new ContaReceber();		
-		Venda v = new Venda();
-		v.setIdVenda(resultSet.getLong("id_venda"));
-		cr.setIdContaReceber(resultSet.getLong("id_conta_receber"));
-		cr.setVenda(v);
-		cr.setStatusContaReceber(StatusContaReceber.valueOf(resultSet.getString("status_conta_receber")));
+//		//Venda v = new Venda();
+//		v.setIdVenda(resultSet.getLong("id_venda"));
+//		cr.setIdContaReceber(resultSet.getLong("id_conta_receber"));
+//		cr.setVenda(v);
+//		cr.setStatusContaReceber(StatusContaReceber.valueOf(resultSet.getString("status_conta_receber")));
 		
 	
 		

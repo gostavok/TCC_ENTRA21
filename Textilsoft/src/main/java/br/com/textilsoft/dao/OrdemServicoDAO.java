@@ -40,7 +40,7 @@ public class OrdemServicoDAO {
 		"`valor_total`) "+		
 		"VALUES(?, ?, ?, ?, ?, ?, ?)";
 		
-		Calendar.getInstance(vmLocale);
+		//Calendar.getInstance(vmLocale);
 		try {
 			PreparedStatement stmt = this.conexao.getConnection().prepareStatement(sqlQuery);
 			stmt.setLong(1, ordemServico.getFornecedor().getIdFornecedor());

@@ -1,0 +1,91 @@
+
+<meta charset="utf-8">
+
+ <script type = "text/javascript">
+ var numero;
+ window.pegarID = function(){ 
+		 numero = fornecedor.id;
+		}
+</script>
+
+<div id="top" class="row">
+ <div class="col-md-3">
+        <h2>Lista de Fornecedores</h2>
+    </div>
+ 
+    <div class="col-md-6">
+        <div class="input-group h2">
+            <input name="data[search]" class="form-control" id="search" type="text" placeholder="Pesquisar Itens">
+            <span class="input-group-btn">
+                <button class="btn btn-primary" type="submit" ng-click="listarFornecedores()">                
+                    <span class="glyphicon glyphicon-search"></span>
+                </button>
+            </span>
+        </div>
+       
+    </div>
+ 	 <div class="col-md-3">
+        <a href="fornecedores"  class="btn btn-primary pull-right h2">Novo fornecedor</a>
+    </div>
+    
+</div>
+
+
+
+
+</br>
+</br>
+<div id="list" class="row">
+    <div class="table-responsive col-md-12">
+     
+        <table class="table col-md-12">
+            <thead>
+				<tr>
+					<th class="col-md-2" >ID</th>
+					<th class="col-md-2">Assunto</th>
+					<th class="col-md-2">Status</th>
+					<th class="col-md-3">Mensagem</th>
+					<th class="actions">Ações</th>
+				</tr>
+			</thead>   
+    	<tbody>
+    
+		<tr ng-repeat="fornecedor in listaChamado">
+		
+		<td >{{fornecedor.id }}</td>
+		<td> {{fornecedor.assunto }}</td>
+		<td >{{fornecedor.status }}</td>
+		<td >{{fornecedor.mensagem }}</td>
+		<td class="actions">
+		  <a class="btn btn-danger btn-xs"  type="button" ng-click = "procuraFornecedor(fornecedor)" data-toggle="modal" data-target="#delete-modal">Excluir</a>
+		<a class="btn btn-warning btn-xs" type="button" href = "fornecedores-editar/{{fornecedor.id}}">Alterar</a>
+		<a class="btn btn-success btn-xs" href="fornecedores/{{fornecedor.id}}">Detalhe</a>		
+		</td>		
+				
+	</tr>
+	
+	
+	</tbody>
+	
+</table>
+<div class="modal fade" id="delete-modal" tabindex="-1" role="dialog"
+		aria-labelledby="modalLabel">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Fechar">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h4 class="modal-title" id="modalLabel">Excluir Item</h4>
+				</div>
+				<div class="modal-body">Deseja realmente excluir este item?</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-primary" ng-click="deleteFornecedor(idfornecedor)" data-dismiss = "modal">Sim</button>
+					<button type="button" class="btn btn-default" data-dismiss="modal">N&atilde;o</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+</div>
