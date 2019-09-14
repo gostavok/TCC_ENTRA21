@@ -39,7 +39,9 @@ appTextilsoft.controller("fornecedorController", function($scope, $http) {
 			method : 'DELETE',
 			url : url + 'fornecedores/' + id
 		}).then(function(response) {
-			$scope.listaFornecedor.splice(id, 1);		
+			var pos = $scope.listaFornecedor.indexOf(id);
+			$scope.listaFornecedor.splice(pos,1);	
+			
 		}, function(response) {
 			console.log('error do salvar');
 			console.log(response.data);
@@ -52,7 +54,7 @@ appTextilsoft.controller("fornecedorController", function($scope, $http) {
 	}
 	
 	$scope.procuraFornecedor = function(fornecedor) {
-		$scope.idfornecedor = angular.copy(fornecedor.id);
+		$scope.idfornecedor = angular.copy(fornecedor.idFornecedor);
 	}
 
 	$scope.cancelarAlteracaoFornecedor = function(fornecedor) {
