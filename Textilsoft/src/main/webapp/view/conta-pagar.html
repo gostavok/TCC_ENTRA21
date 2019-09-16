@@ -52,7 +52,7 @@
 		<td> {{contaPagar.descContaPagar }}</td>
 		<td >{{contaPagar.complemento }}</td>
 		<td > R$ {{contaPagar.valorContaPagar}}</td>
-		<td >{{contaPagar.dataVencimento}}</td>
+		<td >{{contaPagar.dataVencimento | date: 'dd/MM/yyyy'}}</td>
 		<td >{{contaPagar.statusContaPagar}}</td>
 		<td class="actions">
 		  <a class="btn btn-danger btn-xs"  type="button" ng-click = "procuraID(contaPagar)" data-toggle="modal" data-target="#delete-modal">Excluir</a>

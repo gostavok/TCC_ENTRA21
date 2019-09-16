@@ -15,7 +15,12 @@ appTextilsoft.controller("contaPagarDetalheController", function($scope, $http,
 		
 		$scope.updateContaPagar = function() {			
 			metodo = 'PUT';		
-
+			
+			databrasileira = $scope.contaPagarDetalhe.dataVencimento;
+			 split = databrasileira.toString().split('/');
+			 novadata = split[2] + "-" +split[1]+"-"+split[0];
+			$scope.contaPagarDetalhe.dataVencimento = new Date(novadata);
+			
 			$http({
 				method : metodo,
 				url : url,

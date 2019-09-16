@@ -1,5 +1,14 @@
 <h3 class="page-header">Adicionar nova conta a pagar</h3>
 <br>
+
+ 
+  <script type="text/javascript">
+  $(document).ready(function(){
+    $('[name=data]').mask('00/00/0000');
+   
+  });
+ </script>
+ 	
 <div class = "row">
 	<div class="form-group col-md-1">
 		<label for="campo1">ID</label>
@@ -19,7 +28,7 @@
 	</div>
 	<div class="form-group col-md-2">
 		<label for="campo1">Data de Vencimento</label>
-		<input type="text"  class= "form-control"  placeholder="Data" ng-model="contaPagar.dataVencimento">
+		<input type="date" ng-model="contaPagar.dataVencimento" data-mask="00/00/0000" class= "form-control" name= "data" id = "data" placeholder="Data"/>
 	</div>
 	<div class="form-group col-md-2">
 		<label for="campo1">Situação da fatura</label>
