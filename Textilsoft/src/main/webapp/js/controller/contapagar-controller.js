@@ -1,20 +1,19 @@
 appTextilsoft.controller("contaPagarController", function($scope, $http) {
 
 	$scope.listaContaPagar = [];
-	$scope.contaPagar = {};
-	
+	$scope.contaPagar = {};	
 	$scope.idexcluir = 0;
 	var url = 'http://localhost:8080/Textilsoft/rest/';
 
 	
 	
 	
-	$scope.listarContaPagar = function() {
+	$scope.listarContasPagar = function() {
 		$http({
 			method : 'GET',
 			url : url + 'contaspagar/'
 		}).then(function(response) {
-			$scope.contaPagar = response.data;
+			$scope.listaContaPagar = response.data;
 		}, function(response) {
 			console.log('error');
 			console.log(response.data);
@@ -57,7 +56,7 @@ appTextilsoft.controller("contaPagarController", function($scope, $http) {
 		$scope.contaPagar = angular.copy(contaPagar);
 	}
 	
-	$scope.procuraContaPagar = function(contaPagar) {
+	$scope.procuraID = function(contaPagar) {
 		$scope.idexcluir = angular.copy(contaPagar.idContaPagar);
 	}
 
