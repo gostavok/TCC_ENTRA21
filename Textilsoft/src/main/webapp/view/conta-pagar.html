@@ -51,7 +51,7 @@
 		<td >{{contaPagar.idContaPagar }}</td>
 		<td> {{contaPagar.descContaPagar }}</td>
 		<td >{{contaPagar.complemento }}</td>
-		<td > R$ {{contaPagar.valorContaPagar}}</td>
+		<td > R$ {{contaPagar.valorContaPagar | number:2}}</td>
 		<td >{{contaPagar.dataVencimento | date: 'dd/MM/yyyy'}}</td>
 		<td >{{contaPagar.statusContaPagar}}</td>
 		<td class="actions">

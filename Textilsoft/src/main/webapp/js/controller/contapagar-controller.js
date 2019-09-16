@@ -28,7 +28,7 @@ appTextilsoft.controller("contaPagarController", function($scope, $http) {
 	};
 
 	$scope.salvarContaPagar = function() {
-		var metodo = 'POST';
+		var metodo = 'POST';		
 		 databrasileira = $scope.contaPagar.dataVencimento;
 		 split = databrasileira.toString().split('/');
 		 novadata = split[2] + "-" +split[1]+"-"+split[0];
