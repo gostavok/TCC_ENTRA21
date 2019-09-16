@@ -28,36 +28,34 @@
 
 </head>
 
-<div id = "lateral">
-   <ul id= "nav">
-   <li><a href="/Textilsoft/">Inicio</a></li>
-		<li><a href="#">Financeiro</a>
-			<ul>
-				<li><a href="conta-pagar-lista">Contas a Pagar</a></li>
-				<li><a href="conta-pagar-cad">Nova Conta</a></li>				
-			</ul>
-		</li>		
-		<li><a href="#">Estoque</a>
-			<ul>		
-				<li><a href="estoque-cad">Cadastro</a></li>
-				<li><a href="estoque-lista">Consulta</a></li>
-			</ul>
-		</li>		
-			<li><a href="#">Fornecedor</a>
-			<ul>
-  				<li><a href="fornecedores-cad">Cadastro</a></li>
-				<li><a href="fornecedores-lista">Consulta</a></li>			
-			</ul>
-		</li>
-		
+<body ng-controller="mainController">
+	<nav class="navbar navbar-inverse navbar-fixed-top">
+ <div class="container-fluid">
+  <div class="navbar-header">
+   <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+    <span class="sr-only">Toggle navigation</span>
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+   </button>
+   <a class="navbar-brand" href="/Textilsoft/">Textilsoft ERP</a>
+  </div>
+  <div id="navbar" class="navbar-collapse collapse">
+   <ul class="nav navbar-nav navbar-right">
+		<li><a href="conta-pagar-cad">Cadastro ContaPagar</a></li>
+		<li><a href="conta-pagar-lista">Consulta ContaPagar</a></li>
+		<li><a href="estoque-cad">Cadastro Estoque</a></li>
+		<li><a href="estoque-lista">Consulta Estoque</a></li>
+    <li><a href="fornecedores-cad">Cadastro Fornecedor</a></li>
+	<li><a href="fornecedores-lista">Consulta</a></li>
+	
     <li><a href="#">Perfil</a></li>
     <li><a href="#">Ajuda</a></li>
    </ul>
-
-</div>	
-
-<body ng-controller="mainController">
-
+  </div>
+ </div>
+</nav>
+	
 	
 	
 	
@@ -71,7 +69,10 @@
 	<div ng-view="ng-view" class="container-fluid" ></div>
 	
 	
+	<div>
+	<br><br>
 	
+	</div>
 	
 </body>
 
