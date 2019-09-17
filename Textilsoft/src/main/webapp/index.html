@@ -31,19 +31,19 @@
 <div id = "lateral">
    <ul id= "nav">
    <li><a href="/Textilsoft/">Inicio</a></li>
-		<li><a href="#">Financeiro</a>
+		<li><a href="">Financeiro</a>
 			<ul>
 				<li><a href="conta-pagar-lista">Contas a Pagar</a></li>
 				<li><a href="conta-pagar-cad">Nova Conta</a></li>				
 			</ul>
 		</li>		
-		<li><a href="#">Estoque</a>
+		<li><a href="">Estoque</a>
 			<ul>		
 				<li><a href="estoque-cad">Cadastro</a></li>
 				<li><a href="estoque-lista">Consulta</a></li>
 			</ul>
 		</li>		
-			<li><a href="#">Fornecedor</a>
+			<li><a href="">Fornecedor</a>
 			<ul>
   				<li><a href="fornecedores-cad">Cadastro</a></li>
 				<li><a href="fornecedores-lista">Consulta</a></li>			
@@ -56,19 +56,11 @@
 
 </div>	
 
-<body ng-controller="mainController">
-
+<div id = "topo"></div>
+<div id = "lateral-direita"></div>
+<body ng-controller="mainController">	
 	
-	
-	
-	<br>
-	<br>
-	<br>
-
-	
-	
-	
-	<div ng-view="ng-view" class="container-fluid" ></div>
+	<div ng-view="ng-view" class="container-fluid" id="shadow"></div>
 	
 	
 	

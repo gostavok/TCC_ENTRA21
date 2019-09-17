@@ -1,8 +1,12 @@
 * { margin: 0; padding: 0; }
 body {
-	margin-left:16%; /* espaço à esquerda para a barra vertical vísivel do menu */	
+	margin-left:16%;
+	margin-top:6%; /* espaço à esquerda para a barra vertical vísivel do menu */
+	margin-right: 5%;
+	box-shadow: 2px 2px 5px #ccc;
+
 	}
-	
+
 #lateral {	
 	-moz-transition: all 0.5s ease;
 		-webkit-transition: all 0.5s ease;
@@ -21,14 +25,58 @@ body {
 	position:fixed;
 	top:0;
 	left:0;
+	box-shadow: 2px 2px 3px #001e3c;
 	}
 
-#nav { margin-top: 40%; padding: 0;float: left; height: 100%; min-height: 100%; width:100%;}
+#topo {	
+	-moz-transition: all 0.5s ease;
+	-webkit-transition: all 0.5s ease;
+			-o-transition: all 0.5s ease;
+				transition: all 0.5s ease;
+		
+	background:rgb(16,57,79);
+           background-image: linear-gradient(135deg, rgb(0,21,27), rgb(25,58,84));
+   
+	height:10%;
+	overflow:hidden;
+	width:100%; 
+	position:fixed;
+	top:0;
+	left:15%;
+	box-shadow: 2px 2px 3px #001e3c;
+	}
+
+#shadow{
+	box-shadow: 2px 2px 5px #001e3c; 
+	margin-top: 10px;
+	margin-right: 10px;
+	margin-left: 0px;
+}
+#lateral-direita {	
+	-moz-transition: all 0.5s ease;
+	-webkit-transition: all 0.5s ease;
+			-o-transition: all 0.5s ease;
+				transition: all 0.5s ease;
+		
+	background:rgb(16,57,79);
+	 background-image: linear-gradient(135deg, rgb(20,51,76), rgb(0,21,27));
+    
+   
+	height:100%;
+	overflow:hidden;
+	width:5%; 
+	position:fixed;
+	top:0;
+	right:0;
+	box-shadow: 3px 3px 3px 2px #001e3c;
+	}
+
+#nav { margin-top: 35%; padding: 0;float: left; height: 100%; min-height: 100%; width:100%;}
 #nav li { list-style: none; background: #fff; width: 98%; border-bottom: 1px solid #666; }
 #nav li a { display: block; padding: 8px; border-left: 4px solid #444; text-decoration: none; box-shadow: 2px 2px 5px #ccc; color: #555; }
-#nav li a:hover { border-left: 4px solid #069; background: #f8f8f8; }
+#nav li a:hover{ border-left: 4px solid #069; background: #f8f8f8; }
 #nav li ul { display: none; }
-#nav li:hover ul { display: block; }
+#nav li:hover ul{ display: block; }
 #nav li:hover ul li { background: #333; }
 #nav li:hover ul li a { color: #ccc; }
 #nav li:hover ul li a:hover { background: #222; border-left: 4px solid #900; }

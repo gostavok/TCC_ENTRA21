@@ -1,14 +1,4 @@
-<h3 class="page-header">Adicionar nova conta a pagar</h3>
-<br>
-
- 
-  <script type="text/javascript">
-  $(document).ready(function(){
-    $('[name=data]').mask('00/00/0000');
-   
-  });
- </script>
- 	
+<h3 class="page-header">Adicionar nova conta a pagar</h3> 	
 <div class = "row">
 	<div class="form-group col-md-1">
 		<label for="campo1">ID</label>
@@ -45,7 +35,7 @@
 	
 <form> 
   <hr /> 
-	<div id="actions" class="row">
+	<div id="actions" class="row" style="margin-bottom:12px" >
   	  <div class="col-md-12">
 		<button type="submit" class="btn btn-primary" ng-click="salvarContaPagar()" style="margin-left:12px">Salvar</button>
 		<button type="button" class="btn btn-default" onClick="history.go(-1)">Voltar</button>
