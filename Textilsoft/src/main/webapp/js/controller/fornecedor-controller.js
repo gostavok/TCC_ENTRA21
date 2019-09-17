@@ -12,7 +12,18 @@ appTextilsoft.controller("fornecedorController", function($scope, $http) {
 			method : 'GET',
 			url : url + 'fornecedores/'
 		}).then(function(response) {
+			
+			
 			$scope.listaFornecedor = response.data;
+			
+			for (var i = 0; i < 1; i++) {
+			
+				 $scope.listaFornecedor[i].fornecedor.telFornecedor.replace((/(\d{2})(\d{2})(\d{2})/, "($1)$2-$3"));
+				   
+				}
+			
+			
+			
 		}, function(response) {
 			console.log('error');
 			console.log(response.data);

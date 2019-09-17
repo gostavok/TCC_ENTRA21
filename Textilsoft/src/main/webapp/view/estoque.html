@@ -9,7 +9,7 @@
  
     <div class="col-md-6">
         <div class="input-group h2">
-            <input name="data[search]" class="form-control" id="search" type="text" placeholder="Pesquisar Itens">
+            <input name="data[search]" ng-model="pesquisa" class="form-control" id="search" type="text" placeholder="Pesquisar Itens">
             <span class="input-group-btn">
                 <button class="btn btn-primary" type="submit" ng-click="listarEstoque()">                
                     <span class="glyphicon glyphicon-search"></span>

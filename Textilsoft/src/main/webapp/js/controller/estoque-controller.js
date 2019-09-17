@@ -4,6 +4,7 @@ appTextilsoft.controller("estoqueController", function($scope, $http) {
 	$scope.estoque = {};
 	$scope.estoque.produtoFornecedor = {};
 	$scope.idestoque = 0;
+	$scope.pesquisa= "";
 	var url = 'http://localhost:8080/Textilsoft/rest/';
 
 	
@@ -21,9 +22,16 @@ appTextilsoft.controller("estoqueController", function($scope, $http) {
 	};
 	
 	$scope.listarEstoque = function() {
+		var parametro = "";
+		if ($scope.pesquisa.length >= 1){
+			parametro = "p/"+ $scope.pesquisa;
+		}
+	
+		
+		
 		$http({
 			method : 'GET',
-			url : url + 'estoque/'
+			url : url + 'estoque/'+parametro
 		}).then(function(response) {
 			$scope.listaEstoque = response.data;
 		}, function(response) {
