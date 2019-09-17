@@ -6,6 +6,8 @@ appTextilsoft.controller("fornecedorController", function($scope, $http) {
 	var url = 'http://localhost:8080/Textilsoft/rest/';
 
 	$scope.listarFornecedores = function() {
+	
+		
 		$http({
 			method : 'GET',
 			url : url + 'fornecedores/'

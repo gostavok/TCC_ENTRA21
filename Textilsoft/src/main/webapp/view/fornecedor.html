@@ -49,7 +49,7 @@
 		<td >{{fornecedor.idFornecedor }}</td>
 		<td> {{fornecedor.nmFornecedor }}</td>
 		<td >{{fornecedor.emailFornecedor }}</td>
-		<td >{{fornecedor.telFornecedor }}</td>
+		<td >{{fornecedor.telFornecedor.replace(/^(\d{2})(\d{4})(\d{4})/, "($1)$2-$3") }}</td>
 		<td class="actions">
 		  <a class="btn btn-danger btn-xs"  type="button" ng-click = "procuraFornecedor(fornecedor)" data-toggle="modal" data-target="#delete-modal">Excluir</a>
 		<a class="btn btn-warning btn-xs" type="button" href = "fornecedores-editar/{{fornecedor.idFornecedor}}">Alterar</a>
