@@ -1,0 +1,43 @@
+<h3 class="page-header">Alterar Produto</h3>
+<br>
+<div class = "row">
+		<div class="form-group col-md-1">
+			<label for="campo1">ID</label>
+			<input type="text" class= "form-control" placeholder="ID" ng-model="produto.idProduto" style="width: 50px" disabled>
+		</div>
+	
+	<div class="form-group col-md-1">
+		<label for="campo2">Descrição do produto</label>
+		<input type="text" class= "form-control" placeholder="DescProd" ng-model="fornecedor.descProduto" style="width: 50px" >
+	</div>
+ 
+ 	<div class="form-group col-md-1">
+ 		<label for="campo3">Cor</label>
+ 		<input type="text" class= "form-control" placeholder="Cor" ng-model="produto.corProduto.nmCor" style="width: 50px" >
+ 	</div> 	
+ 	
+ 	<div class="form-group col-md-1">
+ 		<label for="campo4">Material</label>
+ 		<input type="text" class= "form-control" placeholder="Material" ng-model="produto.materialProduto.nmMaterial" style="width: 50px" >
+ 	</div> 	
+ 	
+ 	<div class="form-group col-md-1">
+ 		<label for="campo5">Estampa</label>
+ 		<input type="text" class= "form-control" placeholder="Estampa" ng-model="produto.estampaProduto.codEstampa" style="width: 50px" >
+ 	</div> 	
+ 	
+ 	<div class="form-group col-md-1">
+ 		<label for="campo6">Valor</label>
+ 		<input type="text" class= "form-control" placeholder="Valor" ng-model="produto.valorProduto" style="width: 50px" >
+ 	</div> 	
+ 	
+ 	<form> 
+  <hr /> 
+	<div id="actions" class="row" style="margin-bottom:12px">
+  	  <div class="col-md-12">
+		<button type="submit" class="btn btn-primary" ng-click="updatePrduto()" style="margin-left:12px">Salvar</button>
+		<button type="button" class="btn btn-default" onClick="history.go(-1)">Voltar</button>
+    	</div>
+    </div>
+ </form>
+</div>

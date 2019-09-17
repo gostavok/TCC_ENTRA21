@@ -18,6 +18,11 @@ appTextilsoft.config(function($routeProvider, $locationProvider){
     .when("/conta-pagar-editar/:id",{templateUrl:'view/conta-pagar-edit.html', controller:'contaPagarDetalheController'})
     .when("/conta-pagar/:id",{templateUrl:'view/conta-pagar-detalhe.html', controller:'contaPagarDetalheController'})
 
+    .when("/produto-list",{templateUrl:'view/produto.html', controller:'produtoController'})
+    .when("/produto-cad", {templateUrl:'view/produto-cad.html',controller:'produtoController'})
+    .when("/produto-edit/:id",{templateUrl:'view/produto-edit.html',controller:'produtoDetalheController'})
+    .when("/produto/:id",{templateUrl:'view/produto-detalhe.html',controller:'produtoDetalheController'})
+    
     .otherwise({redirectTo:'/'});
 	
 	
