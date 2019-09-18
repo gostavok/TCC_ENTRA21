@@ -4,7 +4,7 @@
 
 <div id="top" class="row">
  <div class="col-md-3">
-        <h2>Lista de Fornecedores</h2>
+        <h2>Lista de Clientes</h2>
     </div>
  
     <div class="col-md-6">
@@ -46,10 +46,10 @@
     
 		<tr ng-repeat="cliente in listaCliente">
 		
-		<td >{{fornecedor.idCliente }}</td>
-		<td> {{fornecedor.nmCliente }}</td>
-		<td>{{fornecedor.emailCliente }}</td>
-		<td>{{fornecedor.telCliente}}</td>
+		<td >{{cliente.idCliente }}</td>
+		<td> {{cliente.nmCliente }}</td>
+		<td>{{cliente.emailCliente }}</td>
+		<td>{{cliente.telCliente}}</td>
 		<td class="actions">
 		  <a class="btn btn-danger btn-xs"  type="button" ng-click = "procuraCliente(cliente)" data-toggle="modal" data-target="#delete-modal">Excluir</a>
 		<a class="btn btn-warning btn-xs" type="button" href = "clientes-editar/{{cliente.idCliente}}">Alterar</a>

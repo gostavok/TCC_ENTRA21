@@ -155,5 +155,13 @@ public class Cliente {
 			return false;
 		return true;
 	}		
-	
+	@Override
+	public String toString() {
+		return "Cliente [idCliente=" + idCliente + ", nmCliente=" + nmCliente + ", cnpjCliente=" + cnpjCliente
+				+ ", endCliente=" + endCliente + ", cepCliente=" + cepCliente + ", bairroCliente=" + bairroCliente
+				+ ", cidadeCliente=" + cidadeCliente + ", estadoCliente=" + estadoCliente + ", compCliente="
+				+ compCliente + ", telCliente1=" + telCliente1 + ", telCliente2=" + telCliente2 + ", emailCliente="
+				+ emailCliente + ", dtCadCliente=" + dtCadCliente + "]";
+	}
+
 }
