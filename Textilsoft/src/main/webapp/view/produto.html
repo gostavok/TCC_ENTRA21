@@ -35,13 +35,13 @@
                <tr ng-repeat="produto in listaProduto">
                    <td>{{ produto.idProduto }}</td>
                    <td>{{ produto.descProduto }}</td>
-                   <td>{{ produto.corProduto.nmCor }}</td>
-                   <td>{{ produto.materialProduto.nmMaterial }}</td>
-                   <td>{{ produto.estampaProduto.codEstampa }}</td>
+                   <td>{{ produto.corProduto.idCor }}</td>
+                   <td>{{ produto.materialProduto.idMaterial }}</td>
+                   <td>{{ produto.estampaProduto.idEstampa }}</td>
                    <td>{{ produto.valorProduto }}</td>
                    <td class="actions">
-                       <a class="btn btn-danger btn-xs"  type="button" ng-click = "procuraFornecedor(fornecedor)" data-toggle="modal" data-target="#delete-modal">Excluir</a>
-                       <a class="btn btn-warning btn-xs" type="button" href = "fornecedores-editar/{{fornecedor.idFornecedor}}">Alterar</a>
+                       <a class="btn btn-danger btn-xs"  type="button" ng-click = "procuraProduto(produto)" data-toggle="modal" data-target="#delete-modal">Excluir</a>
+                       <a class="btn btn-warning btn-xs" type="button" href = "produto-edit/{{produto.idProduto}}">Alterar</a>
                        <a class="btn btn-success btn-xs" href="produto/{{produto.idProduto}}">Detalhe</a>        
                    </td>        
                </tr>
@@ -60,7 +60,7 @@
                 </div>
                 <div class="modal-body">Deseja realmente excluir este item?</div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" ng-click="deleteFornecedor(idfornecedor)" data-dismiss = "modal">Sim</button>
+                    <button type="button" class="btn btn-primary" ng-click="deleteProduto(idProduto)" data-dismiss = "modal">Sim</button>
                     <button type="button" class="btn btn-default" data-dismiss="modal">N&atilde;o</button>
                 </div>
             </div>

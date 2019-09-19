@@ -27,7 +27,8 @@ appTextilsoft.controller("produtoController", function($scope, $http) {
             alert("efetuado com sucesso")
             $scope.produto = {};
         }, function(response) {
-            console.log('error do salvar');    
+            console.log('error do salvar');
+            console.log($scope.produto);
         });
     };
    $scope.deleteFornecedor = function(id) {
@@ -44,4 +45,18 @@ appTextilsoft.controller("produtoController", function($scope, $http) {
             console.log(response.status);
         });
     };
+    
+    $scope.alterarproduto = function(produto) {
+		$scope.produto = angular.copy(produto);
+	}
+	
+	$scope.procuraProduto = function(produto) {
+		$scope.idProduto = angular.copy(produto.idProduto);
+	}
+
+	$scope.cancelarAlteracaoProduto = function(produto) {
+		$scope.produto = {};
+	};
+    
+    
 });

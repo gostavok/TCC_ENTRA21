@@ -23,6 +23,15 @@ appTextilsoft.config(function($routeProvider, $locationProvider){
     .when("/produto-edit/:id",{templateUrl:'view/produto-edit.html',controller:'produtoDetalheController'})
     .when("/produto/:id",{templateUrl:'view/produto-detalhe.html',controller:'produtoDetalheController'})
     
+    .when("/cor-cad",{templateUrl:'view/cor-cad.html',controller:'corController'})
+    .when("/cor-list",{templateUrl:'view/cor.html',controller:'corController'})
+    .when("/cor/:id",{templateUrl:'view/cor-detalhe.html',controller:'corDetalheController'})
+    .when("/cor-edit/:id",{templateUrl:'view/cor-edit.html',controller:'corDetalheController'})
+    
+     .when("/material-list",{templateUrl:'view/material.html',controller:'materialController'})
+     .when("/material/:id",{templateUrl:'view/material-detalhe.html',controller:'materialDetalheController'})
+     .when("/material-cad",{templateUrl:'view/material-cad.html',controller:'materialController'})
+    
     .otherwise({redirectTo:'/'});
 	
 	

@@ -23,7 +23,7 @@ public class MaterialDAO {
 		String sqlQuery = "INSERT INTO material(nm_material,valor_material) VALUES (? ,?)";
 		try {
 			PreparedStatement stmt = this.conexao.getConnection().prepareStatement(sqlQuery);
-			stmt.setString(1, material.getNmMatarial());
+			stmt.setString(1, material.getnmMaterial());
 			stmt.setDouble(2, material.getValorMaterial());
 			stmt.execute();
 			this.conexao.commit();
@@ -88,7 +88,7 @@ public class MaterialDAO {
 		
 		try {
 			PreparedStatement stmt = this.conexao.getConnection().prepareStatement(sqlQuery);
-			stmt.setString(1, material.getNmMatarial());
+			stmt.setString(1, material.getnmMaterial());
 			stmt.setDouble(2, material.getValorMaterial());
 			stmt.setInt(3, material.getIdMaterial());
 			stmt.execute();
@@ -111,7 +111,7 @@ public class MaterialDAO {
 		Material m = new Material();
 
 		m.setIdMaterial(resultSet.getInt("id_material"));
-		m.setNmMatarial(resultSet.getString("nm_material"));
+		m.setnmMaterial(resultSet.getString("nm_material"));
 		m.setValorMaterial(resultSet.getDouble("valor_material"));
 		
 		return m;
