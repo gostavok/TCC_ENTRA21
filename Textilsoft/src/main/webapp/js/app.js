@@ -46,6 +46,10 @@ appTextilsoft.config(function($routeProvider, $locationProvider){
      .when("/material-cad",{templateUrl:'view/material-cad.html',controller:'materialController'})
      .when("/material-edit/:id",{templateUrl:'view/material-edit.html',controller:'materialDetalheController'})
       
+     .when("/estampa-list",{templateUrl:'view/estampa.html',controller:'estampaController'})
+     .when("/estampa/:id",{templateUrl:'view/estampa-detalhe.html',controller:'estampaDetalheController'})
+     .when("/estampa-cad",{templateUrl:'view/estampa-cad.html',controller:'estampaController'})
+     .when("/estampa-edit/:id",{templateUrl:'view/estampa-edit.html',controller:'estampaDetalheController'})
     
 
 

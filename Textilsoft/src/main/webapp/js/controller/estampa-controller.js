@@ -6,8 +6,6 @@ appTextilsoft.controller("estampaController", function($scope, $http) {
 	var url = 'http://localhost:8080/Textilsoft/rest/';
 
 	$scope.listarEstampas = function() {
-	
-		
 		$http({
 			method : 'GET',
 			url : url + 'estampas/'

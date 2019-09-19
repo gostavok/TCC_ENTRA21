@@ -29,7 +29,6 @@
 	<div class="form-group col-md-3">
 		<p><strong>Codigo</strong></p>
 			<p>{{estampaDetalhe.codEstampa}}</p>
-	
 	</div>
 	<div class="form-group col-md-3">
 		<p><strong>Valor</strong></p>
@@ -44,7 +43,7 @@
 <div id="actions" class="row" style="margin-top:15px">
  <div class="col-md-12" style="margin-top:15px">
  	  <a class="btn btn-danger "  type="button" name= "excluir" value=" X " data-toggle="modal" data-target="#delete-modal" ng-click = "procuraEstampa(estampaDetalhe)" >Excluir</a>
-		<a class="btn btn-warning " type="button" value=" edit " href = "estampaes-editar/{{estampaDetalhe.idEstampa}}">Alterar</a>
+		<a class="btn btn-warning " type="button" value=" edit " href = "estampas-edit/{{estampaDetalhe.idEstampa}}">Alterar</a>
 		<a class="btn btn-default " type="button" onClick="history.go(-1)">Voltar</a>
 		
  </div>
