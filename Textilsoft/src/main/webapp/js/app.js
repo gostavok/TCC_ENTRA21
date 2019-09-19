@@ -44,6 +44,8 @@ appTextilsoft.config(function($routeProvider, $locationProvider){
      .when("/material-list",{templateUrl:'view/material.html',controller:'materialController'})
      .when("/material/:id",{templateUrl:'view/material-detalhe.html',controller:'materialDetalheController'})
      .when("/material-cad",{templateUrl:'view/material-cad.html',controller:'materialController'})
+     .when("/material-edit/:id",{templateUrl:'view/material-edit.html',controller:'materialDetalheController'})
+      
     
 
 

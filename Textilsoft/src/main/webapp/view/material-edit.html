@@ -6,28 +6,21 @@
 		<input type="text" class= "form-control" placeholder="ID" ng-model="materialDetalhe.idMaterial" style="width: 50px" disabled>
 	</div>
 	<div class="form-group col-md-3">
-		<label for="campo1">Material</label>
+		<label for="campo2">Material</label>
 		<input type="text"  class= "form-control"  placeholder="Material" ng-model="materialDetalhe.nmMaterial">
 	</div>
 	<div class="form-group col-md-3">
-		<label for="campo1">Valor</label>
+		<label for="campo3">Valor</label>
 		<input type="text"  class= "form-control"  placeholder="Valor" ng-model="materialDetalhe.valorMaterial">
 	</div>
-	<div class="form-group col-md-3">
-			<label for="campo1">E-mail</label>
-			<input type="text" class= "form-control" placeholder="E-mail" ng-model="fornecedorDetalhe.emailFornecedor">
-		</div>
-	<div class="form-group col-md-2">
-		<label for="campo1">Data cadastro</label>
-		<input type="text"  class= "form-control"  placeholder="Data cadastro" ng-model="fornecedorDetalhe.dtCadFornecedor" disabled>
-	</div>
+	
 	
 	
 <form> 
   <hr /> 
 	<div id="actions" class="row" style="margin-bottom:12px">
   	  <div class="col-md-12">
-		<button type="submit" class="btn btn-primary" ng-click="updateFornecedor()" style="margin-left:12px">Salvar</button>
+		<button type="submit" class="btn btn-primary" ng-click="updateMaterial()" style="margin-left:12px">Salvar</button>
 		<button type="button" class="btn btn-default" onClick="history.go(-1)">Voltar</button>
     	</div>
     </div>

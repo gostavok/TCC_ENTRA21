@@ -132,7 +132,7 @@ public class OrcamentoDAO {
 		e.setValorEstampa(resultSet.getDouble("valor_estampa"));
 		
 		m.setIdMaterial(resultSet.getInt("id_material"));
-		m.setNmMatarial(resultSet.getString("nm_material"));
+		m.setnmMaterial(resultSet.getString("nm_material"));
 		m.setValorMaterial(resultSet.getDouble("valor_material"));
 
 		o.setIdOrcamento(resultSet.getInt("id_orcamento"));
