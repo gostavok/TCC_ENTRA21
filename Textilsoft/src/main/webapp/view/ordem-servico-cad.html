@@ -1,36 +1,74 @@
-<h3 class="page-header">Adicionar no Estoque</h3>
+<h3 class="page-header">Criar Ordem de Serviço</h3>
 <br>
-<div class = "row">
+<div class="row">
 	<div class="form-group col-md-1">
-		<label for="campo1">ID</label>
-		<input type="text" class= "form-control" placeholder="ID" ng-model="estoque.idEstoque" style="width: 50px" disabled>
+		<label for="campo1">ID</label> <input type="text" class="form-control"
+			placeholder="ID" ng-model="ordemServico.idOrdem" style="width: 50px"
+			disabled>
 	</div>
-	<div class="form-group col-md-3">
-		<label for="campo1">ID do Produto</label>
-		<input type="text"  class= "form-control"  placeholder="ID do Produto" ng-model="estoque.produtoFornecedor.idProdForn" ng-blur = "listarNomeProduto(estoque.produtoFornecedor.idProdForn)">
+	<div class="form-group col-md-2">
+		<label for="campo1">ID do Fornecedor</label> <input type="text"
+			class="form-control" placeholder="ID Fornecedor"
+			ng-model="ordemServico.fornecedor.idFornecedor"
+			ng-blur="listarFornecedor(ordemServico.fornecedor.idFornecedor)">
 	</div>
-	<div class="form-group col-md-3">
-		<label for="campo1">Nome do produto</label>
-		<input type="text" class= "form-control" placeholder="Produto" ng-model="estoque.produtoFornecedor.nmProdForn" disabled>
+	<div class="form-group col-md-9">
+		<label for="campo1">Fornecedor</label> <input type="text"
+			class="form-control" placeholder="Fornecedor"
+			ng-model="ordemServico.fornecedor.nmFornecedor" disabled>
 	</div>
-	<div class="form-group col-md-1">
-		<label for="campo1">Quantidade</label>
-		<input type="text"  class= "form-control"  placeholder="Quantidade" ng-model="estoque.qtdEstoque">
+</div>
+<div class="row">
+	<div class="form-group col-md-2">
+		<label for="campo1">ID do Serviço</label> <input type="text"
+			class="form-control" placeholder="ID Serviço"
+			ng-model="ordemServico.servicoFornecedor.idServForn"
+			ng-blur="listarServicoFornecedor(ordemServico.servicoFornecedor.idServForn)">
 	</div>
+	<div class="form-group col-md-6">
+		<label for="campo1">Descrição Serviço</label> <input type="text"
+			class="form-control" placeholder="Descrição Serviço"
+			ng-model="ordemServico.servicoFornecedor.nmServForn" disabled>
+	</div>
+	<div class="form-group col-md-2">
+		<label for="campo1">Quantidade</label> <input type="text"
+			class="form-control" placeholder="Quantidade"
+			ng-model="ordemServico.qtdServico">
+	</div>
+	<div class="form-group col-md-2">
+		<label for="campo1">Status</label> <select
+			class="form-control" ng-model="ordemServico.statusOrdemServico"
+			id="ordemServico.statusOrdemServico">
+			<option value="Aberto">Aberto</option>
+			<option value="Fechado">Fechado</option>
+			<option value="Pendente">Pendente</option>
+		</select>
+	</div>
+</div>
+<div class="row">
 
-	<div class="form-group col-md-3">
-		<label for="campo1">Unidade Medida</label>
-		<input type="text"  class= "form-control"  placeholder="Unidade de Medida" ng-model="estoque.produtoFornecedor.undMedidaProdForn" disabled>
+	<div class="form-group col-md-2">
+		<label for="campo1">Data de Emissão</label> <input type="text"
+			class="form-control" placeholder="Data de Emissão"
+			ng-model="ordemServico.dataAberturaOrdemServico" disabled>
 	</div>
-	
-	
-<form> 
-  <hr /> 
-	<div id="actions" class="row" style="margin-bottom:12px" >
-  	  <div class="col-md-12">
-		<button type="submit" class="btn btn-primary" ng-click="salvarEstoque()" style="margin-left:12px">Salvar</button>
-		<button type="button" class="btn btn-default" onClick="history.go(-1)">Voltar</button>
-    	</div>
-    </div>
- </form>
+	<div class="form-group col-md-2">
+		<label for="campo1">Data de Entrega</label> <input type="date"
+			ng-model="ordemServico.dataEntregaOrdemServico"
+			data-mask="00/00/0000" class="form-control" name="data" id="data"
+			placeholder="Data" />
+	</div>
+</div>
+
+<form>
+	<hr />
+	<div id="actions" class="row" style="margin-bottom: 12px">
+		<div class="col-md-12">
+			<button type="submit" class="btn btn-primary"
+				ng-click="salvarEstoque()" style="margin-left: 12px">Salvar</button>
+			<button type="button" class="btn btn-default"
+				onClick="history.go(-1)">Voltar</button>
+		</div>
+	</div>
+</form>
 </div>

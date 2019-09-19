@@ -20,8 +20,7 @@
 
 	</div>
 	<div class="col-md-3">
-		<a href="ordem-servico-cad" class="btn btn-primary pull-right h2">Novo
-			Registro</a>
+		<a href="ordem-servico-cad" class="btn btn-primary pull-right h2">Nova Ordem de Serviço</a>
 	</div>
 
 </div>
@@ -35,16 +34,12 @@
 		<table class="table col-md-12">
 			<thead>
 				<tr>
-					<th class="col-md-1">ID Ordem de Servico</th>
-					<th class="col-md-1">ID Fornecedor</th>
-					<th class="col-md-2">Nome Fornecedor</th>
-					<th class="col-md-1">ID Serviço Fornecedor</th>
-					<th class="col-md-2">Serviço Fornecedor</th>
-					<th class="col-md-1">Data Abertura Ordem de Serviço</th>
-					<th class="col-md-1">Data Entrega</th>
-					<th class="col-md-1">Quantidade</th>
-					<th class="col-md-1">Valor Total</th>
-					<th class="col-md-1">Status Ordem de Serviço</th>
+					<th class="col-md-1">ID</th>
+					<th class="col-md-3">Fornecedor</th>					
+					<th class="col-md-3">Serviço</th>
+					<th class="col-md-2">Data Abertura</th>
+					<th class="col-md-2">Valor Total</th>
+					<th class="col-md-2">Status</th>
 					<th class="actions">Ações</th>
 				</tr>
 			</thead>
@@ -52,14 +47,10 @@
 
 				<tr ng-repeat="ordemServico in listaOrdemServico">
 
-					<td>{{ordemServico.idOrdem }}</td>
-					<td>{{ordemServico.fornecedor.idFornecedor }}</td>
-					<td>{{ordemServico.fornecedor.nmFornecedor }}</td>
-					<td>{{ordemServico.servicoFornecedor.idServForn }}</td>
+					<td>{{ordemServico.idOrdem }}</td>					
+					<td>{{ordemServico.fornecedor.nmFornecedor }}</td>					
 					<td>{{ordemServico.servicoFornecedor.nmServForn }}</td>
-					<td>{{ordemServico.dataAberturaOrdemServico}}</td>
-					<td>{{ordemServico.dataEntregaOrdemServico}}</td>
-					<td>{{ordemServico.qtdServico}}</td>
+					<td>{{ordemServico.dataAberturaOrdemServico}}</td>									
 					<td>{{ordemServico.valorTotalOrdemServico}}</td>
 					<td>{{ordemServico.statusOrdemServico.statusOrdemServico}}</td>
 

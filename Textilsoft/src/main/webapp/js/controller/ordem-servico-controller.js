@@ -14,7 +14,7 @@ appTextilsoft.controller("ordemServicoController", function($scope, $http) {
 			method : 'GET',
 			url : url + 'fornecedores/'+id
 		}).then(function(response) {
-			$scope.estoque.fornecedor = response.data;
+			$scope.ordemServico.fornecedor = response.data;
 		}, function(response) {
 			console.log('error');
 			console.log(response.data);
@@ -27,7 +27,7 @@ appTextilsoft.controller("ordemServicoController", function($scope, $http) {
 			method : 'GET',
 			url : url + 'servicofornecedores/'+id
 		}).then(function(response) {
-			$scope.estoque.servicoFornecedor = response.data;
+			$scope.ordemServico.servicoFornecedor = response.data;
 		}, function(response) {
 			console.log('error');
 			console.log(response.data);
@@ -58,6 +58,11 @@ appTextilsoft.controller("ordemServicoController", function($scope, $http) {
 	$scope.salvarOrdemServico = function() {
 		var metodo = 'POST';
 	
+		 databrasileira = $scope.ordemServico.dataEntregaOrdemServico;
+		 split = databrasileira.toString().split('/');
+		 novadata = split[2] + "-" +split[1]+"-"+split[0];
+		$scope.ordemServico.dataEntregaOrdemServico = new Date(novadata);
+		
 		$http({
 			method : metodo,
 			url : url + 'ordem-servico/',
@@ -86,8 +91,8 @@ appTextilsoft.controller("ordemServicoController", function($scope, $http) {
 		});
 	};
 
-	$scope.alterarOrdemServico = function(odemServico) {
-		$scope.ordemServico = angular.copy(odermServico);
+	$scope.alterarOrdemServico = function(ordemServico) {
+		$scope.ordemServico = angular.copy(ordemServico);
 	}
 	
 	$scope.procuraOrdemServico = function(ordemServico) {
