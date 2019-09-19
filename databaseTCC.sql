@@ -40,11 +40,15 @@ create table produto_fornecedor (
     nm_prod_forn varchar(250) not null,
     desc_prod_forn varchar(250) not null,
     valor_prod_forn decimal(10,2) not null,
-    und_medida_prod_forn enum('Unidade','Comprimento','Peso'),
+    und_medida_prod_forn enum('Quilos','Metros','Unitario'),
     id_fornecedor int(11) not null,
     foreign key (id_fornecedor) references fornecedor(id_fornecedor)
     
 );
+
+
+insert into produto_fornecedor(nm_prod_forn, desc_prod_forn, valor_prod_forn,und_medida_prod_forn,id_fornecedor) values('Teste','Testezin',24.90,'Metros',1);
+
 
 create table servico_fornecedor (
 	id_serv_forn int(11) primary key auto_increment,

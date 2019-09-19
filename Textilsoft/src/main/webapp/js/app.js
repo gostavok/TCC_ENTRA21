@@ -28,6 +28,15 @@ appTextilsoft.config(function($routeProvider, $locationProvider){
     .when("/produto-edit/:id",{templateUrl:'view/produto-edit.html',controller:'produtoDetalheController'})
     .when("/produto/:id",{templateUrl:'view/produto-detalhe.html',controller:'produtoDetalheController'})
     
+    .when("/produtoFornecedor-cad",{templateUrl:'view/produtoFornecedor-cad.html', controller:'produtoFornecedorController'})
+    
+    
+    
+    
+    
+    
+    .when("/servicoFornecedor-cad",{templateUrl:'view/servicoFornecedor-cad.html', controller:'servicoFornecedorController'})
+    
     .otherwise({redirectTo:'/'});
 	
 	
