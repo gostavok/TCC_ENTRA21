@@ -178,6 +178,7 @@ public class ClienteDAO {
 		c.setTelCliente1(resultSet.getInt("tel_cliente"));
 		c.setTelCliente2(resultSet.getInt("tel2_cliente"));
 		c.setEmailCliente(resultSet.getString("email_cliente"));
+		c.setDtCadCliente(resultSet.getDate("dt_cad_cliente"));
 		
 		return c;
 	}

@@ -8,6 +8,11 @@ appTextilsoft.config(function($routeProvider, $locationProvider){
     .when("/fornecedores-editar/:id",{templateUrl:'view/fornecedor-edit.html', controller:'fornecedorDetalheController'})
     .when("/fornecedores/:id",{templateUrl:'view/fornecedor-detalhe.html', controller:'fornecedorDetalheController'})
     
+    .when("/clientes-cad",{templateUrl:'view/cliente-cad.html', controller:'clienteController'})
+    .when("/clientes-lista",{templateUrl:'view/cliente.html', controller:'clienteController'})
+    .when("/clientes-editar/:id",{templateUrl:'view/cliente-edit.html', controller:'clienteDetalheController'})
+    .when("/clientes/:id",{templateUrl:'view/cliente-detalhe.html', controller:'clienteDetalheController'})
+    
     .when("/estoque-cad",{templateUrl:'view/estoque-cad.html', controller:'estoqueController'})
     .when("/estoque-lista",{templateUrl:'view/estoque.html', controller:'estoqueController'})
     .when("/estoque-editar/:id",{templateUrl:'view/estoque-edit.html', controller:'estoqueDetalheController'})
@@ -23,6 +28,7 @@ appTextilsoft.config(function($routeProvider, $locationProvider){
     .when("/produto-edit/:id",{templateUrl:'view/produto-edit.html',controller:'produtoDetalheController'})
     .when("/produto/:id",{templateUrl:'view/produto-detalhe.html',controller:'produtoDetalheController'})
     
+
     .when("/cor-cad",{templateUrl:'view/cor-cad.html',controller:'corController'})
     .when("/cor-list",{templateUrl:'view/cor.html',controller:'corController'})
     .when("/cor/:id",{templateUrl:'view/cor-detalhe.html',controller:'corDetalheController'})
@@ -32,6 +38,15 @@ appTextilsoft.config(function($routeProvider, $locationProvider){
      .when("/material/:id",{templateUrl:'view/material-detalhe.html',controller:'materialDetalheController'})
      .when("/material-cad",{templateUrl:'view/material-cad.html',controller:'materialController'})
     
+
+    .when("/produtoFornecedor-cad",{templateUrl:'view/produtoFornecedor-cad.html', controller:'produtoFornecedorController'})
+    .when("/servicoFornecedor-cad",{templateUrl:'view/servicoFornecedor-cad.html', controller:'servicoFornecedorController'})
+
+    .when("/ordem-servico-cad",{templateUrl:'view/ordem-servico-cad.html', controller:'ordemServicoController'})
+    .when("/ordem-servico-lista",{templateUrl:'view/ordem-servico.html', controller:'ordemServicoController'})
+    .when("/ordem-servico-editar/:id",{templateUrl:'view/ordem-servico-edit.html', controller:'ordemServicoDetalheController'})
+    .when("/ordem-servico/:id",{templateUrl:'view/ordem-servico-detalhe.html', controller:'ordemServicoDetalheController'})
+
     .otherwise({redirectTo:'/'});
 	
 	
