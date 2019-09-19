@@ -1,0 +1,102 @@
+<meta charset="utf-8">
+
+
+<div id="top" class="row">
+	<div class="col-md-3">
+		<h2>Ordem de Serviço</h2>
+	</div>
+
+	<div class="col-md-6">
+		<div class="input-group h2">
+			<input name="data[search]" ng-model="pesquisa" class="form-control"
+				id="search" type="text" placeholder="Pesquisar Ordem de Serviço">
+			<span class="input-group-btn">
+				<button class="btn btn-primary" type="submit"
+					ng-click="listarOrdemServico()">
+					<span class="glyphicon glyphicon-search"></span>
+				</button>
+			</span>
+		</div>
+
+	</div>
+	<div class="col-md-3">
+		<a href="ordem-servico-cad" class="btn btn-primary pull-right h2">Novo
+			Registro</a>
+	</div>
+
+</div>
+
+
+</br>
+</br>
+<div id="list" class="row">
+	<div class="table-responsive col-md-12">
+
+		<table class="table col-md-12">
+			<thead>
+				<tr>
+					<th class="col-md-1">ID Ordem de Servico</th>
+					<th class="col-md-1">ID Fornecedor</th>
+					<th class="col-md-2">Nome Fornecedor</th>
+					<th class="col-md-1">ID Serviço Fornecedor</th>
+					<th class="col-md-2">Serviço Fornecedor</th>
+					<th class="col-md-1">Data Abertura Ordem de Serviço</th>
+					<th class="col-md-1">Data Entrega</th>
+					<th class="col-md-1">Quantidade</th>
+					<th class="col-md-1">Valor Total</th>
+					<th class="col-md-1">Status Ordem de Serviço</th>
+					<th class="actions">Ações</th>
+				</tr>
+			</thead>
+			<tbody>
+
+				<tr ng-repeat="ordemServico in listaOrdemServico">
+
+					<td>{{ordemServico.idOrdem }}</td>
+					<td>{{ordemServico.fornecedor.idFornecedor }}</td>
+					<td>{{ordemServico.fornecedor.nmFornecedor }}</td>
+					<td>{{ordemServico.servicoFornecedor.idServForn }}</td>
+					<td>{{ordemServico.servicoFornecedor.nmServForn }}</td>
+					<td>{{ordemServico.dataAberturaOrdemServico}}</td>
+					<td>{{ordemServico.dataEntregaOrdemServico}}</td>
+					<td>{{ordemServico.qtdServico}}</td>
+					<td>{{ordemServico.valorTotalOrdemServico}}</td>
+					<td>{{ordemServico.statusOrdemServico.statusOrdemServico}}</td>
+
+
+					<td class="actions"><a class="btn btn-danger btn-xs"
+						type="button" ng-click="procuraOrdemServico(ordemServico)"
+						data-toggle="modal" data-target="#delete-modal">Excluir</a> <a
+						class="btn btn-warning btn-xs" type="button"
+						href="ordem-servico-edit/{{ordemServico.idOrdem}}">Alterar</a> <a
+						class="btn btn-success btn-xs"
+						href="ordem-servico/{{ordemServico.idOrdem}}">Detalhe</a></td>
+
+				</tr>
+
+
+			</tbody>
+
+		</table>
+		<div class="modal fade" id="delete-modal" tabindex="-1" role="dialog"
+			aria-labelledby="modalLabel">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal"
+							aria-label="Fechar">
+							<span aria-hidden="true">&times;</span>
+						</button>
+						<h4 class="modal-title" id="modalLabel">Excluir Item</h4>
+					</div>
+					<div class="modal-body">Deseja realmente excluir este item?</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-primary"
+							ng-click="deleteOrdemServico(idordem)" data-dismiss="modal">Sim</button>
+						<button type="button" class="btn btn-default" data-dismiss="modal">N&atilde;o</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

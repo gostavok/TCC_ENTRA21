@@ -29,14 +29,13 @@ appTextilsoft.config(function($routeProvider, $locationProvider){
     .when("/produto/:id",{templateUrl:'view/produto-detalhe.html',controller:'produtoDetalheController'})
     
     .when("/produtoFornecedor-cad",{templateUrl:'view/produtoFornecedor-cad.html', controller:'produtoFornecedorController'})
-    
-    
-    
-    
-    
-    
     .when("/servicoFornecedor-cad",{templateUrl:'view/servicoFornecedor-cad.html', controller:'servicoFornecedorController'})
-    
+
+    .when("/ordem-servico-cad",{templateUrl:'view/ordem-servico-cad.html', controller:'ordemServicoController'})
+    .when("/ordem-servico-lista",{templateUrl:'view/ordem-servico.html', controller:'ordemServicoController'})
+    .when("/ordem-servico-editar/:id",{templateUrl:'view/ordem-servico-edit.html', controller:'ordemServicoDetalheController'})
+    .when("/ordem-servico/:id",{templateUrl:'view/ordem-servico-detalhe.html', controller:'ordemServicoDetalheController'})
+
     .otherwise({redirectTo:'/'});
 	
 	

@@ -1,0 +1,81 @@
+<meta charset="utf-8">
+<div class="modal fade" id="delete-modal" tabindex="-1" role="dialog"
+		aria-labelledby="modalLabel">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Fechar">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h4 class="modal-title" id="modalLabel">Excluir Ordem de Serviço</h4>
+				</div>
+				<div class="modal-body">Deseja realmente excluir este item?</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-primary"  ng-click="deleteOrdemServico(idordem)" data-dismiss = "modal" onClick="history.go(-1)">Sim</button>
+					<button type="button" class="btn btn-default" data-dismiss="modal">N&atilde;o</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+<h3 class="page-header">Visualizar Ordem de Serviço #{{ordemServicoDetalhe.idOrdem}}</h3>
+<br>
+<div class="row">
+
+        <div class="form-group col-md-1">
+            <p><strong>ID Ordem de Serviço</strong></p>
+            <p>{{ordemServicoDetalhe.idOrdem}}</p>
+        </div>
+        <div class="form-group col-md-3">
+            <p><strong>ID Fornecedor</strong></p>
+                <p>{{ordemServico.fornecedor.idFornecedor}}</p>
+        
+        </div>
+        <div class="form-group col-md-3">
+            <p><strong>ID Serviço Fornecedor</strong></p>
+                <p>{{ordemServico.servicoFornecedor.idServForn}}</p>
+    
+        </div>
+        <div class="form-group col-md-2">
+                <p><strong>Nome Serviço Fornecedor</strong></p>
+                    <p>{{ordemServico.servicoFornecedor.nmServForn}}</p>
+            </div>
+            <div class="form-group col-md-2">
+                    <p><strong>Data de abertura</strong></p>
+                        <p>{{ordemServico.dataAberturaOrdemServico | date: 'dd/MM/yyyy'}}</p>
+            
+                </div>
+        <div class="form-group col-md-3">
+                <p><strong>Data de entrega</strong></p>
+                    <p>{{ordemServico.dataEntregaOrdemServico | date: 'dd/MM/yyyy'}}</p>
+                
+            </div>
+        <div class="form-group col-md-2">
+            <p><strong>Quantidade</strong></p>
+                <p>{{ordemServico.qtdServico}}</p>
+        
+        </div>		
+                    
+            <div class="form-group col-md-2">
+                <p><strong>Valor Total</strong></p>
+                    <p>{{ordemServico.valorTotalOrdemServico}}</p>
+            </div>	
+            <div class="form-group col-md-2">
+                    <p><strong>Status</strong></p>
+                        <p>{{ordemServico.statusOrdemServico.statusOrdemServico}}</p>
+                </div>	
+            
+    
+    </div>
+
+
+
+<div id="actions" class="row" style="margin-top:15px">
+ <div class="col-md-12" style="margin-top:15px">
+ 	  <a class="btn btn-danger "  type="button" name= "excluir" value=" X " data-toggle="modal" data-target="#delete-modal" ng-click = "procuraOrdemServico(ordemServicoDetalhe)" >Excluir</a>
+		<a class="btn btn-warning " type="button" value=" edit " href = "ordem-servico-edit/{{ordemServicoDetalhe.idOrdem}}">Alterar</a>
+		<a class="btn btn-default " type="button" onClick="history.go(-1)">Voltar</a>
+		
+ </div>
+</div>
