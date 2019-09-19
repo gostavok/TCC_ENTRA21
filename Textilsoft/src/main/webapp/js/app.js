@@ -28,8 +28,15 @@ appTextilsoft.config(function($routeProvider, $locationProvider){
     .when("/produto-edit/:id",{templateUrl:'view/produto-edit.html',controller:'produtoDetalheController'})
     .when("/produto/:id",{templateUrl:'view/produto-detalhe.html',controller:'produtoDetalheController'})
     
+    .when("/produtoFornecedor-cad",{templateUrl:'view/produtoFornecedor-cad.html', controller:'produtoFornecedorController'})
+    .when("/servicoFornecedor-cad",{templateUrl:'view/servicoFornecedor-cad.html', controller:'servicoFornecedorController'})
 
-    .when("/cor-cad",{templateUrl:'view/cor-cad.html',controller:'corController'})
+    .when("/ordem-servico-cad",{templateUrl:'view/ordem-servico-cad.html', controller:'ordemServicoController'})
+    .when("/ordem-servico-lista",{templateUrl:'view/ordem-servico.html', controller:'ordemServicoController'})
+    .when("/ordem-servico-editar/:id",{templateUrl:'view/ordem-servico-edit.html', controller:'ordemServicoDetalheController'})
+    .when("/ordem-servico/:id",{templateUrl:'view/ordem-servico-detalhe.html', controller:'ordemServicoDetalheController'})
+    
+        .when("/cor-cad",{templateUrl:'view/cor-cad.html',controller:'corController'})
     .when("/cor-list",{templateUrl:'view/cor.html',controller:'corController'})
     .when("/cor/:id",{templateUrl:'view/cor-detalhe.html',controller:'corDetalheController'})
     .when("/cor-edit/:id",{templateUrl:'view/cor-edit.html',controller:'corDetalheController'})
@@ -39,13 +46,6 @@ appTextilsoft.config(function($routeProvider, $locationProvider){
      .when("/material-cad",{templateUrl:'view/material-cad.html',controller:'materialController'})
     
 
-    .when("/produtoFornecedor-cad",{templateUrl:'view/produtoFornecedor-cad.html', controller:'produtoFornecedorController'})
-    .when("/servicoFornecedor-cad",{templateUrl:'view/servicoFornecedor-cad.html', controller:'servicoFornecedorController'})
-
-    .when("/ordem-servico-cad",{templateUrl:'view/ordem-servico-cad.html', controller:'ordemServicoController'})
-    .when("/ordem-servico-lista",{templateUrl:'view/ordem-servico.html', controller:'ordemServicoController'})
-    .when("/ordem-servico-editar/:id",{templateUrl:'view/ordem-servico-edit.html', controller:'ordemServicoDetalheController'})
-    .when("/ordem-servico/:id",{templateUrl:'view/ordem-servico-detalhe.html', controller:'ordemServicoDetalheController'})
 
     .otherwise({redirectTo:'/'});
 	
