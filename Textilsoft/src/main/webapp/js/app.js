@@ -29,6 +29,11 @@ appTextilsoft.config(function($routeProvider, $locationProvider){
     .when("/produto/:id",{templateUrl:'view/produto-detalhe.html',controller:'produtoDetalheController'})
     
     .when("/produtoFornecedor-cad",{templateUrl:'view/produtoFornecedor-cad.html', controller:'produtoFornecedorController'})
+    .when("/produtoFornecedor-lista",{templateUrl:'view/produtoFornecedor.html', controller:'produtoFornecedorController'})
+    .when("/produtoFornecedor-editar/:id",{templateUrl:'view/produtoFornecedor-edit.html', controller:'produtoFornecedorDetalheController'})
+    .when("/produtoFornecedor/:id",{templateUrl:'view/produtoFornecedor-detalhe.html', controller:'produtoFornecedorDetalheController'})
+    
+    
     .when("/servicoFornecedor-cad",{templateUrl:'view/servicoFornecedor-cad.html', controller:'servicoFornecedorController'})
 
     .when("/ordem-servico-cad",{templateUrl:'view/ordem-servico-cad.html', controller:'ordemServicoController'})

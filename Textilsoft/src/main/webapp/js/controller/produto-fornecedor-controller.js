@@ -2,12 +2,30 @@ appTextilsoft.controller("produtoFornecedorController", function($scope, $http) 
 
 	$scope.listaProdutoFornecedor = [];
 	$scope.produtoFornecedor = {};
+	$scope.produtoFornecedor.fornecedor = {};
 	$scope.idprodutoFornecedor = 0;
 	var url = 'http://localhost:8080/Textilsoft/rest/';
 
-	$scope.listarProdutosFornecedor = function() {
 	
-		
+	
+	$scope.listarNomeFornecedor = function(id) {
+		$http({
+			method : 'GET',
+			url : url + 'fornecedores/'+id
+		}).then(function(response) {
+			$scope.produtoFornecedor.fornecedor = response.data;
+		}, function(response) {
+			console.log('error');
+			console.log(response.data);
+			console.log(response.status);
+		});
+	};
+	
+	
+	
+	
+	
+	$scope.listarProdutosFornecedor = function() {
 		$http({
 			method : 'GET',
 			url : url + 'produtosfornecedores/'
@@ -57,5 +75,12 @@ appTextilsoft.controller("produtoFornecedorController", function($scope, $http) 
 	};
 
 
+	$scope.procuraProdutoFornecedor = function(produtofornecedor) {
+		$scope.idprodutofornecedor = angular.copy(produtofornecedor.idProdForn);
+	}
+	
+	
+	
+	
 
 });
