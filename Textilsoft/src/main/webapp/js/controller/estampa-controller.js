@@ -18,7 +18,7 @@ appTextilsoft.controller("estampaController", function($scope, $http) {
 			console.log(response.status);
 		});
 	};
-
+/*
 	$scope.salvarEstampas function() {
 		var metodo = 'POST';
 	
@@ -32,7 +32,7 @@ appTextilsoft.controller("estampaController", function($scope, $http) {
 			console.log('error do salvar');	
 		});
 	};
-
+*/
 	$scope.deleteEstampa = function(id) {
 
 		$http({
