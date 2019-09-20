@@ -3,7 +3,7 @@
 
 <div id="top" class="row">
 	<div class="col-md-3">
-		<h2>Ordem de Serviço</h2>
+		<h2>Ordens de Serviço</h2>
 	</div>
 
 	<div class="col-md-6">
@@ -20,7 +20,8 @@
 
 	</div>
 	<div class="col-md-3">
-		<a href="ordem-servico-cad" class="btn btn-primary pull-right h2">Nova Ordem de Serviço</a>
+		<a href="ordem-servico-cad" class="btn btn-primary pull-right h2">Nova
+			Ordem de Serviço</a>
 	</div>
 
 </div>
@@ -35,34 +36,31 @@
 			<thead>
 				<tr>
 					<th class="col-md-1">ID</th>
-					<th class="col-md-3">Fornecedor</th>					
-					<th class="col-md-3">Serviço</th>
+					<th class="col-md-2">Fornecedor</th>
+					<th class="col-md-2">Serviço</th>
 					<th class="col-md-2">Data Abertura</th>
-					<th class="col-md-2">Valor Total</th>
-					<th class="col-md-2">Status</th>
+					<th class="col-md-1">Valor Total</th>
+					<th class="col-md-1">Status</th>
 					<th class="actions">Ações</th>
 				</tr>
 			</thead>
 			<tbody>
 
 				<tr ng-repeat="ordemServico in listaOrdemServico">
-
-					<td>{{ordemServico.idOrdem }}</td>					
-					<td>{{ordemServico.fornecedor.nmFornecedor }}</td>					
-					<td>{{ordemServico.servicoFornecedor.nmServForn }}</td>
-					<td>{{ordemServico.dataAberturaOrdemServico}}</td>									
+				
+					<td>{{ordemServico.idOrdem}}</td>
+					<td>{{ordemServico.fornecedor.nmFornecedor}}</td>
+					<td>{{ordemServico.servicoFornecedor.nmServForn}}</td>
+					<td>{{ordemServico.dataAberturaOrdemServico}}</td>
 					<td>{{ordemServico.valorTotalOrdemServico}}</td>
 					<td>{{ordemServico.statusOrdemServico.statusOrdemServico}}</td>
 
 
-					<td class="actions"><a class="btn btn-danger btn-xs"
-						type="button" ng-click="procuraOrdemServico(ordemServico)"
-						data-toggle="modal" data-target="#delete-modal">Excluir</a> <a
-						class="btn btn-warning btn-xs" type="button"
-						href="ordem-servico-edit/{{ordemServico.idOrdem}}">Alterar</a> <a
-						class="btn btn-success btn-xs"
-						href="ordem-servico/{{ordemServico.idOrdem}}">Detalhe</a></td>
-
+					<td class="actions">
+					<a class="btn btn-danger btn-xs" type="button" ng-click="procuraOrdemServico(ordemServico)"	data-toggle="modal" data-target="#delete-modal">Excluir</a> 
+					<a class="btn btn-warning btn-xs" type="button" href="ordem-servico-edit/{{ordemServico.idOrdem}}">Alterar</a>
+					<a class="btn btn-success btn-xs" 	href="ordem-servico/{{ordemServico.idOrdem}}">Detalhe</a>
+					</td>				
 				</tr>
 
 

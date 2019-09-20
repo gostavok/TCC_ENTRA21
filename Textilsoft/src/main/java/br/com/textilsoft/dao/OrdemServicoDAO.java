@@ -5,7 +5,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.List;
 import java.util.Locale;
 
@@ -30,7 +29,7 @@ public class OrdemServicoDAO {
 		Timestamp hoje = new Timestamp(System.currentTimeMillis());
 		String sqlQuery = 
 		
-		"INSERT INTO textilsoft.cliente "+
+		"INSERT INTO textilsoft.ordem_servico "+
 		"(`id_fornecedor`, "+
 		"`id_serv_forn`, "+
 		"`qtd_servico`, "+
@@ -48,7 +47,7 @@ public class OrdemServicoDAO {
 			stmt.setDouble(3, ordemServico.getQtdServico());
 			stmt.setString(4, ordemServico.getStatusOrdem().toString());
 			stmt.setTimestamp(5, hoje);	
-			stmt.setDate(6, new java.sql.Date(ordemServico.getDataEntregaOrdemServico().getDate()));
+			stmt.setDate(6, new java.sql.Date(ordemServico.getDataEntregaOrdemServico().getTime()));
 			stmt.setDouble(7, ordemServico.getValorTotalOrdemServico());			
 						
 			stmt.execute();
@@ -165,7 +164,7 @@ public class OrdemServicoDAO {
 		ordem.setFornecedor(fornecedor);
 		ordem.setQtdServico(resultSet.getDouble("qtd_servico"));
 		ordem.setStatusOrdem(StatusOrdemServico.valueOf(resultSet.getString("status_ordem")));
-		ordem.setDataAberturaOrdemServico(resultSet.getDate("date_entrega"));
+		ordem.setDataAberturaOrdemServico(resultSet.getDate("data_abertura"));
 		ordem.setDataEntregaOrdemServico(resultSet.getDate("data_entrega"));
 		ordem.setValorTotalOrdemServico(resultSet.getDouble("valor_total"));
 				

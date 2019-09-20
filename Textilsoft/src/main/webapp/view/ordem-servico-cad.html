@@ -58,13 +58,12 @@
 	<div class="form-group col-md-2">
 		<label for="campo1">Data de Entrega</label> <input type="date"
 			ng-model="ordemServico.dataEntregaOrdemServico"
-			data-mask="00/00/0000" class="form-control" name="data" id="data"
-			placeholder="Data" />
+			data-mask="00/00/0000" class="form-control" name="data" id="data" />
 	</div>
 	<div class="form-group col-md-2">
 		<label for="campo1">Status</label> <select class="form-control"
-			ng-model="ordemServico.statusOrdemServico"
-			id="ordemServico.statusOrdemServico">
+			ng-model="ordemServico.statusOrdem"
+			id="ordemServico.statusOrdem">
 			<option value="Aberto">Aberto</option>
 			<option value="Fechado">Fechado</option>
 			<option value="Pendente">Pendente</option>

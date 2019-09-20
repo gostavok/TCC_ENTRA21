@@ -12,7 +12,6 @@ appTextilsoft.controller("ordemServicoController", function($scope, $http) {
 	$scope.pesquisa= "";
 	var url = 'http://localhost:8080/Textilsoft/rest/';
 
-	
 	$scope.listarFornecedor = function(id) {
 		$http({
 			method : 'GET',
@@ -49,16 +48,10 @@ appTextilsoft.controller("ordemServicoController", function($scope, $http) {
 	};
 	
 	$scope.listarOrdemServico = function() {
-		var parametro = "";
-		if ($scope.pesquisa.length >= 1){
-			parametro = "p/"+ $scope.pesquisa;
-		}
-	
-		
 		
 		$http({
 			method : 'GET',
-			url : url + 'ordemServicos/'+parametro
+			url : url + 'ordemServicos/'
 		}).then(function(response) {
 			$scope.listaOrdemServico = response.data;
 		}, function(response) {
@@ -69,22 +62,19 @@ appTextilsoft.controller("ordemServicoController", function($scope, $http) {
 	};
 
 	$scope.salvarOrdemServico = function() {
-		var metodo = 'POST';
-	
-		 databrasileira = $scope.ordemServico.dataEntregaOrdemServico;
-		 split = databrasileira.toString().split('/');
-		 novadata = split[2] + "-" +split[1]+"-"+split[0];
-		$scope.ordemServico.dataEntregaOrdemServico = new Date(novadata);
-		
+
 		$http({
-			method : metodo,
+			method : 'POST',
 			url : url + 'ordemServicos/',
 			data : $scope.ordemServico
 		}).then(function(response) {		
 			alert("efetuado com sucesso")
+			console.log($scope.ordemServico.dataEntregaOrdemServico);
 			$scope.ordemServico = {};
 		}, function(response) {
 			console.log('error do salvar');	
+			console.log(response.data);
+			console.log(response.status);
 		});
 	};
 
