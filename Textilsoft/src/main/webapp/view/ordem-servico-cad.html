@@ -25,7 +25,7 @@
 			ng-model="ordemServico.servicoFornecedor.idServForn"
 			ng-blur="listarServicoFornecedor(ordemServico.servicoFornecedor.idServForn)">
 	</div>
-	<div class="form-group col-md-6">
+	<div class="form-group col-md-4">
 		<label for="campo1">Descrição Serviço</label> <input type="text"
 			class="form-control" placeholder="Descrição Serviço"
 			ng-model="ordemServico.servicoFornecedor.nmServForn" disabled>
@@ -33,24 +33,27 @@
 	<div class="form-group col-md-2">
 		<label for="campo1">Quantidade</label> <input type="text"
 			class="form-control" placeholder="Quantidade"
-			ng-model="ordemServico.qtdServico">
+			ng-model="ordemServico.qtdServico"
+			ng-change="calculoTotal()">
 	</div>
 	<div class="form-group col-md-2">
-		<label for="campo1">Status</label> <select
-			class="form-control" ng-model="ordemServico.statusOrdemServico"
-			id="ordemServico.statusOrdemServico">
-			<option value="Aberto">Aberto</option>
-			<option value="Fechado">Fechado</option>
-			<option value="Pendente">Pendente</option>
-		</select>
+		<label for="campo1">Valor Servi�o</label> <input type="text"
+			class="form-control" placeholder="Valor Serviço"
+			ng-model="ordemServico.servicoFornecedor.valorServForn" disabled>
 	</div>
+	<div class="form-group col-md-2">
+		<label for="campo1">Valor Total</label> <input type="text"
+			class="form-control" placeholder="Valor total" 
+			ng-model="ordemServico.valorTotalOrdemServico" disabled>
+	</div>
+
 </div>
 <div class="row">
 
 	<div class="form-group col-md-2">
 		<label for="campo1">Data de Emissão</label> <input type="text"
 			class="form-control" placeholder="Data de Emissão"
-			ng-model="ordemServico.dataAberturaOrdemServico" disabled>
+			ng-model="dataEmissao" disabled>
 	</div>
 	<div class="form-group col-md-2">
 		<label for="campo1">Data de Entrega</label> <input type="date"
@@ -58,6 +61,17 @@
 			data-mask="00/00/0000" class="form-control" name="data" id="data"
 			placeholder="Data" />
 	</div>
+	<div class="form-group col-md-2">
+		<label for="campo1">Status</label> <select class="form-control"
+			ng-model="ordemServico.statusOrdemServico"
+			id="ordemServico.statusOrdemServico">
+			<option value="Aberto">Aberto</option>
+			<option value="Fechado">Fechado</option>
+			<option value="Pendente">Pendente</option>
+		</select>
+	</div>
+
+
 </div>
 
 <form>
@@ -65,7 +79,7 @@
 	<div id="actions" class="row" style="margin-bottom: 12px">
 		<div class="col-md-12">
 			<button type="submit" class="btn btn-primary"
-				ng-click="salvarEstoque()" style="margin-left: 12px">Salvar</button>
+				ng-click="salvarOrdemServico()" style="margin-left: 12px">Salvar</button>
 			<button type="button" class="btn btn-default"
 				onClick="history.go(-1)">Voltar</button>
 		</div>

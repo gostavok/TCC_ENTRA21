@@ -2,8 +2,12 @@ appTextilsoft.controller("ordemServicoController", function($scope, $http) {
 
 	$scope.listaOrdemServico = [];
 	$scope.ordemServico = {};
-    $scope.ordemServico.fornecedor = {};
+	$scope.dataEmissao = "";
+	$scope.ordemServico.qtdServico = "";
     $scope.ordemServico.servicoFornecedor = {};
+	$scope.ordemServico.valorTotalOrdemServico = "";
+    $scope.ordemServico.fornecedor = {};
+
 	$scope.idordem = 0;
 	$scope.pesquisa= "";
 	var url = 'http://localhost:8080/Textilsoft/rest/';
@@ -14,10 +18,18 @@ appTextilsoft.controller("ordemServicoController", function($scope, $http) {
 			method : 'GET',
 			url : url + 'fornecedores/'+id
 		}).then(function(response) {
-			$scope.ordemServico.fornecedor = response.data;
+			$scope.ordemServico.fornecedor = response.data; 
+
+			var today = new Date();
+			var dia = today.getDate();
+			var mes = today.getMonth()+1;
+			var ano = today.getFullYear();
+			
+			$scope.dataEmissao = dia + "/" + mes + "/" + ano;
+						
 		}, function(response) {
 			console.log('error');
-			console.log(response.data);
+			console.log(response.data);''
 			console.log(response.status);
 		});
     };
@@ -25,9 +37,10 @@ appTextilsoft.controller("ordemServicoController", function($scope, $http) {
     $scope.listarServicoFornecedor = function(id) {
 		$http({
 			method : 'GET',
-			url : url + 'servicofornecedores/'+id
+			url : url + 'servicosfornecedores/'+id
 		}).then(function(response) {
 			$scope.ordemServico.servicoFornecedor = response.data;
+			console.log($scope.ordemServico.servicoFornecedor);
 		}, function(response) {
 			console.log('error');
 			console.log(response.data);
@@ -45,9 +58,9 @@ appTextilsoft.controller("ordemServicoController", function($scope, $http) {
 		
 		$http({
 			method : 'GET',
-			url : url + 'ordem-servico/'+parametro
+			url : url + 'ordemServicos/'+parametro
 		}).then(function(response) {
-			$scope.listaEstoque = response.data;
+			$scope.listaOrdemServico = response.data;
 		}, function(response) {
 			console.log('error');
 			console.log(response.data);
@@ -65,7 +78,7 @@ appTextilsoft.controller("ordemServicoController", function($scope, $http) {
 		
 		$http({
 			method : metodo,
-			url : url + 'ordem-servico/',
+			url : url + 'ordemServicos/',
 			data : $scope.ordemServico
 		}).then(function(response) {		
 			alert("efetuado com sucesso")
@@ -79,7 +92,7 @@ appTextilsoft.controller("ordemServicoController", function($scope, $http) {
 
 		$http({
 			method : 'DELETE',
-			url : url + 'ordem-servico/' + id
+			url : url + 'ordemServicos/' + id
 		}).then(function(response) {
 			var pos = $scope.listaOrdemServico.indexOf(id);
 			$scope.listaOrdemServico.splice(pos,1);	
@@ -101,6 +114,10 @@ appTextilsoft.controller("ordemServicoController", function($scope, $http) {
 
 	$scope.cancelarAlteracaoOrdemServico = function(ordemServico) {
 		$scope.ordemServico = {};
+	};
+	
+	$scope.calculoTotal = function(){
+		$scope.ordemServico.valorTotalOrdemServico = $scope.ordemServico.servicoFornecedor.valorServForn * $scope.ordemServico.qtdServico;	
 	};
 
 });

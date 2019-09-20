@@ -161,6 +161,8 @@ public class OrdemServicoDAO {
 		ordem.setIdOrdem(resultSet.getLong("id_ordem"));
 		fornecedor.setIdFornecedor(resultSet.getLong("id_fornecedor"));
 		sv.setIdServForn(resultSet.getInt("id_serv_forn"));
+		ordem.setServicoFornecedor(sv);
+		ordem.setFornecedor(fornecedor);
 		ordem.setQtdServico(resultSet.getDouble("qtd_servico"));
 		ordem.setStatusOrdem(StatusOrdemServico.valueOf(resultSet.getString("status_ordem")));
 		ordem.setDataAberturaOrdemServico(resultSet.getDate("date_entrega"));
