@@ -35,6 +35,10 @@ appTextilsoft.config(function($routeProvider, $locationProvider){
     
     
     .when("/servicoFornecedor-cad",{templateUrl:'view/servicoFornecedor-cad.html', controller:'servicoFornecedorController'})
+    .when("/servicoFornecedor-lista",{templateUrl:'view/servicoFornecedor.html', controller:'servicoFornecedorController'})
+    .when("/servicoFornecedor-editar/:id",{templateUrl:'view/servicoFornecedor-edit.html', controller:'servicoFornecedorDetalheController'})
+    .when("/servicoFornecedor/:id",{templateUrl:'view/servicoFornecedor-detalhe.html', controller:'servicoFornecedorDetalheController'})
+
 
     .when("/ordem-servico-cad",{templateUrl:'view/ordem-servico-cad.html', controller:'ordemServicoController'})
     .when("/ordem-servico-lista",{templateUrl:'view/ordem-servico.html', controller:'ordemServicoController'})

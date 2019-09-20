@@ -47,9 +47,6 @@ create table produto_fornecedor (
 );
 
 
-insert into produto_fornecedor(nm_prod_forn, desc_prod_forn, valor_prod_forn,und_medida_prod_forn,id_fornecedor) values('Teste','Testezin',24.90,'Metros',1);
-
-
 create table servico_fornecedor (
 	id_serv_forn int(11) primary key auto_increment,
     nm_serv_forn varchar(250) not null,
