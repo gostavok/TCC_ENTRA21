@@ -31,7 +31,7 @@ appTextilsoft.controller("produtoController", function($scope, $http) {
             console.log($scope.produto);
         });
     };
-   $scope.deleteFornecedor = function(id) {
+   $scope.deleteProduto = function(id) {
        var metodo = 'DELETE';
         $http({
             method : metodo,

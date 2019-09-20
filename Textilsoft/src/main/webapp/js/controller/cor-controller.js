@@ -36,7 +36,7 @@ appTextilsoft.controller("corController", function($scope, $http) {
 		});
 	};
 
-	$scope.deleteFornecedor = function(id) {
+	$scope.deleteCor = function(id) {
 
 		$http({
 			method : 'DELETE',
@@ -57,7 +57,7 @@ appTextilsoft.controller("corController", function($scope, $http) {
 	}
 	
 	$scope.procuraCor = function(cor) {
-		$scope.idCor = angular.copy(fornecedor.idCor);
+		$scope.idCor = angular.copy(cors.idCor);
 	}
 
 	$scope.cancelarAlteracaoCor = function(cor) {

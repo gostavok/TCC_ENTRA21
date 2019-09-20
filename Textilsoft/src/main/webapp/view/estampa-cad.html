@@ -1,0 +1,26 @@
+<h3 class="page-header">Adicionar Estampa</h3>
+<br>
+<div class = "row">
+	<div class="form-group col-md-1">
+		<label for="campo1">ID</label>
+		<input type="text" class= "form-control" placeholder="ID" ng-model="estampa.idEstampa" style="width: 50px" disabled>
+	</div>
+	<div class="form-group col-md-3">
+		<label for="campo2">Estampa</label>
+		<input type="text"  class= "form-control"  placeholder="Estampa" ng-model="estampa.codEstampa">
+	</div>
+	<div class="form-group col-md-3">
+		<label for="campo3">Valor</label>
+		<input type="text"  class= "form-control"  placeholder="Valor" ng-model="estampa.valorEstampa">
+	</div>
+	
+<form> 
+  <hr /> 
+	<div id="actions" class="row" style="margin-bottom:12px">
+  	  <div class="col-md-12">
+		<button type="submit" class="btn btn-primary" ng-click="salvarEstampa()" style="margin-left:12px">Salvar</button>
+		<button type="button" class="btn btn-default" onClick="history.go(-1)">Voltar</button>
+    	</div>
+    </div>
+ </form>
+</div>
