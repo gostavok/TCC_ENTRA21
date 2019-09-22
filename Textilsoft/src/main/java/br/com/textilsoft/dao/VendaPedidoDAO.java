@@ -39,7 +39,7 @@ public void inserir(VendaPedido vendapedido) throws SQLException, ClassNotFoundE
 	
 	
 public int alterar(VendaPedido vendapedido, long id_venda, long id_pedido) throws SQLException, ClassNotFoundException {
-	String sqlQuery = "UPDATE venda_pedido SET id_venda = ?, id_pedido = ? WHERE id_vendao = ? and id_pedido = ?";
+	String sqlQuery = "UPDATE venda_pedido SET id_venda = ?, id_pedido = ? WHERE id_venda = ? and id_pedido = ?";
 	int linhasAfetadas = 0;
 
 	try {
