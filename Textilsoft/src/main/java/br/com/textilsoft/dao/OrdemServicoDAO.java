@@ -14,6 +14,7 @@ import br.com.textilsoft.model.Fornecedor;
 import br.com.textilsoft.model.OrdemServico;
 import br.com.textilsoft.model.ServicoFornecedor;
 import br.com.textilsoft.model.util.StatusOrdemServico;
+import br.com.textilsoft.model.util.UndMedidaServForn;
 
 public class OrdemServicoDAO {
 
@@ -116,8 +117,12 @@ public class OrdemServicoDAO {
 	}
 
 	public OrdemServico selecionar(long idOrdemServico) throws SQLException, ClassNotFoundException {
-		String sqlQuery = "SELECT * FROM textilsoft.ordem_servico WHERE id_ordem = ?";
-
+		String sqlQuery = "SELECT * FROM textilsoft.ordem_servico OS"
+				+ " inner join textilsoft.fornecedor f1 ON OS.id_fornecedor = f1.id_fornecedor "
+				+ " inner join textilsoft.servico_fornecedor sf1 ON OS.id_serv_forn = sf1.id_serv_forn "
+				+ " WHERE OS.id_ordem = ?";		
+		
+		
 		try {
 			PreparedStatement stmt = this.conexao.getConnection().prepareStatement(sqlQuery);
 			stmt.setLong(1, idOrdemServico);
@@ -134,7 +139,10 @@ public class OrdemServicoDAO {
 	}
 
 	public List<OrdemServico> listar() throws SQLException, ClassNotFoundException {
-		String sqlQuery = "SELECT * FROM textilsoft.ordem_servico ORDER BY id_ordem";
+		String sqlQuery = "SELECT * FROM textilsoft.ordem_servico OS"
+				+ " inner join textilsoft.fornecedor f1 ON OS.id_fornecedor = f1.id_fornecedor "
+				+ " inner join textilsoft.servico_fornecedor sf1 ON OS.id_serv_forn = sf1.id_serv_forn "
+				+ " ORDER BY OS.id_ordem";		
 
 		try {
 			PreparedStatement stmt = this.conexao.getConnection().prepareStatement(sqlQuery);
@@ -158,8 +166,6 @@ public class OrdemServicoDAO {
 		ServicoFornecedor sv = new ServicoFornecedor();		
 
 		ordem.setIdOrdem(resultSet.getLong("id_ordem"));
-		fornecedor.setIdFornecedor(resultSet.getLong("id_fornecedor"));
-		sv.setIdServForn(resultSet.getInt("id_serv_forn"));
 		ordem.setServicoFornecedor(sv);
 		ordem.setFornecedor(fornecedor);
 		ordem.setQtdServico(resultSet.getDouble("qtd_servico"));
@@ -167,6 +173,15 @@ public class OrdemServicoDAO {
 		ordem.setDataAberturaOrdemServico(resultSet.getDate("data_abertura"));
 		ordem.setDataEntregaOrdemServico(resultSet.getDate("data_entrega"));
 		ordem.setValorTotalOrdemServico(resultSet.getDouble("valor_total"));
+		
+		fornecedor.setIdFornecedor(resultSet.getLong("id_fornecedor"));
+		fornecedor.setNmFornecedor(resultSet.getString("nm_fornecedor"));
+		fornecedor.setCnpjFornecedor(resultSet.getString("cnpj_fornecedor"));
+				
+		sv.setIdServForn(resultSet.getInt("id_serv_forn"));
+		sv.setNmServForn(resultSet.getString("nm_serv_forn"));
+		sv.setValorServForn(resultSet.getDouble("valor_serv_forn"));
+		sv.setUndMedidaServForn(UndMedidaServForn.valueOf(resultSet.getString("und_medida_serv_forn")));
 				
 		return ordem;
 	}
