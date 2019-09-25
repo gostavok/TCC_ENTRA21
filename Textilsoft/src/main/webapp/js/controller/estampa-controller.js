@@ -34,27 +34,6 @@ appTextilsoft.controller("estampaController", function($scope, $http) {
 		});
 	};
 	
-	
-	
-	
-	
-	
-	
-	/*
-	$scope.salvarEstampas function() {
-		var metodo = 'POST';
-	
-		$http({
-			method : metodo,
-			url : url + 'estampas/',
-			data : $scope.estampa
-		}).then(function(response) {		
-			alert("efetuado com sucesso")
-		}, function(response) {
-			console.log('error do salvar');	
-		});
-	};
-*/
 	$scope.deleteEstampa = function(id) {
 
 		$http({

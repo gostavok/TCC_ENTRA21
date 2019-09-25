@@ -5,6 +5,7 @@ public class Orcamento {
 	private int idOrcamento;
 	private double valorBase;
 	private double valorOrcamento;
+	private int quantidade;
 	private Cor corOrcamento;
 	private Material materialOrcamento;
 	private Estampa estampaOrcamento;
