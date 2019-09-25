@@ -116,6 +116,7 @@ create table orcamento (
     id_cor int(11) not null,
     id_estampa int(11) not null,
     id_material int(11) not null,
+    quantidade int(11) not null,
     valor_base decimal(10,2) not null,
     valor_orcamento decimal(10,2),
     foreign key (id_cor) references cor (id_cor),
