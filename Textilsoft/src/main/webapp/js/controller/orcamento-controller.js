@@ -52,6 +52,22 @@ appTextilsoft.controller("orcamentoController", function($scope, $http) {
 		});
 	};
 
+	$scope.calculaTotal = function() {
+		var cor = 0;
+		var material = 0;
+		var estampa =  0 ;
+		var base = 0;
+		var quantidade = 1
+		
+		cor = $scope.orcamento.corOrcamento.valorCor;
+		material = $scope.orcamento.materialOrcamento.valorMaterial;
+		estampa =  $scope.orcamento.estampaOrcamento.valorEstampa ;
+		base = $scope.orcamento.valorBase
+		quantidade = $scope.orcamento.quantidade
+		$scope.orcamento.valorOrcamento = ( cor + material +estampa+base) * quantidade ;
+	} 
+	
+	
 	$scope.alterarOrcamento = function(orcamento) {
 		$scope.orcamento = angular.copy(orcamento);
 	}

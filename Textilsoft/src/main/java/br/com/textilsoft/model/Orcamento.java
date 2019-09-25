@@ -46,6 +46,15 @@ public class Orcamento {
 	public void setEstampaOrcamento(Estampa estampaOrcamento) {
 		this.estampaOrcamento = estampaOrcamento;
 	}
+	
+	
+	
+	public int getQuantidade() {
+		return quantidade;
+	}
+	public void setQuantidade(int quantidade) {
+		this.quantidade = quantidade;
+	}
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -54,6 +63,7 @@ public class Orcamento {
 		result = prime * result + ((estampaOrcamento == null) ? 0 : estampaOrcamento.hashCode());
 		result = prime * result + idOrcamento;
 		result = prime * result + ((materialOrcamento == null) ? 0 : materialOrcamento.hashCode());
+		result = prime * result + quantidade;
 		long temp;
 		temp = Double.doubleToLongBits(valorBase);
 		result = prime * result + (int) (temp ^ (temp >>> 32));
@@ -87,6 +97,8 @@ public class Orcamento {
 				return false;
 		} else if (!materialOrcamento.equals(other.materialOrcamento))
 			return false;
+		if (quantidade != other.quantidade)
+			return false;
 		if (Double.doubleToLongBits(valorBase) != Double.doubleToLongBits(other.valorBase))
 			return false;
 		if (Double.doubleToLongBits(valorOrcamento) != Double.doubleToLongBits(other.valorOrcamento))
@@ -96,9 +108,11 @@ public class Orcamento {
 	@Override
 	public String toString() {
 		return "Orcamento [idOrcamento=" + idOrcamento + ", valorBase=" + valorBase + ", valorOrcamento="
-				+ valorOrcamento + ", corOrcamento=" + corOrcamento + ", materialOrcamento=" + materialOrcamento
-				+ ", estampaOrcamento=" + estampaOrcamento + "]";
+				+ valorOrcamento + ", quantidade=" + quantidade + ", corOrcamento=" + corOrcamento
+				+ ", materialOrcamento=" + materialOrcamento + ", estampaOrcamento=" + estampaOrcamento + "]";
 	}
+	
+	
 
 	
 }
