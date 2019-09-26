@@ -1,6 +1,9 @@
 appTextilsoft.controller("orcamentoController", function($scope, $http) {
 
 	$scope.listaOrcamento = [];
+	$scope.listaCor = [];
+	$scope.listaMaterial = [];
+	$scope.listaEstampa = [];
 	$scope.orcamento = {};
 	$scope.idOrcamento = 0;
 	var url = 'http://localhost:8080/Textilsoft/rest/';
@@ -53,18 +56,14 @@ appTextilsoft.controller("orcamentoController", function($scope, $http) {
 	};
 
 	$scope.calculaTotal = function() {
-		var cor = 0;
-		var material = 0;
-		var estampa =  0 ;
-		var base = 0;
-		var quantidade = 1
+		$scope.orcamento.valorBase = 30;
+		$scope.procuraValorCor($scope.orcamento.corOrcamento.idCor);
+		$scope.procuraValorMaterial($scope.orcamento.materialOrcamento.idMaterial);
+		$scope.procuraValorEstampa($scope.orcamento.estampaOrcamento.idEstampa);
 		
-		cor = $scope.orcamento.corOrcamento.valorCor;
-		material = $scope.orcamento.materialOrcamento.valorMaterial;
-		estampa =  $scope.orcamento.estampaOrcamento.valorEstampa ;
-		base = $scope.orcamento.valorBase
-		quantidade = $scope.orcamento.quantidade
-		$scope.orcamento.valorOrcamento = ( cor + material +estampa+base) * quantidade ;
+		$scope.orcamento.valorOrcamento = ($scope.listaCor.valorCor + $scope.listaMaterial.valorMaterial + $scope.listaEstampa.valorEstampa + $scope.orcamento.valorBase) * $scope.orcamento.quantidade;
+		
+		
 	} 
 	
 	
@@ -80,4 +79,48 @@ appTextilsoft.controller("orcamentoController", function($scope, $http) {
 		$scope.orcamento = {};
 	};
 
+	$scope.procuraValorCor =  function(id){
+		$http({
+			method : 'GET',
+			url : url + 'cores/'+ id
+		}).then(function(response) {
+            $scope.listaCor = response.data;
+            console.log($scope.listaCor.valorCor);
+		}, function(response) {
+			console.log('error');
+			console.log(response.data);
+			console.log(response.status);
+		});
+	};
+	
+	$scope.procuraValorMaterial =  function(id){
+		$http({
+			method : 'GET',
+			url : url + 'materiais/'+ id
+		}).then(function(response) {
+            $scope.listaMaterial = response.data;
+            console.log($scope.listaMaterial.valorMaterial);
+		}, function(response) {
+			console.log('error');
+			console.log(response.data);
+			console.log(response.status);
+		});
+	};
+	
+	$scope.procuraValorEstampa =  function(id){
+		$http({
+			method : 'GET',
+			url : url + 'estampas/'+ id
+		}).then(function(response) {
+            $scope.listaEstampa = response.data;
+            console.log($scope.listaEstampa.valorEstampa);
+		}, function(response) {
+			console.log('error');
+			console.log(response.data);
+			console.log(response.status);
+		});
+	};
+	
+	
+	
 });
