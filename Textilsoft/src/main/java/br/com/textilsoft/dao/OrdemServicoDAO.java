@@ -69,14 +69,14 @@ public class OrdemServicoDAO {
 		int linhasAfetadas = 0;
 		String sqlQuery = 
 				
-		"UPDATE textilsoft.ordem_servico SET"+
+		"UPDATE textilsoft.ordem_servico SET "+
 		
 		"id_fornecedor = ?, "+
 		"id_serv_forn = ?, "+
 		"qtd_servico = ?, "+
 		"status_ordem = ?, "+
-		"data_entrega =?, "+
-		"valor_total =?, "+			
+		"data_entrega = ?, "+
+		"valor_total = ? "+			
 
 		"WHERE id_ordem = ?";
 	
@@ -88,6 +88,7 @@ public class OrdemServicoDAO {
 			stmt.setString(4, ordemServico.getStatusOrdem().toString());
 			stmt.setDate(5, new java.sql.Date(ordemServico.getDataEntregaOrdemServico().getDate()));
 			stmt.setDouble(6, ordemServico.getValorTotalOrdemServico());
+			stmt.setLong(7, ordemServico.getIdOrdem());
 
 			linhasAfetadas = stmt.executeUpdate();
 			this.conexao.commit();
