@@ -36,7 +36,7 @@ $scope.listarServicoFornecedor = function(id) {
 		url : 'http://localhost:8080/Textilsoft/rest/servicosfornecedores/'+id
 	}).then(function(response) {
 		$scope.ordemServicoDetalhe.servicoFornecedor = response.data;
-		//console.log($scope.ordemServicoDetalhe.servicoFornecedor);
+
 	}, function(response) {
 		console.log('error');
 		console.log(response.data);
@@ -46,20 +46,18 @@ $scope.listarServicoFornecedor = function(id) {
 
     $http.get(url + $routeParams.id).then(function(response) {
         $scope.ordemServicoDetalhe = response.data;
-        console.log(ordemServicoDetalhe.dataEntregaOrdemServico);
+        console.log($scope.ordemServicoDetalhe.dataEntregaOrdemServico);
         
 		var today = new Date();
 		var dia = today.getDate();
 		var mes = today.getMonth()+1;
 		var ano = today.getFullYear();
+				
+		$scope.ordemServicoDetalhe.dataEntregaOrdemServico = new Date($scope.ordemServicoDetalhe.dataEntregaOrdemServico);
+ 		$scope.ordemServicoDetalhe.dataAberturaOrdemServico = new Date($scope.ordemServicoDetalhe.dataAberturaOrdemServico);
 		
-		//$scope.dataUpdate = dia + "/" + mes + "/" + ano;
-		//var dataParse = new Date(ordemServicoDetalhe.dataEntregaOrdemServico)
-		//$scope.ordemServicoDetalhe.dataEntregaOrdemServico = dataParse; 
-        
         console.log('success - ordemServicoDetalheController');
         console.log(response.data);
-
 
     }, function(response) {
         console.log('error- ordemServicoDetalheController');
@@ -67,14 +65,13 @@ $scope.listarServicoFornecedor = function(id) {
     });
     
     $scope.updateOrdemServico = function() {			
-        metodo = 'PUT';		
-
+                
         $http({
-            method : metodo,
+            method : 'PUT',
             url : url,
             data : $scope.ordemServicoDetalhe
-        }).then(function(response) {
-            alert("salvo");
+        }).then(function(response) {        	
+        	alert("salvo");
             history.go(-1);
         }, function(response) {
             console.log('error do salvar');		

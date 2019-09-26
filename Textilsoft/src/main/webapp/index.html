@@ -31,8 +31,17 @@
 	<script src="./js/controller/servico-fornecedor-controller.js"></script>
 	<script src="./js/controller/servico-fornecedor-detalhe-controller.js"></script>
 	<script src="./js/controller/estampa-detalhe-controller.js"></script>
+<<<<<<< HEAD
 	<script src="./js/controller/estampa-controller.js"></script>
 
+=======
+	<script src="./js/controller/estampa-controller.js"></script>	
+	<script src="./js/controller/orcamento-detalhe-controller.js"></script>
+	<script src="./js/controller/orcamento-controller.js"></script>	
+	<script src="./js/controller/pedido-detalhe-controller.js"></script>
+	<script src="./js/controller/pedido-controller.js"></script>	
+	
+>>>>>>> 04b545044a8e5a399b6ecf2f6c8a4f034f3902b7
 	<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
 	<link href="bootstrap/css/style.css" rel="stylesheet">
 
@@ -142,16 +151,28 @@
 							<li><a href="ordem-servico-lista"><i class="fa fa-angle-double-right"> </i>  Consulta</a></li>
 						</ul>
 					</li>	
-
+					<li> <a href="">Orcamento</a>
+				<ul>
+					<li><a href="orcamento-list" style="margin-left:12px">Consulta</a></li>
 				</ul>
-			</div>
+				</li>
+		
+				<li> <a href="">Pedido</a>
+					<ul>
+				<li><a href="pedido-cad" style="margin-left:12px">Cadastro</a></li>
+				<li><a href="pedido-list" style="margin-left:12px">Consulta</a></li>
+					</ul>
+					</li>		
+		
+				
+				</ul>
+			</div>		
 		
 
 		
-		
 
 
-	<div id="page-wrapper">
+		<div id="page-wrapper">
 			<div ng-view="ng-view" class="container-fluid" id="shadow">
 				<!-- Page Heading -->
 				<div class="row" id="main">
@@ -163,6 +184,9 @@
 		</div>
 		<!-- /#page-wrapper -->
 	</div>
+
+		
+
 
 
 

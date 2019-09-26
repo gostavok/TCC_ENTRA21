@@ -9,11 +9,9 @@ import java.util.List;
 import br.com.textilsoft.data.ConexaoJDBC;
 import br.com.textilsoft.data.ConexaoMysqlJDBC;
 import br.com.textilsoft.model.Cliente;
-import br.com.textilsoft.model.Fornecedor;
 import br.com.textilsoft.model.Pedido;
-import br.com.textilsoft.model.ProdutoFornecedor;
 import br.com.textilsoft.model.util.StatusPedido;
-import br.com.textilsoft.model.util.UndMedidaProdForn;
+
 
 public class PedidoDAO {
 	
@@ -23,11 +21,10 @@ public class PedidoDAO {
 	public PedidoDAO() throws SQLException, ClassNotFoundException {
 		this.conexao = new ConexaoMysqlJDBC();
 	}
+
 	
 	
-	
-	public void inserir(Pedido pedido) throws SQLException, ClassNotFoundException {
-		
+	public Pedido inserir(Pedido pedido) throws SQLException, ClassNotFoundException {
 		
 		String sqlQuery = "INSERT INTO pedido (id_cliente, qtd_prod, "
 				+ "valor_total, data_pedido, status_pedido) VALUES (?, ?, ?, ?, ?) ";
@@ -42,12 +39,18 @@ public class PedidoDAO {
 			
 			stmt.execute();			
 			this.conexao.commit();
-		} catch (SQLException e) {
+			
+		}
+		
+		catch (SQLException e) {
 			this.conexao.rollback();
 			throw e;
 		}
+		
+		return null;
 	
-	}
+		
+}
 	
 	public int alterar(Pedido pedido) throws SQLException, ClassNotFoundException {
 		String sqlQuery = "UPDATE pedido SET id_cliente = ?, qtd_prod= ?,"
@@ -113,7 +116,7 @@ public class PedidoDAO {
 	
 	
 	public List<Pedido> listarpedidos() throws SQLException, ClassNotFoundException {
-		String sqlQuery = "SELECT * FROM pedido inner join cliente using(id_pedido) ORDER BY id_pedido";
+		String sqlQuery = "SELECT * FROM pedido inner join cliente using(id_cliente) ORDER BY id_pedido";
 
 		try {
 			PreparedStatement stmt = this.conexao.getConnection().prepareStatement(sqlQuery);
@@ -150,6 +153,15 @@ public class PedidoDAO {
 		} catch (SQLException e) {
 			throw e;
 		}
+	}
+	
+	
+	private Pedido parser2(ResultSet resultSet) throws SQLException {
+		Pedido p = new Pedido();
+		
+		p.setIdPedido(resultSet.getInt("id_pedido"));
+		
+		return p;
 	}
 	
 	
