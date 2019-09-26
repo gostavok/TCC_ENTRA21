@@ -1,0 +1,50 @@
+<h3 class="page-header">Criar pedido</h3>
+<br>
+<div class = "row">
+	<div class="form-group col-md-1">
+		<label for="campo1">ID</label>
+		<input type="text" class= "form-control" placeholder="ID" ng-model="pedido.idPedido" style="width: 50px" disabled>
+	</div>
+	<div class="form-group col-md-3">
+		<label for="campo1">ID do cliente</label>
+		<input type="text"  class= "form-control"  placeholder="ID do Cliente" ng-model="pedido.cliente.idCliente" ng-blur = "listarNomeCliente(pedido.cliente.idCliente)">
+	</div>
+	<div class="form-group col-md-3">
+		<label for="campo1">Nome do cliente</label>
+		<input type="text" class= "form-control" placeholder="Cliente" ng-model="pedido.cliente.nmCliente" disabled>
+	</div>
+	<div class="form-group col-md-1">
+		<label for="campo1">Quantidade</label>
+		<input type="text"  class= "form-control"  placeholder="Quantidade" ng-model="pedido.qtdProd">
+	</div>
+
+	<div class="form-group col-md-3">
+		<label for="campo1">Valor total</label>
+		<input type="text"  class= "form-control"  placeholder="Valor" ng-model="pedido.valorTotal">
+	</div>
+	
+	<div class="form-group col-md-3">
+		<label for="campo1">Data</label>
+		<input type="date"  class= "form-control"  placeholder="Data" ng-model="pedido.dataPedido">
+	</div>
+	
+	<div class="form-group col-md-3">
+		<label for="campo1">Status</label>
+		<select class= "form-control"  ng-model="pedido.statusPedido" id= "pedido.statusPedido">
+			<option value= "Aberto">Aberto</option>
+			<option value = "Pendente">Pendente</option>
+			<option value = "Fechado">Fechado</option>			
+		</select>
+	</div>
+	
+	
+<form> 
+  <hr /> 
+	<div id="actions" class="row" style="margin-bottom:12px" >
+  	  <div class="col-md-12">
+		<button type="submit" class="btn btn-primary" ng-click="salvarPedido()" style="margin-left:12px">Salvar</button>
+		<button type="button" class="btn btn-default" onClick="history.go(-1)">Voltar</button>
+    	</div>
+    </div>
+ </form>
+</div>

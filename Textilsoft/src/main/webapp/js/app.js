@@ -64,6 +64,12 @@ appTextilsoft.config(function($routeProvider, $locationProvider){
      .when("/orcamento/:id",{templateUrl:'view/orcamento-detalhe.html',controller:'orcamentoDetalheController'})
      .when("/orcamento-cad",{templateUrl:'view/orcamento-cad.html',controller:'orcamentoController'})
      .when("/orcamento-edit/:id",{templateUrl:'view/orcamento-edit.html',controller:'orcamentoDetalheController'})
+     
+      .when("/pedido-list",{templateUrl:'view/pedido.html',controller:'pedidoController'})
+     .when("/pedido/:id",{templateUrl:'view/pedido-detalhe.html',controller:'pedidoDetalheController'})
+     .when("/pedido-cad",{templateUrl:'view/pedido-cad.html',controller:'pedidoController'})
+     .when("/pedido-edit/:id",{templateUrl:'view/pedido-edit.html',controller:'pedidoDetalheController'})
+     
     
 
 

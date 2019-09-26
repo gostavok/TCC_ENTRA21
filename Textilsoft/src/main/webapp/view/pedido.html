@@ -4,14 +4,14 @@
 
 <div id="top" class="row">
  <div class="col-md-3">
-        <h2>Estoque</h2>
+        <h2>Pedidos</h2>
     </div>
  
     <div class="col-md-6">
         <div class="input-group h2">
-            <input name="data[search]" ng-model="pesquisa" class="form-control" id="search" type="text" placeholder="Pesquisar Itens">
+            <input name="data[search]" ng-model="pesquisa" class="form-control" id="search" type="text" placeholder="Pesquisar pedidos">
             <span class="input-group-btn">
-                <button class="btn btn-primary" type="submit" ng-click="listarEstoque()">                
+                <button class="btn btn-primary" type="submit" ng-click="listarPedidos()">                
                     <span class="glyphicon glyphicon-search"></span>
                 </button>
             </span>
@@ -19,7 +19,7 @@
        
     </div>
  	 <div class="col-md-3">
-        <a href="estoque-cad"  class="btn btn-primary pull-right h2">Novo Registro</a>
+        <a href="pedido-cad"  class="btn btn-primary pull-right h2">Novo Pedido</a>
     </div>
     
 </div>
@@ -37,7 +37,7 @@
 				<tr>
 					<th class="col-md-2" >ID Pedido</th>
 					<th class="col-md-2">Nome cliente</th>
-					<th class="col-md-2">Qtd produtos</th>
+					<th class="col-md-2">Qtd prod</th>
 					<th class="col-md-2">Valor total</th>
 					<th class="col-md-2">Data do pedido</th>
 					<th class="col-md-2">Status</th>
@@ -46,17 +46,18 @@
 			</thead>   
     	<tbody>
     
-		<tr ng-repeat="estoque in listaEstoque">
+		<tr ng-repeat="pedido in listaPedido">
 		
-		<td >{{estoque.idEstoque }}</td>
-		<td> {{estoque.produtoFornecedor.idProdForn }}</td>
-		<td >{{estoque.produtoFornecedor.nmProdForn }}</td>
-		<td >{{estoque.qtdEstoque}}</td>
-		<td >{{estoque.produtoFornecedor.undMedidaProdForn}}</td>
+		<td >{{pedido.idPedido }}</td>
+		<td> {{pedido.cliente.nmCliente}}</td>
+		<td >{{pedido.qtdProd }}</td>
+		<td >{{pedido.valorTotal}}</td>
+		<td >{{pedido.dataPedido}}</td>
+		<td >{{pedido.statusPedido}}</td>
 		<td class="actions">
-		  <a class="btn btn-danger btn-xs"  type="button" ng-click = "procuraEstoque(estoque)" data-toggle="modal" data-target="#delete-modal">Excluir</a>
-		<a class="btn btn-warning btn-xs" type="button" href = "estoque-editar/{{estoque.idEstoque}}">Alterar</a>
-		<a class="btn btn-success btn-xs" href="estoque/{{estoque.idEstoque}}">Detalhe</a>		
+		  <a class="btn btn-danger btn-xs"  type="button" ng-click = "procuraPedido(pedido)" data-toggle="modal" data-target="#delete-modal">Excluir</a>
+		<a class="btn btn-warning btn-xs" type="button" href = "pedido-editar/{{pedido.idPedido}}">Alterar</a>
+		<a class="btn btn-success btn-xs" href="estoque/{{pedido.idPedido}}">Detalhe</a>		
 		</td>		
 				
 	</tr>
@@ -78,7 +79,7 @@
 				</div>
 				<div class="modal-body">Deseja realmente excluir este item?</div>
 				<div class="modal-footer">
-					<button type="button" class="btn btn-primary" ng-click="deleteEstoque(idestoque)" data-dismiss = "modal">Sim</button>
+					<button type="button" class="btn btn-primary" ng-click="deletePedido(idpedido)" data-dismiss = "modal">Sim</button>
 					<button type="button" class="btn btn-default" data-dismiss="modal">N&atilde;o</button>
 				</div>
 			</div>
