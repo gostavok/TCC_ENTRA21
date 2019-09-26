@@ -45,7 +45,7 @@ appTextilsoft.config(function($routeProvider, $locationProvider){
     .when("/ordem-servico-editar/:id",{templateUrl:'view/ordem-servico-edit.html', controller:'ordemServicoDetalheController'})
     .when("/ordem-servico/:id",{templateUrl:'view/ordem-servico-detalhe.html', controller:'ordemServicoDetalheController'})
     
-        .when("/cor-cad",{templateUrl:'view/cor-cad.html',controller:'corController'})
+    .when("/cor-cad",{templateUrl:'view/cor-cad.html',controller:'corController'})
     .when("/cor-list",{templateUrl:'view/cor.html',controller:'corController'})
     .when("/cor/:id",{templateUrl:'view/cor-detalhe.html',controller:'corDetalheController'})
     .when("/cor-edit/:id",{templateUrl:'view/cor-edit.html',controller:'corDetalheController'})
@@ -59,6 +59,11 @@ appTextilsoft.config(function($routeProvider, $locationProvider){
      .when("/estampa/:id",{templateUrl:'view/estampa-detalhe.html',controller:'estampaDetalheController'})
      .when("/estampa-cad",{templateUrl:'view/estampa-cad.html',controller:'estampaController'})
      .when("/estampa-edit/:id",{templateUrl:'view/estampa-edit.html',controller:'estampaDetalheController'})
+    
+     .when("/orcamento-list",{templateUrl:'view/orcamento.html',controller:'orcamentoController'})
+     .when("/orcamento/:id",{templateUrl:'view/orcamento-detalhe.html',controller:'orcamentoDetalheController'})
+     .when("/orcamento-cad",{templateUrl:'view/orcamento-cad.html',controller:'orcamentoController'})
+     .when("/orcamento-edit/:id",{templateUrl:'view/orcamento-edit.html',controller:'orcamentoDetalheController'})
     
 
 

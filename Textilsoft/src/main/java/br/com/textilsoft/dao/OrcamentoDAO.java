@@ -24,7 +24,7 @@ public class OrcamentoDAO {
 	}
 	
 	public List<Orcamento> selectAll()throws SQLException,ClassNotFoundException{
-		String sqlQuery = "SELECT id_orcamento,id_cor,id_estampa,id_material,valor_base,valor_orcamento FROM orcamento INNER JOIN cor USING(id_cor) INNER JOIN estampa USING(id_estampa) INNER JOIN material USING(id_material)";
+		String sqlQuery = "SELECT * FROM orcamento INNER JOIN cor USING(id_cor) INNER JOIN estampa USING(id_estampa) INNER JOIN material USING(id_material)";
 		
 		try {
 			PreparedStatement stmt = this.conexao.getConnection().prepareStatement(sqlQuery);
@@ -43,7 +43,7 @@ public class OrcamentoDAO {
 	}
 	
 	public Orcamento select(int id)throws SQLException,ClassNotFoundException{
-		String sqlQuery = "SELECT id_orcamento,id_cor,id_estampa,id_material,valor_base,valor_orcamento FROM orcamento INNER JOIN cor USING(id_cor) INNER JOIN estampa USING(id_estampa) INNER JOIN material USING(id_material) WHERE id_orcamento = ?";
+		String sqlQuery = "SELECT * FROM orcamento INNER JOIN cor USING(id_cor) INNER JOIN estampa USING(id_estampa) INNER JOIN material USING(id_material) WHERE id_orcamento = ?";
 
 
 		try {
@@ -61,7 +61,7 @@ public class OrcamentoDAO {
 	}
 	
 	public void insert(Orcamento orcamento) throws SQLException, ClassNotFoundException{
-		String sqlQuery = "INSERT INTO orcamento (id_cor,id_estampa,id_material,valor_base,valor_orcamento) VALUES (?,?,?,?,?)";
+		String sqlQuery = "INSERT INTO orcamento (id_cor,id_estampa,id_material,valor_base,valor_orcamento,quantidade) VALUES (?,?,?,?,?,?)";
 		
 		try {
 			PreparedStatement stmt = this.conexao.getConnection().prepareStatement(sqlQuery);
@@ -70,6 +70,7 @@ public class OrcamentoDAO {
 			stmt.setInt(3, orcamento.getMaterialOrcamento().getIdMaterial());
 			stmt.setDouble(4, orcamento.getValorBase());
 			stmt.setDouble(5, orcamento.getValorOrcamento());
+			stmt.setInt(6, orcamento.getQuantidade());
 			stmt.execute();
 			this.conexao.commit();
 		} catch (Exception e) {
@@ -80,7 +81,7 @@ public class OrcamentoDAO {
 	
 	
 	public void update(Orcamento orcamento) throws SQLException,ClassNotFoundException{
-		String sqlQuery = "UPDATE orcamento SET id_cor = ?, id_estampa = ?, id_material = ?, valor_base = ?, valor_orcamento= ? WHERE id_orcamento = ?";
+		String sqlQuery = "UPDATE orcamento SET id_cor = ?, id_estampa = ?, id_material = ?, valor_base = ?, valor_orcamento= ? , quantidade = ?WHERE id_orcamento = ?";
 
 		try {
 			PreparedStatement stmt = this.conexao.getConnection().prepareStatement(sqlQuery);
@@ -89,7 +90,8 @@ public class OrcamentoDAO {
 			stmt.setInt(3, orcamento.getMaterialOrcamento().getIdMaterial());
 			stmt.setDouble(4, orcamento.getValorBase());
 			stmt.setDouble(5, orcamento.getValorOrcamento());
-			stmt.setInt(6, orcamento.getIdOrcamento());
+			stmt.setInt(7, orcamento.getIdOrcamento());
+			stmt.setInt(6, orcamento.getQuantidade() );
 			stmt.execute();
 			this.conexao.commit();
 		} catch (Exception e) {
@@ -118,11 +120,12 @@ public class OrcamentoDAO {
 	
 	private Orcamento parser(ResultSet resultSet) throws SQLException {
 		
-		Orcamento o = new Orcamento();
+	
 		Cor c = new Cor();
 		Estampa e = new Estampa();
 		Material m = new Material();
-
+		Orcamento o = new Orcamento();
+		
 		c.setIdCor(resultSet.getInt("id_cor"));
 		c.setNmCor(resultSet.getString("nm_cor"));
 		c.setValorCor(resultSet.getDouble("valor_cor"));
@@ -134,11 +137,12 @@ public class OrcamentoDAO {
 		m.setIdMaterial(resultSet.getInt("id_material"));
 		m.setnmMaterial(resultSet.getString("nm_material"));
 		m.setValorMaterial(resultSet.getDouble("valor_material"));
-
+		
 		o.setIdOrcamento(resultSet.getInt("id_orcamento"));
 		o.setValorBase(resultSet.getDouble("valor_base"));
 		o.setValorOrcamento(resultSet.getDouble("valor_orcamento"));
-
+		o.setQuantidade(resultSet.getInt("quantidade"));
+		
 		o.setCorOrcamento(c);
 		o.setEstampaOrcamento(e);
 		o.setMaterialOrcamento(m);
