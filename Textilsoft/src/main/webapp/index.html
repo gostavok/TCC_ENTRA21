@@ -68,7 +68,7 @@
 						class="icon-bar"></span> <span class="icon-bar"></span>
 				</button>
 				<a class="navbar-brand" href=""> <img
-					src="http://placehold.it/200x50&img=" class="img-responsive" alt="Imagem Responsiva">
+					src="./images/logo.png" class="img-responsive img" alt="Imagem Responsiva">
 			</a>
 			</div>
 
@@ -151,19 +151,22 @@
 							<li><a href="ordem-servico-lista"><i class="fa fa-angle-double-right"> </i>  Consulta</a></li>
 						</ul>
 					</li>	
-					<li> <a href="">Orcamento</a>
-				<ul>
-					<li><a href="orcamento-list" style="margin-left:12px">Consulta</a></li>
-				</ul>
+					<li><a href="" data-toggle="collapse" data-target="#submenu-9"><i class="fa fa-fw fa-search"></i>Orçamento
+						<i class="fa fa-fw fa-angle-down pull-right"></i></a>
+							<ul id="submenu-9" class="collapse">
+				
+					<li><a href="orcamento-list"><i class="fa fa-angle-double-right"> </i>  Consulta</a></li>				
+					</ul>
 				</li>
 		
-				<li> <a href="">Pedido</a>
-					<ul>
-				<li><a href="pedido-cad" style="margin-left:12px">Cadastro</a></li>
-				<li><a href="pedido-list" style="margin-left:12px">Consulta</a></li>
+				<li><a href="" data-toggle="collapse" data-target="#submenu-10"><i class="fa fa-fw fa-search"></i>Pedido
+						<i class="fa fa-fw fa-angle-down pull-right"></i></a>
+						<ul id="submenu-10" class="collapse">					
+					<li><a href="pedido-cad"><i class="fa fa-angle-double-right"> </i>  Cadastro</a></li>		
+				<li><a href="pedido-list"><i class="fa fa-angle-double-right"> </i>  Consulta</a></li>	
+
 					</ul>
-					</li>		
-		
+						
 				
 				</ul>
 			</div>		
@@ -172,15 +175,15 @@
 		
 
 
-		<div id="page-wrapper">
-			<div ng-view="ng-view" class="container-fluid" id="shadow">
-				<!-- Page Heading -->
-				<div class="row" id="main">
-					<div class="col-sm-10 col-md-10 well" id="content" ng-view="ng-view"></div>
-				</div>
+		<div id="page-wrapper" >
+			<div ng-view="ng-view" class="container-fluid" style="margin-left:225px" id="shadow">
+	
+				
+					<div class="container-fluid" ng-view="ng-view"></div>
+			
 				<!-- /.row -->
 			</div>
-			<!-- /.container-fluid -->
+		
 		</div>
 		<!-- /#page-wrapper -->
 	</div>

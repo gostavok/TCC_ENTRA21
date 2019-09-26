@@ -1,6 +1,7 @@
 
 #main {
   margin-top: 50px;
+  margin-left: 100px;
 }
 
 
@@ -86,6 +87,7 @@
         bottom: 0;
         overflow-x: hidden;
         padding-bottom: 40px;
+        paddin-right: 100px;
     }
 
     .side-nav>li>a {
@@ -396,7 +398,8 @@
 }
 
 .img {
-    width: 100%;
+    width: 200px;
+    height: 50px;
 }
 
 .media-object{
@@ -421,15 +424,3 @@
     -moz-margin-end: 0px;
 }
 
-© 2019 GitHub, Inc.
-Terms
-Privacy
-Security
-Status
-Help
-Contact GitHub
-Pricing
-API
-Training
-Blog
-About
