@@ -3,6 +3,7 @@ package br.com.textilsoft.dao;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,6 +23,7 @@ public class ClienteDAO {
 
 	public Long inserir(Cliente cliente) throws SQLException, ClassNotFoundException {
 		Long id = null;
+		Timestamp hoje = new Timestamp(System.currentTimeMillis());
 		String sqlQuery = 
 		
 		"INSERT INTO textilsoft.cliente "+
@@ -35,8 +37,9 @@ public class ClienteDAO {
 		"`comp_cliente`, "+
 		"`tel_cliente` ,"+
 		"`tel2_cliente`, "+
-		"`email_cliente`) "+
-		"VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+		"`email_cliente`," +
+		"`dt_cad_cliente`) "+
+		"VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
 		
 		try {
@@ -52,6 +55,7 @@ public class ClienteDAO {
 			stmt.setInt(9, cliente.getTelCliente1());
 			stmt.setInt(10, cliente.getTelCliente2());
 			stmt.setString(11, cliente.getEmailCliente());
+			stmt.setTimestamp(12, hoje);	
 			
 			stmt.execute();
 			

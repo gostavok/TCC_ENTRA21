@@ -4,7 +4,7 @@ appTextilsoft.controller("vendaController", function($scope, $http) {
 	$scope.venda = {};
 	$scope.dataEmissao = "";
 
-	$scope.idordem = 0;
+	$scope.idvenda = 0;
 	$scope.pesquisa= "";
 	var url = 'http://localhost:8080/Textilsoft/rest/';
 
@@ -49,6 +49,7 @@ appTextilsoft.controller("vendaController", function($scope, $http) {
 			url : url + 'vendas/'
 		}).then(function(response) {
 			$scope.listaVenda = response.data;
+			console.log(response.data)
 		}, function(response) {
 			console.log('error');
 			console.log(response.data);
@@ -94,7 +95,7 @@ appTextilsoft.controller("vendaController", function($scope, $http) {
 	}
 	
 	$scope.procuraVenda = function(venda) {
-		$scope.idordem = angular.copy(venda.idOrdem);
+		$scope.idvenda = angular.copy(venda.idVenda);
 	}
 
 	$scope.cancelarAlteracaoVenda = function(venda) {

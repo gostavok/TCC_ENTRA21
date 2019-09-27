@@ -3,7 +3,7 @@
 <hr><hr>
 <div id="top" class="row">
 	<div class="col-md-3">
-		<h2>Ordens de Servi&ccedil;o</h2>
+		<h2>Vendas</h2>
 	</div>
 
 	<div class="col-md-6">
@@ -17,11 +17,11 @@
 				</button>
 			</span>
 		</div>
-
 	</div>
+	
 	<div class="col-md-3">
 		<a href="venda-cad" class="btn btn-primary pull-right h2">Nova
-			Ordem de ServiÃ§o</a>
+			Venda</a>
 	</div>
 
 </div>
@@ -48,15 +48,15 @@
 				<tr ng-repeat="venda in listaVenda">
 				
 					<td>{{venda.idVenda}}</td>
-					<td>{{venda.valorTotal</td>
-					<td>{{venda.dataPagamento}}</td>
-					<td>{{venda.dataVenda}}</td>
+					<td>R${{venda.valorTotal | number: 2}}</td>
+					<td>{{venda.dataPagamento | date: 'dd/MM/yyyy'}}</td>
+					<td>{{venda.dataVenda | date: 'dd/MM/yyyy'}}</td>
 		
 					
 					<td class="actions">
 					<a class="btn btn-danger btn-xs" type="button" ng-click="procuraVenda(venda)"	data-toggle="modal" data-target="#delete-modal">Excluir</a> 
 					<a class="btn btn-warning btn-xs" type="button" href="venda-editar/{{venda.idvenda}}">Alterar</a>
-					<a class="btn btn-success btn-xs" 	href="venda/{{venda.idvenda}}">Detalhe</a>
+					<a class="btn btn-success btn-xs" href="venda/pedido/{{venda.idvenda}}">Pedidos</a>
 					</td>				
 				</tr>
 

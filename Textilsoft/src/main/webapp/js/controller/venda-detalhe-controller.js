@@ -1,20 +1,20 @@
-appTextilsoft.controller("ordemServicoDetalheController", function($scope, $http,
+appTextilsoft.controller("vendaDetalheController", function($scope, $http,
     $routeParams) {
 
-$scope.ordemServicoDetalhe = {};
-$scope.ordemServicoDetalhe.qtdServico = "";
-$scope.ordemServicoDetalhe.servicoFornecedor = {};
-$scope.ordemServicoDetalhe.valorTotalOrdemServico = "";
-$scope.ordemServicoDetalhe.fornecedor = {};
+$scope.vendaDetalhe = {};
+$scope.vendaDetalhe.qtdServico = "";
+$scope.vendaDetalhe.servicoFornecedor = {};
+$scope.vendaDetalhe.valorTotalVenda = "";
+$scope.vendaDetalhe.fornecedor = {};
 
-var url = 'http://localhost:8080/Textilsoft/rest/ordemServicos/';
+var url = 'http://localhost:8080/Textilsoft/rest/vendas/';
 
 $scope.listarFornecedor = function(id) {
 	$http({
 		method : 'GET',
 		url : 'http://localhost:8080/Textilsoft/rest/fornecedores/'+id
 	}).then(function(response) {
-		$scope.ordemServicoDetalhe.fornecedor = response.data; 
+		$scope.vendaDetalhe.fornecedor = response.data; 
 
 		var today = new Date();
 		var dia = today.getDate();
@@ -35,7 +35,7 @@ $scope.listarServicoFornecedor = function(id) {
 		method : 'GET',
 		url : 'http://localhost:8080/Textilsoft/rest/servicosfornecedores/'+id
 	}).then(function(response) {
-		$scope.ordemServicoDetalhe.servicoFornecedor = response.data;
+		$scope.vendaDetalhe.servicoFornecedor = response.data;
 
 	}, function(response) {
 		console.log('error');
@@ -45,31 +45,31 @@ $scope.listarServicoFornecedor = function(id) {
 };
 
     $http.get(url + $routeParams.id).then(function(response) {
-        $scope.ordemServicoDetalhe = response.data;
-        console.log($scope.ordemServicoDetalhe.dataEntregaOrdemServico);
+        $scope.vendaDetalhe = response.data;
+        console.log($scope.vendaDetalhe.dataEntregaVenda);
         
 		var today = new Date();
 		var dia = today.getDate();
 		var mes = today.getMonth()+1;
 		var ano = today.getFullYear();
 				
-		$scope.ordemServicoDetalhe.dataEntregaOrdemServico = new Date($scope.ordemServicoDetalhe.dataEntregaOrdemServico);
- 		$scope.ordemServicoDetalhe.dataAberturaOrdemServico = new Date($scope.ordemServicoDetalhe.dataAberturaOrdemServico);
+		$scope.vendaDetalhe.dataEntregaVenda = new Date($scope.vendaDetalhe.dataEntregaVenda);
+ 		$scope.vendaDetalhe.dataAberturaVenda = new Date($scope.vendaDetalhe.dataAberturaVenda);
 		
-        console.log('success - ordemServicoDetalheController');
+        console.log('success - vendaDetalheController');
         console.log(response.data);
 
     }, function(response) {
-        console.log('error- ordemServicoDetalheController');
+        console.log('error- vendaDetalheController');
     
     });
     
-    $scope.updateOrdemServico = function() {			
+    $scope.updateVenda = function() {			
                 
         $http({
             method : 'PUT',
             url : url,
-            data : $scope.ordemServicoDetalhe
+            data : $scope.vendaDetalhe
         }).then(function(response) {        	
         	alert("salvo");
             history.go(-1);
@@ -78,11 +78,11 @@ $scope.listarServicoFornecedor = function(id) {
         });
     };
     
-    $scope.deleteOrdemServico = function(idOrdem) {
+    $scope.deleteVenda = function(idVenda) {
 
         $http({
             method : 'DELETE',
-            url : url + idOrdem
+            url : url + idVenda
         }).then(function(response) {
         
             history.go(-1);
@@ -91,12 +91,12 @@ $scope.listarServicoFornecedor = function(id) {
         });
     };
 
-    $scope.procuraOrdemServico = function(ordemServicoDetalhe) {
-        $scope.idordemServico = angular.copy(ordemServicoDetalhe.idOrdem);
+    $scope.procuraVenda = function(vendaDetalhe) {
+        $scope.idvenda = angular.copy(vendaDetalhe.idVenda);
     }
 
 	$scope.calculoTotal = function(){
-		$scope.ordemServicoDetalhe.valorTotalOrdemServico = $scope.ordemServicoDetalhe.servicoFornecedor.valorServForn * $scope.ordemServicoDetalhe.qtdServico;	
+		$scope.vendaDetalhe.valorTotalVenda = $scope.vendaDetalhe.servicoFornecedor.valorServForn * $scope.vendaDetalhe.qtdServico;	
 	};
     
 });

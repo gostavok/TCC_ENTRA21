@@ -24,8 +24,6 @@ public class OrdemServicoDAO {
 		this.conexao = new ConexaoMysqlJDBC();
 	}
 
-	Locale vmLocale = Locale.getDefault();
-	
 	public Long inserir(OrdemServico ordemServico) throws SQLException, ClassNotFoundException {
 		Timestamp hoje = new Timestamp(System.currentTimeMillis());
 		String sqlQuery = 
@@ -40,7 +38,6 @@ public class OrdemServicoDAO {
 		"`valor_total`) "+		
 		"VALUES(?, ?, ?, ?, ?, ?, ?)";
 		
-		//Calendar.getInstance(vmLocale);
 		try {
 			PreparedStatement stmt = this.conexao.getConnection().prepareStatement(sqlQuery);
 			stmt.setLong(1, ordemServico.getFornecedor().getIdFornecedor());

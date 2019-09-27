@@ -66,10 +66,15 @@ appTextilsoft.config(function($routeProvider, $locationProvider){
      .when("/orcamento-cad",{templateUrl:'view/orcamento-cad.html',controller:'orcamentoController'})
      .when("/orcamento-edit/:id",{templateUrl:'view/orcamento-edit.html',controller:'orcamentoDetalheController'})
      
-      .when("/pedido-list",{templateUrl:'view/pedido.html',controller:'pedidoController'})
+     .when("/pedido-list",{templateUrl:'view/pedido.html',controller:'pedidoController'})
      .when("/pedido/:id",{templateUrl:'view/pedido-detalhe.html',controller:'pedidoDetalheController'})
      .when("/pedido-cad",{templateUrl:'view/pedido-cad.html',controller:'pedidoController'})
      .when("/pedido-edit/:id",{templateUrl:'view/pedido-edit.html',controller:'pedidoDetalheController'})
+     
+     .when("/venda-cad",{templateUrl:'view/venda-cad.html', controller:'vendaController'})
+     .when("/venda-lista",{templateUrl:'view/venda.html', controller:'vendaController'})
+     .when("/venda-edit/:id",{templateUrl:'view/venda-edit.html', controller:'vendaDetalheController'})
+     .when("/venda/:id",{templateUrl:'view/venda-detalhe.html', controller:'vendaDetalheController'})
      
     
 

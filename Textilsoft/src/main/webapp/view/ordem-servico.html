@@ -52,8 +52,8 @@
 					<td>{{ordemServico.idOrdem}}</td>
 					<td>{{ordemServico.fornecedor.nmFornecedor}}</td>
 					<td>{{ordemServico.servicoFornecedor.nmServForn}}</td>
-					<td>{{ordemServico.dataAberturaOrdemServico}}</td>
-					<td>R${{ordemServico.valorTotalOrdemServico}}</td>
+					<td>{{ordemServico.dataAberturaOrdemServico | date: 'dd/MM/yyyy'}}</td>
+					<td>R${{ordemServico.valorTotalOrdemServico | number: 2}}</td>
 					<td>{{ordemServico.statusOrdem}}</td>
 
 
