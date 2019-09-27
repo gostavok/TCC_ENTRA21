@@ -53,6 +53,19 @@ public class PedidoController {
 		}
 	}
 	
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	@Path("ultimo/")
+	public Pedido returnPedidoId() {
+		try {
+			PedidoDAO pedidoDAO = new PedidoDAO();
+			return pedidoDAO.listarPedidoId();
+
+		} catch (SQLException | ClassNotFoundException ex) {
+			Logger.getLogger(PedidoController.class.getName()).log(Level.SEVERE, null, ex);
+			throw new WebApplicationException(Response.Status.INTERNAL_SERVER_ERROR);
+		}
+	}
 	
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)

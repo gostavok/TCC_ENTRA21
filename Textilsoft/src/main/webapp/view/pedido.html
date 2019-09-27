@@ -29,12 +29,12 @@
 
 </br>
 </br>
-<div id="list" class="row">
-    <div class="table-responsive col-md-12">
+<div id="list" class="row col-md-12">
+    <div class="table-responsive">
      
-        <table class="table col-md-12">
+        <table class="table" style="height:300px;"">
             <thead>
-				<tr>
+				<tr >
 					<th class="col-md-2" >ID Pedido</th>
 					<th class="col-md-2">Nome cliente</th>
 					<th class="col-md-2">Qtd prod</th>
@@ -44,7 +44,7 @@
 					<th class="actions">Ações</th>
 				</tr>
 			</thead>   
-    	<tbody>
+    	<tbody style="overflow-y: scroll; height:300px; width:100%;">
     
 		<tr ng-repeat="pedido in listaPedido">
 		

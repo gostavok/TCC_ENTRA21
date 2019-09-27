@@ -6,7 +6,9 @@ appTextilsoft.controller("pedidoController", function($scope, $http) {
 	$scope.idpedido = 0;
 	$scope.pesquisa= "";
 	var url = 'http://localhost:8080/Textilsoft/rest/';
-
+	
+	$scope.disabledInput = false;
+	
 	
 	$scope.listarNomeCliente = function(id) {
 		$http({
@@ -49,11 +51,27 @@ appTextilsoft.controller("pedidoController", function($scope, $http) {
 			url : url + 'pedidos/',
 			data : $scope.pedido
 		}).then(function(response) {		
-			alert("efetuado com sucesso")
-			$scope.pedido = {};
+			$scope.disabledInput = true;
+			
+			$http({
+				method : 'GET',
+				url : url + 'pedidos/ultimo'
+			}).then(function(response) {		
+			//	alert("get com sucesso")
+				var pedidoaux = response.data
+				$scope.pedido.idPedido = pedidoaux.idPedido;
+				mostrar();
+			}, function(response) {
+				console.log('error do get');	
+			});
 		}, function(response) {
 			console.log('error do salvar');	
 		});
+		
+		
+		
+		
+		
 	};
 
 	$scope.deletePedido = function(id) {
@@ -83,5 +101,21 @@ appTextilsoft.controller("pedidoController", function($scope, $http) {
 	$scope.cancelarAlteracaoPedido = function(pedido) {
 		$scope.pedido = {};
 	};
-
+	
+	
+	
+	function mostrar(){
+		
+		document.getElementById('produtos').style.display = 'block';
+		
+	}
+	
+	
+	
+	
 });
+
+
+
+
+

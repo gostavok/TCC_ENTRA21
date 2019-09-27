@@ -7,7 +7,7 @@
 	</div>
 	<div class="form-group col-md-3">
 		<label for="campo1">ID do cliente</label>
-		<input type="text"  class= "form-control"  placeholder="ID do Cliente" ng-model="pedido.cliente.idCliente" ng-blur = "listarNomeCliente(pedido.cliente.idCliente)">
+		<input type="text"  class= "form-control" ng-disabled="disabledInput" placeholder="ID do Cliente" ng-model="pedido.cliente.idCliente" ng-blur = "listarNomeCliente(pedido.cliente.idCliente)">
 	</div>
 	<div class="form-group col-md-3">
 		<label for="campo1">Nome do cliente</label>
@@ -15,22 +15,22 @@
 	</div>
 	<div class="form-group col-md-1">
 		<label for="campo1">Quantidade</label>
-		<input type="text"  class= "form-control"  placeholder="Quantidade" ng-model="pedido.qtdProd">
+		<input type="text"  class= "form-control"  placeholder="Quantidade" ng-disabled="disabledInput" ng-model="pedido.qtdProd">
 	</div>
 
 	<div class="form-group col-md-3">
 		<label for="campo1">Valor total</label>
-		<input type="text"  class= "form-control"  placeholder="Valor" ng-model="pedido.valorTotal">
+		<input type="text"  class= "form-control"  placeholder="Valor" ng-model="pedido.valorTotal" ng-disabled="disabledInput">
 	</div>
 	
 	<div class="form-group col-md-3">
 		<label for="campo1">Data</label>
-		<input type="date"  class= "form-control"  placeholder="Data" ng-model="pedido.dataPedido">
+		<input type="date"  class= "form-control"  placeholder="Data" ng-model="pedido.dataPedido" ng-disabled="disabledInput">
 	</div>
 	
 	<div class="form-group col-md-3">
 		<label for="campo1">Status</label>
-		<select class= "form-control"  ng-model="pedido.statusPedido" id= "pedido.statusPedido">
+		<select class= "form-control"  ng-model="pedido.statusPedido" id= "pedido.statusPedido" ng-disabled="disabledInput">
 			<option value= "Aberto">Aberto</option>
 			<option value = "Pendente">Pendente</option>
 			<option value = "Fechado">Fechado</option>			
@@ -47,4 +47,88 @@
     	</div>
     </div>
  </form>
+ 	
+ 	<br>
+ 
+ 	<div id="produtos" style="display: none; margin-top:5%; background-color:#c79f9f; border-radius: 30px; 
+    border: solid;">
+ 		
+ 		<div class = "row">
+ 		
+ 		<div class="form-group col-md-1" style="margin-top:1%; margin-left:1%;">
+		<label for="campo1">ID</label>
+		<input type="text" class= "form-control" placeholder="ID" ng-model="pedido.idPedido" style="width: 50px" disabled>
+	</div>
+	<div class="form-group col-md-3" style="margin-top:1%; margin-left:1%;">
+		<label for="campo1">ID do produto</label>
+		<input type="text"  class= "form-control" placeholder="ID do produto" ng-model="produto.idProduto" ng-blur = "listarNomeProduto(produto.idProduto)">
+	</div>
+	<div class="form-group col-md-3" style="margin-top:1%; margin-left:1%;">
+		<label for="campo1">Nome do produto</label>
+		<input type="text" class= "form-control" placeholder="Produto" ng-model="produto.descProduto" disabled>
+	</div>
+ 	
+ 	<div class="form-group col-md-3" style="margin-top:1%; margin-left:1%;">
+ 		<br>
+ 	<button type="submit" class="btn btn-primary" ng-click="salvarProduto()" style="margin-left:12px" align="left">Adicionar</button>
+ 	</div>
+ 	
+ 	</div>
+ 	</div>
+ 	
+ 	
+ 	<div id="list" class="row" >
+    <div class="table-responsive col-md-12">
+     
+        <table class="table col-md-12 table-striped" style="overflow-y: scroll; height:80%;">
+            <thead>
+				<tr style="display: inline-table;">
+					<th class="col-md-2">Nome Produto</th>
+					<th class="col-md-2">Valor produto</th>
+					<th class="actions">Ações</th>
+				</tr>
+			</thead>   
+    	<tbody style="overflow-y: scroll; height:80%; width:60%;">
+    
+		<tr ng-repeat="produto in listaProduto">
+		
+		<td >{{produto.descProduto}}</td>
+		<td> {{produto.valorProduto}}</td>
+		<td class="actions">
+		  <a class="btn btn-danger btn-xs"  type="button" ng-click = "procuraPedido(pedido)" data-toggle="modal" data-target="#delete-modal">Excluir</a>
+		<a class="btn btn-warning btn-xs" type="button" href = "pedido-editar/{{pedido.idPedido}}">Alterar</a>
+		<a class="btn btn-success btn-xs" href="estoque/{{pedido.idPedido}}">Detalhe</a>		
+		</td>		
+				
+	</tr>
+	
+	
+	</tbody>
+	
+</table>
+<div class="modal fade" id="delete-modal" tabindex="-1" role="dialog"
+		aria-labelledby="modalLabel">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Fechar">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h4 class="modal-title" id="modalLabel">Excluir Item</h4>
+				</div>
+				<div class="modal-body">Deseja realmente excluir este item?</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-primary" ng-click="deletePedido(idpedido)" data-dismiss = "modal">Sim</button>
+					<button type="button" class="btn btn-default" data-dismiss="modal">N&atilde;o</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+</div>
+ 	
+ 	
+ 	
+ 
 </div>

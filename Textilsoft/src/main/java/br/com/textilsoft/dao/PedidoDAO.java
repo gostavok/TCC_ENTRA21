@@ -114,6 +114,24 @@ public class PedidoDAO {
 	}
 	
 	
+	public Pedido listarPedidoId() throws SQLException, ClassNotFoundException {
+		String sqlQuery = "SELECT id_pedido FROM pedido ORDER BY id_pedido DESC limit 1";
+
+		try {
+			PreparedStatement stmt = this.conexao.getConnection().prepareStatement(sqlQuery);
+			ResultSet rs = stmt.executeQuery();
+
+			if (rs.next()) {
+				return parser2(rs);
+			}
+		} catch (SQLException e) {
+			throw e;
+		}
+
+		return null;
+	}
+	
+	
 	
 	public List<Pedido> listarpedidos() throws SQLException, ClassNotFoundException {
 		String sqlQuery = "SELECT * FROM pedido inner join cliente using(id_cliente) ORDER BY id_pedido";
