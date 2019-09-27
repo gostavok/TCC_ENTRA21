@@ -12,7 +12,7 @@ appTextilsoft.controller("compraController", function($scope, $http) {
 			method : 'GET',
 			url : url + 'compras/'
 		}).then(function(response) {		
-			
+			console.log("salvo");
 			$scope.listaCompra = response.data;	
 			
 			
@@ -29,8 +29,11 @@ appTextilsoft.controller("compraController", function($scope, $http) {
 		$http({
 			method : metodo,
 			url : url + 'compras/',
-			data : $scope.compra
+			data : $scope.compra,
+		
+			
 		}).then(function(response) {		
+			console.log('salvo')
 			alert("efetuado com sucesso")
 			$scope.compra = {};
 		}, function(response) {

@@ -71,6 +71,10 @@ appTextilsoft.config(function($routeProvider, $locationProvider){
      .when("/pedido-cad",{templateUrl:'view/pedido-cad.html',controller:'pedidoController'})
      .when("/pedido-edit/:id",{templateUrl:'view/pedido-edit.html',controller:'pedidoDetalheController'})
      
+     .when("/compra-list",{templateUrl:'view/compra.html',controller:'compraController'})
+     .when("/compra/:id",{templateUrl:'view/compra-detalhe.html',controller:'compraDetalheController'})
+     .when("/compra-cad",{templateUrl:'view/compra-cad.html',controller:'compraController'})
+     .when("/compra-edit/:id",{templateUrl:'view/compra-edit.html',controller:'compraDetalheController'})
     
 
 
