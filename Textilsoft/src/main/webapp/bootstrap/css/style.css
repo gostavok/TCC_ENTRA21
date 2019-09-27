@@ -424,3 +424,12 @@
     -moz-margin-end: 0px;
 }
 
+#shadow{
+	box-shadow: 2px 2px 5px #001e3c; 
+	margin-top: 10px;
+	margin-right: 5px;
+	margin-left: 0px;
+	margin-bottom: 10px;
+	padding-bottom: 5px;
+}
+

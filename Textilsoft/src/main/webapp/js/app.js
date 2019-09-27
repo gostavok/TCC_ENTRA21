@@ -76,7 +76,10 @@ appTextilsoft.config(function($routeProvider, $locationProvider){
      .when("/venda-edit/:id",{templateUrl:'view/venda-edit.html', controller:'vendaDetalheController'})
      .when("/venda/:id",{templateUrl:'view/venda-detalhe.html', controller:'vendaDetalheController'})
      
-    
+     .when("/compra-list",{templateUrl:'view/compra.html',controller:'compraController'})
+     .when("/compra/:id",{templateUrl:'view/compra-detalhe.html',controller:'compraDetalheController'})
+     .when("/compra-cad",{templateUrl:'view/compra-cad.html',controller:'compraController'})
+     .when("/compra-edit/:id",{templateUrl:'view/compra-edit.html',controller:'compraDetalheController'})
 
 
     .otherwise({redirectTo:'/'});

@@ -1,0 +1,43 @@
+<h3 class="page-header">Adicionar Compra</h3>
+<br>
+<div class = "row">
+	<div class="form-group col-md-1">
+		<label for="campo1">ID</label>
+		<input type="text" class= "form-control" placeholder="ID" ng-model="compra.idCompra" style="width: 50px" disabled>
+	</div>
+	<div class="form-group col-md-3">
+		<label for="campo2">Fornecedor</label>
+		<input type="text"  class= "form-control"  placeholder="Fornecedor" ng-model="compra.produtoFornecedor.idProdForn">
+	</div>
+	<div class="form-group col-md-3">
+		<label for="campo3">Quantidade</label>
+		<input type="text"  class= "form-control"  placeholder="Quantidade" ng-model="compra.qtdCompra">
+	</div>
+
+	<div class="form-group col-md-3">
+		<label for="campo3">Valor Total</label>
+		<input type="text"  class= "form-control"  placeholder="Valor Total" ng-model="compra.valorTotal">
+	</div>
+
+	<div class="form-group col-md-3">
+		<label for="campo3">Data da Compra</label>
+		<input type="date"  class= "form-control"  placeholder="Data da Compra" ng-model="compra.dataCompra">
+	</div>
+
+	<div class="form-group col-md-3">
+		<label for="campo3">Data de Vencimento</label>
+		<input type="date"   class= "form-control"  ng-model="compra.dataVenc">
+	</div>
+
+
+	
+<form> 
+  <hr /> 
+	<div id="actions" class="row" style="margin-bottom:12px">
+  	  <div class="col-md-12">
+		<button type="submit" class="btn btn-primary" ng-click="salvarCompra()" style="margin-left:12px">Salvar</button>
+		<button type="button" class="btn btn-default" onClick="history.go(-1)">Voltar</button>
+    	</div>
+    </div>
+ </form>
+</div>
