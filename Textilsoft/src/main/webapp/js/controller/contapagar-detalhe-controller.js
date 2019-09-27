@@ -7,7 +7,10 @@ appTextilsoft.controller("contaPagarDetalheController", function($scope, $http,
 
 		$http.get(url + $routeParams.id).then(function(response) {
 			$scope.contaPagarDetalhe = response.data;
+		
+			$scope.contaPagarDetalhe.dataVencimento = new Date($scope.contaPagarDetalhe.dataVencimento);		
 
+		
 		}, function(response) {
 			console.log('error- contaPagarDetalheController');
 		
@@ -15,11 +18,8 @@ appTextilsoft.controller("contaPagarDetalheController", function($scope, $http,
 		
 		$scope.updateContaPagar = function() {			
 			metodo = 'PUT';		
-			
-			databrasileira = $scope.contaPagarDetalhe.dataVencimento;
-			 split = databrasileira.toString().split('/');
-			 novadata = split[2] + "-" +split[1]+"-"+split[0];
-			$scope.contaPagarDetalhe.dataVencimento = new Date(novadata);
+
+			$scope.contaPagarDetalhe.dataVencimento = new Date($scope.contaPagarDetalhe.dataVencimento);
 			
 			$http({
 				method : metodo,

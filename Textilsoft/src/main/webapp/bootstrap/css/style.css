@@ -22,14 +22,14 @@
     }
 
     #page-wrapper {
-        padding: 22px 10px;
+        padding: 60px 10px;
     }
 }
 
 /* Top Navigation */
 
 .top-nav {
-    padding: 0 15px;
+    padding: 0 50px;
 }
 
 .top-nav>li {
