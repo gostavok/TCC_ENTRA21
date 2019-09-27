@@ -18,7 +18,9 @@ import javax.ws.rs.core.Response;
 
 
 import br.com.textilsoft.dao.VendaDAO;
+import br.com.textilsoft.dao.VendaPedidoDAO;
 import br.com.textilsoft.model.Venda;
+import br.com.textilsoft.model.VendaPedido;
 
 @Path("vendas")
 public class VendaController {
@@ -93,5 +95,17 @@ public class VendaController {
 		}
 	}
 
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	@Path("/pedidos/{idVenda}")
+	public List<VendaPedido> listVendasPedidos() {
+		try {
+			VendaPedidoDAO vendaPedidoDAO = new VendaPedidoDAO ();
+			return vendaPedidoDAO.listar();
+		} catch (Exception ex) {
+			Logger.getLogger(VendaController.class.getName()).log(Level.SEVERE, null, ex);
+			throw new WebApplicationException(Response.Status.INTERNAL_SERVER_ERROR);
+		}
+	}
 	
 }

@@ -63,9 +63,7 @@ public class OrdemServicoDAO {
 	}
 
 	public int alterar(OrdemServico ordemServico) throws SQLException, ClassNotFoundException {
-		
-		Timestamp hoje = new Timestamp(System.currentTimeMillis());
-		
+				
 		int linhasAfetadas = 0;
 		String sqlQuery = 
 				
@@ -86,7 +84,7 @@ public class OrdemServicoDAO {
 			stmt.setLong(2, ordemServico.getServicoFornecedor().getIdServForn());
 			stmt.setDouble(3, ordemServico.getQtdServico());
 			stmt.setString(4, ordemServico.getStatusOrdem().toString());
-			stmt.setDate(5, new java.sql.Date(ordemServico.getDataEntregaOrdemServico().getDate()));
+			stmt.setDate(5, new java.sql.Date(ordemServico.getDataEntregaOrdemServico().getTime()));
 			stmt.setDouble(6, ordemServico.getValorTotalOrdemServico());
 			stmt.setLong(7, ordemServico.getIdOrdem());
 

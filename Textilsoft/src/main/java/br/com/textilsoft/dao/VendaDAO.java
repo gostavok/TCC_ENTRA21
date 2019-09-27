@@ -3,6 +3,7 @@ package br.com.textilsoft.dao;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,14 +24,19 @@ public class VendaDAO {
 	public void inserir(Venda venda) throws SQLException, ClassNotFoundException {
 		
 		
-		String sqlQuery = "INSERT INTO venda ( valor_total, "
-				+ "data_pagamento, data_venda) VALUES (?, ?, ?) ";
+		String sqlQuery = "INSERT INTO venda "
+				+ "( valor_total, "
+				+ "data_pagamento, "
+				+ "data_venda) "
+				+ "VALUES (?, ?, ?) ";
 
 		try {
+			Timestamp hoje = new Timestamp(System.currentTimeMillis());
+			
 			PreparedStatement stmt = this.conexao.getConnection().prepareStatement(sqlQuery);
-			stmt.setDouble(1, venda.getValorTotal());
-			stmt.setTimestamp(2, new java.sql.Timestamp(venda.getDataPagamento().getTime()));
-			stmt.setTimestamp(3, new java.sql.Timestamp(venda.getDataVenda().getTime()));
+			stmt.setDouble(1, 0);
+			stmt.setDate(2, new java.sql.Date(venda.getDataPagamento().getTime()));
+			stmt.setTimestamp(3, hoje);
 			
 			stmt.execute();			
 			this.conexao.commit();
