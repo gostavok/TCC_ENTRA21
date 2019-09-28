@@ -7,6 +7,13 @@ appTextilsoft.controller("ordemServicoController", function($scope, $http) {
     $scope.ordemServico.servicoFornecedor = {};
 	$scope.ordemServico.valorTotalOrdemServico = "";
     $scope.ordemServico.fornecedor = {};
+    
+	var today = new Date();
+	var dia = today.getDate();
+	var mes = today.getMonth()+1;
+	var ano = today.getFullYear();
+	
+	$scope.dataEmissao = dia + "/" + mes + "/" + ano;
 
 	$scope.idordem = 0;
 	$scope.pesquisa= "";
@@ -18,14 +25,7 @@ appTextilsoft.controller("ordemServicoController", function($scope, $http) {
 			url : url + 'fornecedores/'+id
 		}).then(function(response) {
 			$scope.ordemServico.fornecedor = response.data; 
-
-			var today = new Date();
-			var dia = today.getDate();
-			var mes = today.getMonth()+1;
-			var ano = today.getFullYear();
-			
-			$scope.dataEmissao = dia + "/" + mes + "/" + ano;
-						
+					
 		}, function(response) {
 			console.log('error');
 			console.log(response.data);''
