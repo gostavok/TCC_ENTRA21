@@ -32,7 +32,7 @@
 <div id="list" class="row col-md-12">
     <div class="table-responsive">
      
-        <table class="table" style="height:300px;"">
+        <table class="table" style="height:300px;">
             <thead>
 				<tr >
 					<th class="col-md-2" >ID Pedido</th>
@@ -56,7 +56,7 @@
 		<td >{{pedido.statusPedido}}</td>
 		<td class="actions">
 		  <a class="btn btn-danger btn-xs"  type="button" ng-click = "procuraPedido(pedido)" data-toggle="modal" data-target="#delete-modal">Excluir</a>
-		<a class="btn btn-warning btn-xs" type="button" href = "pedido-editar/{{pedido.idPedido}}">Alterar</a>
+		<a class="btn btn-warning btn-xs" type="button" href = "pedido-edit/{{pedido.idPedido}}">Alterar</a>
 		<a class="btn btn-success btn-xs" href="estoque/{{pedido.idPedido}}">Detalhe</a>		
 		</td>		
 				

@@ -48,9 +48,23 @@ appTextilsoft.controller("pedidoController", function($scope, $http) {
 				url : url + 'pedidosprodutos/' + $scope.pedidoproduto.pedido.idPedido
 			}).then(function(response) {		
 				$scope.pedidoprodutos = response.data;
-				$scope.pedido.valorTotal = ($scope.pedido.valorTotal + $scope.pedidoproduto.produto.valorProduto);
+				var novoValor = $scope.pedido.valorTotal + $scope.pedidoproduto.produto.valorProduto;
+				$scope.pedido.valorTotal = novoValor;
 				$scope.pedido.qtdProd = $scope.pedido.qtdProd + 1;
 				$scope.pedidoproduto.produto = {};
+				
+				
+				$http({
+					method : 'PUT',
+					url : url + 'pedidos/',
+					data : $scope.pedido
+				}).then(function(response) {
+					console.log('atualizado');
+				}, function(response) {
+					console.log('error do salvar');		
+				});
+				
+				
 			}, function(response) {
 				console.log('error do get');	
 			});
@@ -126,19 +140,28 @@ appTextilsoft.controller("pedidoController", function($scope, $http) {
 	};
 
 	$scope.deletePedido = function(id) {
-
+		
+		
 		$http({
 			method : 'DELETE',
-			url : url + 'pedidos/' + id			
+			url : url + 'pedidosprodutos/' + id			
 		}).then(function(response) {
-			var pos = $scope.listaPedido.indexOf(id);
-			$scope.listaPedido.splice(pos,1);	
+		
 			
-		}, function(response) {
-			console.log('error do salvar');
-			console.log(response.data);
-			console.log(response.status);
+			$http({
+				method : 'DELETE',
+				url : url + 'pedidos/' + id			
+			}).then(function(response) {
+				var pos = $scope.listaPedido.indexOf(id);
+				$scope.listaPedido.splice(pos,1);	
+				
+			}, function(response) {
+				console.log('error do salvar');
+				console.log(response.data);
+				console.log(response.status);
+			});
 		});
+		
 	};
 
 	$scope.alterarPedido = function(pedido) {
@@ -168,10 +191,21 @@ appTextilsoft.controller("pedidoController", function($scope, $http) {
 			method : 'DELETE',
 			url : url + 'pedidosprodutos/' + produtopedido.pedido.idPedido+'/'+produtopedido.produto.idProduto+'/'
 		}).then(function(response) {
-			var pos = $scope.pedidoprodutos.indexOf(produtopedido.pedido.idPedido);
-			$scope.pedidoprodutos.splice(pos,1);
-			$scope.pedido.valorTotal = $scope.pedido.valorTotal - produtopedido.produto.valorProduto;
+			$scope.pedido.valorTotal = ($scope.pedido.valorTotal - produtopedido.produto.valorProduto).toFixed(2);
 			$scope.pedido.qtdProd = $scope.pedido.qtdProd -1;
+			var pos = $scope.pedidoprodutos.indexOf(produtopedido.produto.idProduto);
+			$scope.pedidoprodutos.splice(pos);
+			
+			$http({
+				method : 'PUT',
+				url : url + 'pedidos/',
+				data : $scope.pedido
+			}).then(function(response) {
+				console.log('atualizado');
+			}, function(response) {
+				console.log('error do salvar');		
+			});
+			
 			
 		}, function(response) {
 			console.log('error do salvar');
