@@ -52,8 +52,8 @@ public class ClienteDAO {
 			stmt.setString(6, cliente.getCidadeCliente());
 			stmt.setString(7, cliente.getEstadoCliente());
 			stmt.setString(8, cliente.getCompCliente());
-			stmt.setInt(9, cliente.getTelCliente1());
-			stmt.setInt(10, cliente.getTelCliente2());
+			stmt.setLong(9, cliente.getTelCliente1());
+			stmt.setLong(10, cliente.getTelCliente2());
 			stmt.setString(11, cliente.getEmailCliente());
 			stmt.setTimestamp(12, hoje);	
 			
@@ -99,8 +99,8 @@ public class ClienteDAO {
 			stmt.setString(6, cliente.getCidadeCliente());
 			stmt.setString(7, cliente.getEstadoCliente());
 			stmt.setString(8, cliente.getCompCliente());
-			stmt.setInt(9, cliente.getTelCliente1());
-			stmt.setInt(10, cliente.getTelCliente2());
+			stmt.setLong(9, cliente.getTelCliente1());
+			stmt.setLong(10, cliente.getTelCliente2());
 			stmt.setString(11, cliente.getEmailCliente());
 
 			linhasAfetadas = stmt.executeUpdate();
@@ -179,8 +179,8 @@ public class ClienteDAO {
 		c.setCidadeCliente(resultSet.getString("cidade_cliente"));
 		c.setEstadoCliente(resultSet.getString("estado_cliente"));
 		c.setCompCliente(resultSet.getString("comp_cliente"));
-		c.setTelCliente1(resultSet.getInt("tel_cliente"));
-		c.setTelCliente2(resultSet.getInt("tel2_cliente"));
+		c.setTelCliente1(resultSet.getLong("tel_cliente"));
+		c.setTelCliente2(resultSet.getLong("tel2_cliente"));
 		c.setEmailCliente(resultSet.getString("email_cliente"));
 		c.setDtCadCliente(resultSet.getDate("dt_cad_cliente"));
 		

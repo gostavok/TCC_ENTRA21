@@ -13,8 +13,8 @@ public class Cliente {
 	private String 	cidadeCliente;
 	private String 	estadoCliente;
 	private String 	compCliente;
-	private int 	telCliente1;
-	private int 	telCliente2;
+	private long 	telCliente1;
+	private long 	telCliente2;
 	private String 	emailCliente;
 	private Date	dtCadCliente;	
 	
@@ -90,19 +90,19 @@ public class Cliente {
 		this.compCliente = compCliente;
 	}
 
-	public int getTelCliente1() {
+	public long getTelCliente1() {
 		return telCliente1;
 	}
 
-	public void setTelCliente1(int telCliente1) {
+	public void setTelCliente1(long telCliente1) {
 		this.telCliente1 = telCliente1;
 	}
 
-	public int getTelCliente2() {
+	public long getTelCliente2() {
 		return telCliente2;
 	}
 
-	public void setTelCliente2(int telCliente2) {
+	public void setTelCliente2(long telCliente2) {
 		this.telCliente2 = telCliente2;
 	}
 
