@@ -146,7 +146,13 @@ appTextilsoft.controller("pedidoController", function($scope, $http) {
 			method : 'DELETE',
 			url : url + 'pedidosprodutos/' + id			
 		}).then(function(response) {
-		
+			var pos = 0;			
+			
+			$scope.listaPedido.filter(function(i, idx) {
+			    if(i.idPedido == id)			    
+			    	pos = idx;			   
+			});			
+			$scope.listaPedido.splice(pos,1);	
 			
 			$http({
 				method : 'DELETE',
@@ -187,9 +193,6 @@ appTextilsoft.controller("pedidoController", function($scope, $http) {
 	
 	$scope.deletarprodutopedido = function (produtopedido) {
 		
-		var pos = 0;
-		
-		
 		$http({
 			method : 'DELETE',
 			url : url + 'pedidosprodutos/' + produtopedido.pedido.idPedido+'/'+ produtopedido.produto.idProduto+'/'
@@ -201,9 +204,11 @@ appTextilsoft.controller("pedidoController", function($scope, $http) {
 			
 			
 			var pos = 0;			
+		
 			$scope.pedidoprodutos.filter(function(i, idx) {
-			    if(i.idProduto == produtopedido.produto.idProduto)			    
-			    	pos = idx;			   
+			    if(i.produto.idProduto == produtopedido.produto.idProduto)			    
+			    	pos = idx;		
+			    
 			});	
 			
 			$scope.pedidoprodutos.splice(pos,1);
@@ -218,6 +223,8 @@ appTextilsoft.controller("pedidoController", function($scope, $http) {
 				console.log('error do salvar');		
 			});
 			
+//			$scope.pedido.valorTotal = $scope.pedido.valorTotal - produtopedido.produto.valorProduto;
+//			$scope.pedido.qtdProd = $scope.pedido.qtdProd -1;
 			
 		}, function(response) {
 			console.log('error do salvar');
