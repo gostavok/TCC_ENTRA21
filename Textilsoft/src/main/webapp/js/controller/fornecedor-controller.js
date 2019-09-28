@@ -40,14 +40,21 @@ appTextilsoft.controller("fornecedorController", function($scope, $http) {
 	};
 
 	$scope.deleteFornecedor = function(id) {
-
+	
+		
 		$http({
 			method : 'DELETE',
 			url : url + 'fornecedores/' + id
 		}).then(function(response) {
-			var pos = $scope.listaFornecedor.indexOf(id);
-			$scope.listaFornecedor.splice(pos,1);	
+			var pos = 0;
+			$scope.listaFornecedor.filter(function(i, idx) {
+			    if(i.idFornecedor == id)
+			    	pos = idx;
+			   	
+			   
+			});	
 			
+			 $scope.listaFornecedor.splice(pos, 1);
 		}, function(response) {
 			console.log('error do salvar');
 			console.log(response.data);

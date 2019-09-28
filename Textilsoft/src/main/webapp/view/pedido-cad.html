@@ -90,6 +90,7 @@
         <table class="table col-md-12 table-striped" style="overflow-y: scroll; height:80%;">
             <thead>
 				<tr style="display: inline-table;">
+				<th class="col-md-2">#</th>
 					<th class="col-md-2">Nome Produto</th>
 					<th class="col-md-2">Valor produto</th>
 					<th class="actions">Ações</th>
@@ -99,6 +100,7 @@
     
 		<tr ng-repeat="produtopedido in pedidoprodutos">
 		
+		<td > {{produtopedido.produto.idProduto}}</td>
 		<td >{{produtopedido.produto.descProduto}}</td>
 		<td> {{produtopedido.produto.valorProduto}}</td>
 		<td class="actions">

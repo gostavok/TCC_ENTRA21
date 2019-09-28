@@ -46,7 +46,7 @@ appTextilsoft.controller("pedidoController", function($scope, $http) {
 			$http({
 				method : 'GET',
 				url : url + 'pedidosprodutos/' + $scope.pedidoproduto.pedido.idPedido
-			}).then(function(response) {		
+			}).then(function(response) {					
 				$scope.pedidoprodutos = response.data;
 				$scope.pedido.valorTotal = ($scope.pedido.valorTotal + $scope.pedidoproduto.produto.valorProduto);
 				$scope.pedido.qtdProd = $scope.pedido.qtdProd + 1;
@@ -164,12 +164,25 @@ appTextilsoft.controller("pedidoController", function($scope, $http) {
 	
 	$scope.deletarprodutopedido = function (produtopedido) {
 		
+		var pos = 0;
+		
+		
 		$http({
 			method : 'DELETE',
-			url : url + 'pedidosprodutos/' + produtopedido.pedido.idPedido+'/'+produtopedido.produto.idProduto+'/'
+			url : url + 'pedidosprodutos/' + produtopedido.pedido.idPedido+'/'+ produtopedido.produto.idProduto+'/'
 		}).then(function(response) {
-			var pos = $scope.pedidoprodutos.indexOf(produtopedido.pedido.idPedido);
+			var pos1 = $scope.pedidoprodutos.indexOf(produtopedido.produto.idProduto);		
+			
+			
+			$scope.pedidoprodutos.filter(function(i, idx) {
+			    if(i.idProduto == produtopedido.produto.idProduto)			    
+			    	pos = idx;			   	
+			   
+			});	
+			
 			$scope.pedidoprodutos.splice(pos,1);
+			
+			
 			$scope.pedido.valorTotal = $scope.pedido.valorTotal - produtopedido.produto.valorProduto;
 			$scope.pedido.qtdProd = $scope.pedido.qtdProd -1;
 			
