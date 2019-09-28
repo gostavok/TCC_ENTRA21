@@ -42,10 +42,15 @@ appTextilsoft.controller("corController", function($scope, $http) {
 			method : 'DELETE',
 			url : url + 'cores/' + id
 		}).then(function(response) {
-			var pos = $scope.listaCor.indexOf(id);
+			var pos = 0;
+			$scope.listaCor.filter(function(i, idx) {
+			    if(i.idCor == id)
+			    	pos = idx; 				   
+			});			
 			$scope.listaCor.splice(pos,1);	
 			
 		}, function(response) {
+			alert("Existe produto usando essa cor")
 			console.log('error do salvar');
 			console.log(response.data);
 			console.log(response.status);
@@ -57,7 +62,7 @@ appTextilsoft.controller("corController", function($scope, $http) {
 	}
 	
 	$scope.procuraCor = function(cor) {
-		$scope.idCor = angular.copy(cors.idCor);
+		$scope.idCor = angular.copy(cor.idCor);
 	}
 
 	$scope.cancelarAlteracaoCor = function(cor) {

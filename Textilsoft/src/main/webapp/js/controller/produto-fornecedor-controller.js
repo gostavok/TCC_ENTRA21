@@ -64,7 +64,11 @@ appTextilsoft.controller("produtoFornecedorController", function($scope, $http) 
 			method : 'DELETE',
 			url : url + 'produtosfornecedores/' + id
 		}).then(function(response) {
-			var pos = $scope.listaProdutoFornecedor.indexOf(id);
+			var pos = 0;
+			$scope.listaProdutoFornecedor.filter(function(i, idx) {
+			    if(i.idProdForn == id)
+			    	pos = idx; 				   
+			});
 			$scope.listaProdutoFornecedor.splice(pos,1);	
 			
 		}, function(response) {

@@ -40,10 +40,15 @@ appTextilsoft.controller("estampaController", function($scope, $http) {
 			method : 'DELETE',
 			url : url + 'estampas/' + id
 		}).then(function(response) {
-			var pos = $scope.listaEstampa.indexOf(id);
+			var pos = 0;
+			$scope.listaEstampa.filter(function(i, idx) {
+			    if(i.idEstampa == id)
+			    	pos = idx; 				   
+			});			
 			$scope.listaEstampa.splice(pos,1);	
 			
 		}, function(response) {
+			alert("Existe produto usando essa estampa")
 			console.log('error do salvar');
 			console.log(response.data);
 			console.log(response.status);

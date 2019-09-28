@@ -57,7 +57,11 @@ appTextilsoft.controller("compraController", function($scope, $http) {
 			method : 'DELETE',
 			url : url + 'compras/' + id
 		}).then(function(response) {
-			var pos = $scope.listaCompra.indexOf(id);
+			var pos = 0;
+			$scope.listaCompra.filter(function(i, idx) {
+			    if(i.idCompra == id)
+			    	pos = idx; 				   
+			});					
 			$scope.listaCompra.splice(pos,1);	
 			
 		}, function(response) {

@@ -43,9 +43,14 @@ appTextilsoft.controller("clienteController", function($scope, $http) {
 		$http({
 			method : 'DELETE',
 			url : url + 'clientes/' + id
-		}).then(function(response) {
-			var pos = $scope.listaCliente.indexOf(id);
-			$scope.listaCliente.splice(pos,1);	
+		}).then(function(response) {			
+			var pos = 0;
+			$scope.listaCliente.filter(function(i, idx) {
+			    if(i.idCliente == id)
+			    	pos = idx; 				   
+			});				
+			 $scope.listaCliente.splice(pos, 1);			
+	
 			
 		}, function(response) {
 			console.log('error do salvar');

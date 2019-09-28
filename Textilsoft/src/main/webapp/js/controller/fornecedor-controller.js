@@ -3,8 +3,9 @@ appTextilsoft.controller("fornecedorController", function($scope, $http) {
 	$scope.listaFornecedor = [];
 	$scope.fornecedor = {};
 	$scope.idfornecedor = 0;
-	var url = 'http://localhost:8080/Textilsoft/rest/';
-
+	
+	var url = 'http://localhost:8080/Textilsoft/rest/';	
+	
 	$scope.listarFornecedores = function() {
 	
 		
@@ -40,14 +41,18 @@ appTextilsoft.controller("fornecedorController", function($scope, $http) {
 	};
 
 	$scope.deleteFornecedor = function(id) {
-
+	
+		
 		$http({
 			method : 'DELETE',
 			url : url + 'fornecedores/' + id
 		}).then(function(response) {
-			var pos = $scope.listaFornecedor.indexOf(id);
-			$scope.listaFornecedor.splice(pos,1);	
-			
+			var pos = 0;
+			$scope.listaFornecedor.filter(function(i, idx) {
+			    if(i.idFornecedor == id)
+			    	pos = idx; 				   
+			});				
+			 $scope.listaFornecedor.splice(pos, 1);
 		}, function(response) {
 			console.log('error do salvar');
 			console.log(response.data);
@@ -66,5 +71,11 @@ appTextilsoft.controller("fornecedorController", function($scope, $http) {
 	$scope.cancelarAlteracaoFornecedor = function(fornecedor) {
 		$scope.fornecedor = {};
 	};
-
+	
+	var today = new Date();
+	var dia = today.getDate();
+	var mes = today.getMonth()+1;
+	var ano = today.getFullYear();
+	
+	$scope.fornecedor.dtCadFornecedor = dia + "/" + mes + "/" + ano;	
 });

@@ -62,7 +62,11 @@ appTextilsoft.controller("estoqueController", function($scope, $http) {
 			method : 'DELETE',
 			url : url + 'estoque/' + id
 		}).then(function(response) {
-			var pos = $scope.listaEstoque.indexOf(id);
+			var pos = 0;
+			$scope.listaEstoque.filter(function(i, idx) {
+			    if(i.idEstoque == id)
+			    	pos = idx; 				   
+			});	
 			$scope.listaEstoque.splice(pos,1);	
 			
 		}, function(response) {

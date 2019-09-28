@@ -1,6 +1,7 @@
 
 <meta charset="utf-8">
 
+
 <h3 class="page-header">Criar pedido</h3>
 <br>
 <div class = "row">
@@ -90,17 +91,20 @@
  	<div id="list" class="row" >
     <div class="table-responsive col-md-12">
      
-        <table class="table" style=" height:300px;">
+        <table class="table col-md-12">
             <thead>
-				<tr >
-					<th class="col-md-5">Nome Produto</th>
-					<th class="col-md-5">Valor produto</th>
-					<th class="actions">Ações</th>
+				<tr>
+				<th class="col-md-3">#</th>
+					<th class="col-md-3">Nome Produto</th>
+					<th class="col-md-3">Valor produto</th>
+					<th class="actions col-md-3">AÃ§Ãµes</th>
 				</tr>
 			</thead>   
     	<tbody>
     
 		<tr ng-repeat="produtopedido in pedidoprodutos">
+		
+		<td > {{produtopedido.produto.idProduto}}</td>
 		<td >{{produtopedido.produto.descProduto}}</td>
 		<td> {{produtopedido.produto.valorProduto}}</td>
 		<td class="actions">
