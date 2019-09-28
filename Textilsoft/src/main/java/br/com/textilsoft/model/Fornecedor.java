@@ -14,8 +14,8 @@ public class Fornecedor {
 	private String cidadeFornecedor;
 	private String estadoFornecedor;
 	private String compFornecedor;
-	private int telFornecedor;
-	private int tel2Fornecedor;
+	private long telFornecedor;
+	private long tel2Fornecedor;
 	private String emailFornecedor;
 	private Date dtCadFornecedor;
 	
@@ -74,16 +74,16 @@ public class Fornecedor {
 	public void setCompFornecedor(String compFornecedor) {
 		this.compFornecedor = compFornecedor;
 	}
-	public int getTelFornecedor() {
+	public long getTelFornecedor() {
 		return telFornecedor;
 	}
-	public void setTelFornecedor(int telFornecedor) {
+	public void setTelFornecedor(long telFornecedor) {
 		this.telFornecedor = telFornecedor;
 	}
-	public int getTel2Fornecedor() {
+	public long getTel2Fornecedor() {
 		return tel2Fornecedor;
 	}
-	public void setTel2Fornecedor(int tel2Fornecedor) {
+	public void setTel2Fornecedor(long tel2Fornecedor) {
 		this.tel2Fornecedor = tel2Fornecedor;
 	}
 	public String getEmailFornecedor() {
@@ -115,8 +115,8 @@ public class Fornecedor {
 		result = prime * result + ((estadoFornecedor == null) ? 0 : estadoFornecedor.hashCode());
 		result = prime * result + (int) (idFornecedor ^ (idFornecedor >>> 32));
 		result = prime * result + ((nmFornecedor == null) ? 0 : nmFornecedor.hashCode());
-		result = prime * result + tel2Fornecedor;
-		result = prime * result + telFornecedor;
+		result = prime * result + (int)tel2Fornecedor;
+		result = prime * result + (int)telFornecedor;
 		return result;
 	}
 	@Override

@@ -38,7 +38,8 @@
 					<th class="col-md-2" >ID</th>
 					<th class="col-md-2">Razão Social</th>
 					<th class="col-md-2">E-mail</th>
-					<th class="col-md-3">Telefone</th>
+					<th class="col-md-2">Telefone</th>
+					<th class="col-md-2">Cadastro</th>
 					<th class="actions">Ações</th>
 				</tr>
 			</thead>   
@@ -48,8 +49,9 @@
 		
 		<td >{{cliente.idCliente }}</td>
 		<td> {{cliente.nmCliente }}</td>
-		<td>{{cliente.emailCliente }}</td>
-		<td>{{cliente.telCliente}}</td>
+		<td>{{cliente.emailCliente }}</td>		
+		<td>{{cliente.telCliente1}}</td>
+		<td>{{cliente.dtCadCliente | date: 'dd/MM/yyyy'}}</td>
 		<td class="actions">
 		  <a class="btn btn-danger btn-xs"  type="button" ng-click = "procuraCliente(cliente)" data-toggle="modal" data-target="#delete-modal">Excluir</a>
 		<a class="btn btn-warning btn-xs" type="button" href = "clientes-editar/{{cliente.idCliente}}">Alterar</a>
