@@ -15,12 +15,12 @@
 	</div>
 	<div class="form-group col-md-1">
 		<label for="campo1">Quantidade</label>
-		<input type="text"  class= "form-control"  placeholder="Quantidade" ng-disabled="disabledInput" ng-model="pedido.qtdProd">
+		<input type="text"  class= "form-control" value="0" disabled ng-model="pedido.qtdProd">
 	</div>
 
 	<div class="form-group col-md-3">
 		<label for="campo1">Valor total</label>
-		<input type="text"  class= "form-control"  placeholder="Valor" ng-model="pedido.valorTotal" ng-disabled="disabledInput">
+		<input type="text"  class= "form-control" value="0" ng-model="pedido.valorTotal" disabled>
 	</div>
 	
 	<div class="form-group col-md-3">
@@ -42,7 +42,7 @@
   <hr /> 
 	<div id="actions" class="row" style="margin-bottom:12px" >
   	  <div class="col-md-12">
-		<button type="submit" class="btn btn-primary" ng-click="salvarPedido()" style="margin-left:12px">Salvar</button>
+		<button type="submit" class="btn btn-primary" ng-click="criarPedido()" style="margin-left:12px">Criar</button>
 		<button type="button" class="btn btn-default" onClick="history.go(-1)">Voltar</button>
     	</div>
     </div>
@@ -53,6 +53,13 @@
  	<div id="produtos" style="display: none; margin-top:5%; background-color:#c79f9f; border-radius: 30px; 
     border: solid;">
  		
+    	<h4>Informações sobre o pedido:</h4>
+    	<div>
+    		<p>Quantidade de produtos: {{pedido.qtdProd}}</p>
+    		<p>Valor total: {{pedido.valorTotal}}</p>
+    	</div>
+
+
  		<div class = "row">
  		
  		<div class="form-group col-md-1" style="margin-top:1%; margin-left:1%;">
