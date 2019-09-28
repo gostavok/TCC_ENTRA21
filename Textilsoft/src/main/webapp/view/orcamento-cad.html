@@ -1,4 +1,4 @@
-<h3 class="page-header">Adicionar Orcameto</h3>
+<h3 class="page-header">Adicionar Or&#231;ameto</h3>
 <br>
 <div class = "row">
 	<div class="form-group col-md-1">
@@ -6,18 +6,38 @@
 		<input type="text" class= "form-control" placeholder="ID"  ng-model="orcamento.idOrcamento" style="width: 50px" disabled>
 	</div>
 	<div class="form-group col-md-3">
-		<label for="campo2">Cor</label>
-		<input type="text"  class= "form-control"  placeholder="Cor" ng-change="calculaTotal()" ng-model="orcamento.corOrcamento.idCor">
-	</div>
-	<div class="form-group col-md-3">
-		<label for="campo3">Material</label>
-		<input type="text"  class= "form-control"  placeholder="Material" ng-change="calculaTotal()" ng-model="orcamento.materialOrcamento.idMaterial">
+		<label for="campo2">ID Cor</label>
+		<input type="text"  class= "form-control"  placeholder="IdCor" ng-change="calculaTotal()" ng-model="orcamento.corOrcamento.idCor">
 	</div>
 	
 	<div class="form-group col-md-3">
-		<label for="campo4">Estampa</label>
-		<input type="text"  class= "form-control"  placeholder="Estampa" ng-change="calculaTotal()" ng-model="orcamento.estampaOrcamento.idEstampa">
+		<label for="campo2">Cor</label>
+		<input type="text"  class= "form-control"  placeholder="Cor" ng-change="calculaTotal()" ng-model="listaCor.nmCor" disabled>
 	</div>
+	
+	<div class="form-group col-md-3">
+		<label for="campo3">ID Material</label>
+		<input type="text"  class= "form-control"  placeholder="IdMaterial" ng-change="calculaTotal()" ng-model="orcamento.materialOrcamento.idMaterial">
+	</div>
+	
+	<div class="form-group col-md-3">
+		<label for="campo3">Material</label>
+		<input type="text"  class= "form-control"  placeholder="Material" ng-change="calculaTotal()" ng-model="listaMaterial.nmMaterial" disabled>
+	</div>
+	
+	
+	<div class="form-group col-md-3">
+		<label for="campo4">ID Estampa</label>
+		<input type="text"  class= "form-control"  placeholder="IdEstampa" ng-change="calculaTotal()" ng-model="orcamento.estampaOrcamento.idEstampa">
+	</div>
+	
+		
+	<div class="form-group col-md-3">
+		<label for="campo4">Estampa</label>
+		<input type="text"  class= "form-control"  placeholder="Estampa" ng-change="calculaTotal()" ng-model="listaEstampa.codEstampa" disabled>
+	</div>
+	
+	
 	
 	<div class="form-group col-md-3">
 		<label for="campo4">Quantidade</label>
