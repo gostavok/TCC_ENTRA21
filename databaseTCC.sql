@@ -136,7 +136,7 @@ create table pedido(
 
 create table pedido_produto (
 	id_pedido int(11) not null,
-    id_produto int(11) not null unique,
+    id_produto int(11) not null,
     foreign key (id_pedido) references pedido (id_pedido),
     foreign key (id_produto) references produto (id_produto)
 );
