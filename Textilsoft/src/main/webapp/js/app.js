@@ -1,4 +1,4 @@
-var appTextilsoft = angular.module("appTextilsoft", ['ngRoute']);
+var appTextilsoft = angular.module("appTextilsoft", ['ngRoute','ngMask']);
 
 appTextilsoft.config(function($routeProvider, $locationProvider){
     

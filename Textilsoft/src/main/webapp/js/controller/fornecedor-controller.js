@@ -36,6 +36,7 @@ appTextilsoft.controller("fornecedorController", function($scope, $http) {
 			alert("efetuado com sucesso")
 			$scope.fornecedor = {};
 		}, function(response) {
+			console.log($scope.fornecedor);
 			console.log('error do salvar');	
 		});
 	};
@@ -77,5 +78,5 @@ appTextilsoft.controller("fornecedorController", function($scope, $http) {
 	var mes = today.getMonth()+1;
 	var ano = today.getFullYear();
 	
-	$scope.fornecedor.dtCadFornecedor = dia + "/" + mes + "/" + ano;	
+	$scope.dataAtual = dia + "/" + mes + "/" + ano;
 });
