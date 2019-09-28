@@ -1,7 +1,7 @@
 appTextilsoft.controller("produtoController", function($scope, $http) {
     $scope.listaProduto = [];
    $scope.produto = {};
-   
+	$scope.idExcluir = 0;
    var url = 'http://localhost:8080/Textilsoft/rest/';
    $scope.listarProdutos  = function(){
        var metodo = 'GET';
@@ -44,7 +44,7 @@ appTextilsoft.controller("produtoController", function($scope, $http) {
 			});
             $scope.listaProduto.splice(pos,1);    
         }, function(response) {
-            console.log('error do salvar');
+            console.log('error do excluir');
             console.log(response.data);
             console.log(response.status);
         });
@@ -54,8 +54,8 @@ appTextilsoft.controller("produtoController", function($scope, $http) {
 		$scope.produto = angular.copy(produto);
 	}
 	
-	$scope.procuraProduto = function(produto) {
-		$scope.idProduto = angular.copy(produto.idProduto);
+	$scope.procuraProduto = function(id) {
+		$scope.idExcluir = angular.copy(id);
 	}
 
 	$scope.cancelarAlteracaoProduto = function(produto) {

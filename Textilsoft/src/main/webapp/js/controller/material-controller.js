@@ -49,7 +49,8 @@ appTextilsoft.controller("materialController", function($scope, $http) {
 			$scope.listaMaterial.splice(pos,1);	
 			
 		}, function(response) {
-			console.log('error do salvar');
+			alert("Existe produto usando esse material")
+			console.log('error ao excluir');
 			console.log(response.data);
 			console.log(response.status);
 		});

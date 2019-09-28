@@ -48,6 +48,7 @@ appTextilsoft.controller("estampaController", function($scope, $http) {
 			$scope.listaEstampa.splice(pos,1);	
 			
 		}, function(response) {
+			alert("Existe produto usando essa estampa")
 			console.log('error do salvar');
 			console.log(response.data);
 			console.log(response.status);

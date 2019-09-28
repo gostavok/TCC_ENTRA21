@@ -50,6 +50,7 @@ appTextilsoft.controller("corController", function($scope, $http) {
 			$scope.listaCor.splice(pos,1);	
 			
 		}, function(response) {
+			alert("Existe produto usando essa cor")
 			console.log('error do salvar');
 			console.log(response.data);
 			console.log(response.status);
@@ -61,7 +62,7 @@ appTextilsoft.controller("corController", function($scope, $http) {
 	}
 	
 	$scope.procuraCor = function(cor) {
-		$scope.idCor = angular.copy(cors.idCor);
+		$scope.idCor = angular.copy(cor.idCor);
 	}
 
 	$scope.cancelarAlteracaoCor = function(cor) {

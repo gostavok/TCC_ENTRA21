@@ -1,3 +1,4 @@
+<meta charset="utf-8">
 <h3 class="page-header">Criar pedido</h3>
 <br>
 <div class = "row">
@@ -53,7 +54,7 @@
  	<div id="produtos" style="display: none; margin-top:5%; background-color:#c79f9f; border-radius: 30px; 
     border: solid;">
  		
-    	<h4>Informações sobre o pedido:</h4>
+    	<h4>InformaÃ§Ãµes sobre o pedido:</h4>
     	<div>
     		<p>Quantidade de produtos: {{pedido.qtdProd}}</p>
     		<p>Valor total: {{pedido.valorTotal}}</p>
@@ -87,16 +88,16 @@
  	<div id="list" class="row" >
     <div class="table-responsive col-md-12">
      
-        <table class="table col-md-12 table-striped" style="overflow-y: scroll; height:80%;">
+        <table class="table col-md-12">
             <thead>
-				<tr style="display: inline-table;">
-				<th class="col-md-2">#</th>
-					<th class="col-md-2">Nome Produto</th>
-					<th class="col-md-2">Valor produto</th>
-					<th class="actions">Ações</th>
+				<tr>
+				<th class="col-md-3">#</th>
+					<th class="col-md-3">Nome Produto</th>
+					<th class="col-md-3">Valor produto</th>
+					<th class="actions col-md-3">AÃ§Ãµes</th>
 				</tr>
 			</thead>   
-    	<tbody style="overflow-y: scroll; height:80%; width:60%;">
+    	<tbody>
     
 		<tr ng-repeat="produtopedido in pedidoprodutos">
 		
