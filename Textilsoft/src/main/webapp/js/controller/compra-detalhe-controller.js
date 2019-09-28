@@ -19,6 +19,16 @@ appTextilsoft.controller("compraDetalheController", function($scope, $http,
 		$scope.updateCompra = function() {			
 			metodo = 'PUT';		
 
+			 databrasileira = $scope.compraDetalhe.dataCompra;
+			 split = databrasileira.toString().split('/');
+			 novadata = split[2] + "-" +split[1]+"-"+split[0];
+			$scope.compraDetalhe.dataCompra = new Date(novadata);
+			
+			 databrasileira = $scope.compraDetalhe.dataVenc;
+			 split = databrasileira.toString().split('/');
+			 novadata = split[2] + "-" +split[1]+"-"+split[0];
+			$scope.compraDetalhe.dataVenc = new Date(novadata);
+			
 			$http({
 				method : metodo,
 				url : url,
