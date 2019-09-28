@@ -7,7 +7,7 @@ appTextilsoft.controller("pedidoController", function($scope, $http) {
 	$scope.idpedido = 0;
 	$scope.pedidoproduto = {};
 	$scope.pedido.valorTotal = 0;
-	$scope.pedido.qtdProd = 0;
+	$scope.pedido.qtdProd = 0.00;
 	$scope.pedidoproduto.pedido = {};
 	$scope.pedidoproduto.produto = {};
 	$scope.pesquisa= "";
@@ -15,6 +15,9 @@ appTextilsoft.controller("pedidoController", function($scope, $http) {
 	
 	$scope.disabledInput = false;
 	
+	$scope.formatNumber = function(i) {
+	    return Math.round(i * 100)/100; 
+	}
 	
 
 	$scope.listarNomeProduto = function(id) {
@@ -48,11 +51,12 @@ appTextilsoft.controller("pedidoController", function($scope, $http) {
 				url : url + 'pedidosprodutos/' + $scope.pedidoproduto.pedido.idPedido
 			}).then(function(response) {					
 				$scope.pedidoprodutos = response.data;
-				var novoValor = $scope.pedido.valorTotal + $scope.pedidoproduto.produto.valorProduto;
-				$scope.pedido.valorTotal = novoValor;
-				$scope.pedido.qtdProd = $scope.pedido.qtdProd + 1;
+				var atualValor = $scope.pedido.valorTotal;
+				var valorProduto = $scope.pedidoproduto.produto.valorProduto;
+				var novoValor = $scope.formatNumber(atualValor) + $scope.formatNumber(valorProduto);
+				$scope.pedido.valorTotal = $scope.formatNumber(novoValor);
 				$scope.pedidoproduto.produto = {};
-				
+				$scope.pedido.qtdProd = $scope.pedido.qtdProd + 1;
 				
 				$http({
 					method : 'PUT',
@@ -198,9 +202,10 @@ appTextilsoft.controller("pedidoController", function($scope, $http) {
 			url : url + 'pedidosprodutos/' + produtopedido.pedido.idPedido+'/'+ produtopedido.produto.idProduto+'/'
 		}).then(function(response) {
 			
-			var novoValor =  $scope.pedido.valorTotal - produtopedido.produto.valorProduto;
-			$scope.pedido.valorTotal = novoValor;
-			$scope.pedido.qtdProd = $scope.pedido.qtdProd -1;
+			var atualValor =  $scope.pedido.valorTotal;
+			var valorProduto = produtopedido.produto.valorProduto;
+			var novoValor = $scope.formatNumber(atualValor) - $scope.formatNumber(valorProduto);
+			$scope.pedido.valorTotal = $scope.formatNumber(novoValor);
 			
 			
 			var pos = 0;			
@@ -213,6 +218,9 @@ appTextilsoft.controller("pedidoController", function($scope, $http) {
 			
 			$scope.pedidoprodutos.splice(pos,1);
 			
+			$scope.pedido.qtdProd = $scope.pedido.qtdProd - 1;
+			
+			
 			$http({
 				method : 'PUT',
 				url : url + 'pedidos/',
@@ -223,9 +231,7 @@ appTextilsoft.controller("pedidoController", function($scope, $http) {
 				console.log('error do salvar');		
 			});
 			
-//			$scope.pedido.valorTotal = $scope.pedido.valorTotal - produtopedido.produto.valorProduto;
-//			$scope.pedido.qtdProd = $scope.pedido.qtdProd -1;
-			
+		
 		}, function(response) {
 			console.log('error do salvar');
 			console.log(response.data);

@@ -1,6 +1,8 @@
 create database textilsoft;
 use textilsoft;
 #----------------------------------------Cadastro--------------------------------------------
+select * from pedido;
+select * from pedido_PRODUTO;
 
 create table cliente (
 	id_cliente int(11) primary key auto_increment,
@@ -12,8 +14,8 @@ create table cliente (
     cidade_cliente varchar(30) not null, 
     estado_cliente varchar(30) not null,
     comp_cliente varchar(50),
-    tel_cliente int(11) not null,
-    tel2_cliente int(11),
+    tel_cliente bigint not null,
+    tel2_cliente bigint,
     email_cliente varchar(30),
     dt_cad_cliente TIMESTAMP not null
 );
@@ -28,8 +30,8 @@ create table fornecedor (
     cidade_fornecedor varchar(50) not null,
     estado_fornecedor varchar(50) not null,
     comp_fornecedor varchar(50),
-    tel_fornecedor int(11) not null,
-    tel2_fornecedor int(11),
+    tel_fornecedor bigint not null,
+    tel2_fornecedor bigint,
     email_fornecedor varchar(30),
     dt_cad_fornecedor TIMESTAMP not null,
     tipo_fornecedor enum('Produto','Serviço')
