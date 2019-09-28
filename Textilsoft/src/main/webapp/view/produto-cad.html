@@ -1,3 +1,5 @@
+<meta charset="utf-8">
+
 <h3 class="page-header">Adicionar Produto</h3>
 <br>
 	<div class="row">
@@ -7,29 +9,42 @@
 			<input type="text" class= "form-control" placeholder="ID" ng-model="produto.idProduto" style="width: 50px" disabled>
 		</div>
 	
-	<div class="form-group col-md-1">
-		<label for="campo2">Descrição do produto</label>
-		<input type="text" class= "form-control" placeholder="descProduto" ng-model="produto.descProduto" style="width: 50px" >
+	<div class="form-group col-md-3">
+		<label for="campo2">DescriÃ§Ã£o do produto</label>
+		<input type="text" class= "form-control" placeholder="descProduto" ng-model="produto.descProduto" >
 	</div>
  
- 	<div class="form-group col-md-1">
+ 	<div class="form-group col-md-2">
  		<label for="campo3">Cor</label>
- 		<input type="text" class= "form-control" placeholder="idCor" ng-model="produto.corProduto.idCor" style="width: 50px" >
+ 		<input type="text" class= "form-control" placeholder="idCor" ng-model="produto.corProduto.idCor">
+ 	</div> 	
+ 		<div class="form-group col-md-2">
+ 		<label for="campo3">Nome Cor</label>
+ 		<input type="text" class= "form-control" placeholder="Cor" ng-model="produto.corProduto.nmCor" >
  	</div> 	
  	
- 	<div class="form-group col-md-1">
+ 	<div class="form-group col-md-2">
  		<label for="campo4">Material</label>
- 		<input type="text" class= "form-control" placeholder="idMaterial" ng-model="produto.materialProduto.idMaterial" style="width: 50px" >
+ 		<input type="text" class= "form-control" placeholder="idMaterial" ng-model="produto.materialProduto.idMaterial" >
  	</div> 	
  	
- 	<div class="form-group col-md-1">
+ 	<div class="form-group col-md-2">
+ 		<label for="campo4">Nome Material</label>
+ 		<input type="text" class= "form-control" placeholder="Material" ng-model="produto.materialProduto.nmMaterial" >
+ 	</div> 	
+ 	
+ 	<div class="form-group col-md-2">
  		<label for="campo5">Estampa</label>
- 		<input type="text" class= "form-control" placeholder="idEstampa" ng-model="produto.estampaProduto.idEstampa" style="width: 50px" >
+ 		<input type="text" class= "form-control" placeholder="idEstampa" ng-model="produto.estampaProduto.idEstampa">
+ 	</div> 	
+ 	<div class="form-group col-md-2">
+ 		<label for="campo5">Codigo Estampa</label>
+ 		<input type="text" class= "form-control" placeholder="Estampa" ng-model="produto.estampaProduto.nmEstampa">
  	</div> 	
  	
  	<div class="form-group col-md-1">
  		<label for="campo6">Valor</label>
- 		<input type="text" class= "form-control" placeholder="Valor" ng-model="produto.valorProduto" style="width: 50px" >
+ 		<input type="text" class= "form-control" placeholder="Valor" ng-model="produto.valorProduto">
  	</div> 	
  	
  	
