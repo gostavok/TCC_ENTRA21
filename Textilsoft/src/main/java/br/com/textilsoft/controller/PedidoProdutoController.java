@@ -9,6 +9,7 @@ import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
@@ -16,8 +17,11 @@ import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
+import br.com.textilsoft.dao.FornecedorDAO;
 import br.com.textilsoft.dao.PedidoDAO;
 import br.com.textilsoft.dao.PedidoProdutoDAO;
+import br.com.textilsoft.dao.ProdutoFornecedorDAO;
+import br.com.textilsoft.model.Fornecedor;
 import br.com.textilsoft.model.PedidoProduto;
 
 @Path("pedidosprodutos")
@@ -68,6 +72,21 @@ public class PedidoProdutoController {
 			throw new WebApplicationException(Response.Status.INTERNAL_SERVER_ERROR);
 		}
 	}
+	
+	
+	@DELETE
+	@Path("{id}/")
+	public Response delete(@PathParam("id") long id) {
+		try {
+			PedidoProdutoDAO pedidoProdutoDAO = new PedidoProdutoDAO();
+			pedidoProdutoDAO.excluirpedido(id);
+			return Response.status(Response.Status.OK).build();
+		} catch (Exception ex) {
+			Logger.getLogger(PedidoProdutoController.class.getName()).log(Level.SEVERE, null, ex);
+			throw new WebApplicationException(Response.Status.INTERNAL_SERVER_ERROR);
+		}
+	}
+	
 	
 	
 }

@@ -31,20 +31,6 @@ appTextilsoft.controller("pedidoDetalheController", function($scope, $http,
 			});
 		};
 		
-		$scope.deletePedido = function(idPedido) {
-
-			$http({
-				method : 'DELETE',
-				url : url + idPedido
-			}).then(function(response) {
-				
-				history.go(-1);
-			}, function(response) {
-				console.log('error do salvar');		
-			});
-		};
-		$scope.procuraPedido = function(pedido) {
-			$scope.idexcluir = angular.copy(pedido.idPedido);
-		}
+		
 
 });

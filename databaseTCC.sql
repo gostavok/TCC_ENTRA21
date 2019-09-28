@@ -2,7 +2,6 @@ create database textilsoft;
 use textilsoft;
 #----------------------------------------Cadastro--------------------------------------------
 
-
 create table cliente (
 	id_cliente int(11) primary key auto_increment,
     nm_cliente varchar(250) not null,

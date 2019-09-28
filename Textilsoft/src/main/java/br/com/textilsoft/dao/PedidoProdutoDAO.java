@@ -83,6 +83,23 @@ public class PedidoProdutoDAO {
 	}
 	
 	
+	public int excluirpedido(long id_pedido) throws SQLException, ClassNotFoundException {
+		int linhasAlfetadas = 0;
+		String sqlQuery = "DELETE FROM pedido_produto WHERE id_pedido = ?";
+
+		try {
+			PreparedStatement stmt = this.conexao.getConnection().prepareStatement(sqlQuery);
+			stmt.setLong(1, id_pedido);
+			linhasAlfetadas = stmt.executeUpdate();
+			this.conexao.commit();
+		} catch (SQLException e) {
+			this.conexao.rollback();
+			throw e;
+		}
+
+		return linhasAlfetadas;
+	}
+	
 
 	public List<PedidoProduto> listarpedidoprodutos(long id) throws SQLException, ClassNotFoundException {
 		String sqlQuery = "SELECT * FROM pedido inner join pedido_produto using(id_pedido) inner join produto using(id_produto) where id_pedido = ?";
