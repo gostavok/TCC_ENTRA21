@@ -57,7 +57,11 @@ appTextilsoft.controller("contaPagarController", function($scope, $http) {
 			method : 'DELETE',
 			url : url + 'contaspagar/' + id
 		}).then(function(response) {
-			var pos = $scope.listaContaPagar.indexOf(id);
+			var pos = 0;
+			$scope.listaContaPagar.filter(function(i, idx) {
+			    if(i.idContaPagar == id)
+			    	pos = idx; 				   
+			});								
 			$scope.listaContaPagar.splice(pos,1);	
 			
 		}, function(response) {

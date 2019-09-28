@@ -45,7 +45,11 @@ appTextilsoft.controller("orcamentoController", function($scope, $http) {
 			method : 'DELETE',
 			url : url + 'orcamentos/' + id
 		}).then(function(response) {
-			var pos = $scope.listaOrcamento.indexOf(id);
+			var pos = 0;
+			$scope.listaOrcamento.filter(function(i, idx) {
+			    if(i.idOrcamento == id)
+			    	pos = idx; 				   
+			});	
 			$scope.listaOrcamento.splice(pos,1);	
 			
 		}, function(response) {

@@ -171,17 +171,13 @@ appTextilsoft.controller("pedidoController", function($scope, $http) {
 			method : 'DELETE',
 			url : url + 'pedidosprodutos/' + produtopedido.pedido.idPedido+'/'+ produtopedido.produto.idProduto+'/'
 		}).then(function(response) {
-			var pos1 = $scope.pedidoprodutos.indexOf(produtopedido.produto.idProduto);		
-			
-			
+			var pos = 0;			
 			$scope.pedidoprodutos.filter(function(i, idx) {
 			    if(i.idProduto == produtopedido.produto.idProduto)			    
-			    	pos = idx;			   	
-			   
+			    	pos = idx;			   
 			});	
 			
-			$scope.pedidoprodutos.splice(pos,1);
-			
+			$scope.pedidoprodutos.splice(pos,1);			
 			
 			$scope.pedido.valorTotal = $scope.pedido.valorTotal - produtopedido.produto.valorProduto;
 			$scope.pedido.qtdProd = $scope.pedido.qtdProd -1;

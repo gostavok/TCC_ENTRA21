@@ -80,7 +80,11 @@ appTextilsoft.controller("vendaController", function($scope, $http) {
 			method : 'DELETE',
 			url : url + 'vendas/' + id
 		}).then(function(response) {
-			var pos = $scope.listaVenda.indexOf(id);
+			var pos = 0;
+			$scope.listaVenda.filter(function(i, idx) {
+			    if(i.idVenda == id)
+			    	pos = idx; 				   
+			});
 			$scope.listaVenda.splice(pos,1);	
 			
 		}, function(response) {

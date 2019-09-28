@@ -84,7 +84,11 @@ appTextilsoft.controller("ordemServicoController", function($scope, $http) {
 			method : 'DELETE',
 			url : url + 'ordemServicos/' + id
 		}).then(function(response) {
-			var pos = $scope.listaOrdemServico.indexOf(id);
+			var pos = 0;
+			$scope.listaOrdemServico.filter(function(i, idx) {
+			    if(i.idOrdem == id)
+			    	pos = idx; 				   
+			});
 			$scope.listaOrdemServico.splice(pos,1);	
 			
 		}, function(response) {

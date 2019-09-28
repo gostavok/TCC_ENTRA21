@@ -42,7 +42,11 @@ appTextilsoft.controller("corController", function($scope, $http) {
 			method : 'DELETE',
 			url : url + 'cores/' + id
 		}).then(function(response) {
-			var pos = $scope.listaCor.indexOf(id);
+			var pos = 0;
+			$scope.listaCor.filter(function(i, idx) {
+			    if(i.idCor == id)
+			    	pos = idx; 				   
+			});			
 			$scope.listaCor.splice(pos,1);	
 			
 		}, function(response) {

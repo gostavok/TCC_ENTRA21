@@ -41,7 +41,11 @@ appTextilsoft.controller("materialController", function($scope, $http) {
 			method : 'DELETE',
 			url : url + 'materiais/' + id
 		}).then(function(response) {
-			var pos = $scope.listaMaterial.indexOf(id);
+			var pos = 0;
+			$scope.listaMaterial.filter(function(i, idx) {
+			    if(i.idMaterial == id)
+			    	pos = idx; 				   
+			});	
 			$scope.listaMaterial.splice(pos,1);	
 			
 		}, function(response) {

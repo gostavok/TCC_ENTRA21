@@ -49,11 +49,8 @@ appTextilsoft.controller("fornecedorController", function($scope, $http) {
 			var pos = 0;
 			$scope.listaFornecedor.filter(function(i, idx) {
 			    if(i.idFornecedor == id)
-			    	pos = idx;
-			   	
-			   
-			});	
-			
+			    	pos = idx; 				   
+			});				
 			 $scope.listaFornecedor.splice(pos, 1);
 		}, function(response) {
 			console.log('error do salvar');
