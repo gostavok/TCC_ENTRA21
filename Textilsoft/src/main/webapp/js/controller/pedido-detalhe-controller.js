@@ -12,7 +12,9 @@ appTextilsoft.controller("pedidoDetalheController", function($scope, $http, $rou
 	$scope.pedidoproduto.produto = {};
 	var url = 'http://localhost:8080/Textilsoft/rest/';
 		
-	
+	$scope.formatNumber = function(i) {
+	    return Math.round(i * 100)/100; 
+	}
 	
 	
 	
@@ -84,9 +86,11 @@ appTextilsoft.controller("pedidoDetalheController", function($scope, $http, $rou
 				url : url + 'pedidosprodutos/' + $scope.pedidoproduto.pedido.idPedido
 			}).then(function(response) {					
 				$scope.pedidoprodutos = response.data;
-				var novoValor = $scope.pedido.valorTotal + $scope.pedidoproduto.produto.valorProduto;
-				$scope.pedido.valorTotal = novoValor;
-				$scope.pedido.qtdProd = $scope.pedidoprodutos.lenght();
+				var atualValor = $scope.pedido.valorTotal;
+				var valorProduto = $scope.pedidoproduto.produto.valorProduto;
+				var novoValor = $scope.formatNumber(atualValor) + $scope.formatNumber(valorProduto);
+				$scope.pedido.valorTotal = $scope.formatNumber(novoValor);
+				$scope.pedido.qtdProd = $scope.pedido.qtdProd + 1;
 				$scope.pedidoproduto.produto = {};
 				
 				
@@ -136,19 +140,21 @@ appTextilsoft.controller("pedidoDetalheController", function($scope, $http, $rou
 			url : url + 'pedidosprodutos/' + produtopedido.pedido.idPedido+'/'+ produtopedido.produto.idProduto+'/'
 		}).then(function(response) {
 			
-			var novoValor =  $scope.pedido.valorTotal - produtopedido.produto.valorProduto;
-			$scope.pedido.valorTotal = novoValor;
+			var atualValor = $scope.pedido.valorTotal;
+			var valorProduto = produtopedido.produto.valorProduto;
+			var novoValor = $scope.formatNumber(atualValor) - $scope.formatNumber(valorProduto);
+			$scope.pedido.valorTotal = $scope.formatNumber(novoValor);
 			
 			
 			var pos = 0;			
 			$scope.pedidoprodutos.filter(function(i, idx) {
-			    if(i.idProduto == produtopedido.produto.idProduto)			    
+			    if(i.produto.idProduto == produtopedido.produto.idProduto)			    
 			    	pos = idx;			   
 			});	
 			
 			$scope.pedidoprodutos.splice(pos,1);
 			
-			$scope.pedido.qtdProd = $scope.pedidoprodutos.lenght();
+			$scope.pedido.qtdProd = $scope.pedido.qtdProd - 1;
 			
 			
 			
