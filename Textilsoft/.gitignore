@@ -5,10 +5,7 @@
 *.classpath
 *.project
 *.settings/
-/bin
 
-#intellij
-*.idea/
 
 # Log file
 *.log
