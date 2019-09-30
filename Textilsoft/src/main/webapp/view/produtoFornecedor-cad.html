@@ -19,7 +19,11 @@
 		</div>
 	<div class="form-group col-md-2">
 		<label for="campo1">Unidade de medida</label>
-		<input type="text"  class= "form-control"  placeholder="Medida" ng-model="produtoFornecedor.undMedidaProdForn">
+		<select class="form-control" ng-model="produtoFornecedor.undMedidaProdForn">
+			<option value="Quilos">Quilos</option>
+			<option value="Metros">Metros</option>
+			<option value="Unitario">Unitario</option>
+			</select>
 	</div>
 		
 		<div class="form-group col-md-2">
