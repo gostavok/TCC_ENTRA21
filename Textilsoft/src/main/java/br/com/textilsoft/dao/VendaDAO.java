@@ -67,6 +67,7 @@ public class VendaDAO {
 		return linhasAfetadas;
 	}
 	
+	
 	public int excluir(long id) throws SQLException, ClassNotFoundException {
 		int linhasAlfetadas = 0;
 		String sqlQuery = "DELETE FROM venda WHERE id_venda = ?";
