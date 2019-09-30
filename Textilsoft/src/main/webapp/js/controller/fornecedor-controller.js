@@ -3,6 +3,7 @@ appTextilsoft.controller("fornecedorController", function($scope, $http) {
 	$scope.listaFornecedor = [];
 	$scope.fornecedor = {};
 	$scope.idfornecedor = 0;
+	$scope.submitted = false;
 	
 	var url = 'http://localhost:8080/Textilsoft/rest/';	
 	
@@ -25,9 +26,10 @@ appTextilsoft.controller("fornecedorController", function($scope, $http) {
 		});
 	};
 
-	$scope.salvarFornecedor = function() {
+	$scope.salvarFornecedor = function(value) {
+		$scope.submitted = true;
 		var metodo = 'POST';
-	
+		if (value){
 		$http({
 			method : metodo,
 			url : url + 'fornecedores/',
@@ -40,7 +42,7 @@ appTextilsoft.controller("fornecedorController", function($scope, $http) {
 			console.log('error do salvar');	
 		});
 	};
-
+	}
 	$scope.deleteFornecedor = function(id) {
 	
 		
