@@ -43,8 +43,8 @@ appTextilsoft.controller("corDetalheController", function($scope, $http,
 				console.log('error do salvar');		
 			});
 		};
-		$scope.procuraCor = function(cor) {
-			$scope.idCor = angular.copy(cor.idCor);
+		$scope.procuraCor = function(corDetalhe) {
+			$scope.idCor = angular.copy(corDetalhe.idCor);
 		}
 
 });

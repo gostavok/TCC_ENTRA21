@@ -60,4 +60,17 @@
 			<p><strong>Valor</strong></p>
 			<p>{{produtoDetalhe.valorProduto}}</p>
 			</div>
+	
+	
 	</div>
+	
+	<div id="actions" class="row" style="margin-top:15px">
+ <div class="col-md-12" style="margin-top:15px">
+ 	  <a class="btn btn-danger "  type="button" name= "excluir" value=" X " data-toggle="modal" data-target="#delete-modal" ng-click = "procuraProduto(produtoDetalhe)" >Excluir</a>
+		<a class="btn btn-warning " type="button" value=" edit " href = "produto-edit/{{produtoDetalhe.idMaterial}}">Alterar</a>
+		<a class="btn btn-default " type="button" onClick="history.go(-1)">Voltar</a>
+		
+ </div>
+</div>
+	
+	
