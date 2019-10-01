@@ -4,7 +4,7 @@ appTextilsoft.controller("vendaPedidoController", function($scope, $http,
 $scope.listaVenda = [];
 $scope.vendapedidos = [];
 $scope.venda = {};
-$scope.vendapedido = {};
+$scope.vendapedido = [];
 $scope.vendapedido.venda = {};
 $scope.vendapedido.pedido = {};
 $scope.pesquisa= "";

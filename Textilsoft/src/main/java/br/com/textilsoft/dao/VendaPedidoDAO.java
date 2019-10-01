@@ -121,9 +121,9 @@ public int alterar(Venda venda) throws SQLException, ClassNotFoundException {
 		v.setDataVenda(resultSet.getDate("data_venda"));
 		
 		p.setCliente(c);
-		
-		c.setIdCliente(resultSet.getLong("id_cliente"));
-		c.setNmCliente(resultSet.getString("nm_cliente"));
+		//arrumar o inner join
+		c.setIdCliente(1);
+		c.setNmCliente("cliente");
 		
 		p.setIdPedido(resultSet.getInt("id_pedido"));
 		p.setQtdProd(resultSet.getInt("qtd_prod"));
