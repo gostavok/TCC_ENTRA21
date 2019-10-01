@@ -89,7 +89,7 @@ $scope.salvarVendaPedido = function() {
 		
 		$http({
 			method : 'DELETE',
-			url : url + vendapedido.venda.idVenda +'/'+ vendapedido.venda.idPedido +'/'
+			url : url + vendapedido.venda.idVenda +'/'+ vendapedido.pedido.idPedido +'/'
 		}).then(function(response) {		
 			var pos = 0;
 			$scope.vendapedidos.filter(function(i, idx) {
