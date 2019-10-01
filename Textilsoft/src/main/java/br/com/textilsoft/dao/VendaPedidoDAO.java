@@ -112,7 +112,7 @@ public int alterar(Venda venda) throws SQLException, ClassNotFoundException {
 		vp.setVenda(v);
 		vp.setPedido(p);
 		
-		v.setIdVenda(resultSet.getInt("id_venda"));
+		v.setIdVenda(resultSet.getInt("id_venda")); 
 		v.setValorTotal(resultSet.getDouble("valor_total"));
 		v.setDataPagamento(resultSet.getDate("data_pagamento"));
 		v.setDataVenda(resultSet.getDate("data_venda"));
