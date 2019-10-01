@@ -94,7 +94,8 @@ public int alterar(Venda venda) throws SQLException, ClassNotFoundException {
 
 	try {
 		PreparedStatement stmt = this.conexao.getConnection().prepareStatement(sqlQuery);
-		stmt.setDouble(1, venda.getValorTotal());			
+		stmt.setDouble(1, venda.getValorTotal());	
+		stmt.setLong(2, venda.getIdVenda());
 
 		linhasAfetadas = stmt.executeUpdate();
 		this.conexao.commit();

@@ -4,7 +4,7 @@ appTextilsoft.controller("vendaPedidoController", function($scope, $http,
 $scope.listaVenda = [];
 $scope.vendapedidos = [];
 $scope.venda = {};
-$scope.vendapedido = [];
+$scope.vendapedido = {};
 $scope.vendapedido.venda = {};
 $scope.vendapedido.pedido = {};
 $scope.pesquisa= "";
@@ -94,6 +94,10 @@ $http.get('http://localhost:8080/Textilsoft/rest/vendas/' + $routeParams.id).the
 //	};		
 //	
 	
+$scope.formatNumber = function(i) {
+    return Math.round(i * 100)/100; 
+}
+
 $scope.salvarVendaPedido = function() {
 	
 	$http({
