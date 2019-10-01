@@ -117,6 +117,30 @@ public class ContaReceberDAO {
 			throw e;
 		}
 	}
+	
+	public List<String> listarStatus() throws SQLException, ClassNotFoundException {
+		String sqlQuery = "SELECT status_conta_receber AS situacao, COUNT(*) AS quantidade\r\n" + 
+				"  FROM conta_receber\r\n" + 
+				" WHERE status_conta_receber IN ('pago', 'pendente', 'atrasado')\r\n" + 
+				" GROUP BY situacao";
+
+		try {
+			PreparedStatement stmt = this.conexao.getConnection().prepareStatement(sqlQuery);
+			ResultSet rs = stmt.executeQuery();
+
+			List<String> situacao = new ArrayList<>();
+
+			while (rs.next()) {
+				String aux = rs.getString("situacao") + " : " + rs.getInt("quantidade");
+				situacao.add(aux);
+				System.out.println(aux);
+			}
+			
+			return situacao;
+		} catch (SQLException e) {
+			throw e;
+		}
+	}
 
 	private ContaReceber parser(ResultSet resultSet) throws SQLException {
 		

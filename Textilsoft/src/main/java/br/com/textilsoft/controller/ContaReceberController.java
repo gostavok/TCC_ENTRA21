@@ -35,7 +35,20 @@ public class ContaReceberController {
 			throw new WebApplicationException(Response.Status.INTERNAL_SERVER_ERROR);
 		}
 	}
-
+	
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	@Path("status/")
+	public List<String> listarSituacao() {
+		try {
+			ContaReceberDAO ContaReceberDAO = new ContaReceberDAO();
+			return ContaReceberDAO.listarStatus();
+		} catch (Exception ex) {
+			Logger.getLogger(ContaReceberController.class.getName()).log(Level.SEVERE, null, ex);
+			throw new WebApplicationException(Response.Status.INTERNAL_SERVER_ERROR);
+		}
+	}
+	
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("{id}/")
