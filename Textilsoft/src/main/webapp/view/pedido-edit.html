@@ -40,16 +40,22 @@
 			<option value = "Fechado">Fechado</option>			
 		</select>
 	
-	
+	</div>
+
+
 <form> 
   <hr /> 
-	<div id="actions" class="row" style="margin-bottom:12px" >
+	<div id="actions" class="row" style="margin-left: 1%;" >
   	  <div class="col-md-12">
-		<button type="submit" class="btn btn-primary" ng-click="updatePedido()" style="margin-left:12px">Atualizar</button>
+		<button type="submit" class="btn btn-primary" ng-click="updatePedido()">Atualizar</button>
 		<button type="button" class="btn btn-default" onClick="history.go(-1)">Voltar</button>
     	</div>
     </div>
  </form>
+
+
+</div>
+
  	
  	<br>
  
@@ -57,9 +63,9 @@
     border: solid;">
  		
     	<div>
-    		<h4>     Informações sobre o pedido:</h4>
-    		<p>    Quantidade de produtos: {{pedido.qtdProd}}</p>
-    		<p>   Valor total: {{pedido.valorTotal}}</p>
+    		<h4 style="margin-left: 5%;">Informações sobre o pedido:</h4>
+    		<p style="margin-left: 5%;">Quantidade de produtos: {{pedido.qtdProd}}</p>
+    		<p style="margin-left: 5%;">Valor total: {{pedido.valorTotal}}</p>
     	</div>
 
 
