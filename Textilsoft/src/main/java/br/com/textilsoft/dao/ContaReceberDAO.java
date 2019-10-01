@@ -143,7 +143,29 @@ public class ContaReceberDAO {
 			throw e;
 		}
 	}
+	
+	public List<ContaReceber> listarPorStatus(String status) throws SQLException, ClassNotFoundException {
+		String sqlQuery = "SELECT * FROM conta_receber WHERE status_conta_receber= ? ORDER BY id_conta_receber ";
 
+		try {
+			PreparedStatement stmt = this.conexao.getConnection().prepareStatement(sqlQuery);
+			stmt.setString(1, status);
+			ResultSet rs = stmt.executeQuery();
+
+			List<ContaReceber> contasReceber = new ArrayList<>();
+
+			while (rs.next()) {
+				contasReceber.add(parser(rs));
+			}
+
+			return contasReceber;
+		} catch (SQLException e) {
+			throw e;
+		}
+	}
+	
+	
+	
 	private ContaReceber parser(ResultSet resultSet) throws SQLException {
 		
 		
