@@ -18,7 +18,7 @@
 		</div>
 	</div>
 	
-	<h3 class="page-header">Visualizar Fornecedor #{{produtoDetalhe.idProduto}}</h3>
+	<h3 class="page-header">Visualizar Produto #{{produtoDetalhe.idProduto}}</h3>
 	
 	<div class="row">
 		
@@ -28,23 +28,32 @@
 		</div>
 		
 			<div class="form-group col-md-3">
-			<p><strong>Descrição</strong></p>
+			<p><strong>Descri&ccedil;&atilde;o</strong></p>
 			<p>{{produtoDetalhe.descProduto}}</p>
 			</div>
 		
 			<div class="form-group col-md-2">
 			<p><strong>Cor</strong></p>
-			<p>{{produtoDetalhe.corProduto.idCor}}</p>
+			<p> ID: {{produtoDetalhe.corProduto.idCor}}</p>
+			<p> Cor: {{produtoDetalhe.corProduto.nmCor}}</p>
+			<p> Valor: {{produtoDetalhe.corProduto.valorCor}}</p>
+			
 			</div>
 			
 			<div class="form-group col-md-2">
 			<p><strong>Material</strong></p>
-			<p>{{produtoDetalhe.materialProduto.idMaterial}}</p>
+			
+			<p> ID: {{produtoDetalhe.materialProduto.idMaterial}}</p>
+			<p> Material: {{produtoDetalhe.materialProduto.nmMaterial}}</p>
+			<p> Valor: {{produtoDetalhe.materialProduto.valorMaterial}}</p>
+			
 			</div>
 		
 			<div class="form-group col-md-2">
 				<p><strong>Estampa</strong></p>
-				<p>{{produtoDetalhe.estampaProduto.idEstampa}}</p>
+				<p> ID: {{produtoDetalhe.estampaProduto.idEstampa}}</p>
+				<p> Codigo: {{produtoDetalhe.estampaProduto.codEstampa}}</p>
+				<p> Valor: {{produtoDetalhe.estampaProduto.valorEstampa}}</p>
 			</div>
 			
 			<div class="form-group col-md-2">

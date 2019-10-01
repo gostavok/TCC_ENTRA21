@@ -28,7 +28,8 @@ appTextilsoft.controller("materialController", function($scope, $http) {
 			method : metodo,
 			url : url + 'materiais/',
 			data : $scope.material
-		}).then(function(response) {		
+		}).then(function(response) {
+			material = {};
 			alert("efetuado com sucesso")
 		}, function(response) {
 			console.log('error do salvar');	
