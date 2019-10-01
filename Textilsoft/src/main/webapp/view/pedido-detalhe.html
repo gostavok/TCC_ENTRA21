@@ -1,0 +1,85 @@
+<meta charset="utf-8">
+
+
+<h3 class="page-header">Visualizar Pedido #{{pedido.idPedido}}</h3>
+<br>
+<div class="row">
+	<div class="form-group col-md-1">
+		<p><strong>#</strong></p>	
+		<p>{{pedido.idPedido}}</p>
+	</div>
+	<div class="form-group col-md-2">
+		<p><strong>Nome cliente</strong></p>
+			<p>{{pedido.cliente.nmCliente}}</p>
+	
+	</div>
+	<div class="form-group col-md-2">
+		<p><strong>Quantidade de produtos</strong></p>
+			<p>{{pedido.qtdProd}}</p>
+
+	</div>
+	<div class="form-group col-md-2">
+			<p><strong>Valor total</strong></p>
+				<p>{{pedido.valorTotal}}</p>
+		</div>
+		<div class="form-group col-md-2">
+				<p><strong>Data</strong></p>
+					<p>{{pedido.dataPedido}}</p>
+		
+			</div>
+	<div class="form-group col-md-3">
+			<p><strong>Status</strong></p>
+				<p>{{pedido.statusPedido}}</p>
+			
+		</div>
+		
+
+</div>
+
+
+
+
+<div id="produtos">
+ 	<div id="list" class="row" >
+    <div class="table-responsive col-md-12">
+     
+        <table class="table col-md-12">
+            <thead>
+				<tr>
+				<th class="col-md-4">#</th>
+					<th class="col-md-4">Nome Produto</th>
+					<th class="col-md-4">Valor produto</th>
+				</tr>
+			</thead>   
+    	<tbody>
+    
+		<tr ng-repeat="produtopedido in pedidoprodutos">
+		
+		<td > {{produtopedido.produto.idProduto}}</td>
+		<td >{{produtopedido.produto.descProduto}}</td>
+		<td> {{produtopedido.produto.valorProduto}}</td>	
+				
+	</tr>
+	
+	
+	</tbody>
+	
+</table>
+
+</div>
+</div>
+ 	</div>
+
+
+
+
+
+
+
+<div id="actions" class="row" style="margin-top:15px">
+ <div class="col-md-12" style="margin-top:15px">
+		<a class="btn btn-warning " type="button" value=" edit " href = 'pedido-edit/{{pedido.idPedido}}'>Alterar</a>
+		<a class="btn btn-default " type="button" onClick="history.go(-1)">Voltar</a>
+		
+ </div>
+</div>

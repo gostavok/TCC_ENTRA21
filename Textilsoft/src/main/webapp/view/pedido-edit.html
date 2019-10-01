@@ -1,0 +1,126 @@
+
+<meta charset="utf-8">
+
+
+<h3 class="page-header">Editar pedido</h3>
+<br>
+<div class = "row">
+	<div class="form-group col-md-1">
+		<label for="campo1">ID</label>
+		<input type="text" class= "form-control" placeholder="ID" ng-model="pedido.idPedido" style="width: 50px" disabled>
+	</div>
+	<div class="form-group col-md-3">
+		<label for="campo1">ID do cliente</label>
+		<input type="text"  class= "form-control"  placeholder="ID do Cliente" ng-model="pedido.cliente.idCliente" ng-blur = "listarNomeCliente(pedido.cliente.idCliente)">
+	</div>
+	<div class="form-group col-md-3">
+		<label for="campo1">Nome do cliente</label>
+		<input type="text" class= "form-control" placeholder="Cliente" ng-model="pedido.cliente.nmCliente" disabled>
+	</div>
+	<div class="form-group col-md-1">
+		<label for="campo1">Quantidade</label>
+		<input type="text"  class= "form-control" value="0" disabled ng-model="pedido.qtdProd">
+	</div>
+
+	<div class="form-group col-md-3">
+		<label for="campo1">Valor total</label>
+		<input type="text"  class= "form-control" value="0" ng-model="pedido.valorTotal" disabled>
+	</div>
+	
+	<div class="form-group col-md-3">
+		<label for="campo1">Data: {{pedido.dataPedido}}</label>
+		<input type="date"  class= "form-control"  placeholder="Data" ng-model="pedido.dataPedido" >
+	</div>
+	
+	<div class="form-group col-md-3">
+		<label for="campo1">Status</label>
+		<select class= "form-control"  ng-model="pedido.statusPedido" id= "pedido.statusPedido" >
+			<option value= "Aberto">Aberto</option>
+			<option value = "Pendente">Pendente</option>
+			<option value = "Fechado">Fechado</option>			
+		</select>
+	
+	
+<form> 
+  <hr /> 
+	<div id="actions" class="row" style="margin-bottom:12px" >
+  	  <div class="col-md-12">
+		<button type="submit" class="btn btn-primary" ng-click="updatePedido()" style="margin-left:12px">Atualizar</button>
+		<button type="button" class="btn btn-default" onClick="history.go(-1)">Voltar</button>
+    	</div>
+    </div>
+ </form>
+ 	
+ 	<br>
+ 
+ 	<div style="margin-top:5%; background-color:#c79f9f; border-radius: 30px; 
+    border: solid;">
+ 		
+    	<div>
+    		<h4>     Informações sobre o pedido:</h4>
+    		<p>    Quantidade de produtos: {{pedido.qtdProd}}</p>
+    		<p>   Valor total: {{pedido.valorTotal}}</p>
+    	</div>
+
+
+ 		<div class = "row">
+ 		
+ 		<div class="form-group col-md-1" style="margin-top:1%; margin-left:1%;">
+		<label for="campo1">ID</label>
+		<input type="text" class= "form-control" placeholder="ID" ng-model="pedidoproduto.pedido.idPedido" style="width: 50px" disabled>
+	</div>
+	<div class="form-group col-md-3" style="margin-top:1%; margin-left:1%;">
+		<label for="campo1">ID do produto</label>
+		<input type="text"  class= "form-control" placeholder="ID do produto" ng-model="pedidoproduto.produto.idProduto" ng-blur = "listarNomeProduto(pedidoproduto.produto.idProduto)">
+	</div>
+	<div class="form-group col-md-3" style="margin-top:1%; margin-left:1%;">
+		<label for="campo1">Nome do produto</label>
+		<input type="text" class= "form-control" placeholder="Produto" ng-model="pedidoproduto.produto.descProduto" disabled>
+	</div>
+ 	
+ 	<div class="form-group col-md-3" style="margin-top:1%; margin-left:1%;">
+ 		<br>
+ 	<button type="submit" class="btn btn-primary" ng-click="salvarProduto()" style="margin-left:12px" align="left">Adicionar</button>
+ 	</div>
+ 	
+ 	</div>
+ 	</div>
+ 	
+ 	<div id="produtos">
+ 	<div id="list" class="row" >
+    <div class="table-responsive col-md-12">
+     
+        <table class="table col-md-12">
+            <thead>
+				<tr>
+				<th class="col-md-3">#</th>
+					<th class="col-md-3">Nome Produto</th>
+					<th class="col-md-3">Valor produto</th>
+					<th class="actions col-md-3">Ações</th>
+				</tr>
+			</thead>   
+    	<tbody>
+    
+		<tr ng-repeat="produtopedido in pedidoprodutos">
+		
+		<td > {{produtopedido.produto.idProduto}}</td>
+		<td >{{produtopedido.produto.descProduto}}</td>
+		<td> {{produtopedido.produto.valorProduto}}</td>
+		<td class="actions">
+		  <a class="btn btn-danger btn-xs"  type="button" ng-click = "deletarprodutopedido(produtopedido)" data-toggle="modal" data-target="#delete-modal">Excluir</a>
+		</td>		
+				
+	</tr>
+	
+	
+	</tbody>
+	
+</table>
+
+</div>
+</div>
+ 	</div>
+ 	
+ 	
+ 
+</div>
