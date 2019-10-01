@@ -52,48 +52,7 @@ $http.get('http://localhost:8080/Textilsoft/rest/vendas/' + $routeParams.id).the
         console.log('error- vendaPedidoController');
     
     });   
-    
-//	
-//	$scope.salvarVendaPedido = function() {
-//		
-//		$http({
-//			method : 'POST',
-//			url : url + 'vendaspedidos/',
-//			data : $scope.vendapedido
-//		}).then(function(response) {		
-//			
-//			$http({
-//				method : 'GET',
-//				url : 'http://localhost:8080/Textilsoft/rest/vendas/'+ $scope.vendapedido.venda.idVenda
-//				
-//			}).then(function(response) {					
-//				$scope.vendapedido.venda = response.data;	
-//				var atualValor = $scope.vendapedido.venda.valorTotal;
-//				var valorPedido = $scope.vendapedido.pedido.valorTotal;
-//				var novoValor = $scope.formatNumber(atualValor) + $scope.formatNumber(valorPedido);
-//				$scope.vendapedido.venda.valorTotal = $scope.formatNumber(novoValor);
-//				$scope.vendapedido.pedido = {};
-//								
-//				$http({
-//					method : 'PUT',
-//					url : url + 'vendas/',
-//					data : $scope.vendapedido.venda
-//				}).then(function(response) {
-//					console.log('atualizado');
-//				}, function(response) {
-//					console.log('error do salvar');		
-//				});
-//				
-//				
-//			}, function(response) {
-//				console.log('error do get');	
-//			});
-//		}, function(response) {
-//			console.log('error do salvar');	
-//		})
-//	};		
-//	
-	
+
 $scope.formatNumber = function(i) {
     return Math.round(i * 100)/100; 
 }
@@ -125,8 +84,7 @@ $scope.salvarVendaPedido = function() {
 		console.log('error do POST');	
 	})
 };		
-		
-		
+
 	$scope.deletarvendapedido = function (vendapedido) {
 		
 		$http({

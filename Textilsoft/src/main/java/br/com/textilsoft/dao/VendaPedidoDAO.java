@@ -66,6 +66,7 @@ public List<VendaPedido> listarVendasPedidos(long id) throws SQLException, Class
 	String sqlQuery = "SELECT * FROM textilsoft.venda v"
 			+ " inner join textilsoft.venda_pedido vp ON v.id_venda= vp.id_venda "
 			+ " inner join textilsoft.pedido p ON vp.id_pedido = p.id_pedido "
+			+ " inner join textilsoft.cliente c ON c.id_cliente = p.id_cliente "
 			+ " WHERE v.id_venda = ?";		
 	
 
@@ -122,9 +123,9 @@ public int alterar(Venda venda) throws SQLException, ClassNotFoundException {
 		v.setDataVenda(resultSet.getDate("data_venda"));
 		
 		p.setCliente(c);
-		//arrumar o inner join
-		c.setIdCliente(1);
-		c.setNmCliente("cliente");
+		
+		c.setIdCliente(resultSet.getInt("id_cliente"));
+		c.setNmCliente(resultSet.getString("nm_cliente"));
 		
 		p.setIdPedido(resultSet.getInt("id_pedido"));
 		p.setQtdProd(resultSet.getInt("qtd_prod"));
