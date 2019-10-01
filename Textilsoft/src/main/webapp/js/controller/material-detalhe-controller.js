@@ -8,8 +8,9 @@ appTextilsoft.controller("materialDetalheController", function($scope, $http,
 		$http.get(url + $routeParams.id).then(function(response) {
 			$scope.materialDetalhe = response.data;
 			
+			console.log($scope.materialDetalhe);
 			console.log('success - materialDetalheController');
-	
+			
 
 		}, function(response) {
 			console.log('error- materialDetalheController');

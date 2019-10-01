@@ -123,19 +123,21 @@ public class ContaReceberDAO {
 				"  FROM conta_receber\r\n" + 
 				" WHERE status_conta_receber IN ('pago', 'pendente', 'atrasado')\r\n" + 
 				" GROUP BY situacao";
-
+		String aux = "{";
 		try {
 			PreparedStatement stmt = this.conexao.getConnection().prepareStatement(sqlQuery);
 			ResultSet rs = stmt.executeQuery();
 
 			List<String> situacao = new ArrayList<>();
-
+			
 			while (rs.next()) {
-				String aux = rs.getString("situacao") + " : " + rs.getInt("quantidade");
-				situacao.add(aux);
-				System.out.println(aux);
+				
+				 aux = rs.getString("quantidade");				
+				 situacao.add(aux);
+			
 			}
 			
+			System.out.println(aux);
 			return situacao;
 		} catch (SQLException e) {
 			throw e;
