@@ -129,7 +129,7 @@ appTextilsoft.controller("vendaPedidoDetalheController", function($scope,
 						
 			$http({
 				method : 'PUT',
-				url : url + 'vendas/',
+				url : 'http://localhost:8080/Textilsoft/rest/vendas/',
 				data : $scope.vendapedido.venda
 			}).then(function(response) {
 				console.log('atualizado');
