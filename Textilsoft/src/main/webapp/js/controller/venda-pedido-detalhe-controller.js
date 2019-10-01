@@ -106,29 +106,49 @@ appTextilsoft.controller("vendaPedidoDetalheController", function($scope,
 	};
 
 	$scope.deletarvendapedido = function(vendapedido) {
-
-		$http(
-				{
-					method : 'DELETE',
-					url : url + vendapedido.venda.idVenda + '/'
-							+ vendapedido.venda.idPedido + '/'
-				}).then(function(response) {
-			var pos = 0;
+		var pos = 0;
+				
+		$http({
+			method : 'DELETE',
+			url : url + 'vendaspedidos/' + vendapedido.venda.idVenda+'/'+ vendapedido.pedido.idPedido+'/'
+		}).then(function(response) {
+			
+			var atualValor = $scope.vendapedido.venda.valorTotal;
+			var valorProduto = $vendapedido.pedido.valorTotal;
+			var novoValor = $scope.formatNumber(atualValor) - $scope.formatNumber(valorProduto);
+			$scope.vendapedido.venda.valorTotal = $scope.formatNumber(novoValor);
+			
+			
+			var pos = 0;			
 			$scope.vendapedidos.filter(function(i, idx) {
-				if (i.venda.idVenda == id)
-					pos = idx;
+			    if(i.vendapedido.venda.idVenda == vendapedido.pedido.idPedido)			    
+			    	pos = idx;			   
+			});	
+			
+			$scope.vendapedidos.splice(pos,1);
+						
+			$http({
+				method : 'PUT',
+				url : url + 'vendas/',
+				data : $scope.vendapedido.venda
+			}).then(function(response) {
+				console.log('atualizado');
+			}, function(response) {
+				console.log('error do salvar');		
 			});
-			$scope.vendapedidos.splice(pos, 1);
+			
+			
 		}, function(response) {
-			console.log('error do delete');
+			console.log('error do salvar');
 			console.log(response.data);
 			console.log(response.status);
 		});
-
+		
+		
 	};
 
-	$scope.procuraVendaPedido = function(vendaPedido) {
-		$scope.idvendaPedido = angular.copy(venda.idVendaPedido);
+	$scope.procuraVendaPedido = function(vendapedido) {
+		$scope.vendapedido = angular.copy(vendapedido);
 	}
 
 });
