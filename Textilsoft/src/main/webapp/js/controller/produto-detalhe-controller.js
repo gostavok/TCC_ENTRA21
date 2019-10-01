@@ -2,6 +2,9 @@ appTextilsoft.controller("produtoDetalheController", function($scope, $http,
 		$routeParams) {
 
 	$scope.produtoDetalhe = {};
+	$scope.listaCorDetalhe = [];
+	$scope.listaMaterialDetalhe = [];
+	$scope.listaEstampaDetalhe = [];
 	
 	var url = 'http://localhost:8080/Textilsoft/rest/produtos/';
 
@@ -48,4 +51,56 @@ appTextilsoft.controller("produtoDetalheController", function($scope, $http,
 			$scope.idProduto = angular.copy(produto.idProduto);
 		}
 
+		$scope.procuraValorCor =  function(id){
+			$http({
+				method : 'GET',
+				url : url + 'cores/'+ id
+			}).then(function(response) {
+	            $scope.listaCorDetalhe = response.data;
+	            console.log($scope.listaCorDetalhe.valorCor);
+			}, function(response) {
+				console.log('error');
+				console.log(response.data);
+				console.log(response.status);
+			});
+		};
+		
+		$scope.procuraValorMaterial =  function(id){
+			$http({
+				method : 'GET',
+				url : url + 'materiais/'+ id
+			}).then(function(response) {
+	            $scope.listaMaterialDetalhe = response.data;
+	            console.log($scope.listaMaterialDetalhe.valorMaterial);
+			}, function(response) {
+				console.log('error');
+				console.log(response.data);
+				console.log(response.status);
+			});
+		};
+		
+		$scope.procuraValorEstampa =  function(id){
+			$http({
+				method : 'GET',
+				url : url + 'estampas/'+ id
+			}).then(function(response) {
+	            $scope.listaEstampaDetalhe = response.data;
+	            console.log($scope.listaEstampaDetalhe.valorEstampa);
+			}, function(response) {
+				console.log('error');
+				console.log(response.data);
+				console.log(response.status);
+			});
+		};
+		
+		
+		$scope.calculaTotal =  function(){
+			$scope.procuraValorCor($scope.produtoDetalhe.corProduto.idCor);
+			$scope.procuraValorMaterial($scope.produtoDetalhe.materialProduto.idMaterial);
+			$scope.procuraValorEstampa($scope.produtoDetalhe.estampaProduto.idEstampa);
+			
+			$scope.produtoDetalhe.valorProduto = $scope.listaCorDetalhe.valorCor + $scope.listaMaterialDetalhe.valorMaterial + $scope.listaEstampaDetalhe.valorEstampa;
+			
+		}
+		
 });

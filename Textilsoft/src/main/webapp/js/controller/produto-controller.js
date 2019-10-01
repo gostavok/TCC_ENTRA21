@@ -29,6 +29,9 @@ appTextilsoft.controller("produtoController", function($scope, $http) {
         }).then(function(response) {        
             alert("efetuado com sucesso")
             $scope.produto = {};
+        	$scope.listaCor = [];
+        	$scope.listaMaterial = [];
+        	$scope.listaEstampa = [];
         }, function(response) {
             console.log('error do salvar');
             console.log($scope.produto);

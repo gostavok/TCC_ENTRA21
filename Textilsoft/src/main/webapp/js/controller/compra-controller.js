@@ -2,6 +2,7 @@ appTextilsoft.controller("compraController", function($scope, $http) {
 
 	$scope.listaCompra = [];
 	$scope.compra = {};
+	$scope.fornecedor = {};
 	$scope.idexcluir = 0;
 	var url = 'http://localhost:8080/Textilsoft/rest/';
 
@@ -25,11 +26,13 @@ appTextilsoft.controller("compraController", function($scope, $http) {
 
 	$scope.salvarCompra = function() {
 		var metodo = 'POST';
-	
+
+		/*
 		 databrasileira = $scope.compra.dataCompra;
 		 split = databrasileira.toString().split('/');
 		 novadata = split[2] + "-" +split[1]+"-"+split[0];
 		$scope.compra.dataCompra = new Date(novadata);
+		*/
 		
 		 databrasileira = $scope.compra.dataVenc;
 		 split = databrasileira.toString().split('/');
@@ -83,4 +86,22 @@ appTextilsoft.controller("compraController", function($scope, $http) {
 		$scope.compra = {};
 	};
 
+$scope.procuraFornecedores = function(id) {
+
+		$http({
+			method : 'GET',
+			url : url + 'fornecedores/'+id
+		}).then(function(response) {
+			$scope.fornecedor = response.data;		
+		}, function(response) {
+			console.log('error');
+			console.log(response.data);
+			console.log(response.status);
+		});
+		
+		
+};
+	
+	
+	
 });
