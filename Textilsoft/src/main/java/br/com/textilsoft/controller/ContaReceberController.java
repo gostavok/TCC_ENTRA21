@@ -62,6 +62,22 @@ public class ContaReceberController {
 		}
 	}
 
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	@Path("status/{status}")
+	public ContaReceber getFornecedor(@PathParam("status") String status) {
+		try {
+			ContaReceberDAO ContaReceberDAO = new ContaReceberDAO();
+			return ContaReceberDAO.listarPorStatus(status);
+		} catch (Exception ex) {
+			Logger.getLogger(ContaReceberController.class.getName()).log(Level.SEVERE, null, ex);
+			throw new WebApplicationException(Response.Status.INTERNAL_SERVER_ERROR);
+		}
+	}
+	
+	
+	
+	
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Path("/")
