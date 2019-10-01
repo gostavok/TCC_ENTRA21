@@ -92,16 +92,11 @@ appTextilsoft.controller("pedidoController", function($scope, $http) {
 	};
 	
 	$scope.listarPedidos = function() {
-		var parametro = "";
-		if ($scope.pesquisa.length >= 1){
-			parametro = "p/"+ $scope.pesquisa;
-		}
 	
-		
 		
 		$http({
 			method : 'GET',
-			url : url + 'pedidos/'+parametro
+			url : url + 'pedidos/'
 		}).then(function(response) {
 			$scope.listaPedido = response.data;
 		}, function(response) {
@@ -150,19 +145,18 @@ appTextilsoft.controller("pedidoController", function($scope, $http) {
 			method : 'DELETE',
 			url : url + 'pedidosprodutos/' + id			
 		}).then(function(response) {
-			var pos = 0;			
 			
-			$scope.listaPedido.filter(function(i, idx) {
-			    if(i.idPedido == id)			    
-			    	pos = idx;			   
-			});			
-			$scope.listaPedido.splice(pos,1);	
 			
 			$http({
 				method : 'DELETE',
 				url : url + 'pedidos/' + id			
 			}).then(function(response) {
-				var pos = $scope.listaPedido.indexOf(id);
+				var pos = 0;			
+				
+				$scope.listaPedido.filter(function(i, idx) {
+				    if(i.idPedido == id)			    
+				    	pos = idx;			   
+				});			
 				$scope.listaPedido.splice(pos,1);	
 				
 			}, function(response) {
