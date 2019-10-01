@@ -62,15 +62,18 @@ public int excluir(long id_venda, long id_pedido) throws SQLException, ClassNotF
 	return linhasAlfetadas;
 }
 
-public List<VendaPedido> listarVendasPedidos() throws SQLException, ClassNotFoundException {
+public List<VendaPedido> listarVendasPedidos(long id) throws SQLException, ClassNotFoundException {
 	String sqlQuery = "SELECT * FROM textilsoft.venda v"
-			+ " inner join textilsoft.venda_pedido v ON v.id_venda= vp.id_venda "
+			+ " inner join textilsoft.venda_pedido vp ON v.id_venda= vp.id_venda "
 			+ " inner join textilsoft.pedido p ON vp.id_pedido = p.id_pedido "
 			+ " WHERE v.id_venda = ?";		
 	
 
 	try {
 		PreparedStatement stmt = this.conexao.getConnection().prepareStatement(sqlQuery);
+		
+		stmt.setLong(1, id);	
+		
 		ResultSet rs = stmt.executeQuery();
 
 		List<VendaPedido> vendaspedidos = new ArrayList<>();

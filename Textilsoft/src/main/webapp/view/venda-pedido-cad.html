@@ -7,33 +7,33 @@
 <div class="row">
 	<div class="form-group col-md-1">
 		<label for="campo1">ID</label> <input type="text" class="form-control"
-			ng-model="vendaPedidoController.venda.idVenda" style="width: 50px"
+			ng-model="vendapedido.venda.idVenda" style="width: 50px"
 			disabled>
 	</div>
 	<div class="form-group col-md-2">
 		<label for="campo1">ID do Pedido</label> <input type="text"
 			class="form-control" 
-			ng-model="vendaPedidoController.pedido.idPedido"
-			ng-blur="listarPedido(vendaPedidoController.pedido.idPedido)">
+			ng-model="vendapedido.pedido.idPedido"
+			ng-blur="listarPedido(vendapedido.pedido.idPedido)">
 	</div>
 	<div class="form-group col-md-9">
 		<label for="campo1">Valor Total</label> <input type="text"
 			class="form-control" 
-			ng-model="vendaPedidoController.pedido.valorTotal" disabled>
+			ng-model="vendapedido.pedido.valorTotal" disabled>
 	</div>
 </div>
 <div class="row">
 	<div class="form-group col-md-2">
 		<label for="campo1">Data de Entrega</label> <input type="date"
-			ng-model="vendaPedidoController.pedido.dataPedido"
+			ng-model="vendapedido.pedido.dataPedido"
 			class="form-control" name="data" id="data" disabled/>
 	</div>
+	
 	<div class="form-group col-md-9">
 		<label for="campo1">Status Pedido</label> <input type="text"
 			class="form-control" 
-			ng-model="vendaPedidoController.pedido.StatusPedido" disabled>
+			ng-model="vendapedido.pedido.statusPedido" disabled>
 	</div>
-
 
 </div>
 

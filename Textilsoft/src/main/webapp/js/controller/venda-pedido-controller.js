@@ -1,11 +1,9 @@
 appTextilsoft.controller("vendaPedidoController", function($scope, $http,
     $routeParams) {
 
-$scope.vendaPedido = {};
 $scope.listaVenda = [];
 $scope.vendapedidos = [];
 $scope.venda = {};
-$scope.idvenda = 0;
 $scope.vendapedido = {};
 $scope.vendapedido.venda = {};
 $scope.vendapedido.pedido = {};
@@ -18,8 +16,10 @@ $scope.listarPedido = function(id) {
 		method : 'GET',
 		url : 'http://localhost:8080/Textilsoft/rest/pedidos/'+id
 	}).then(function(response) {
-		$scope.vendaPedido.pedido = response.data; 
-				
+		$scope.vendapedido.pedido = response.data; 
+		$scope.vendapedido.pedido.dataPedido = new Date($scope.vendapedido.pedido.dataPedido);
+		console.log($scope.vendapedido.pedido);
+		console.log($scope.vendapedido.pedido.statusPedido);
 	}, function(response) {
 		console.log('error');
 		console.log(response.data);
@@ -30,9 +30,9 @@ $scope.listarPedido = function(id) {
 $scope.listarVenda = function(id) {
 	$http({
 		method : 'GET',
-		url : 'http://localhost:8080/Textilsoft/rest/vendas/'+id
+		url : 'http://localhost:8080/Textilsoft/rest/vendas/'+ id
 	}).then(function(response) {
-		$scope.vendaPedido.venda = response.data;
+		$scope.vendapedido.venda = response.data;
 
 	}, function(response) {
 		console.log('error');
@@ -41,62 +41,88 @@ $scope.listarVenda = function(id) {
 	});
 };
 
-    $http.get(url + $routeParams.id).then(function(response) {
-        $scope.vendaPedido = response.data;
-                
-		var today = new Date();
-		var dia = today.getDate();
-		var mes = today.getMonth()+1;
-		var ano = today.getFullYear();
-					
+
+$http.get('http://localhost:8080/Textilsoft/rest/vendas/' + $routeParams.id).then(function(response) {
+       $scope.vendapedido.venda = response.data;
+       console.log(response.data);
+       					
         console.log('success - vendaPedidoController');
-        console.log(response.data);
 
     }, function(response) {
         console.log('error- vendaPedidoController');
     
     });   
     
+//	
+//	$scope.salvarVendaPedido = function() {
+//		
+//		$http({
+//			method : 'POST',
+//			url : url + 'vendaspedidos/',
+//			data : $scope.vendapedido
+//		}).then(function(response) {		
+//			
+//			$http({
+//				method : 'GET',
+//				url : 'http://localhost:8080/Textilsoft/rest/vendas/'+ $scope.vendapedido.venda.idVenda
+//				
+//			}).then(function(response) {					
+//				$scope.vendapedido.venda = response.data;	
+//				var atualValor = $scope.vendapedido.venda.valorTotal;
+//				var valorPedido = $scope.vendapedido.pedido.valorTotal;
+//				var novoValor = $scope.formatNumber(atualValor) + $scope.formatNumber(valorPedido);
+//				$scope.vendapedido.venda.valorTotal = $scope.formatNumber(novoValor);
+//				$scope.vendapedido.pedido = {};
+//								
+//				$http({
+//					method : 'PUT',
+//					url : url + 'vendas/',
+//					data : $scope.vendapedido.venda
+//				}).then(function(response) {
+//					console.log('atualizado');
+//				}, function(response) {
+//					console.log('error do salvar');		
+//				});
+//				
+//				
+//			}, function(response) {
+//				console.log('error do get');	
+//			});
+//		}, function(response) {
+//			console.log('error do salvar');	
+//		})
+//	};		
+//	
 	
-	$scope.salvarVendaPedido = function() {
-		var metodo = 'POST';
+$scope.salvarVendaPedido = function() {
 	
-		$http({
-			method : metodo,
-			url : url + 'vendaspedidos/',
-			data : $scope.vendapedido
-		}).then(function(response) {		
-
+	$http({
+		method : 'POST',
+		url : url,
+		data : $scope.vendapedido	
+		}).then(function(response) {	
+			
+			var atualValor = $scope.vendapedido.venda.valorTotal;
+			var valorPedido = $scope.vendapedido.pedido.valorTotal;
+			var novoValor = $scope.formatNumber(atualValor) + $scope.formatNumber(valorPedido);
+			$scope.vendapedido.venda.valorTotal = $scope.formatNumber(novoValor);
+			$scope.vendapedido.pedido = {};
+			
 			$http({
-				method : 'GET',
-				url : url + 'vendaspedidos/' + $scope.vendapedido.venda.idVenda
-			}).then(function(response) {					
-				$scope.vendapedidos = response.data;	
-				var atualValor = $scope.venda.valorTotal;
-				var valorPedido = $scope.vendapedido.pedido.valorTotal;
-				var novoValor = $scope.formatNumber(atualValor) + $scope.formatNumber(valorPedido);
-				$scope.venda.valorTotal = $scope.formatNumber(novoValor);
-				$scope.vendapedido.pedido = {};
-								
-				$http({
-					method : 'PUT',
-					url : url + 'vendas/',
-					data : $scope.venda
-				}).then(function(response) {
-					console.log('atualizado');
-				}, function(response) {
-					console.log('error do salvar');		
-				});
-				
-				
+			method : 'PUT',
+			url : url,
+			data : $scope.vendapedido.venda
+			}).then(function(response) {
+			console.log('atualizado');
 			}, function(response) {
-				console.log('error do get');	
-			});
+			console.log('error do PUT');		
+		});
 		}, function(response) {
-			console.log('error do salvar');	
-		})
-	};		
-	
+		console.log('error do POST');	
+	})
+};		
+		
+		
 	$scope.deletarvendapedido = function (vendapedido) {
 		
 		$http({
@@ -107,7 +133,7 @@ $scope.listarVenda = function(id) {
 			$scope.vendapedidos.splice(pos,1);	
 			
 		}, function(response) {
-			console.log('error do salvar');
+			console.log('error do delete');
 			console.log(response.data);
 			console.log(response.status);
 		});

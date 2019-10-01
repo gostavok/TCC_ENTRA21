@@ -21,6 +21,7 @@ import br.com.textilsoft.dao.PedidoProdutoDAO;
 import br.com.textilsoft.dao.VendaDAO;
 import br.com.textilsoft.dao.VendaPedidoDAO;
 import br.com.textilsoft.model.OrdemServico;
+import br.com.textilsoft.model.PedidoProduto;
 import br.com.textilsoft.model.Venda;
 import br.com.textilsoft.model.VendaPedido;
 
@@ -29,17 +30,17 @@ public class VendaPedidoController {
 
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
-	@Path("/")
-	public List<VendaPedido> listVendasPedidos() {
+	@Path("{id}/")
+	public List<VendaPedido> listVendasPedidos(@PathParam("id") long id) {
 		try {
 			VendaPedidoDAO vendaPedidoDAO = new VendaPedidoDAO();
-			return vendaPedidoDAO.listarVendasPedidos();
+			return vendaPedidoDAO.listarVendasPedidos(id);
 		} catch (Exception ex) {
 			Logger.getLogger(VendaPedidoController.class.getName()).log(Level.SEVERE, null, ex);
 			throw new WebApplicationException(Response.Status.INTERNAL_SERVER_ERROR);
 		}
 	}
-
+	
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Path("/")
