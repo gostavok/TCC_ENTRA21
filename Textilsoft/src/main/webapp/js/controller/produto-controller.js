@@ -1,5 +1,8 @@
 appTextilsoft.controller("produtoController", function($scope, $http) {
     $scope.listaProduto = [];
+	$scope.listaCor = [];
+	$scope.listaMaterial = [];
+	$scope.listaEstampa = [];
    $scope.produto = {};
 	$scope.idExcluir = 0;
    var url = 'http://localhost:8080/Textilsoft/rest/';
@@ -62,5 +65,60 @@ appTextilsoft.controller("produtoController", function($scope, $http) {
 		$scope.produto = {};
 	};
     
-    
+	$scope.procuraValorCor =  function(id){
+		$http({
+			method : 'GET',
+			url : url + 'cores/'+ id
+		}).then(function(response) {
+            $scope.listaCor = response.data;
+            console.log($scope.listaCor.valorCor);
+		}, function(response) {
+			console.log('error');
+			console.log(response.data);
+			console.log(response.status);
+		});
+	};
+	
+	$scope.procuraValorMaterial =  function(id){
+		$http({
+			method : 'GET',
+			url : url + 'materiais/'+ id
+		}).then(function(response) {
+            $scope.listaMaterial = response.data;
+            console.log($scope.listaMaterial.valorMaterial);
+		}, function(response) {
+			console.log('error');
+			console.log(response.data);
+			console.log(response.status);
+		});
+	};
+	
+	$scope.procuraValorEstampa =  function(id){
+		$http({
+			method : 'GET',
+			url : url + 'estampas/'+ id
+		}).then(function(response) {
+            $scope.listaEstampa = response.data;
+            console.log($scope.listaEstampa.valorEstampa);
+		}, function(response) {
+			console.log('error');
+			console.log(response.data);
+			console.log(response.status);
+		});
+	};
+	
+	
+	$scope.calculaTotal =  function(){
+		$scope.procuraValorCor($scope.produto.corProduto.idCor);
+		$scope.procuraValorMaterial($scope.produto.materialProduto.idMaterial);
+		$scope.procuraValorEstampa($scope.produto.estampaProduto.idEstampa);
+		
+		$scope.produto.valorProduto = $scope.listaCor.valorCor + $scope.listaMaterial.valorMaterial + $scope.listaEstampa.valorEstampa;
+		
+	}
+	
+	
+	
+	
+	
 });
