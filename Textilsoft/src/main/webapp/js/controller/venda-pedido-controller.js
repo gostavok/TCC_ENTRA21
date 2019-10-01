@@ -2,11 +2,6 @@ appTextilsoft.controller("vendaPedidoController", function($scope, $http,
     $routeParams) {
 
 $scope.vendaPedido = {};
-$scope.vendaPedido.qtdServico = "";
-$scope.vendaPedido.servicoFornecedor = {};
-$scope.vendaPedido.valorTotalVendaPedido = "";
-$scope.vendaPedido.fornecedor = {};
-
 $scope.listaVenda = [];
 $scope.vendapedidos = [];
 $scope.venda = {};

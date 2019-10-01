@@ -72,9 +72,8 @@ appTextilsoft.config(function($routeProvider, $locationProvider){
      .when("/pedido-edit/:id",{templateUrl:'view/pedido-edit.html',controller:'pedidoDetalheController'})
      
      .when("/venda-cad",{templateUrl:'view/venda-cad.html', controller:'vendaController'})
-     .when("/venda-lista",{templateUrl:'view/venda.html', controller:'vendaController'})
-     .when("/venda-edit/:id",{templateUrl:'view/venda-edit.html', controller:'vendaDetalheController'})
-     .when("/venda/:id",{templateUrl:'view/venda-detalhe.html', controller:'vendaDetalheController'})
+     .when("/venda-lista",{templateUrl:'view/venda.html', controller:'vendaController'})     
+     .when("/venda-pedido-cad/:id",{templateUrl:'view/venda-pedido-cad.html', controller:'vendaPedidoController'})
      
      .when("/compra-list",{templateUrl:'view/compra.html',controller:'compraController'})
      .when("/compra/:id",{templateUrl:'view/compra-detalhe.html',controller:'compraDetalheController'})
