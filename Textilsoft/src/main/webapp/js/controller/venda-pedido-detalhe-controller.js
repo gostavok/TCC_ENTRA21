@@ -110,7 +110,7 @@ appTextilsoft.controller("vendaPedidoDetalheController", function($scope,
 				
 		$http({
 			method : 'DELETE',
-			url : url + 'vendaspedidos/' + vendapedido.venda.idVenda+'/'+ vendapedido.pedido.idPedido+'/'
+			url : url + vendapedido.venda.idVenda+'/'+ vendapedido.pedido.idPedido+'/'
 		}).then(function(response) {
 			
 			var atualValor = $scope.vendapedido.venda.valorTotal;
