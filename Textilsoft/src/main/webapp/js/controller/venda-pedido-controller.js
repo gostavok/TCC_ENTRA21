@@ -132,10 +132,13 @@ $scope.salvarVendaPedido = function() {
 		$http({
 			method : 'DELETE',
 			url : url + vendapedido.venda.idVenda +'/'+ vendapedido.venda.idPedido +'/'
-		}).then(function(response) {
-			var pos = $scope.vendapedidoss.indexOf(vendapedido.venda.idVenda);
+		}).then(function(response) {		
+			var pos = 0;
+			$scope.vendapedidos.filter(function(i, idx) {
+			    if(i.venda.idVenda == id)
+			    	pos = idx; 				   
+			});
 			$scope.vendapedidos.splice(pos,1);	
-			
 		}, function(response) {
 			console.log('error do delete');
 			console.log(response.data);
