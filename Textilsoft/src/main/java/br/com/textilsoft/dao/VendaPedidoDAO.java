@@ -44,30 +44,6 @@ public void inserir(VendaPedido vendapedido) throws SQLException, ClassNotFoundE
 	}
 	
 	
-public int alterar(VendaPedido vendapedido, long id_venda, long id_pedido) throws SQLException, ClassNotFoundException {
-	String sqlQuery = "UPDATE venda_pedido SET id_venda = ?, id_pedido = ? WHERE id_venda = ? and id_pedido = ?";
-	int linhasAfetadas = 0;
-
-	try {
-		PreparedStatement stmt = this.conexao.getConnection().prepareStatement(sqlQuery);
-		stmt.setLong(1, vendapedido.getVenda().getIdVenda());
-		stmt.setLong(2, vendapedido.getPedido().getIdPedido());
-		stmt.setDouble(3, id_venda);
-		stmt.setDouble(4, id_pedido);
-		
-
-		linhasAfetadas = stmt.executeUpdate();
-		this.conexao.commit();
-	} catch (SQLException e) {
-		this.conexao.rollback();
-		throw e;
-	}
-
-	return linhasAfetadas;
-}
-
-
-
 public int excluir(long id_venda, long id_pedido) throws SQLException, ClassNotFoundException {
 	int linhasAlfetadas = 0;
 	String sqlQuery = "DELETE FROM venda_pedido WHERE id_venda = ? and id_pedido = ?";
@@ -86,8 +62,12 @@ public int excluir(long id_venda, long id_pedido) throws SQLException, ClassNotF
 	return linhasAlfetadas;
 }
 
-public List<VendaPedido> listar() throws SQLException, ClassNotFoundException {
-	String sqlQuery = "SELECT * FROM textilsoft.venda_pedido VP WHERE id_venda = ? ORDER BY VP.id_pedido";
+public List<VendaPedido> listarVendasPedidos() throws SQLException, ClassNotFoundException {
+	String sqlQuery = "SELECT * FROM textilsoft.venda v"
+			+ " inner join textilsoft.venda_pedido v ON v.id_venda= vp.id_venda "
+			+ " inner join textilsoft.pedido p ON vp.id_pedido = p.id_pedido "
+			+ " WHERE v.id_venda = ?";		
+	
 
 	try {
 		PreparedStatement stmt = this.conexao.getConnection().prepareStatement(sqlQuery);
@@ -104,6 +84,25 @@ public List<VendaPedido> listar() throws SQLException, ClassNotFoundException {
 		throw e;
 	}
 }	
+
+public int alterar(Venda venda) throws SQLException, ClassNotFoundException {
+	String sqlQuery = "UPDATE venda SET valor_total = ? WHERE id_venda = ?";
+	int linhasAfetadas = 0;
+
+	try {
+		PreparedStatement stmt = this.conexao.getConnection().prepareStatement(sqlQuery);
+		stmt.setDouble(1, venda.getValorTotal());			
+
+		linhasAfetadas = stmt.executeUpdate();
+		this.conexao.commit();
+	} catch (SQLException e) {
+		this.conexao.rollback();
+		throw e;
+	}
+
+	return linhasAfetadas;
+}
+
 	private VendaPedido parser(ResultSet resultSet) throws SQLException {
 		VendaPedido vp 	= new VendaPedido();
 		Venda 		v 	= new Venda();
@@ -113,7 +112,7 @@ public List<VendaPedido> listar() throws SQLException, ClassNotFoundException {
 		vp.setVenda(v);
 		vp.setPedido(p);
 		
-		v.setIdVenda(resultSet.getInt("id_venda"));
+		v.setIdVenda(resultSet.getInt("id_venda")); 
 		v.setValorTotal(resultSet.getDouble("valor_total"));
 		v.setDataPagamento(resultSet.getDate("data_pagamento"));
 		v.setDataVenda(resultSet.getDate("data_venda"));

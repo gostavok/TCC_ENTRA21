@@ -94,18 +94,5 @@ public class VendaController {
 			throw new WebApplicationException(Response.Status.INTERNAL_SERVER_ERROR);
 		}
 	}
-
-	@GET
-	@Produces(MediaType.APPLICATION_JSON)
-	@Path("/pedidos/{idVenda}")
-	public List<VendaPedido> listVendasPedidos() {
-		try {
-			VendaPedidoDAO vendaPedidoDAO = new VendaPedidoDAO ();
-			return vendaPedidoDAO.listar();
-		} catch (Exception ex) {
-			Logger.getLogger(VendaController.class.getName()).log(Level.SEVERE, null, ex);
-			throw new WebApplicationException(Response.Status.INTERNAL_SERVER_ERROR);
-		}
-	}
 	
 }

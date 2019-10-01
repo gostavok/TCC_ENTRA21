@@ -16,30 +16,30 @@
  
  	<div class="form-group col-md-1">
  		<label for="campo3">Id Cor</label>
- 		<input type="text" class= "form-control" placeholder="idCor" ng-model="produto.corProduto.idCor">
+ 		<input type="text" class= "form-control" placeholder="idCor" ng-model="produto.corProduto.idCor" ng-change="calculaTotal()">
  	</div> 	
  		<div class="form-group col-md-2">
  		<label for="campo3">Cor</label>
- 		<input type="text" class= "form-control" placeholder="Cor" ng-model="produto.corProduto.nmCor" >
+ 		<input type="text" class= "form-control" placeholder="Cor" ng-model="listaCor.nmCor" disabled>
  	</div> 	
  	
  	<div class="form-group col-md-2">
  		<label for="campo4">Id Material</label>
- 		<input type="text" class= "form-control" placeholder="idMaterial" ng-model="produto.materialProduto.idMaterial" >
+ 		<input type="text" class= "form-control" placeholder="idMaterial" ng-model="produto.materialProduto.idMaterial" ng-change="calculaTotal()">
  	</div> 	
  	
  	<div class="form-group col-md-2">
  		<label for="campo4">Material</label>
- 		<input type="text" class= "form-control" placeholder="Material" ng-model="produto.materialProduto.nmMaterial" >
+ 		<input type="text" class= "form-control" placeholder="Material" ng-model="listaMaterial.nmMaterial" disabled>
  	</div> 	
  	
  	<div class="form-group col-md-2">
  		<label for="campo5">Id Estampa</label>
- 		<input type="text" class= "form-control" placeholder="idEstampa" ng-model="produto.estampaProduto.idEstampa">
+ 		<input type="text" class= "form-control" placeholder="idEstampa" ng-model="produto.estampaProduto.idEstampa" ng-change="calculaTotal()">
  	</div> 	
  	<div class="form-group col-md-2">
  		<label for="campo5">Estampa</label>
- 		<input type="text" class= "form-control" placeholder="Estampa" ng-model="produto.estampaProduto.nmEstampa">
+ 		<input type="text" class= "form-control" placeholder="Estampa" ng-model="listaEstampa.codEstampa" disabled>
  	</div> 	
  	
  	<div class="form-group col-md-2">
