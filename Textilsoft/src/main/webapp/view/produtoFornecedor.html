@@ -48,7 +48,7 @@
 		
 		<td >{{produtoFornecedor.idProdForn }}</td>
 		<td> {{produtoFornecedor.nmProdForn }}</td>
-		<td>R$ {{produtoFornecedor.valorProdForn }}</td>
+		<td>R$ {{produtoFornecedor.valorProdForn | number: 2}}</td>
 		<td>{{produtoFornecedor.undMedidaProdForn}}</td>
 		<td class="actions">
 		  <a class="btn btn-danger btn-xs"  type="button" ng-click = "procuraProdutoFornecedor(produtoFornecedor)" data-toggle="modal" data-target="#delete-modal">Excluir</a>

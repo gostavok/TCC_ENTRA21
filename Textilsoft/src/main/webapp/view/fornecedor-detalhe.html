@@ -1,3 +1,5 @@
+<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+	<link href="bootstrap/css/style.css" rel="stylesheet">
 <meta charset="utf-8">
 <div class="modal fade" id="delete-modal" tabindex="-1" role="dialog"
 		aria-labelledby="modalLabel">
@@ -21,7 +23,7 @@
 
 <h3 class="page-header">Visualizar Fornecedor #{{fornecedorDetalhe.idFornecedor}}</h3>
 <br>
-<div class="row">
+<section class="row">
 	<div class="form-group col-md-1">
 		<p><strong>ID</strong></p>
 		<p>{{fornecedorDetalhe.idFornecedor}}</p>
@@ -82,7 +84,7 @@
 		</div>
 
 
-</div>
+</section>
 
 
 
@@ -91,6 +93,7 @@
  	  <a class="btn btn-danger "  type="button" name= "excluir" value=" X " data-toggle="modal" data-target="#delete-modal" ng-click = "procuraFornecedor(fornecedorDetalhe)" >Excluir</a>
 		<a class="btn btn-warning " type="button" value=" edit " href = "fornecedores-editar/{{fornecedorDetalhe.idFornecedor}}">Alterar</a>
 		<a class="btn btn-default " type="button" onClick="history.go(-1)">Voltar</a>
+		<a class="btn btn-default " type="button" onClick="window.print()">Imprimir</a>
 		
  </div>
 </div>

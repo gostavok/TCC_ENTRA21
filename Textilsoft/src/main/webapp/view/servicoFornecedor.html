@@ -19,7 +19,7 @@
        
     </div>
  	 <div class="col-md-3">
-        <a href="servicoFornecedor-cad"  class="btn btn-primary pull-right h2">Novo servico</a>
+        <a href="servicoFornecedor-cad"  class="btn btn-primary pull-right h2">Novo serviço</a>
     </div>
     
 </div>
@@ -35,8 +35,8 @@
         <table class="table col-md-12">
             <thead>
 				<tr>
-					<th class="col-md-2" >ID</th>
-					<th class="col-md-2">Nome</th>
+					<th class="col-md-2" >ID Serviço</th>
+					<th class="col-md-2">Serviço</th>
 					<th class="col-md-2">Valor</th>
 					<th class="col-md-3">Unidade medida</th>
 					<th class="actions">Ações</th>
@@ -48,7 +48,7 @@
 		
 		<td >{{servicoFornecedor.idServForn }}</td>
 		<td> {{servicoFornecedor.nmServForn }}</td>
-		<td>R$ {{servicoFornecedor.valorServForn }}</td>
+		<td>R${{servicoFornecedor.valorServForn | number: 2}}</td>
 		<td>{{servicoFornecedor.undMedidaServForn}}</td>
 		<td class="actions">
 		  <a class="btn btn-danger btn-xs"  type="button" ng-click = "procuraServicoFornecedor(servicoFornecedor)" data-toggle="modal" data-target="#delete-modal">Excluir</a>
