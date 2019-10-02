@@ -76,8 +76,44 @@ public class ContaReceberController {
 	}
 	
 	
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	@Path("pago/")
+	public double pegarValorPago() {
+		try {
+			ContaReceberDAO ContaReceberDAO = new ContaReceberDAO();
+			return ContaReceberDAO.pegarTotalPago();
+		} catch (Exception ex) {
+			Logger.getLogger(ContaReceberController.class.getName()).log(Level.SEVERE, null, ex);
+			throw new WebApplicationException(Response.Status.INTERNAL_SERVER_ERROR);
+		}
+	}
 	
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	@Path("pendente/")
+	public double pegarValorPendente(){
+		try {
+			ContaReceberDAO ContaReceberDAO = new ContaReceberDAO();
+			return ContaReceberDAO.pegarTotalPendente();
+		} catch (Exception ex) {
+			Logger.getLogger(ContaReceberController.class.getName()).log(Level.SEVERE, null, ex);
+			throw new WebApplicationException(Response.Status.INTERNAL_SERVER_ERROR);
+		}
+	}
 	
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	@Path("atrasado/")
+	public double pegarValorAtrasado() {
+		try {
+			ContaReceberDAO ContaReceberDAO = new ContaReceberDAO();
+			return ContaReceberDAO.pegarTotalAtrasado();
+		} catch (Exception ex) {
+			Logger.getLogger(ContaReceberController.class.getName()).log(Level.SEVERE, null, ex);
+			throw new WebApplicationException(Response.Status.INTERNAL_SERVER_ERROR);
+		}
+	}
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Path("/")
