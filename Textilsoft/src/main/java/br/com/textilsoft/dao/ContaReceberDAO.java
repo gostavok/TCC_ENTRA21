@@ -8,6 +8,7 @@ import java.util.List;
 import br.com.textilsoft.data.ConexaoJDBC;
 import br.com.textilsoft.data.ConexaoMysqlJDBC;
 import br.com.textilsoft.model.ContaReceber;
+import br.com.textilsoft.model.SituacaoContaReceber;
 import br.com.textilsoft.model.Venda;
 import br.com.textilsoft.model.util.StatusContaReceber;
 
@@ -39,7 +40,7 @@ public class ContaReceberDAO {
 			this.conexao.rollback();
 			throw e;
 		}
-	
+		alterar();
 	}
 	
 	public int alterar(ContaReceber contaReceber) throws SQLException, ClassNotFoundException {
@@ -60,8 +61,30 @@ public class ContaReceberDAO {
 			this.conexao.rollback();
 			throw e;
 		}
-
+		alterar();
 		return linhasAfetadas;
+		
+	}
+	
+	public void alterar() throws SQLException, ClassNotFoundException {
+		String sqlQuery = "UPDATE conta_receber INNER JOIN venda USING(id_venda)\r\n" + 
+				"	SET\r\n" + 
+				"		status_conta_receber = 'Atrasado'\r\n" + 
+				"	WHERE venda.data_pagamento < CURDATE() AND status_conta_receber != 'Pago'";
+		
+
+		try {
+			PreparedStatement stmt = this.conexao.getConnection().prepareStatement(sqlQuery);			
+			
+		
+			
+			stmt.executeUpdate();
+			this.conexao.commit();
+		} catch (SQLException e) {
+			this.conexao.rollback();
+			throw e;
+		}
+		
 	}
 
 	public int excluir(long id) throws SQLException, ClassNotFoundException {
@@ -111,7 +134,7 @@ public class ContaReceberDAO {
 			while (rs.next()) {
 				contasReceber.add(parser(rs));
 			}
-
+			
 			return contasReceber;
 		} catch (SQLException e) {
 			throw e;
@@ -129,7 +152,7 @@ public class ContaReceberDAO {
 				 aux = rs.getDouble("total");				
 			}
 			
-			System.out.println(aux);
+			
 			return aux;
 		} catch (SQLException e) {
 			throw e;
@@ -146,7 +169,7 @@ public class ContaReceberDAO {
 				 aux = rs.getDouble("total");				
 			}
 			
-			System.out.println(aux);
+			
 			return aux;
 		} catch (SQLException e) {
 			throw e;
@@ -163,7 +186,7 @@ public class ContaReceberDAO {
 				 aux = rs.getDouble("total");				
 			}
 			
-			System.out.println(aux);
+		
 			return aux;
 		} catch (SQLException e) {
 			throw e;
@@ -183,17 +206,19 @@ public class ContaReceberDAO {
 			List<String> situacao = new ArrayList<>();
 			
 			while (rs.next()) {
-				
-				 aux = rs.getString("quantidade");				
-				 situacao.add(aux);
-			
+				 if(rs.next())
+				 aux = rs.getString("quantidade");
+				 if (aux.isBlank()) aux= "a";
+				 situacao.add(aux);	
 			}
-			
-			System.out.println(aux);
+		
+			alterar();
 			return situacao;
+			
 		} catch (SQLException e) {
 			throw e;
 		}
+	
 	}
 	
 	public List<ContaReceber> listarPorStatus(String status) throws SQLException, ClassNotFoundException {
@@ -217,10 +242,43 @@ public class ContaReceberDAO {
 	}
 	
 	
+	public List<SituacaoContaReceber> listarStatusObj() throws SQLException, ClassNotFoundException {
+		String sqlQuery = "SELECT status_conta_receber AS situacao, COUNT(*) AS quantidade\r\n" + 
+				"  FROM conta_receber\r\n" + 
+				" WHERE status_conta_receber IN ('pago', 'pendente', 'atrasado')\r\n" + 
+				" GROUP BY situacao";
 	
-	private ContaReceber parser(ResultSet resultSet) throws SQLException {
+		try {
+			PreparedStatement stmt = this.conexao.getConnection().prepareStatement(sqlQuery);
+			ResultSet rs = stmt.executeQuery();
+
+			List<SituacaoContaReceber> situacao = new ArrayList<>();
+			
+			while (rs.next()) {				
+				 situacao.add(parserStatus(rs));	
+			}
 		
+			alterar();
+			return situacao;
+			
+		} catch (SQLException e) {
+			throw e;
+		}
+	
+	}
+	
+	private SituacaoContaReceber parserStatus(ResultSet resultSet) throws SQLException {		
+	SituacaoContaReceber scr = new SituacaoContaReceber();		
+	
+		scr.setStatus(resultSet.getString("situacao"));
+		scr.setQuantidade(resultSet.getInt("quantidade"));	
 		
+		return scr;
+	}
+	
+	
+	
+	private ContaReceber parser(ResultSet resultSet) throws SQLException {		
 		
 		ContaReceber cr = new ContaReceber();		
 		Venda v = new Venda();

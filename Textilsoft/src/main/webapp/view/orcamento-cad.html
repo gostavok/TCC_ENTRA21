@@ -3,7 +3,7 @@
 <div class = "row">
 	<div class="form-group col-md-1">
 		<label for="campo1">ID</label>
-		<input type="text" class= "form-control" placeholder="ID"  ng-model="orcamento.idOrcamento" style="width: 50px" disabled>
+		<input type="text" class= "form-control" placeholder="ID"  ng-model="orcamento.idOrcamento" style="width: 50px" readonly>
 	</div>
 	<div class="form-group col-md-1">
 		<label for="campo2">ID Cor</label>
@@ -12,7 +12,7 @@
 	
 	<div class="form-group col-md-3">
 		<label for="campo2">Cor</label>
-		<input type="text"  class= "form-control"  placeholder="Cor" ng-change="calculaTotal()" ng-model="listaCor.nmCor" disabled>
+		<input type="text"  class= "form-control"  placeholder="Cor" ng-change="calculaTotal()" ng-model="listaCor.nmCor" readonly>
 	</div>
 	
 	<div class="form-group col-md-1">
@@ -22,7 +22,7 @@
 	
 	<div class="form-group col-md-3">
 		<label for="campo3">Material</label>
-		<input type="text"  class= "form-control"  placeholder="Material" ng-change="calculaTotal()" ng-model="listaMaterial.nmMaterial" disabled>
+		<input type="text"  class= "form-control"  placeholder="Material" ng-change="calculaTotal()" ng-model="listaMaterial.nmMaterial" readonly>
 	</div>
 	
 	
@@ -34,7 +34,7 @@
 		
 	<div class="form-group col-md-3">
 		<label for="campo4">Estampa</label>
-		<input type="text"  class= "form-control"  placeholder="Estampa" ng-change="calculaTotal()" ng-model="listaEstampa.codEstampa" disabled>
+		<input type="text"  class= "form-control"  placeholder="Estampa" ng-change="calculaTotal()" ng-model="listaEstampa.codEstampa" readonly>
 	</div>
 	
 	
@@ -47,12 +47,12 @@
 	
 	<div class="form-group col-md-2">
 		<label for="campo4">Valor Base</label>
-		<input type="number"  class= "form-control" value="30.00" placeholder="30.00" ng-change="" ng-model="orcamento.valorBase" disabled>
+		<input type="number"  class= "form-control" value="30.00" placeholder="30.00" ng-change="" ng-model="orcamento.valorBase" readonly>
 	</div>
 
 	<div class="form-group col-md-3">
 		<label for="campo4">Valor Total</label>
-		<input type="number"  class= "form-control"  ng-model="orcamento.valorOrcamento"  disabled>
+		<input type="number"  class= "form-control"  ng-model="orcamento.valorOrcamento"  readonly>
 	</div>	
 	
 <form> 

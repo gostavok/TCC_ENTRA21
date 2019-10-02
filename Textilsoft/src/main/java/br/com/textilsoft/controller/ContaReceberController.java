@@ -18,6 +18,7 @@ import javax.ws.rs.core.Response;
 
 import br.com.textilsoft.dao.ContaReceberDAO;
 import br.com.textilsoft.model.ContaReceber;
+import br.com.textilsoft.model.SituacaoContaReceber;
 
 
 @Path("contasreceber")
@@ -29,6 +30,7 @@ public class ContaReceberController {
 	public List<ContaReceber> listaContasPagar() {
 		try {
 			ContaReceberDAO ContaReceberDAO = new ContaReceberDAO();
+			
 			return ContaReceberDAO.listar();
 		} catch (Exception ex) {
 			Logger.getLogger(ContaReceberController.class.getName()).log(Level.SEVERE, null, ex);
@@ -42,7 +44,22 @@ public class ContaReceberController {
 	public List<String> listarSituacao() {
 		try {
 			ContaReceberDAO ContaReceberDAO = new ContaReceberDAO();
+			
 			return ContaReceberDAO.listarStatus();
+		} catch (Exception ex) {
+			Logger.getLogger(ContaReceberController.class.getName()).log(Level.SEVERE, null, ex);
+			throw new WebApplicationException(Response.Status.INTERNAL_SERVER_ERROR);
+		}
+	}
+	
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	@Path("statusobj/")
+	public List<SituacaoContaReceber> listarSituacao2() {
+		try {
+			ContaReceberDAO ContaReceberDAO = new ContaReceberDAO();
+			
+			return ContaReceberDAO.listarStatusObj();
 		} catch (Exception ex) {
 			Logger.getLogger(ContaReceberController.class.getName()).log(Level.SEVERE, null, ex);
 			throw new WebApplicationException(Response.Status.INTERNAL_SERVER_ERROR);
@@ -68,6 +85,7 @@ public class ContaReceberController {
 	public List<ContaReceber> getFornecedor(@PathParam("status") String status) {
 		try {
 			ContaReceberDAO ContaReceberDAO = new ContaReceberDAO();
+			
 			return ContaReceberDAO.listarPorStatus(status);
 		} catch (Exception ex) {
 			Logger.getLogger(ContaReceberController.class.getName()).log(Level.SEVERE, null, ex);
@@ -121,7 +139,7 @@ public class ContaReceberController {
 		try {
 			ContaReceberDAO ContaReceberDAO = new ContaReceberDAO();
 			ContaReceberDAO.inserir(contaReceber);
-
+			
 			return Response.status(Response.Status.CREATED).build();
 		} catch (Exception ex) {
 			Logger.getLogger(ContaReceberController.class.getName()).log(Level.SEVERE, null, ex);
@@ -135,8 +153,9 @@ public class ContaReceberController {
 	public Response update(ContaReceber contaReceber) {
 		try {
 
-			ContaReceberDAO ContaReceberDAO = new ContaReceberDAO();
+			ContaReceberDAO ContaReceberDAO = new ContaReceberDAO();			
 			ContaReceberDAO.alterar(contaReceber);
+		
 			return Response.status(Response.Status.ACCEPTED).build();
 		} catch (Exception ex) {
 			Logger.getLogger(ContaReceberController.class.getName()).log(Level.SEVERE, null, ex);
