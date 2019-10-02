@@ -81,7 +81,7 @@ appTextilsoft.controller("vendaPedidoDetalheController", function($scope,
 				function(response) {
 
 					var atualValor = $scope.vendapedido.venda.valorTotal;
-					var valorPedido = $scope.vendapedido.pedido.valorTotal;
+					var valorPedido = $scope.vendapedido.pedido.valorTotalPedido;
 					var novoValor = $scope.formatNumber(atualValor)
 							+ $scope.formatNumber(valorPedido);
 					$scope.vendapedido.venda.valorTotal = $scope
@@ -111,11 +111,10 @@ appTextilsoft.controller("vendaPedidoDetalheController", function($scope,
 		}).then(function(response) {
 			
 			var atualValor = vendapedido.venda.valorTotal;
-			var valorProduto = vendapedido.pedido.valorTotal;
+			var valorProduto = vendapedido.pedido.valorTotalPedido;
 			var novoValor = $scope.formatNumber(atualValor) - $scope.formatNumber(valorProduto);
 			$scope.vendapedido.venda.valorTotal = $scope.formatNumber(novoValor);
-			
-			
+						
 			var pos = 0;			
 			$scope.vendapedidos.filter(function(i, idx) {
 			    if(i.vendapedido.venda.idVenda == vendapedido.pedido.idPedido)			    
@@ -126,12 +125,12 @@ appTextilsoft.controller("vendaPedidoDetalheController", function($scope,
 						
 			$http({
 				method : 'PUT',
-				url : 'http://localhost:8080/Textilsoft/rest/vendas/',
+				url : url,
 				data : $scope.vendapedido.venda
 			}).then(function(response) {
 				console.log('atualizado');
 			}, function(response) {
-				console.log('error do salvar');		
+				console.log('error do PUT');
 			});
 			
 			

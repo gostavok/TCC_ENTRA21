@@ -44,7 +44,7 @@
 					<tr ng-repeat="vendapedido in vendapedidos">
 
 						<td>{{vendapedido.pedido.idPedido}}</td>
-						<td>R${{vendapedido.pedido.valorTotal | number: 2}}</td>
+						<td>R${{vendapedido.pedido.valorTotalPedido | number: 2}}</td>
 						<td>{{vendapedido.pedido.dataPedido| date: 'dd/MM/yyyy'}}</td>
 						<td>{{vendapedido.pedido.statusPedido}}</td>
 						
