@@ -90,7 +90,7 @@ public List<VendaPedido> listarVendasPedidos(long id) throws SQLException, Class
 }	
 
 public int alterar(Venda venda) throws SQLException, ClassNotFoundException {
-	String sqlQuery = "UPDATE venda SET valor_total = ? WHERE id_venda = ?";
+	String sqlQuery = "UPDATE venda SET valor_total_venda = ? WHERE id_venda = ?";
 	int linhasAfetadas = 0;
 
 	try {
@@ -118,7 +118,7 @@ public int alterar(Venda venda) throws SQLException, ClassNotFoundException {
 		vp.setPedido(p);
 		
 		v.setIdVenda(resultSet.getInt("id_venda")); 
-		v.setValorTotal(resultSet.getDouble("valor_total"));
+		v.setValorTotal(resultSet.getDouble("valor_total_venda"));
 		v.setDataPagamento(resultSet.getDate("data_pagamento"));
 		v.setDataVenda(resultSet.getDate("data_venda"));
 		
@@ -129,7 +129,7 @@ public int alterar(Venda venda) throws SQLException, ClassNotFoundException {
 		
 		p.setIdPedido(resultSet.getInt("id_pedido"));
 		p.setQtdProd(resultSet.getInt("qtd_prod"));
-		p.setValorTotal(resultSet.getDouble("valor_total"));
+		p.setValorTotal(resultSet.getDouble("valor_total_pedido"));
 		p.setDataPedido(resultSet.getDate("data_pedido"));
 		p.setStatusPedido(StatusPedido.valueOf(resultSet.getString("status_pedido")));						
 		
