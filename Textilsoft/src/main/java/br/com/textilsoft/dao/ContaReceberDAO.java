@@ -224,7 +224,7 @@ public class ContaReceberDAO {
 		
 		ContaReceber cr = new ContaReceber();		
 		Venda v = new Venda();
-		v.setIdVenda(resultSet.getInt("id_venda"));
+		v.setIdVenda(resultSet.getInt("id_venda" ));
 		v.setValorTotal(resultSet.getDouble("valor_total"));
 		v.setDataPagamento(resultSet.getDate("data_pagamento"));
 		v.setDataVenda(resultSet.getDate("data_venda"));
