@@ -2,7 +2,7 @@
 
 
 
-<div class="row" ng-init= "listarStatus()">
+<div class="row" ng-init= "chamarMetodos()">
 <div class = "row col-md-12">
 	<div class="col-md-4" id = "box1">
 		<div class= "col-md-12">
@@ -65,11 +65,13 @@
 		</div>
 		
 		<div class= "col-md-6">
-			<span type= "text" class= "glyphicon glyphicon-ban-circle" align= "left" style = "font-size: 60px; margin-top: 20px;"></span>
+				<p align= "center" style = "font-size: 40px">R${{pago | number:2}}</p>
+		<p align= "center" style = "font-size: 40px">R${{pendente | number: 2}}</p>
+		<p align= "center" style = "font-size: 40px">R${{atrasado | number: 2}}</p>
 		</div>
 		
 		<div class= "col-md-6">
-		<p align= "center" style = "font-size: 70px">{{contaReceber.Atrasado}}</p>
+	
 		</div>
 	
 	</div>
