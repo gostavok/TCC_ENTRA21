@@ -64,8 +64,8 @@ public class ContaReceberController {
 
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
-	@Path("status/{status}")
-	public ContaReceber getFornecedor(@PathParam("status") String status) {
+	@Path("status/{status}/")
+	public List<ContaReceber> getFornecedor(@PathParam("status") String status) {
 		try {
 			ContaReceberDAO ContaReceberDAO = new ContaReceberDAO();
 			return ContaReceberDAO.listarPorStatus(status);
