@@ -4,6 +4,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import br.com.textilsoft.data.ConexaoJDBC;
@@ -25,7 +26,7 @@ public class CompraDAO {
 	
 	public Long inserir(Compra compra) throws SQLException, ClassNotFoundException {
 		Long id = null;
-	
+		Date hoje = new Date();
 
 		String sqlQuery = "INSERT INTO compra (id_prod_forn, qtd_compra, valor_total, data_compra, data_venc) VALUES (?, ?, ?, ?, ?) ";
 
@@ -34,7 +35,7 @@ public class CompraDAO {
 			stmt.setLong(1, compra.getProdutoFornecedor().getIdProdForn());
 			stmt.setDouble(2, compra.getQtdCompra());
 			stmt.setDouble(3, compra.getValorTotal());
-			stmt.setTimestamp(4, new java.sql.Timestamp( compra.getDataCompra().getTime()));
+			stmt.setTimestamp(4, new java.sql.Timestamp( hoje.getTime()));
 			stmt.setDate(5, new java.sql.Date( compra.getDataVenc().getTime()));
 			
 			stmt.execute();

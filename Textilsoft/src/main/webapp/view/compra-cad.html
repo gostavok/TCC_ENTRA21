@@ -6,23 +6,23 @@
 		<input type="text" class= "form-control" placeholder="ID" ng-model="compra.idCompra" style="width: 50px" readonly>
 	</div>
 	<div class="form-group col-md-2">
-		<label for="campo2">Id ProdutoFornecedor</label>
-		<input type="number"  class= "form-control"  placeholder="IdProdutoFornecedor" ng-change="procuraFornecedores(IdProdutoFornecedor)" ng-model="compra.produtoFornecedor.idProdForn">
+		<label for="campo2">ID Produto</label>
+		<input type="number"  class= "form-control"  placeholder="ID Produto" ng-change="procuraFornecedores(compra.produtoFornecedor.idProdForn)" ng-model="compra.produtoFornecedor.idProdForn">
 	</div>
 	
 	<div class="form-group col-md-2">
-		<label for="campo2">ProdutoFornecedor</label>
-		<input type="number"  class= "form-control"  placeholder="ProdutoFornecedor"  ng-model="fornecedor.nmProdForn" readonly>
+		<label for="campo2">Produto</label>
+		<input type="text"  class= "form-control"  placeholder="ProdutoFornecedor"  ng-model="compra.produtoFornecedor.nmProdForn" readonly>
 	</div>
 	
 	<div class="form-group col-md-2">
 		<label for="campo3">Quantidade</label>
-		<input type="number"  class= "form-control"  placeholder="Quantidade" ng-model="compra.qtdCompra">
+		<input type="number"  class= "form-control"  placeholder="Quantidade" ng-model="compra.qtdCompra" ng-change= "calculaTotal()">
 	</div>
 
 	<div class="form-group col-md-2">
 		<label for="campo3">Valor Total</label>
-		<input type="number"  class= "form-control"  placeholder="Valor Total" ng-model="compra.valorTotal">
+		<input type="number"  class= "form-control"  placeholder="Valor Total" ng-model="compra.valorTotal" readonly>
 	</div>
 <!-- 
 	<div class="form-group col-md-2">
