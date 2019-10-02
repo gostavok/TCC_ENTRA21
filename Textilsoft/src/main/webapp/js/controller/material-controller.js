@@ -23,7 +23,7 @@ appTextilsoft.controller("materialController", function($scope, $http) {
 
 	$scope.salvarMateriais = function() {
 		var metodo = 'POST';
-	
+		
 		$http({
 			method : metodo,
 			url : url + 'materiais/',
@@ -34,6 +34,7 @@ appTextilsoft.controller("materialController", function($scope, $http) {
 		}, function(response) {
 			console.log('error do salvar');	
 		});
+		
 	};
 
 	$scope.deleteMaterial = function(id) {
