@@ -1,8 +1,8 @@
 appTextilsoft.controller("produtoController", function($scope, $http) {
     $scope.listaProduto = [];
-	$scope.listaCor = [];
-	$scope.listaMaterial = [];
-	$scope.listaEstampa = [];
+	$scope.listaCor = {};
+	$scope.listaMaterial = {};
+	$scope.listaEstampa = {};
    $scope.produto = {};
 	$scope.idExcluir = 0;
    var url = 'http://localhost:8080/Textilsoft/rest/';

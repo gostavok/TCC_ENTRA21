@@ -40,7 +40,7 @@ appTextilsoft.controller("corDetalheController", function($scope, $http,
 				
 				history.go(-1);
 			}, function(response) {
-				console.log('error do salvar');		
+				alert("Essa cor está sendo usada em algum produto!");	
 			});
 		};
 		$scope.procuraCor = function(corDetalhe) {
