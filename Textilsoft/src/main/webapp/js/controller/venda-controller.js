@@ -109,7 +109,10 @@ appTextilsoft.controller("vendaController", function($scope, $http) {
 
 	$scope.deleteVenda = function(id) {
 		
-		
+	$http({
+			method : 'DELETE',
+			url : url + 'contasreceber/deletar/' + id			
+	}).then(function(response) {	
 		$http({
 			method : 'DELETE',
 			url : url + 'vendaspedidos/d' + id			
@@ -134,7 +137,7 @@ appTextilsoft.controller("vendaController", function($scope, $http) {
 				console.log(response.status);
 			});
 		});
-		
+	});
 	};
 
 	$scope.alterarVenda = function(venda) {

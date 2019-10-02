@@ -146,7 +146,20 @@ public class ContaReceberController {
 			throw new WebApplicationException(Response.Status.INTERNAL_SERVER_ERROR);
 		}
 	}
-
+	
+	@DELETE
+	@Path("deletar/{id}/")
+	public Response deletetotal(@PathParam("id") long id) {
+		try {
+			ContaReceberDAO ContaReceberDAO = new ContaReceberDAO();
+			ContaReceberDAO.excluirtotal(id);
+			return Response.status(Response.Status.OK).build();
+		} catch (Exception ex) {
+			Logger.getLogger(PedidoController.class.getName()).log(Level.SEVERE, null, ex);
+			throw new WebApplicationException(Response.Status.INTERNAL_SERVER_ERROR);
+		}
+	}
+	
 	@PUT
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Path("/")

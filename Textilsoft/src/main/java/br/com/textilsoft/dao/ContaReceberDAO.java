@@ -66,6 +66,24 @@ public class ContaReceberDAO {
 		
 	}
 	
+	public int excluirtotal(long id) throws SQLException, ClassNotFoundException {
+		int linhasAlfetadas = 0;
+		String sqlQuery = "DELETE FROM conta_receber WHERE id_venda = ?";
+
+		try {
+			PreparedStatement stmt = this.conexao.getConnection().prepareStatement(sqlQuery);
+			stmt.setLong(1, id);
+
+			linhasAlfetadas = stmt.executeUpdate();
+			this.conexao.commit();
+		} catch (SQLException e) {
+			this.conexao.rollback();
+			throw e;
+		}
+
+		return linhasAlfetadas;
+	}
+	
 	public void alterar() throws SQLException, ClassNotFoundException {
 		String sqlQuery = "UPDATE conta_receber INNER JOIN venda USING(id_venda)\r\n" + 
 				"	SET\r\n" + 
