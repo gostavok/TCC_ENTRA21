@@ -82,7 +82,7 @@ public class ContaReceberDAO {
 	}
 
 	public ContaReceber selecionar(long id) throws SQLException, ClassNotFoundException {
-		String sqlQuery = "SELECT * FROM conta_receber WHERE id_conta_receber = ?";
+		String sqlQuery = "SELECT * FROM conta_receber inner join venda using(id_venda) WHERE id_conta_receber = ?";
 
 		try {
 			PreparedStatement stmt = this.conexao.getConnection().prepareStatement(sqlQuery);
