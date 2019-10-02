@@ -44,10 +44,10 @@ $scope.listarVenda = function(id) {
 
 $http.get('http://localhost:8080/Textilsoft/rest/vendas/' + $routeParams.id).then(function(response) {
        $scope.vendapedido.venda = response.data;
-       console.log(response.data);
+    
        					
         console.log('success - vendaPedidoController');
-
+        console.log($scope.vendapedido.venda);
     }, function(response) {
         console.log('error- vendaPedidoController');
     
@@ -93,7 +93,7 @@ $scope.salvarVendaPedido = function() {
 		}).then(function(response) {		
 			var pos = 0;
 			$scope.vendapedidos.filter(function(i, idx) {
-			    if(i.venda.idVenda == id)
+			    if(i.idVenda == id)
 			    	pos = idx; 				   
 			});
 			$scope.vendapedidos.splice(pos,1);	

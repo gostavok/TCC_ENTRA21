@@ -52,7 +52,7 @@
 	</div>
 	<div class="form-group col-md-3">
 		<p><strong>Material</strong></p>
-			<p>{{materialDetalhe.idMaterial}}</p>
+			<p>{{materialDetalhe.nmMaterial}}</p>
 	
 	</div>
 	<div class="form-group col-md-3">
@@ -68,7 +68,7 @@
 <div id="actions" class="row" style="margin-top:15px">
  <div class="col-md-12" style="margin-top:15px">
  	  <a class="btn btn-danger "  type="button" name= "excluir" value=" X " data-toggle="modal" data-target="#delete-modal" ng-click = "procuraMaterial(materialDetalhe)" >Excluir</a>
-		<a class="btn btn-warning " type="button" value=" edit " href = "materiales-editar/{{materialDetalhe.idMaterial}}">Alterar</a>
+		<a class="btn btn-warning " type="button" value=" edit " href = "material-edit/{{materialDetalhe.idMaterial}}">Alterar</a>
 		<a class="btn btn-default " type="button" onClick="history.go(-1)">Voltar</a>
 		
  </div>

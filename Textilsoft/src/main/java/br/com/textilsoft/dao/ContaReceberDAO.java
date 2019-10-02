@@ -118,6 +118,58 @@ public class ContaReceberDAO {
 		}
 	}
 	
+	
+	public double pegarTotalPago() throws SQLException, ClassNotFoundException {
+		String sqlQuery = "SELECT SUM(venda.valor_total) AS total FROM venda INNER JOIN conta_receber USING(id_venda) WHERE status_conta_receber = 'Pago'";
+		double aux = 0;
+		try {
+			PreparedStatement stmt = this.conexao.getConnection().prepareStatement(sqlQuery);
+			ResultSet rs = stmt.executeQuery();			
+			if (rs.next()) {				
+				 aux = rs.getDouble("total");				
+			}
+			
+			System.out.println(aux);
+			return aux;
+		} catch (SQLException e) {
+			throw e;
+		}
+	}
+	
+	public double pegarTotalPendente() throws SQLException, ClassNotFoundException {
+		String sqlQuery = "SELECT SUM(venda.valor_total) AS total FROM venda INNER JOIN conta_receber USING(id_venda) WHERE status_conta_receber = 'Pendente'";
+		double aux = 0;
+		try {
+			PreparedStatement stmt = this.conexao.getConnection().prepareStatement(sqlQuery);
+			ResultSet rs = stmt.executeQuery();			
+			if (rs.next()) {				
+				 aux = rs.getDouble("total");				
+			}
+			
+			System.out.println(aux);
+			return aux;
+		} catch (SQLException e) {
+			throw e;
+		}
+	}
+	
+	public double pegarTotalAtrasado() throws SQLException, ClassNotFoundException {
+		String sqlQuery = "SELECT SUM(venda.valor_total) AS total FROM venda INNER JOIN conta_receber USING(id_venda) WHERE status_conta_receber = 'Atrasado'";
+		double aux = 0;
+		try {
+			PreparedStatement stmt = this.conexao.getConnection().prepareStatement(sqlQuery);
+			ResultSet rs = stmt.executeQuery();			
+			if (rs.next()) {				
+				 aux = rs.getDouble("total");				
+			}
+			
+			System.out.println(aux);
+			return aux;
+		} catch (SQLException e) {
+			throw e;
+		}
+	}
+	
 	public List<String> listarStatus() throws SQLException, ClassNotFoundException {
 		String sqlQuery = "SELECT status_conta_receber AS situacao, COUNT(*) AS quantidade\r\n" + 
 				"  FROM conta_receber\r\n" + 
@@ -143,7 +195,29 @@ public class ContaReceberDAO {
 			throw e;
 		}
 	}
+	
+	public List<ContaReceber> listarPorStatus(String status) throws SQLException, ClassNotFoundException {
+		String sqlQuery = "SELECT * FROM conta_receber WHERE status_conta_receber= ? ORDER BY id_conta_receber ";
 
+		try {
+			PreparedStatement stmt = this.conexao.getConnection().prepareStatement(sqlQuery);
+			stmt.setString(1, status);
+			ResultSet rs = stmt.executeQuery();
+
+			List<ContaReceber> contasReceber = new ArrayList<>();
+
+			while (rs.next()) {
+				contasReceber.add(parser(rs));
+			}
+
+			return contasReceber;
+		} catch (SQLException e) {
+			throw e;
+		}
+	}
+	
+	
+	
 	private ContaReceber parser(ResultSet resultSet) throws SQLException {
 		
 		
