@@ -82,7 +82,7 @@ appTextilsoft.config(function($routeProvider, $locationProvider){
      .when("/compra-edit/:id",{templateUrl:'view/compra-edit.html',controller:'compraDetalheController'})
      
      .when("/conta-receber-lista",{templateUrl:'view/conta-receber.html', controller:'contaReceberController'})
-
+     .when("/conta-receber-edit/:id",{templateUrl:'view/conta-receber-edit.html', controller:'contaReceberDetalheController'})
     .otherwise({redirectTo:'/'});
 	
 	

@@ -1,4 +1,4 @@
-appTextilsoft.controller("contaPagarDetalheController", function($scope, $http,
+appTextilsoft.controller("contaReceberDetalheController", function($scope, $http,
 		$routeParams) {
 
 	$scope.contaReceberDetalhe = {};
@@ -6,9 +6,8 @@ appTextilsoft.controller("contaPagarDetalheController", function($scope, $http,
 	var url = 'http://localhost:8080/Textilsoft/rest/contasreceber/';
 
 		$http.get(url + $routeParams.id).then(function(response) {
-			$scope.contaReceberDetalhe = response.data;
+			$scope.contaReceberDetalhe = response.data;		
 		
-			$scope.contaReceberDetalhe.dataVencimento = new Date($scope.contaReceberDetalhe.dataVencimento);		
 
 		
 		}, function(response) {
