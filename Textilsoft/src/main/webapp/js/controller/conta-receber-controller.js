@@ -27,6 +27,21 @@ appTextilsoft.controller("contaReceberController", function($scope, $http,
 		});
 	};
 		
-		
+	$scope.listarPorStatus = function(status) {		
+		$http({
+			method : 'GET',
+			url : url + 'status/' + status
+		}).then(function(response) {		
+			
+			$scope.contaReceber = response.data;
+			
+		}, function(response) {
+
+			console.log(response.data);
+			console.log($scope.contaReceber);
+
+		});
+	};
+			
 
 });
