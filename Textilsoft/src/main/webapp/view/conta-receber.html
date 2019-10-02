@@ -18,7 +18,7 @@
 		<p align= "center" style = "font-size: 70px">{{contaReceber.Pago}}</p>
 		</div>
 		<div class= "col-md-12">
-		<p align= "left" style = "font-size: 30px">R${{pago | number:2}}</p>
+		<p align= "left" style = "font-size: 30px" >R${{pago | number:2}}</p>
 		</div>
 		
 	</div>	
@@ -85,13 +85,14 @@
 		<tr ng-repeat="contaReceber in listaContaReceber">
 		
 			<td >{{contaReceber.idContaReceber }}</td>
-			<td> {{contaReceber.venda.idVenda }}</td>
+			<td > {{contaReceber.venda.idVenda }}</td>
 			<td>R${{contaReceber.venda.valorTotal | number: 2 }}</td>		
 			<td>{{contaReceber.venda.dataPagamento | date: 'dd/MM/yyyy' }}</td>
 			<td>{{contaReceber.statusContaReceber}}</td>
 			<td class="actions">
 			  <a class="btn btn-danger btn-xs"  type="button" ng-click = "salvarID(contaReceber.idContaReceber)" data-toggle="modal" data-target="#delete-modal">Excluir</a>
-				<a class="btn btn-warning btn-xs" type="button" href = "conta-receber-edit/{{contaReceber.idContaReceber}}">Alterar</a>				
+				<a class="btn btn-warning btn-xs" type="button" href = "conta-receber-edit/{{contaReceber.idContaReceber}}">Alterar</a>	
+				<a class="btn btn-success btn-xs" type="button" href="venda-pedido-detalhe/{{contaReceber.venda.idVenda}}">Detalhe Venda</a>				
 			</td>						
 		</tr>	
 	</tbody>		

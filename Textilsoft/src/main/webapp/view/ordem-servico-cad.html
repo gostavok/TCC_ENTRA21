@@ -7,7 +7,7 @@
 	<div class="form-group col-md-1">
 		<label for="campo1">ID</label> <input type="text" class="form-control"
 			placeholder="ID" ng-model="ordemServico.idOrdem" style="width: 50px"
-			disabled>
+			readonly>
 	</div>
 	<div class="form-group col-md-2">
 		<label for="campo1">ID do Fornecedor</label> <input type="text"
@@ -18,7 +18,7 @@
 	<div class="form-group col-md-9">
 		<label for="campo1">Fornecedor</label> <input type="text"
 			class="form-control" placeholder="Fornecedor"
-			ng-model="ordemServico.fornecedor.nmFornecedor" disabled>
+			ng-model="ordemServico.fornecedor.nmFornecedor" readonly>
 	</div>
 </div>
 <div class="row">
@@ -31,7 +31,7 @@
 	<div class="form-group col-md-4">
 		<label for="campo1">Descri&ccedil&atildeo Servi&ccedilo</label> <input type="text"
 			class="form-control"
-			ng-model="ordemServico.servicoFornecedor.nmServForn" disabled>
+			ng-model="ordemServico.servicoFornecedor.nmServForn" readonly>
 	</div>
 	<div class="form-group col-md-2">
 		<label for="campo1">Quantidade</label> <input type="text"
@@ -42,12 +42,12 @@
 	<div class="form-group col-md-2">
 		<label for="campo1">Valor Servi&ccedilo</label> <input type="number"
 			class="form-control"
-			ng-model="ordemServico.servicoFornecedor.valorServForn" disabled>
+			ng-model="ordemServico.servicoFornecedor.valorServForn" readonly>
 	</div>
 	<div class="form-group col-md-2">
 		<label for="campo1">Valor Total</label> <input type="number"
 			class="form-control" placeholder="Valor total" 
-			ng-model="ordemServico.valorTotalOrdemServico" disabled>
+			ng-model="ordemServico.valorTotalOrdemServico" readonly>
 	</div>
 
 </div>
@@ -56,7 +56,7 @@
 	<div class="form-group col-md-2">
 		<label for="campo1">Data de Emiss&atildeo</label> <input type="text"
 			class="form-control" placeholder="Data de Emiss&atildeo"  
-			ng-model="dataEmissao" disabled>
+			ng-model="dataEmissao" readonly>
 	</div>
 	<div class="form-group col-md-2">
 		<label for="campo1">Data de Entrega</label> <input type="date"
@@ -66,7 +66,7 @@
 	<div class="form-group col-md-2">
 		<label for="campo1">Status</label> <select class="form-control"
 			ng-model="ordemServico.statusOrdem"
-			id="ordemServico.statusOrdem" disabled>
+			id="ordemServico.statusOrdem" readonly>
 			<option value="Aberto">Aberto</option>
 			<option value="Fechado">Fechado</option>
 			<option value="Pendente">Pendente</option>

@@ -402,6 +402,10 @@
     height: 50px;
 }
 
+.img2 {
+    width: 85%;
+    height: 85%;
+}
 .media-object{
     width: 250px;
     margin: 1px 6px 1px 1px;
@@ -430,7 +434,7 @@
 	margin-right: 5px;
 	margin-left: 0px;
 	margin-bottom: 10px;
-	padding-bottom: 5px;
+	padding-bottom: 5px;	
 }
 
 #box1{

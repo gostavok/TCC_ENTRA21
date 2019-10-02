@@ -8,6 +8,7 @@ appTextilsoft.controller("produtoDetalheController", function($scope, $http,
 	$scope.listaEstampa = {};
 	$scope.listaMaterialDetalhe = [];
 	$scope.listaEstampaDetalhe = [];
+	$scope.idProduto= 0;
 	
 	var url = 'http://localhost:8080/Textilsoft/rest/produtos/';
 	var url2 = 'http://localhost:8080/Textilsoft/rest/';

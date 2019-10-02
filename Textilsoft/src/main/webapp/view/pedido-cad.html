@@ -7,34 +7,34 @@
 <div class = "row">
 	<div class="form-group col-md-1">
 		<label for="campo1">ID</label>
-		<input type="text" class= "form-control" placeholder="ID" ng-model="pedido.idPedido" style="width: 50px" disabled>
+		<input type="text" class= "form-control" placeholder="ID" ng-model="pedido.idPedido" style="width: 50px" readonly>
 	</div>
 	<div class="form-group col-md-3">
 		<label for="campo1">ID do cliente</label>
-		<input type="text"  class= "form-control" ng-disabled="disabledInput" placeholder="ID do Cliente" ng-model="pedido.cliente.idCliente" ng-blur = "listarNomeCliente(pedido.cliente.idCliente)">
+		<input type="text"  class= "form-control" ng-readonly="readonlyInput" placeholder="ID do Cliente" ng-model="pedido.cliente.idCliente" ng-blur = "listarNomeCliente(pedido.cliente.idCliente)">
 	</div>
 	<div class="form-group col-md-3">
 		<label for="campo1">Nome do cliente</label>
-		<input type="text" class= "form-control" placeholder="Cliente" ng-model="pedido.cliente.nmCliente" disabled>
+		<input type="text" class= "form-control" placeholder="Cliente" ng-model="pedido.cliente.nmCliente" readonly>
 	</div>
 	<div class="form-group col-md-1">
 		<label for="campo1">Quantidade</label>
-		<input type="text"  class= "form-control" value="0" disabled ng-model="pedido.qtdProd">
+		<input type="text"  class= "form-control" value="0" readonly ng-model="pedido.qtdProd">
 	</div>
 
 	<div class="form-group col-md-3">
 		<label for="campo1">Valor total</label>
-		<input type="text"  class= "form-control" value="0.00" ng-model="pedido.valorTotalPedido" disabled>
+		<input type="text"  class= "form-control" value="0.00" ng-model="pedido.valorTotalPedido" readonly>
 	</div>
 	
 	<div class="form-group col-md-3">
 		<label for="campo1">Data</label>
-		<input type="date"  class= "form-control"  placeholder="Data" ng-model="pedido.dataPedido" ng-disabled="disabledInput">
+		<input type="date"  class= "form-control"  placeholder="Data" ng-model="pedido.dataPedido" ng-readonly="readonlyInput">
 	</div>
 	
 	<div class="form-group col-md-3">
 		<label for="campo1">Status</label>
-		<select class= "form-control"  ng-model="pedido.statusPedido" id= "pedido.statusPedido" ng-disabled="disabledInput">
+		<select class= "form-control"  ng-model="pedido.statusPedido" id= "pedido.statusPedido" ng-readonly="readonlyInput">
 			<option value= "Aberto">Aberto</option>
 			<option value = "Pendente">Pendente</option>
 			<option value = "Fechado">Fechado</option>			
@@ -68,7 +68,7 @@
  		
  		<div class="form-group col-md-1" style="margin-top:1%; margin-left:1%;">
 		<label for="campo1">ID</label>
-		<input type="text" class= "form-control" placeholder="ID" ng-model="pedidoproduto.pedido.idPedido" style="width: 50px" disabled>
+		<input type="text" class= "form-control" placeholder="ID" ng-model="pedidoproduto.pedido.idPedido" style="width: 50px" readonly>
 	</div>
 	<div class="form-group col-md-3" style="margin-top:1%; margin-left:1%;">
 		<label for="campo1">ID do produto</label>
@@ -76,7 +76,7 @@
 	</div>
 	<div class="form-group col-md-3" style="margin-top:1%; margin-left:1%;">
 		<label for="campo1">Nome do produto</label>
-		<input type="text" class= "form-control" placeholder="Produto" ng-model="pedidoproduto.produto.descProduto" disabled>
+		<input type="text" class= "form-control" placeholder="Produto" ng-model="pedidoproduto.produto.descProduto" readonly>
 	</div>
  	
  	<div class="form-group col-md-3" style="margin-top:1%; margin-left:1%;">

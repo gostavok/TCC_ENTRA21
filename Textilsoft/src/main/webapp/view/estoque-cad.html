@@ -3,7 +3,7 @@
 <div class = "row">
 	<div class="form-group col-md-1">
 		<label for="campo1">ID</label>
-		<input type="text" class= "form-control" placeholder="ID" ng-model="estoque.idEstoque" style="width: 50px" disabled>
+		<input type="text" class= "form-control" placeholder="ID" ng-model="estoque.idEstoque" style="width: 50px" readonly>
 	</div>
 	<div class="form-group col-md-3">
 		<label for="campo1">ID do Produto</label>
@@ -11,16 +11,16 @@
 	</div>
 	<div class="form-group col-md-3">
 		<label for="campo1">Nome do produto</label>
-		<input type="text" class= "form-control" placeholder="Produto" ng-model="estoque.produtoFornecedor.nmProdForn" disabled>
+		<input type="text" class= "form-control" placeholder="Produto" ng-model="estoque.produtoFornecedor.nmProdForn" readonly>
 	</div>
 	<div class="form-group col-md-1">
 		<label for="campo1">Quantidade</label>
-		<input type="text"  class= "form-control"  placeholder="Quantidade" ng-model="estoque.qtdEstoque">
+		<input type="number"  class= "form-control"  placeholder="Quantidade" ng-model="estoque.qtdEstoque">
 	</div>
 
 	<div class="form-group col-md-3">
 		<label for="campo1">Unidade Medida</label>
-		<input type="text"  class= "form-control"  placeholder="Unidade de Medida" ng-model="estoque.produtoFornecedor.undMedidaProdForn" disabled>
+		<input type="text"  class= "form-control"  placeholder="Unidade de Medida" ng-model="estoque.produtoFornecedor.undMedidaProdForn" readonly>
 	</div>
 	
 	

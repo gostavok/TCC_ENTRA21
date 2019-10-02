@@ -2,9 +2,9 @@ appTextilsoft.controller("contaReceberController", function($scope, $http,
 		$routeParams) {
 	$scope.listaContaReceber = [];
 	$scope.contaReceber = {};
-	$scope.contaReceber.Pago = {};
-	$scope.contaReceber.Pendente = {};
-	$scope.contaReceber.Atrasado = {};
+	$scope.contaReceber.Pago = 0;
+	$scope.contaReceber.Pendente = 0;
+	$scope.contaReceber.Atrasado = 0;	
 	$scope.pago = 0;
 	$scope.pendente = 0;
 	$scope.atrasado = 0;
@@ -12,7 +12,7 @@ appTextilsoft.controller("contaReceberController", function($scope, $http,
 	
 	var url = 'http://localhost:8080/Textilsoft/rest/contasreceber/';
 	
-	$scope.listarStatus = function() {		
+	$scope.listarStatus1 = function() {		
 		$http({
 			method : 'GET',
 			url : url + 'status/'
@@ -22,6 +22,33 @@ appTextilsoft.controller("contaReceberController", function($scope, $http,
 			$scope.contaReceber.Pago = $scope.contaReceber[0];
 			$scope.contaReceber.Pendente = $scope.contaReceber[1];
 			$scope.contaReceber.Atrasado = $scope.contaReceber[2];
+			
+		}, function(response) {
+
+			console.log(response.data);
+			console.log($scope.contaReceber);
+
+		});
+	};
+	
+	$scope.listarStatus = function() {	
+	
+		$http({
+			method : 'GET',
+			url : url + 'statusobj/'
+		}).then(function(response) {		
+			
+			$scope.contaReceber = response.data;	
+			
+			console.log($scope.contaReceber);
+			$scope.contaReceber.filter(function(i, idx) {
+			    if(i.status === "Pago") $scope.contaReceber.Pago = i.quantidade;
+			    if(i.status === "Pendente") $scope.contaReceber.Pendente = i.quantidade;
+			  
+			    if(i.status === "Atrasado") $scope.contaReceber.Atrasado = i.quantidade;
+			});						
+		
+				
 			
 		}, function(response) {
 
