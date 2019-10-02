@@ -39,8 +39,7 @@ public class ContaReceberDAO {
 		} catch (SQLException e) {
 			this.conexao.rollback();
 			throw e;
-		}
-		alterar();
+		}		
 	}
 	
 	public int alterar(ContaReceber contaReceber) throws SQLException, ClassNotFoundException {
@@ -61,8 +60,9 @@ public class ContaReceberDAO {
 			this.conexao.rollback();
 			throw e;
 		}
-		alterar();
+		
 		return linhasAfetadas;
+		
 		
 	}
 	
