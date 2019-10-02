@@ -120,7 +120,7 @@ public class ContaReceberDAO {
 	
 	
 	public double pegarTotalPago() throws SQLException, ClassNotFoundException {
-		String sqlQuery = "SELECT SUM(venda.valor_total) AS total FROM venda INNER JOIN conta_receber USING(id_venda) WHERE status_conta_receber = 'Pago'";
+		String sqlQuery = "SELECT SUM(venda.valor_total_venda) AS total FROM venda INNER JOIN conta_receber USING(id_venda) WHERE status_conta_receber = 'Pago'";
 		double aux = 0;
 		try {
 			PreparedStatement stmt = this.conexao.getConnection().prepareStatement(sqlQuery);
@@ -137,7 +137,7 @@ public class ContaReceberDAO {
 	}
 	
 	public double pegarTotalPendente() throws SQLException, ClassNotFoundException {
-		String sqlQuery = "SELECT SUM(venda.valor_total) AS total FROM venda INNER JOIN conta_receber USING(id_venda) WHERE status_conta_receber = 'Pendente'";
+		String sqlQuery = "SELECT SUM(venda.valor_total_venda) AS total FROM venda INNER JOIN conta_receber USING(id_venda) WHERE status_conta_receber = 'Pendente'";
 		double aux = 0;
 		try {
 			PreparedStatement stmt = this.conexao.getConnection().prepareStatement(sqlQuery);
@@ -154,7 +154,7 @@ public class ContaReceberDAO {
 	}
 	
 	public double pegarTotalAtrasado() throws SQLException, ClassNotFoundException {
-		String sqlQuery = "SELECT SUM(venda.valor_total) AS total FROM venda INNER JOIN conta_receber USING(id_venda) WHERE status_conta_receber = 'Atrasado'";
+		String sqlQuery = "SELECT SUM(venda.valor_total_venda) AS total FROM venda INNER JOIN conta_receber USING(id_venda) WHERE status_conta_receber = 'Atrasado'";
 		double aux = 0;
 		try {
 			PreparedStatement stmt = this.conexao.getConnection().prepareStatement(sqlQuery);
@@ -197,7 +197,7 @@ public class ContaReceberDAO {
 	}
 	
 	public List<ContaReceber> listarPorStatus(String status) throws SQLException, ClassNotFoundException {
-		String sqlQuery = "SELECT * FROM conta_receber WHERE status_conta_receber= ? ORDER BY id_conta_receber ";
+		String sqlQuery = "SELECT * FROM conta_receber INNER JOIN venda  WHERE status_conta_receber= ?   ORDER BY id_conta_receber ";
 
 		try {
 			PreparedStatement stmt = this.conexao.getConnection().prepareStatement(sqlQuery);
@@ -224,7 +224,11 @@ public class ContaReceberDAO {
 		
 		ContaReceber cr = new ContaReceber();		
 		Venda v = new Venda();
-		v.setIdVenda(resultSet.getInt("id_venda"));
+		v.setIdVenda(resultSet.getInt("id_venda" ));
+		v.setValorTotal(resultSet.getDouble("valor_total"));
+		v.setDataPagamento(resultSet.getDate("data_pagamento"));
+		v.setDataVenda(resultSet.getDate("data_venda"));
+		
 		cr.setIdContaReceber(resultSet.getLong("id_conta_receber"));
 		cr.setVenda(v);
 		cr.setStatusContaReceber(StatusContaReceber.valueOf(resultSet.getString("status_conta_receber")));

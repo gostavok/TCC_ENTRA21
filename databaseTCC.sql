@@ -3,7 +3,6 @@ use textilsoft;
 #----------------------------------------Cadastro--------------------------------------------
 
 
-
 create table cliente (
 	id_cliente int(11) primary key auto_increment,
     nm_cliente varchar(250) not null,
@@ -130,7 +129,7 @@ create table pedido(
 	id_pedido int(11) primary key auto_increment,
     id_cliente int(11) not null,
     qtd_prod int(11) not null,
-    valor_total decimal(10,2) not null,
+    valor_total_pedido decimal(10,2) not null,
     data_pedido TIMESTAMP not null,
     status_pedido enum('Aberto','Pendente','Fechado') not null,
     foreign key (id_cliente) references cliente(id_cliente)
@@ -145,7 +144,7 @@ create table pedido_produto (
 
 create table venda (
 	id_venda int(11) primary key auto_increment,
-    valor_total decimal(10,2),
+    valor_total_venda decimal(10,2),
     data_pagamento DATE ,
     data_venda TIMESTAMP not null
 );

@@ -43,10 +43,7 @@ appTextilsoft.controller("vendaPedidoDetalheController", function($scope,
 		});
 	};
 
-	$http
-			.get(
-					'http://localhost:8080/Textilsoft/rest/vendas/'
-							+ $routeParams.id).then(function(response) {
+	$http.get('http://localhost:8080/Textilsoft/rest/vendas/'+ $routeParams.id).then(function(response) {
 				$scope.vendapedido.venda = response.data;
 				console.log(response.data);
 
