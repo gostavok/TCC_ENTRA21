@@ -123,7 +123,7 @@ public class ContaReceberDAO {
 	}
 
 	public List<ContaReceber> listar() throws SQLException, ClassNotFoundException {
-		String sqlQuery = "SELECT * FROM conta_receber ORDER BY id_conta_receber";
+		String sqlQuery = "SELECT * FROM conta_receber inner join venda using(id_venda) ORDER BY id_conta_receber";
 
 		try {
 			PreparedStatement stmt = this.conexao.getConnection().prepareStatement(sqlQuery);

@@ -125,7 +125,30 @@ public class VendaDAO {
 		}
 	}
 	
+	public Venda listarVendaId() throws SQLException, ClassNotFoundException {
+		String sqlQuery = "SELECT id_venda FROM venda  ORDER BY id_venda DESC limit 1";
+
+		try {
+			PreparedStatement stmt = this.conexao.getConnection().prepareStatement(sqlQuery);
+			ResultSet rs = stmt.executeQuery();
+
+			if (rs.next()) {
+				return parser2(rs);
+			}
+		} catch (SQLException e) {
+			throw e;
+		}
+
+		return null;
+	}
 	
+	private Venda parser2(ResultSet resultSet) throws SQLException {
+		Venda v = new Venda();
+		
+		v.setIdVenda(resultSet.getInt("id_venda"));
+	
+		return v;
+	}
 	private Venda parser(ResultSet resultSet) throws SQLException {
 		Venda v = new Venda();
 		

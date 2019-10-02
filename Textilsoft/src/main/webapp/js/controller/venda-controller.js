@@ -3,28 +3,42 @@ appTextilsoft.controller("vendaController", function($scope, $http) {
 	$scope.listaVenda = [];
 	$scope.venda = {};
 	$scope.dataEmissao = "";
-
 	$scope.idvenda = 0;
 	$scope.pesquisa= "";
+	$scope.contaReceber = {};
+	$scope.contaReceber.venda = {};
+	$scope.contaReceber.statusContaReceber = "Pendente";
+	
 	var url = 'http://localhost:8080/Textilsoft/rest/';
+	
+	$scope.salvarContaReceber = function() {
+		var metodo = 'POST';
+		$scope.contaReceber.statusContaReceber = "Pendente";
+		
+		console.log($scope.contaReceber);
+		
+		$http({
+			method : metodo,
+			url : url + 'contasreceber/',
+			data : $scope.contaReceber
+		}).then(function(response) {				
+			
+		}, function(response) {
+			console.log(response.data);
+			console.log('error do salvar');	
+		});
+	};
 
 	$scope.listarFornecedor = function(id) {
 		$http({
 			method : 'GET',
 			url : url + 'fornecedores/'+id
 		}).then(function(response) {
-			$scope.venda.fornecedor = response.data; 
-
-			var today = new Date();
-			var dia = today.getDate();
-			var mes = today.getMonth()+1;
-			var ano = today.getFullYear();
-			
-			$scope.dataEmissao = dia + "/" + mes + "/" + ano;
+			$scope.venda.fornecedor = response.data; 			
 						
 		}, function(response) {
 			console.log('error');
-			console.log(response.data);''
+			console.log(response.data);
 			console.log(response.status);
 		});
     };
@@ -64,9 +78,28 @@ appTextilsoft.controller("vendaController", function($scope, $http) {
 			url : url + 'vendas/',
 			data : $scope.venda
 		}).then(function(response) {		
-			alert("efetuado com sucesso")
+			alert("efetuado com sucesso")			
 			console.log($scope.venda.dataEntregaVenda);
-			$scope.venda = {};
+			
+			
+			$http({
+				method : 'GET',
+				url : url + 'vendas/ultimo'
+			}).then(function(response) {		
+			//	alert("get com sucesso")
+				var aux = response.data		
+				$scope.venda.idVenda =  aux.idVenda;
+				$scope.contaReceber.venda = $scope.venda;
+				
+				$scope.salvarContaReceber();
+				$scope.venda = {};
+			}, function(response) {
+				console.log('error do get');	
+			});
+			
+			
+			
+			
 		}, function(response) {
 			console.log('error do salvar');	
 			console.log(response.data);
@@ -116,5 +149,10 @@ appTextilsoft.controller("vendaController", function($scope, $http) {
 		$scope.venda = {};
 	};
 	
-
+	var today = new Date();
+	var dia = today.getDate();
+	var mes = today.getMonth()+1;
+	var ano = today.getFullYear();
+	
+	$scope.dataEmissao = dia + "/" + mes + "/" + ano;
 });
