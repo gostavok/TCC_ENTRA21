@@ -111,17 +111,17 @@ appTextilsoft.controller("vendaPedidoDetalheController", function($scope,
 		}).then(function(response) {
 			
 			var atualValor = vendapedido.venda.valorTotal;
-			var valorProduto = vendapedido.pedido.valorTotalPedido;
-			var novoValor = $scope.formatNumber(atualValor) - $scope.formatNumber(valorProduto);
+			var valorPedido = vendapedido.pedido.valorTotalPedido;
+			var novoValor = $scope.formatNumber(atualValor) - $scope.formatNumber(valorPedido);
 			$scope.vendapedido.venda.valorTotal = $scope.formatNumber(novoValor);
 						
-//			var pos = 0;			
-//			$scope.vendapedidos.filter(function(i, idx) {
-//			    if(i.vendapedido.venda.idVenda == vendapedido.pedido.idPedido)			    
-//			    	pos = idx;			   
-//			});	
-//			
-//			$scope.vendapedidos.splice(pos,1);
+			var pos = 0;			
+			$scope.vendapedidos.filter(function(i, idx) {
+			    if(i.pedido.idPedido == vendapedido.pedido.idPedido)			    
+			    	pos = idx;			   
+			});	
+			
+			$scope.vendapedidos.splice(pos,1);
 						
 			$http({
 				method : 'PUT',

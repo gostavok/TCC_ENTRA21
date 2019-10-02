@@ -90,7 +90,7 @@ appTextilsoft.controller("vendaController", function($scope, $http) {
 				var pos = 0;			
 				
 				$scope.listaVenda.filter(function(i, idx) {
-				    if(i.idPedido == id)			    
+				    if(i.idVenda == id)			    
 				    	pos = idx;			   
 				});			
 				$scope.listaVenda.splice(pos,1);	

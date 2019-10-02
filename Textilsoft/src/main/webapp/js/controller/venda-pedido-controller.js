@@ -93,7 +93,7 @@ $scope.salvarVendaPedido = function() {
 		}).then(function(response) {		
 			var pos = 0;
 			$scope.vendapedidos.filter(function(i, idx) {
-			    if(i.idVenda == id)
+			    if(i.pedido.idPedido == vendapedido.pedido.idPedido)
 			    	pos = idx; 				   
 			});
 			$scope.vendapedidos.splice(pos,1);	
