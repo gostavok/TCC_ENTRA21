@@ -66,7 +66,7 @@ $scope.salvarVendaPedido = function() {
 		}).then(function(response) {	
 			
 			var atualValor = $scope.vendapedido.venda.valorTotal;
-			var valorPedido = $scope.vendapedido.pedido.valorTotal;
+			var valorPedido = $scope.vendapedido.pedido.valorTotalPedido;
 			var novoValor = $scope.formatNumber(atualValor) + $scope.formatNumber(valorPedido);
 			$scope.vendapedido.venda.valorTotal = $scope.formatNumber(novoValor);
 			$scope.vendapedido.pedido = {};

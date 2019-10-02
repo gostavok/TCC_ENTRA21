@@ -4,7 +4,7 @@
 
 <div class="row" ng-init= "chamarMetodos()">
 <div class = "row col-md-12">
-	<div class="col-md-4" id = "box1">
+	<div class="col-md-4" id = "box1" ng-click = "listarPorStatus('Pago')">
 		<div class= "col-md-12">
 			<p style= "color:white; font-size: 25px">Faturas Recebidas </p>
 			<hr  style= "margin-top: -7px; margin-bottom: 0px">
@@ -24,7 +24,7 @@
 	</div>	
 	
 	
-	<div class="col-md-4" id = "box2">
+	<div class="col-md-4" id = "box2" ng-click = "listarPorStatus('Pendente')">
 		<div class= "col-md-12">
 			<p style= "color:white; font-size: 25px">Faturas Pendentes </p>
 			<hr  style= "margin-top: -7px; margin-bottom: 0px">
@@ -43,7 +43,7 @@
 	</div>		
 
 	
-	<div class="col-md-4" id = "box3">
+	<div class="col-md-4" id = "box3" ng-click = "listarPorStatus('Atrasado')">
 		<div class= "col-md-12">
 			<p style= "color:white; font-size: 25px">Faturas Atrasadas </p>
 			<hr  style= "margin-top: -7px; margin-bottom: 0px">
@@ -72,32 +72,51 @@
         <table class="table col-md-12">
             <thead>
 				<tr>
-					<th class="col-md-2" >ID</th>
-					<th class="col-md-2">Razão Social</th>
-					<th class="col-md-2">E-mail</th>
-					<th class="col-md-2">Telefone</th>
-					<th class="col-md-2">Cadastro</th>
+					<th class="col-md-1" >#</th>
+					<th class="col-md-1">ID Venda</th>
+					<th class="col-md-2">Valor</th>
+					<th class="col-md-2">Data Pagamento</th>
+					<th class="col-md-2">Situação</th>
 					<th class="actions">Ações</th>
 				</tr>
 			</thead>   
     	<tbody>
-    
+    	<br>
 		<tr ng-repeat="contaReceber in listaContaReceber">
 		
-			<td >{{cliente.idCliente }}</td>
-			<td> {{cliente.nmCliente }}</td>
-			<td>{{cliente.emailCliente }}</td>		
-			<td>{{cliente.telCliente1}}</td>
-			<td>{{cliente.dtCadCliente | date: 'dd/MM/yyyy'}}</td>
+			<td >{{contaReceber.idContaReceber }}</td>
+			<td> {{contaReceber.venda.idVenda }}</td>
+			<td>R${{contaReceber.venda.valorTotal | number: 2 }}</td>		
+			<td>{{contaReceber.venda.dataPagamento | date: 'dd/MM/yyyy' }}</td>
+			<td>{{contaReceber.statusContaReceber}}</td>
 			<td class="actions">
-			  <a class="btn btn-danger btn-xs"  type="button" ng-click = "procuraCliente(cliente)" data-toggle="modal" data-target="#delete-modal">Excluir</a>
-				<a class="btn btn-warning btn-xs" type="button" href = "clientes-editar/{{cliente.idCliente}}">Alterar</a>
-				<a class="btn btn-success btn-xs" href="clientes/{{cliente.idCliente}}">Detalhe</a>		
+			  <a class="btn btn-danger btn-xs"  type="button" ng-click = "salvarID(contaReceber.idContaReceber)" data-toggle="modal" data-target="#delete-modal">Excluir</a>
+				<a class="btn btn-warning btn-xs" type="button" href = "contas-receber-edit/{{contaReceber.idContaReceber}}">Alterar</a>				
 			</td>						
 		</tr>	
 	</tbody>		
 	</table>
 </div>
+
+<div class="modal fade" id="delete-modal" tabindex="-1" role="dialog"
+		aria-labelledby="modalLabel">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Fechar">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h4 class="modal-title" id="modalLabel">Excluir Item</h4>
+				</div>
+				<div class="modal-body">Deseja realmente excluir este item?</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-primary" ng-click="deletar(excluir)" data-dismiss = "modal">Sim</button>
+					<button type="button" class="btn btn-default" data-dismiss="modal">N&atilde;o</button>
+				</div>
+			</div>
+		</div>
+	</div>
 	
 </div>
 

@@ -9,11 +9,6 @@
 		<p>{{vendapedido.venda.idVenda}}</p>
 	</div>
 	<div class="form-group col-md-2">
-		<p><strong>Nome cliente</strong></p>
-			<p>{{pedido.cliente.nmCliente}}</p>
-	
-	</div>
-	<div class="form-group col-md-2">
 		<p><strong>Valor total</strong></p>
 			<p>{{vendapedido.venda.valorTotal}}</p>
 	</div>
@@ -23,8 +18,8 @@
 	
 	</div>
 	<div class="form-group col-md-2">
-			<p><strong>Data Entrega</strong></p>
-				<p>{{vendapedido.venda.dataEntrega}}</p>
+			<p><strong>Data Pagamento</strong></p>
+				<p>{{vendapedido.venda.dataPagamento}}</p>
 	
 		</div>		
 
@@ -49,7 +44,7 @@
 					<tr ng-repeat="vendapedido in vendapedidos">
 
 						<td>{{vendapedido.pedido.idPedido}}</td>
-						<td>R${{vendapedido.pedido.valorTotal | number: 2}}</td>
+						<td>R${{vendapedido.pedido.valorTotalPedido | number: 2}}</td>
 						<td>{{vendapedido.pedido.dataPedido| date: 'dd/MM/yyyy'}}</td>
 						<td>{{vendapedido.pedido.statusPedido}}</td>
 						
