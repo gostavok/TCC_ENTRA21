@@ -43,7 +43,25 @@ public void inserir(VendaPedido vendapedido) throws SQLException, ClassNotFoundE
 	
 	}
 	
-	
+
+public int excluirtotal(long id_venda) throws SQLException, ClassNotFoundException {
+	int linhasAlfetadas = 0;
+	String sqlQuery = "DELETE FROM venda_pedido WHERE id_venda = ?";
+
+	try {
+		PreparedStatement stmt = this.conexao.getConnection().prepareStatement(sqlQuery);
+		stmt.setLong(1, id_venda);
+
+		linhasAlfetadas = stmt.executeUpdate();
+		this.conexao.commit();
+	} catch (SQLException e) {
+		this.conexao.rollback();
+		throw e;
+	}
+
+	return linhasAlfetadas;
+}
+
 public int excluir(long id_venda, long id_pedido) throws SQLException, ClassNotFoundException {
 	int linhasAlfetadas = 0;
 	String sqlQuery = "DELETE FROM venda_pedido WHERE id_venda = ? and id_pedido = ?";
