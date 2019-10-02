@@ -3,21 +3,59 @@ appTextilsoft.controller("produtoDetalheController", function($scope, $http,
 
 	$scope.produtoDetalhe = {};
 	$scope.listaCorDetalhe = [];
+	$scope.listaCor = {};
+	$scope.listaMaterial = {};
+	$scope.listaEstampa = {};
 	$scope.listaMaterialDetalhe = [];
 	$scope.listaEstampaDetalhe = [];
 	
 	var url = 'http://localhost:8080/Textilsoft/rest/produtos/';
+	var url2 = 'http://localhost:8080/Textilsoft/rest/';
+
 
 		$http.get(url + $routeParams.id).then(function(response) {
 			$scope.produtoDetalhe = response.data;
 			
 			console.log('success - produtoDetalheController');
+
+
+			$http({
+			method : 'GET',
+			url : url2 + 'cores/'+ $scope.produtoDetalhe.corProduto.idCor
+		}).then(function(response) {
+            $scope.listaCor = response.data;
+		}, function(response) {
+			console.log('error');
+		});
+
+
+
+		$http({
+			method : 'GET',
+			url : url2 + 'materiais/'+ $scope.produtoDetalhe.materialProduto.idMaterial
+		}).then(function(response) {
+            $scope.listaMaterial = response.data;
+		}, function(response) {
+			console.log('error');
+		});
 	
+
+		$http({
+			method : 'GET',
+			url : url2 + 'estampas/'+ $scope.produtoDetalhe.estampaProduto.idEstampa
+		}).then(function(response) {
+            $scope.listaEstampa = response.data;
+		}, function(response) {
+			console.log('error');
+		});
+
 
 		}, function(response) {
 			console.log('error-produtoDetalheController');
 		
 		});
+
+
 		
 		
 		$scope.updateProduto = function() {			
