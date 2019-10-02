@@ -226,7 +226,7 @@ public class ContaReceberDAO {
 			while (rs.next()) {
 				 if(rs.next())
 				 aux = rs.getString("quantidade");
-				 if (aux.isBlank()) aux= "a";
+//				 if (aux.isBlank()) aux= "a";
 				 situacao.add(aux);	
 			}
 		

@@ -26,7 +26,7 @@
 		<p><strong>ID</strong></p>
 		<p>{{produtoFornecedorDetalhe.idProdForn}}</p>
 	</div>
-	<div class="form-group col-md-3">
+	<div class="form-group col-md-2">
 		<p><strong>Nome</strong></p>
 			<p>{{produtoFornecedorDetalhe.nmProdForn}}</p>
 	
@@ -36,17 +36,17 @@
 			<p>{{produtoFornecedorDetalhe.descProdForn}}</p>
 
 	</div>
-	<div class="form-group col-md-3">
+	<div class="form-group col-md-2">
 			<p><strong>Unidade medida</strong></p>
 				<p>{{produtoFornecedorDetalhe.undMedidaProdForn}}</p>
 			
 		</div>
 	<div class="form-group col-md-2">
 		<p><strong>Valor</strong></p>
-			<p> R$ {{produtoFornecedorDetalhe.valorProdForn}}</p>
+			<p> R${{produtoFornecedorDetalhe.valorProdForn | number: 2}}</p>
 	
 	</div>		
-		<div class="form-group col-md-2">
+		<div class="form-group col-md-3">
 			<p><strong>Nome fornecedor</strong></p>
 				<p>{{produtoFornecedorDetalhe.fornecedor.nmFornecedor}}</p>
 	

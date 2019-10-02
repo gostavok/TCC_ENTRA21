@@ -162,8 +162,8 @@ public class ProdutoFornecedorDAO {
 		f.setCidadeFornecedor(resultSet.getString("cidade_fornecedor"));
 		f.setEstadoFornecedor(resultSet.getString("estado_fornecedor"));
 		f.setCompFornecedor(resultSet.getString("comp_fornecedor"));
-		f.setTelFornecedor(resultSet.getInt("tel_fornecedor"));
-		f.setTel2Fornecedor(resultSet.getInt("tel2_fornecedor"));
+		f.setTelFornecedor(resultSet.getLong("tel_fornecedor"));
+		f.setTel2Fornecedor(resultSet.getLong("tel2_fornecedor"));
 		f.setEmailFornecedor(resultSet.getString("email_fornecedor"));	
 		f.setDtCadFornecedor(resultSet.getDate("dt_cad_fornecedor"));
 		
