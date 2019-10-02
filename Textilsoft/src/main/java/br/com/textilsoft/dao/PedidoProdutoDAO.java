@@ -135,7 +135,7 @@ public class PedidoProdutoDAO {
 		
 		p.setIdPedido(resultSet.getInt("id_pedido"));
 		p.setQtdProd(resultSet.getInt("qtd_prod"));
-		p.setValorTotal(resultSet.getDouble("valor_total"));
+		p.setValorTotalPedido(resultSet.getDouble("valor_total_pedido"));
 		p.setDataPedido(resultSet.getDate("data_pedido"));
 		p.setStatusPedido(StatusPedido.valueOf(resultSet.getString("status_pedido")));
 		
