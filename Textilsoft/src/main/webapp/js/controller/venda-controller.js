@@ -11,6 +11,17 @@ appTextilsoft.controller("vendaController", function($scope, $http) {
 	
 	var url = 'http://localhost:8080/Textilsoft/rest/';
 	
+	var today = new Date();
+	var dia = today.getDate();
+	var mes = today.getMonth()+1;
+	var ano = today.getFullYear();
+	
+	$scope.dataEmissao = dia + "/" + mes + "/" + ano;
+	
+	$scope.dataEmissao = new Date($scope.dataEmissao);
+	
+	console.log($scope.dataEmissao)
+	
 	$scope.salvarContaReceber = function() {
 		var metodo = 'POST';
 		$scope.contaReceber.statusContaReceber = "Pendente";
@@ -152,10 +163,4 @@ appTextilsoft.controller("vendaController", function($scope, $http) {
 		$scope.venda = {};
 	};
 	
-	var today = new Date();
-	var dia = today.getDate();
-	var mes = today.getMonth()+1;
-	var ano = today.getFullYear();
-	
-	$scope.dataEmissao = dia + "/" + mes + "/" + ano;
 });
