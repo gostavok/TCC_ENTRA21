@@ -2,7 +2,6 @@ create database textilsoft;
 use textilsoft;
 #----------------------------------------Cadastro--------------------------------------------
 
-select * from venda;
 
 create table cliente (
 	id_cliente int(11) primary key auto_increment,
