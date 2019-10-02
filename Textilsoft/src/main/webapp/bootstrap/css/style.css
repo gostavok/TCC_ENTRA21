@@ -436,9 +436,9 @@
 #box1{
 	box-shadow: 2px 2px 5px #001e3c;
 	background-image: radial-gradient(circle 200px at center, #11998e 0%, #38ef7d 0%, #11998e 90%);
-	width: 230px;
-	height: 150px;
-
+	width: 300px;
+	height: 200px;
+	margin-left: 15px;
 	color: white;
 
 }
@@ -460,8 +460,8 @@
 #box2 {	
 	box-shadow: 2px 2px 5px #001e3c;
 	background-image: radial-gradient(circle 200px at center, #16d9e3 0%, #30c7ec 0%, #46aef7 50%);
-	width: 230px;
-	height: 150px;
+	width: 300px;
+	height: 200px;
 	margin-bottom: 10px;
 	paddin: 10px;
 	margin-right: 30px;
@@ -474,8 +474,8 @@
 	box-shadow: 2px 2px 5px #001e3c;	
 
 	background-image: radial-gradient(circle 150px at center, #ff0000 0%, #ff8282 0%, #ff0000 80%);
-	width: 230px;
-	height: 150px;
+	width: 300px;
+	height: 200px;
 	margin-right: 5px;
 	padding-bottom: 5px;
 	color: white;

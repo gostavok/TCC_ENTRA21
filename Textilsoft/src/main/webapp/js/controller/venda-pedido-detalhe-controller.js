@@ -43,10 +43,7 @@ appTextilsoft.controller("vendaPedidoDetalheController", function($scope,
 		});
 	};
 
-	$http
-			.get(
-					'http://localhost:8080/Textilsoft/rest/vendas/'
-							+ $routeParams.id).then(function(response) {
+	$http.get('http://localhost:8080/Textilsoft/rest/vendas/'+ $routeParams.id).then(function(response) {
 				$scope.vendapedido.venda = response.data;
 				console.log(response.data);
 
@@ -57,18 +54,18 @@ appTextilsoft.controller("vendaPedidoDetalheController", function($scope,
 
 			});
 
-//	$http.get(
-//			'http://localhost:8080/Textilsoft/rest/vendaspedidos/'
-//					+ $routeParams.id).then(function(response) {
-//		$scope.vendapedidos = response.data;
-//		console.log(response.data);
-//
-//		console.log('success - vendaPedidoController');
-//
-//	}, function(response) {
-//		console.log('error- vendaPedidoController');
-//
-//	});
+	$http.get(
+			'http://localhost:8080/Textilsoft/rest/vendaspedidos/'
+					+ $routeParams.id).then(function(response) {
+		$scope.vendapedidos = response.data;
+		console.log(response.data);
+
+		console.log('success - vendaPedidoController');
+
+	}, function(response) {
+		console.log('error- vendaPedidoController');
+
+	});
 
 	$scope.formatNumber = function(i) {
 		return Math.round(i * 100) / 100;

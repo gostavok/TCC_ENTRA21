@@ -6,7 +6,7 @@
 <div class = "row col-md-12">
 	<div class="col-md-4" id = "box1">
 		<div class= "col-md-12">
-			<p style= "color:white; font-size: 20px">Faturas Recebidas </p>
+			<p style= "color:white; font-size: 25px">Faturas Recebidas </p>
 			<hr  style= "margin-top: -7px; margin-bottom: 0px">
 		</div>
 		
@@ -17,13 +17,16 @@
 		<div class= "col-md-6">
 		<p align= "center" style = "font-size: 70px">{{contaReceber.Pago}}</p>
 		</div>
+		<div class= "col-md-12">
+		<p align= "left" style = "font-size: 30px">R${{pago | number:2}}</p>
+		</div>
 		
 	</div>	
 	
 	
 	<div class="col-md-4" id = "box2">
 		<div class= "col-md-12">
-			<p style= "color:white; font-size: 20px">Faturas Pendentes </p>
+			<p style= "color:white; font-size: 25px">Faturas Pendentes </p>
 			<hr  style= "margin-top: -7px; margin-bottom: 0px">
 		</div>
 		
@@ -34,13 +37,15 @@
 		<div class= "col-md-6">
 		<p align= "center" style = "font-size: 70px">{{contaReceber.Pendente}}</p>
 		</div>
-		
+		<div class= "col-md-12">
+		<p align= "left" style = "font-size: 30px">R${{pendente | number: 2}}</p>
+		</div>
 	</div>		
 
 	
 	<div class="col-md-4" id = "box3">
 		<div class= "col-md-12">
-			<p style= "color:white; font-size: 20px">Faturas Atrasadas </p>
+			<p style= "color:white; font-size: 25px">Faturas Atrasadas </p>
 			<hr  style= "margin-top: -7px; margin-bottom: 0px">
 		</div>
 		
@@ -52,29 +57,47 @@
 		<p align= "center" style = "font-size: 70px">{{contaReceber.Atrasado}}</p>
 		</div>
 		
+		<div class= "col-md-12">
+		<p align= "left" style = "font-size: 30px">R${{atrasado | number: 2}}</p>
+		</div>
+		
 	</div>		
 	</div>
 	</div>
 	<div>
 	
-	<div class="row" id = "caixa1">
-		<div class="col-md-12">
-			<div class= "col-md-12">
-			<p style= "color:white; font-size: 20px">Faturas Atrasadas </p>
-			<hr  style= "margin-top: -7px; margin-bottom: 0px">
-		</div>
+	<div id="list" class="row">
+    <div class="table-responsive col-md-12">
+     
+        <table class="table col-md-12">
+            <thead>
+				<tr>
+					<th class="col-md-2" >ID</th>
+					<th class="col-md-2">Razão Social</th>
+					<th class="col-md-2">E-mail</th>
+					<th class="col-md-2">Telefone</th>
+					<th class="col-md-2">Cadastro</th>
+					<th class="actions">Ações</th>
+				</tr>
+			</thead>   
+    	<tbody>
+    
+		<tr ng-repeat="contaReceber in listaContaReceber">
 		
-		<div class= "col-md-6">
-				<p align= "center" style = "font-size: 40px">R${{pago | number:2}}</p>
-		<p align= "center" style = "font-size: 40px">R${{pendente | number: 2}}</p>
-		<p align= "center" style = "font-size: 40px">R${{atrasado | number: 2}}</p>
-		</div>
-		
-		<div class= "col-md-6">
-	
-		</div>
-	
-	</div>
+			<td >{{cliente.idCliente }}</td>
+			<td> {{cliente.nmCliente }}</td>
+			<td>{{cliente.emailCliente }}</td>		
+			<td>{{cliente.telCliente1}}</td>
+			<td>{{cliente.dtCadCliente | date: 'dd/MM/yyyy'}}</td>
+			<td class="actions">
+			  <a class="btn btn-danger btn-xs"  type="button" ng-click = "procuraCliente(cliente)" data-toggle="modal" data-target="#delete-modal">Excluir</a>
+				<a class="btn btn-warning btn-xs" type="button" href = "clientes-editar/{{cliente.idCliente}}">Alterar</a>
+				<a class="btn btn-success btn-xs" href="clientes/{{cliente.idCliente}}">Detalhe</a>		
+			</td>						
+		</tr>	
+	</tbody>		
+	</table>
+</div>
 	
 </div>
 
