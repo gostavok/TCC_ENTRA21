@@ -197,7 +197,7 @@ public class ContaReceberDAO {
 	}
 	
 	public List<ContaReceber> listarPorStatus(String status) throws SQLException, ClassNotFoundException {
-		String sqlQuery = "SELECT * FROM conta_receber WHERE status_conta_receber= ? ORDER BY id_conta_receber ";
+		String sqlQuery = "SELECT * FROM conta_receber INNER JOIN venda  WHERE status_conta_receber= ?   ORDER BY id_conta_receber ";
 
 		try {
 			PreparedStatement stmt = this.conexao.getConnection().prepareStatement(sqlQuery);
@@ -224,7 +224,11 @@ public class ContaReceberDAO {
 		
 		ContaReceber cr = new ContaReceber();		
 		Venda v = new Venda();
-		v.setIdVenda(resultSet.getInt("id_venda"));
+		v.setIdVenda(resultSet.getInt("id_venda" ));
+		v.setValorTotal(resultSet.getDouble("valor_total"));
+		v.setDataPagamento(resultSet.getDate("data_pagamento"));
+		v.setDataVenda(resultSet.getDate("data_venda"));
+		
 		cr.setIdContaReceber(resultSet.getLong("id_conta_receber"));
 		cr.setVenda(v);
 		cr.setStatusContaReceber(StatusContaReceber.valueOf(resultSet.getString("status_conta_receber")));

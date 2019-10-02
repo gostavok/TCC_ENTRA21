@@ -51,7 +51,7 @@
 		<td >{{pedido.idPedido }}</td>
 		<td> {{pedido.cliente.nmCliente}}</td>
 		<td >{{pedido.qtdProd }}</td>
-		<td >R$ {{pedido.valorTotal | number: 2}}</td>
+		<td >R$ {{pedido.valorTotalPedido | number: 2}}</td>
 		<td >{{pedido.dataPedido | date: "dd/MM/yyyy"}}</td>
 		<td >{{pedido.statusPedido}}</td>
 		<td class="actions">

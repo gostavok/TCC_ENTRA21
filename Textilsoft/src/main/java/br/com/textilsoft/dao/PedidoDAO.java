@@ -27,13 +27,13 @@ public class PedidoDAO {
 	public Pedido inserir(Pedido pedido) throws SQLException, ClassNotFoundException {
 		
 		String sqlQuery = "INSERT INTO pedido (id_cliente, qtd_prod, "
-				+ "valor_total, data_pedido, status_pedido) VALUES (?, ?, ?, ?, ?) ";
+				+ "valor_total_pedido, data_pedido, status_pedido) VALUES (?, ?, ?, ?, ?) ";
 
 		try {
 			PreparedStatement stmt = this.conexao.getConnection().prepareStatement(sqlQuery);
 			stmt.setLong(1, pedido.getCliente().getIdCliente());
 			stmt.setLong(2, pedido.getQtdProd());
-			stmt.setDouble(3, pedido.getValorTotal());
+			stmt.setDouble(3, pedido.getValorTotalPedido());
 			stmt.setTimestamp(4, new java.sql.Timestamp(pedido.getDataPedido().getTime()));	
 			stmt.setString(5, pedido.getStatusPedido().toString());
 			
@@ -54,14 +54,14 @@ public class PedidoDAO {
 	
 	public int alterar(Pedido pedido) throws SQLException, ClassNotFoundException {
 		String sqlQuery = "UPDATE pedido SET id_cliente = ?, qtd_prod= ?,"
-				+ " valor_total = ?, status_pedido = ? WHERE id_pedido = ?";
+				+ " valor_total_pedido = ?, status_pedido = ? WHERE id_pedido = ?";
 		int linhasAfetadas = 0;
 
 		try {
 			PreparedStatement stmt = this.conexao.getConnection().prepareStatement(sqlQuery);
 			stmt.setLong(1, pedido.getCliente().getIdCliente());
 			stmt.setLong(2, pedido.getQtdProd());
-			stmt.setDouble(3, pedido.getValorTotal());
+			stmt.setDouble(3, pedido.getValorTotalPedido());
 			stmt.setString(4, pedido.getStatusPedido().toString());
 			stmt.setLong(5, pedido.getIdPedido());
 			
@@ -203,7 +203,7 @@ public class PedidoDAO {
 		
 		p.setIdPedido(resultSet.getInt("id_pedido"));
 		p.setQtdProd(resultSet.getInt("qtd_prod"));
-		p.setValorTotal(resultSet.getDouble("valor_total"));
+		p.setValorTotalPedido(resultSet.getDouble("valor_total_pedido"));
 		p.setDataPedido(resultSet.getDate("data_pedido"));
 		p.setStatusPedido(StatusPedido.valueOf(resultSet.getString("status_pedido")));		
 		p.setCliente(c);

@@ -13,9 +13,10 @@ public class Pedido {
 	private int idPedido;
 	private Cliente cliente;
 	private int qtdProd;
-	private double valorTotal;
+	private double valorTotalPedido;
 	private Date dataPedido;
 	private StatusPedido StatusPedido;
+	
 	
 	
 	
@@ -37,11 +38,11 @@ public class Pedido {
 	public void setQtdProd(int qtdProd) {
 		this.qtdProd = qtdProd;
 	}
-	public double getValorTotal() {
-		return valorTotal;
+	public double getValorTotalPedido() {
+		return valorTotalPedido;
 	}
-	public void setValorTotal(double valorTotal) {
-		this.valorTotal = valorTotal;
+	public void setValorTotalPedido(double valorTotalPedido) {
+		this.valorTotalPedido = valorTotalPedido;
 	}
 	public Date getDataPedido() {
 		return dataPedido;
@@ -57,19 +58,23 @@ public class Pedido {
 	}
 	
 	
+	
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((StatusPedido == null) ? 0 : StatusPedido.hashCode());
+		result = prime * result + ((cliente == null) ? 0 : cliente.hashCode());
 		result = prime * result + ((dataPedido == null) ? 0 : dataPedido.hashCode());
 		result = prime * result + idPedido;
 		result = prime * result + qtdProd;
 		long temp;
-		temp = Double.doubleToLongBits(valorTotal);
+		temp = Double.doubleToLongBits(valorTotalPedido);
 		result = prime * result + (int) (temp ^ (temp >>> 32));
 		return result;
 	}
+	
 	
 	
 	@Override
@@ -83,6 +88,11 @@ public class Pedido {
 		Pedido other = (Pedido) obj;
 		if (StatusPedido != other.StatusPedido)
 			return false;
+		if (cliente == null) {
+			if (other.cliente != null)
+				return false;
+		} else if (!cliente.equals(other.cliente))
+			return false;
 		if (dataPedido == null) {
 			if (other.dataPedido != null)
 				return false;
@@ -92,16 +102,17 @@ public class Pedido {
 			return false;
 		if (qtdProd != other.qtdProd)
 			return false;
-		if (Double.doubleToLongBits(valorTotal) != Double.doubleToLongBits(other.valorTotal))
+		if (Double.doubleToLongBits(valorTotalPedido) != Double.doubleToLongBits(other.valorTotalPedido))
 			return false;
 		return true;
 	}
 	
 	
+	
 	@Override
 	public String toString() {
-		return "Pedido [idPedido=" + idPedido + ", qtdProd=" + qtdProd + ", valorTotal=" + valorTotal + ", dataPedido="
-				+ dataPedido + ", StatusPedido=" + StatusPedido + "]";
+		return "Pedido [idPedido=" + idPedido + ", cliente=" + cliente + ", qtdProd=" + qtdProd + ", valorTotalPedido="
+				+ valorTotalPedido + ", dataPedido=" + dataPedido + ", StatusPedido=" + StatusPedido + "]";
 	}
 	
 	
