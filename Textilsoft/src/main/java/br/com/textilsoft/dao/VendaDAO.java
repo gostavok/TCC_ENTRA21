@@ -25,7 +25,7 @@ public class VendaDAO {
 		
 		
 		String sqlQuery = "INSERT INTO venda "
-				+ "( valor_total, "
+				+ "( valor_total_venda, "
 				+ "data_pagamento, "
 				+ "data_venda) "
 				+ "VALUES (?, ?, ?) ";
@@ -48,7 +48,7 @@ public class VendaDAO {
 	}
 	
 	public int alterar(Venda venda) throws SQLException, ClassNotFoundException {
-		String sqlQuery = "UPDATE venda SET valor_total = ?, data_pagamento= ? WHERE id_venda = ?";
+		String sqlQuery = "UPDATE venda SET valor_total_venda = ?, data_pagamento= ? WHERE id_venda = ?";
 		int linhasAfetadas = 0;
 
 		try {
@@ -130,7 +130,7 @@ public class VendaDAO {
 		Venda v = new Venda();
 		
 		v.setIdVenda(resultSet.getInt("id_venda"));
-		v.setValorTotal(resultSet.getDouble("valor_total"));
+		v.setValorTotal(resultSet.getDouble("valor_total_venda"));
 		v.setDataPagamento(resultSet.getDate("data_pagamento"));
 		v.setDataVenda(resultSet.getDate("data_venda"));
 		

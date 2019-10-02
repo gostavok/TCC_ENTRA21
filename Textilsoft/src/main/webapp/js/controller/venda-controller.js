@@ -75,23 +75,33 @@ appTextilsoft.controller("vendaController", function($scope, $http) {
 	};
 
 	$scope.deleteVenda = function(id) {
-
+		
+		
 		$http({
 			method : 'DELETE',
-			url : url + 'vendas/' + id
+			url : url + 'vendaspedidos/d' + id			
 		}).then(function(response) {
-			var pos = 0;
-			$scope.listaVenda.filter(function(i, idx) {
-			    if(i.idVenda == id)
-			    	pos = idx; 				   
-			});
-			$scope.listaVenda.splice(pos,1);	
 			
-		}, function(response) {
-			console.log('error do salvar');
-			console.log(response.data);
-			console.log(response.status);
+			
+			$http({
+				method : 'DELETE',
+				url : url + 'vendas/' + id			
+			}).then(function(response) {
+				var pos = 0;			
+				
+				$scope.listaVenda.filter(function(i, idx) {
+				    if(i.idPedido == id)			    
+				    	pos = idx;			   
+				});			
+				$scope.listaVenda.splice(pos,1);	
+				
+			}, function(response) {
+				console.log('error do salvar');
+				console.log(response.data);
+				console.log(response.status);
+			});
 		});
+		
 	};
 
 	$scope.alterarVenda = function(venda) {
@@ -106,8 +116,5 @@ appTextilsoft.controller("vendaController", function($scope, $http) {
 		$scope.venda = {};
 	};
 	
-	$scope.calculoTotal = function(){
-		$scope.venda.valorTotalVenda = $scope.venda.servicoFornecedor.valorServForn * $scope.venda.qtdServico;	
-	};
 
 });

@@ -43,7 +43,25 @@ public void inserir(VendaPedido vendapedido) throws SQLException, ClassNotFoundE
 	
 	}
 	
-	
+
+public int excluirtotal(long id_venda) throws SQLException, ClassNotFoundException {
+	int linhasAlfetadas = 0;
+	String sqlQuery = "DELETE FROM venda_pedido WHERE id_venda = ?";
+
+	try {
+		PreparedStatement stmt = this.conexao.getConnection().prepareStatement(sqlQuery);
+		stmt.setLong(1, id_venda);
+
+		linhasAlfetadas = stmt.executeUpdate();
+		this.conexao.commit();
+	} catch (SQLException e) {
+		this.conexao.rollback();
+		throw e;
+	}
+
+	return linhasAlfetadas;
+}
+
 public int excluir(long id_venda, long id_pedido) throws SQLException, ClassNotFoundException {
 	int linhasAlfetadas = 0;
 	String sqlQuery = "DELETE FROM venda_pedido WHERE id_venda = ? and id_pedido = ?";
@@ -90,7 +108,7 @@ public List<VendaPedido> listarVendasPedidos(long id) throws SQLException, Class
 }	
 
 public int alterar(Venda venda) throws SQLException, ClassNotFoundException {
-	String sqlQuery = "UPDATE venda SET valor_total = ? WHERE id_venda = ?";
+	String sqlQuery = "UPDATE venda SET valor_total_venda = ? WHERE id_venda = ?";
 	int linhasAfetadas = 0;
 
 	try {
@@ -118,7 +136,7 @@ public int alterar(Venda venda) throws SQLException, ClassNotFoundException {
 		vp.setPedido(p);
 		
 		v.setIdVenda(resultSet.getInt("id_venda")); 
-		v.setValorTotal(resultSet.getDouble("valor_total"));
+		v.setValorTotal(resultSet.getDouble("valor_total_venda"));
 		v.setDataPagamento(resultSet.getDate("data_pagamento"));
 		v.setDataVenda(resultSet.getDate("data_venda"));
 		
