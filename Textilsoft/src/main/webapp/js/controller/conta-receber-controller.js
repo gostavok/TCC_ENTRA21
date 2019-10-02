@@ -1,7 +1,7 @@
 appTextilsoft.controller("contaReceberController", function($scope, $http,
 		$routeParams) {
-
-	$scope.contaReceber = [];
+	$scope.listaContaReceber = [];
+	$scope.contaReceber = {};
 	$scope.contaReceber.Pago = {};
 	$scope.contaReceber.Pendente = {};
 	$scope.contaReceber.Atrasado = {};
@@ -84,7 +84,7 @@ appTextilsoft.controller("contaReceberController", function($scope, $http,
 			url : url + 'status/' + status
 		}).then(function(response) {		
 			
-			$scope.contaReceber = response.data;
+			$scope.listaContaReceber = response.data;
 			
 		}, function(response) {
 
