@@ -36,9 +36,9 @@
             <thead>
 				<tr>
 					<th class="col-md-1" >ID</th>
-					<th class="col-md-1">Fornecedor</th>
+					<th class="col-md-2">Produto</th>
 					<th class="col-md-1">Quantidade</th>
-					<th class="col-md-2">Valor Total</th>
+					<th class="col-md-1">Valor Total</th>
 					<th class="col-md-2">Data da Compra</th>
 					<th class="col-md-2">Data de Vencimento</th>
 					<th class="actions">Ações</th>
@@ -49,11 +49,11 @@
 		<tr ng-repeat="compra in listaCompra">
 		
 		<td >{{compra.idCompra }}</td>
-		<td> {{compra.produtoFornecedor.idProdForn }}</td>
+		<td> {{compra.produtoFornecedor.nmProdForn }}</td>
 		<td>{{compra.qtdCompra}}</td>
-		<td>{{compra.valorTotal}}</td>
-		<td>{{compra.dataCompra}}</td>
-		<td>{{compra.dataVenc}}</td>
+		<td>R${{compra.valorTotal | number :2}}</td>
+		<td>{{compra.dataCompra | date : "dd/MM/yyyy"}}</td>
+		<td>{{compra.dataVenc | date : "dd/MM/yyyy"}}</td>
 		<td class="actions">
 		  <a class="btn btn-danger btn-xs"  type="button" ng-click = "procuraCompra(compra)" data-toggle="modal" data-target="#delete-modal">Excluir</a>
 		<a class="btn btn-warning btn-xs" type="button" href = "compra-edit/{{compra.idCompra}}">Alterar</a>

@@ -29,9 +29,9 @@
 	<div class="form-group col-md-2">
 		<p><strong>Produto</strong></p>
 		<p> ID:{{compraDetalhe.produtoFornecedor.idProdForn}}</p>
-		<p> Nome do Produto: {{compraDetalhe.produtoFornecedor.nmProdForn}}</p>
+		<p> Produto: {{compraDetalhe.produtoFornecedor.nmProdForn}}</p>
 		<p> Descrição: {{compraDetalhe.produtoFornecedor.descProdForn}}</p>
-		<p> Unidade: {{compraDetalhe.produtoFornecedor.UndMedidaProdForn}}</p>
+		<p> Unidade: {{compraDetalhe.produtoFornecedor.undMedidaProdForn}}</p>
 		<p> Valor: R${{compraDetalhe.produtoFornecedor.valorProdForn | number: 2}}</p>
 	
 	
@@ -43,7 +43,7 @@
 	</div>
 	<div class="form-group col-md-2">
 			<p><strong>Valor Total</strong></p>
-			<p>{{compraDetalhe.valorTotal}}</p>
+			<p>R${{compraDetalhe.valorTotal | number:2}}</p>
 			
 		</div>
 	<div class="form-group col-md-2">

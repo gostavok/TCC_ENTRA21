@@ -90,7 +90,7 @@ appTextilsoft.controller("compraController", function($scope, $http) {
 		}).then(function(response) {
 		
 			$scope.compra.produtoFornecedor = response.data;		
-
+			$scope.compra.produtoFornecedor.valorProdForn = $scope.compra.produtoFornecedor.valorProdForn.toFixed(2);
 		}, function(response) {
 			console.log('error');
 			console.log(response.data);

@@ -12,24 +12,7 @@ appTextilsoft.controller("contaReceberController", function($scope, $http,
 	
 	var url = 'http://localhost:8080/Textilsoft/rest/contasreceber/';
 	
-	$scope.listarStatus1 = function() {		
-		$http({
-			method : 'GET',
-			url : url + 'status/'
-		}).then(function(response) {		
-			
-			$scope.contaReceber = response.data;
-			$scope.contaReceber.Pago = $scope.contaReceber[0];
-			$scope.contaReceber.Pendente = $scope.contaReceber[1];
-			$scope.contaReceber.Atrasado = $scope.contaReceber[2];
-			
-		}, function(response) {
 
-			console.log(response.data);
-			console.log($scope.contaReceber);
-
-		});
-	};
 	
 	$scope.listarStatus = function() {	
 	
@@ -123,19 +106,21 @@ appTextilsoft.controller("contaReceberController", function($scope, $http,
 	};
 	
 	$scope.chamarMetodos = function(){
-			$scope.listarStatus();
+		
+			
+			$scope.listarPorStatus("Atrasado");
 			$scope.pegarValorPago();
 			$scope.pegarValorPendente();
 			$scope.pegarValorAtrasado();
-			$scope.listarPorStatus("Atrasado");
+			$scope.listarStatus();
 		}	
 	
 	$scope.listarValores = function(){
-		$scope.listarStatus();
+		
 		$scope.pegarValorPago();
 		$scope.pegarValorPendente();
 		$scope.pegarValorAtrasado();
-		
+		$scope.listarStatus();
 	}	
 	
 	$scope.salvarID = function(id){

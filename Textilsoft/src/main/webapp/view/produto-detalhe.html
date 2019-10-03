@@ -36,7 +36,7 @@
 			<p><strong>Cor</strong></p>
 			<p> ID: {{produtoDetalhe.corProduto.idCor}}</p>
 			<p> Cor: {{produtoDetalhe.corProduto.nmCor}}</p>
-			<p> Valor: {{produtoDetalhe.corProduto.valorCor}}</p>
+			<p> Valor: R${{produtoDetalhe.corProduto.valorCor | number:2}}</p>
 			
 			</div>
 			
@@ -45,7 +45,7 @@
 			
 			<p> ID: {{produtoDetalhe.materialProduto.idMaterial}}</p>
 			<p> Material: {{produtoDetalhe.materialProduto.nmMaterial}}</p>
-			<p> Valor: {{produtoDetalhe.materialProduto.valorMaterial}}</p>
+			<p> Valor: R${{produtoDetalhe.materialProduto.valorMaterial | number:2}}</p>
 			
 			</div>
 		
@@ -53,12 +53,12 @@
 				<p><strong>Estampa</strong></p>
 				<p> ID: {{produtoDetalhe.estampaProduto.idEstampa}}</p>
 				<p> Codigo: {{produtoDetalhe.estampaProduto.codEstampa}}</p>
-				<p> Valor: {{produtoDetalhe.estampaProduto.valorEstampa}}</p>
+				<p> Valor: R${{produtoDetalhe.estampaProduto.valorEstampa  | number:2}}</p>
 			</div>
 			
 			<div class="form-group col-md-2">
 			<p><strong>Valor</strong></p>
-			<p>{{produtoDetalhe.valorProduto}}</p>
+			<p> R${{produtoDetalhe.valorProduto | number:2}}</p>
 			</div>
 	
 	
@@ -67,7 +67,7 @@
 	<div id="actions" class="row" style="margin-top:15px">
  <div class="col-md-12" style="margin-top:15px">
  	  <a class="btn btn-danger "  type="button" name= "excluir" value=" X " data-toggle="modal" data-target="#delete-modal" ng-click = "procuraProduto(produtoDetalhe)" >Excluir</a>
-		<a class="btn btn-warning " type="button" value=" edit " href = "produto-edit/{{produtoDetalhe.idMaterial}}">Alterar</a>
+		<a class="btn btn-warning " type="button" value=" edit " href = "produto-edit/{{produtoDetalhe.idProduto}}">Alterar</a>
 		<a class="btn btn-default " type="button" onClick="history.go(-1)">Voltar</a>
 		
  </div>
