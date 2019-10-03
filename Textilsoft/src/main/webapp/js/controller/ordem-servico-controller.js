@@ -8,6 +8,8 @@ appTextilsoft.controller("ordemServicoController", function($scope, $http) {
 	$scope.ordemServico.valorTotalOrdemServico = "";
     $scope.ordemServico.fornecedor = {};
     
+    $scope.submitted = false;
+    
 	var today = new Date();
 	var dia = today.getDate();
 	var mes = today.getMonth()+1;
@@ -61,8 +63,9 @@ appTextilsoft.controller("ordemServicoController", function($scope, $http) {
 		});
 	};
 
-	$scope.salvarOrdemServico = function() {
-
+	$scope.salvarOrdemServico = function(value) {
+		$scope.submitted = true;
+		if (value){
 		$http({
 			method : 'POST',
 			url : url + 'ordemServicos/',
@@ -76,6 +79,7 @@ appTextilsoft.controller("ordemServicoController", function($scope, $http) {
 			console.log(response.data);
 			console.log(response.status);
 		});
+		}
 	};
 
 	$scope.deleteOrdemServico = function(id) {

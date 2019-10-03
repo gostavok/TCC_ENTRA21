@@ -8,6 +8,9 @@ appTextilsoft.controller("vendaController", function($scope, $http) {
 	$scope.contaReceber = {};
 	$scope.contaReceber.venda = {};
 	$scope.contaReceber.statusContaReceber = "Pendente";
+	$scope.exibeId = {};
+	$scope.exibeId.idVenda = {};
+	$scope.addPedido = {};
 	
 	var url = 'http://localhost:8080/Textilsoft/rest/';
 	
@@ -21,6 +24,21 @@ appTextilsoft.controller("vendaController", function($scope, $http) {
 	$scope.dataEmissao = new Date($scope.dataEmissao);
 	
 	console.log($scope.dataEmissao)
+
+//------------------TESTE BOTÂO PEDIDOS-----------	
+	
+	$http.get('http://localhost:8080/Textilsoft/rest/vendas/ultimo').then(function(response) {
+       $scope.addPedido = response.data;
+       $scope.exibeId.idVenda = $scope.addPedido.idVenda + 1;
+       					
+        console.log('success - exibeId');
+        
+    }, function(response) {
+        console.log('error- exibeId');
+    
+    });
+	
+//------------------TESTE BOTÂO PEDIDOS-----------	
 	
 	$scope.salvarContaReceber = function() {
 		var metodo = 'POST';
@@ -100,6 +118,9 @@ appTextilsoft.controller("vendaController", function($scope, $http) {
 			//	alert("get com sucesso")
 				var aux = response.data		
 				$scope.venda.idVenda =  aux.idVenda;
+				$scope.addPedido = aux;
+				$scope.exibeId.idVenda = aux.idVenda + 1;
+				
 				$scope.contaReceber.venda = $scope.venda;
 				
 				$scope.salvarContaReceber();
