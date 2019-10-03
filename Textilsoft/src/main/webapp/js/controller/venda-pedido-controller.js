@@ -20,6 +20,8 @@ $scope.listarPedido = function(id) {
 		$scope.vendapedido.pedido.dataPedido = new Date($scope.vendapedido.pedido.dataPedido);
 		console.log($scope.vendapedido.pedido);
 		console.log($scope.vendapedido.pedido.statusPedido);
+		var aux = $scope.vendapedido.pedido.valorTotalPedido;	
+		$scope.vendapedido.pedido.valorTotalPedido =  aux.toFixed(2);
 	}, function(response) {
 		console.log('error');
 		console.log(response.data);
