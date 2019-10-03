@@ -1,4 +1,4 @@
-
+<meta charset="utf-8">
 <div class="modal fade" id="delete-modal" tabindex="-1" role="dialog"
 		aria-labelledby="modalLabel">
 		<div class="modal-dialog" role="document">
@@ -19,7 +19,7 @@
 		</div>
 	</div>
 
-<h3 class="page-header">Visualizar Orcamento #{{orcamentoDetalhe.idOrcamento}}</h3>
+<h3 class="page-header">Visualizar Orçamento #{{orcamentoDetalhe.idOrcamento}}</h3>
 <br>
 <div class="row">
 	<div class="form-group col-md-1">
@@ -28,23 +28,23 @@
 	</div>
 	<div class="form-group col-md-2">
 		<p><strong>Cor</strong></p>
-		<p>Id: {{orcamentoDetalhe.corOrcamento.idCor}}</p>
+		<p>ID: {{orcamentoDetalhe.corOrcamento.idCor}}</p>
 		<p>Cor: {{orcamentoDetalhe.corOrcamento.nmCor}}</p>
-		<p>Valor: {{orcamentoDetalhe.corOrcamento.valorCor}}</p>
+		<p>Valor: R${{orcamentoDetalhe.corOrcamento.valorCor | number: 2}}</p>
 		
 	</div>
 	<div class="form-group col-md-2">
 		<p><strong>Material</strong></p>
-		<p>Id: {{orcamentoDetalhe.materialOrcamento.idMaterial}}</p>
+		<p>ID: {{orcamentoDetalhe.materialOrcamento.idMaterial}}</p>
 		<p>Material: {{orcamentoDetalhe.materialOrcamento.nmMaterial}}</p>
-		<p>Valor {{orcamentoDetalhe.materialOrcamento.valorMaterial}}</p>
+		<p>Valor: R${{orcamentoDetalhe.materialOrcamento.valorMaterial | number: 2}}</p>
 		
 	</div>
 	<div class="form-group col-md-2">
 		<p><strong>Estampa</strong></p>
-		<p>Id: {{orcamentoDetalhe.estampaOrcamento.idEstampa}}</p>
-		<p>Codigo: {{orcamentoDetalhe.estampaOrcamento.codEstampa}}</p>
-		<p>Valor: {{orcamentoDetalhe.estampaOrcamento.valorEstampa}}</p>
+		<p>ID: {{orcamentoDetalhe.estampaOrcamento.idEstampa}}</p>
+		<p>Código: {{orcamentoDetalhe.estampaOrcamento.codEstampa}}</p>
+		<p>Valor: R${{orcamentoDetalhe.estampaOrcamento.valorEstampa | number: 2}}</p>
 	
 	</div>
 	<div class="form-group col-md-2">
@@ -54,12 +54,12 @@
 	
 	<div class="form-group col-md-2">
 		<p><strong>Valor Base</strong></p>
-		<p>{{orcamentoDetalhe.valorBase}}</p>
+		<p>R${{orcamentoDetalhe.valorBase | number : 2 }}</p>
 	</div>
 	
 	<div class="form-group col-md-2">
 		<p><strong>Valor Total</strong></p>
-		<p>{{orcamentoDetalhe.valorOrcamento}}</p>
+		<p>R${{orcamentoDetalhe.valorOrcamento | number: 2}}</p>
 	</div>
 	
 	

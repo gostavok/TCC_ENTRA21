@@ -1,7 +1,7 @@
-
+<meta charset="utf-8">
 <div id="top" class="row">
  <div class="col-md-3">
-        <h2>Lista Orcamentos</h2>
+        <h2>Lista Orçamentos</h2>
     </div>
  
     <div class="col-md-6">
@@ -16,7 +16,7 @@
        
     </div>
  	 <div class="col-md-3">
-        <a href="orcamento-cad"  class="btn btn-primary pull-right h2">Novo Orcamento</a>
+        <a href="orcamento-cad"  class="btn btn-primary pull-right h2">Novo Orçamento</a>
     </div>
     
 </div>
@@ -46,11 +46,11 @@
 		<tr ng-repeat="orcamento in listaOrcamento">
 		
 		<td >{{orcamento.idOrcamento}}</td>
-		<td >{{orcamento.corOrcamento.idCor}}</td>
-		<td >{{orcamento.materialOrcamento.idMaterial}}</td>
-		<td >{{orcamento.estampaOrcamento.idEstampa}}</td>
-		<td >{{orcamento.valorBase}}</td>
-		<td >{{orcamento.valorOrcamento}}</td>
+		<td >{{orcamento.corOrcamento.nmCor}}</td>
+		<td >{{orcamento.materialOrcamento.nmMaterial}}</td>
+		<td >{{orcamento.estampaOrcamento.codEstampa}}</td>
+		<td >R${{orcamento.valorBase | number:2}}</td>
+		<td >R${{orcamento.valorOrcamento | number:2}}</td>
 		
 		<td class="actions">
 		  <a class="btn btn-danger btn-xs"  type="button" ng-click = "procuraOrcamento(orcamento)" data-toggle="modal" data-target="#delete-modal">Excluir</a>

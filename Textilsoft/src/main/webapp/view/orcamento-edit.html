@@ -1,4 +1,5 @@
-<h3 class="page-header">Alterar Orcamento</h3>
+<meta charset="utf-8">
+<h3 class="page-header">Alterar Orçamento</h3>
 <br>
 <div class = "row">
 <div class="form-group col-md-1">
@@ -12,7 +13,7 @@
 	
 	<div class="form-group col-md-3">
 		<label for="campo2">Cor</label>
-		<input type="text"  class= "form-control"  placeholder="Cor" ng-change="calculaTotal()" ng-model="listaCor.nmCor" readonly>
+		<input type="text"  class= "form-control"  placeholder="Cor" ng-change="calculaTotal()" ng-model="orcamentoDetalhe.corOrcamento.nmCor" readonly>
 	</div>
 	
 	<div class="form-group col-md-3">
@@ -22,7 +23,7 @@
 	
 	<div class="form-group col-md-3">
 		<label for="campo3">Material</label>
-		<input type="text"  class= "form-control"  placeholder="Material" ng-change="calculaTotal()" ng-model="listaMaterial.nmMaterial" readonly>
+		<input type="text"  class= "form-control"  placeholder="Material" ng-change="calculaTotal()" ng-model="orcamentoDetalhe.materialOrcamento.nmMaterial" readonly>
 	</div>
 	
 	
@@ -34,7 +35,7 @@
 		
 	<div class="form-group col-md-3">
 		<label for="campo4">Estampa</label>
-		<input type="text"  class= "form-control"  placeholder="Estampa" ng-change="calculaTotal()" ng-model="listaEstampa.codEstampa" readonly>
+		<input type="text"  class= "form-control"  placeholder="Estampa" ng-change="calculaTotal()" ng-model="orcamentoDetalhe.estampaOrcamento.codEstampa" readonly>
 	</div>
 	
 	
@@ -52,7 +53,7 @@
 
 	<div class="form-group col-md-3">
 		<label for="campo4">Valor Total</label>
-		<input type="number"  class= "form-control"  ng-model="orcamentoDetalhe.valorOrcamento"  placeholder="Total" >
+		<input type="number"  class= "form-control"  ng-model="orcamentoDetalhe.valorOrcamento"  placeholder="Total" readonly>
 	</div>	
 <form> 
   <hr /> 

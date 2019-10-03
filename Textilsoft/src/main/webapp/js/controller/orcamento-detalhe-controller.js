@@ -1,10 +1,10 @@
 appTextilsoft.controller("orcamentoDetalheController", function($scope, $http,
 		$routeParams) {
 
-	$scope.orcamentoDetalhe = {};
-	$scope.listaCor = [];
-	$scope.listaMaterial = [];
-	$scope.listaEstampa = [];
+	$scope.orcamentoDetalhe = {};	
+	$scope.valorCor = 0;
+	$scope.valorMaterial = 0;
+	$scope.valorEstampa = 0;
 
 	
 	var url = 'http://localhost:8080/Textilsoft/rest/orcamentos/';
@@ -56,12 +56,14 @@ appTextilsoft.controller("orcamentoDetalheController", function($scope, $http,
 
 		
 		$scope.calculaTotal = function() {
-			$scope.orcamentoDetalhe.valorBase = 30;
-			$scope.procuraValorCor($scope.orcamentoDetalhe.corOrcamento.idCor);
-			$scope.procuraValorMaterial($scope.orcamentoDetalhe.materialOrcamento.idMaterial);
-			$scope.procuraValorEstampa($scope.orcamentoDetalhe.estampaOrcamento.idEstampa);
-			var p = ($scope.listaCor.valorCor + $scope.listaMaterial.valorMaterial + $scope.listaEstampa.valorEstampa + $scope.orcamentoDetalhe.valorBase) * $scope.orcamentoDetalhe.quantidade;
-			$scope.orcamentoDetalhe.valorOrcamento = ($scope.listaCor.valorCor + $scope.listaMaterial.valorMaterial + $scope.listaEstampa.valorEstampa + $scope.orcamentoDetalhe.valorBase) * $scope.orcamentoDetalhe.quantidade;
+			var base =  $scope.orcamentoDetalhe.valorBase;			
+			var valorCor = $scope.orcamentoDetalhe.corOrcamento.valorCor;			
+			var valorMaterial = $scope.orcamentoDetalhe.materialOrcamento.valorMaterial;	
+			var valorEstampa = $scope.orcamentoDetalhe.estampaOrcamento.valorEstampa;
+			
+			base = (base + valorCor + valorMaterial + valorEstampa) * $scope.orcamentoDetalhe.quantidade; 
+			
+			$scope.orcamentoDetalhe.valorOrcamento = base;
 			
 		} 
 		
@@ -70,8 +72,8 @@ appTextilsoft.controller("orcamentoDetalheController", function($scope, $http,
 				method : 'GET',
 				url : "http://localhost:8080/Textilsoft/rest/" + 'cores/'+ id
 			}).then(function(response) {
-	            $scope.listaCor = response.data;
-	            console.log($scope.listaCor.valorCor);
+	            $scope.valorCor = response.data;
+	          
 			}, function(response) {
 				console.log('error');
 				console.log(response.data);
@@ -84,8 +86,8 @@ appTextilsoft.controller("orcamentoDetalheController", function($scope, $http,
 				method : 'GET',
 				url : "http://localhost:8080/Textilsoft/rest/" + 'materiais/'+ id
 			}).then(function(response) {
-	            $scope.listaMaterial = response.data;
-	            console.log($scope.listaMaterial.valorMaterial);
+	            $scope.valorMaterial = response.data;
+	           
 			}, function(response) {
 				console.log('error');
 				console.log(response.data);
@@ -98,8 +100,8 @@ appTextilsoft.controller("orcamentoDetalheController", function($scope, $http,
 				method : 'GET',
 				url : "http://localhost:8080/Textilsoft/rest/" + 'estampas/'+ id
 			}).then(function(response) {
-	            $scope.listaEstampa = response.data;
-	            console.log($scope.listaEstampa.valorEstampa);
+	            $scope.valorEstampa = response.data;
+	           
 			}, function(response) {
 				console.log('error');
 				console.log(response.data);
