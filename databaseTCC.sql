@@ -151,7 +151,7 @@ create table venda (
 
 create table venda_pedido (
 	id_venda int(11) not null,
-    id_pedido int(11) not null,
+    id_pedido int(11) not null unique,
     foreign key (id_venda) references venda (id_venda),
     foreign key (id_pedido) references pedido (id_pedido)
 );
