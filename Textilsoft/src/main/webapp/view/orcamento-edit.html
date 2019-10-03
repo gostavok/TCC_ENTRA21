@@ -3,11 +3,11 @@
 <div class = "row">
 <div class="form-group col-md-1">
 		<label for="campo1">ID</label>
-		<input type="text" class= "form-control" placeholder="ID"  ng-model="orcamento.idOrcamento" style="width: 50px" readonly>
+		<input type="text" class= "form-control" placeholder="ID"  ng-model="orcamentoDetalhe.idOrcamento" style="width: 50px" readonly>
 	</div>
-	<div class="form-group col-md-1">
+	<div class="form-group col-md-2">
 		<label for="campo2">ID Cor</label>
-		<input type="number"  class= "form-control"  placeholder="ID Cor" ng-change="calculaTotal()" ng-model="orcamento.corOrcamento.idCor">
+		<input type="number"  class= "form-control"  placeholder="ID Cor" ng-change="calculaTotal()" ng-model="orcamentoDetalhe.corOrcamento.idCor">
 	</div>
 	
 	<div class="form-group col-md-3">
@@ -15,9 +15,9 @@
 		<input type="text"  class= "form-control"  placeholder="Cor" ng-change="calculaTotal()" ng-model="listaCor.nmCor" readonly>
 	</div>
 	
-	<div class="form-group col-md-1">
+	<div class="form-group col-md-3">
 		<label for="campo3">ID Material</label>
-		<input type="number"  class= "form-control"  placeholder="ID Material" ng-change="calculaTotal()" ng-model="orcamento.materialOrcamento.idMaterial">
+		<input type="number"  class= "form-control"  placeholder="ID Material" ng-change="calculaTotal()" ng-model="orcamentoDetalhe.materialOrcamento.idMaterial">
 	</div>
 	
 	<div class="form-group col-md-3">
@@ -26,9 +26,9 @@
 	</div>
 	
 	
-	<div class="form-group col-md-1">
+	<div class="form-group col-md-2">
 		<label for="campo4">ID Estampa</label>
-		<input type="number"  class= "form-control"  placeholder="ID Estampa" ng-change="calculaTotal()" ng-model="orcamento.estampaOrcamento.idEstampa">
+		<input type="number"  class= "form-control"  placeholder="ID Estampa" ng-change="calculaTotal()" ng-model="orcamentoDetalhe.estampaOrcamento.idEstampa">
 	</div>
 	
 		
@@ -41,18 +41,18 @@
 	
 	<div class="form-group col-md-2">
 		<label for="campo4">Quantidade</label>
-		<input type="number"  class= "form-control"  placeholder="Quantidade" ng-change="calculaTotal()" ng-model="orcamento.quantidade">
+		<input type="number"  class= "form-control"  placeholder="Quantidade" ng-change="calculaTotal()" ng-model="orcamentoDetalhe.quantidade">
 	</div>
 	
 	
 	<div class="form-group col-md-2">
 		<label for="campo4">Valor Base</label>
-		<input type="number"  class= "form-control" value="30.00" placeholder="30.00" ng-change="" ng-model="orcamento.valorBase" readonly>
+		<input type="number"  class= "form-control" value="30.00" placeholder="30.00" ng-change="" ng-model="orcamentoDetalhe.valorBase" readonly>
 	</div>
 
 	<div class="form-group col-md-3">
 		<label for="campo4">Valor Total</label>
-		<input type="number"  class= "form-control"  ng-model="orcamento.valorOrcamento"  >
+		<input type="number"  class= "form-control"  ng-model="orcamentoDetalhe.valorOrcamento"  placeholder="Total" >
 	</div>	
 <form> 
   <hr /> 

@@ -81,7 +81,7 @@ public class OrcamentoDAO {
 	
 	
 	public void update(Orcamento orcamento) throws SQLException,ClassNotFoundException{
-		String sqlQuery = "UPDATE orcamento SET id_cor = ?, id_estampa = ?, id_material = ?, valor_base = ?, valor_orcamento= ? , quantidade = ?WHERE id_orcamento = ?";
+		String sqlQuery = "UPDATE orcamento SET id_cor = ?, id_estampa = ?, id_material = ?, valor_base = ?, valor_orcamento= ? , quantidade = ? WHERE id_orcamento = ?";
 
 		try {
 			PreparedStatement stmt = this.conexao.getConnection().prepareStatement(sqlQuery);
@@ -90,8 +90,8 @@ public class OrcamentoDAO {
 			stmt.setInt(3, orcamento.getMaterialOrcamento().getIdMaterial());
 			stmt.setDouble(4, orcamento.getValorBase());
 			stmt.setDouble(5, orcamento.getValorOrcamento());
-			stmt.setInt(7, orcamento.getIdOrcamento());
 			stmt.setInt(6, orcamento.getQuantidade() );
+			stmt.setInt(7, orcamento.getIdOrcamento());
 			stmt.execute();
 			this.conexao.commit();
 		} catch (Exception e) {
