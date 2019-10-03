@@ -20,11 +20,11 @@
 	</div>
 	<div class="form-group col-md-2">
 			<p><strong>Valor total</strong></p>
-				<p>{{pedido.valorTotalPedido}}</p>
+				<p>R$ {{pedido.valorTotalPedido | number: 2 }}</p>
 		</div>
 		<div class="form-group col-md-2">
 				<p><strong>Data</strong></p>
-					<p>{{pedido.dataPedido}}</p>
+					<p>{{pedido.dataPedido  | date: "dd/MM/yyyy"}}</p>
 		
 			</div>
 	<div class="form-group col-md-3">
@@ -57,7 +57,7 @@
 		
 		<td > {{produtopedido.produto.idProduto}}</td>
 		<td >{{produtopedido.produto.descProduto}}</td>
-		<td> {{produtopedido.produto.valorProduto}}</td>	
+		<td> R$ {{produtopedido.produto.valorProduto | number:2 }}</td>	
 				
 	</tr>
 	
