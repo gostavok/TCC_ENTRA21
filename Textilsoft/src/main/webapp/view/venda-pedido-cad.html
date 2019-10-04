@@ -15,11 +15,6 @@
 			ng-model="vendapedido.pedido.idPedido" style="width: 50px"
 			ng-blur="listarPedido(vendapedido.pedido.idPedido)">
 	</div>
-	<div class="form-group col-md-2">
-		<label for="campo1">Valor Total</label> <input type="text"
-			class="form-control" 
-			ng-model="vendapedido.pedido.valorTotalPedido" readonly>
-	</div>
 </div>
 <div class="row">
 	<div class="form-group col-md-2">
@@ -27,7 +22,11 @@
 			ng-model="vendapedido.pedido.dataPedido"
 			class="form-control" name="data" id="data" readonly>
 	</div>
-	
+	<div class="form-group col-md-2">
+		<label for="campo1">Valor Total</label> <input type="text"
+			class="form-control" 
+			ng-model="vendapedido.pedido.valorTotalPedido" readonly>
+	</div>
 	<div class="form-group col-md-2">
 		<label for="campo1">Status Pedido</label> <input type="text"
 			class="form-control" 
