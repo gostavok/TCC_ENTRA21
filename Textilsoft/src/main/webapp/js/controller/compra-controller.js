@@ -2,7 +2,6 @@ appTextilsoft.controller("compraController", function($scope, $http) {
 
 	$scope.listaCompra = [];
 	$scope.compra = {};
-	$scope.fornecedor = {};
 	$scope.compra.produtoFornecedor = {};
 	$scope.idexcluir = 0;
 	var url = 'http://localhost:8080/Textilsoft/rest/';
@@ -88,7 +87,7 @@ appTextilsoft.controller("compraController", function($scope, $http) {
 			method : 'GET',
 			url : url + 'produtosfornecedores/'+id
 		}).then(function(response) {
-		
+			$scope.compra.produtoFornecedor.valorProdForn = 0;
 			$scope.compra.produtoFornecedor = response.data;		
 			$scope.compra.produtoFornecedor.valorProdForn = $scope.compra.produtoFornecedor.valorProdForn.toFixed(2);
 		}, function(response) {
@@ -102,7 +101,8 @@ appTextilsoft.controller("compraController", function($scope, $http) {
 		
 	$scope.calculaTotal = function() {
 	
-		$scope.compra.valorTotal = $scope.compra.qtdCompra * $scope.compra.produtoFornecedor.valorProdForn;
+		var total = $scope.compra.qtdCompra * $scope.compra.produtoFornecedor.valorProdForn;
+		$scope.compra.valorTotal = total.toFixed(2);
 	}
 	
 });

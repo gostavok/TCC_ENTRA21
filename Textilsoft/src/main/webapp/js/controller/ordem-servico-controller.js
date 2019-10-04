@@ -115,7 +115,8 @@ appTextilsoft.controller("ordemServicoController", function($scope, $http) {
 	};
 	
 	$scope.calculoTotal = function(){
-		$scope.ordemServico.valorTotalOrdemServico = $scope.ordemServico.servicoFornecedor.valorServForn * $scope.ordemServico.qtdServico;	
+		var total = $scope.ordemServico.servicoFornecedor.valorServForn * $scope.ordemServico.qtdServico;	
+		$scope.ordemServico.valorTotalOrdemServico = total.toFixed(2);
 	};
 
 });

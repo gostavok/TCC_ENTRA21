@@ -96,7 +96,8 @@ $scope.listarServicoFornecedor = function(id) {
     }
 
 	$scope.calculoTotal = function(){
-		$scope.ordemServicoDetalhe.valorTotalOrdemServico = $scope.ordemServicoDetalhe.servicoFornecedor.valorServForn * $scope.ordemServicoDetalhe.qtdServico;	
+		var total = $scope.ordemServicoDetalhe.servicoFornecedor.valorServForn * $scope.ordemServicoDetalhe.qtdServico;
+		$scope.ordemServicoDetalhe.valorTotalOrdemServico = total.toFixed(2);
 	};
     
 });

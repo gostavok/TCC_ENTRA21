@@ -2,7 +2,7 @@ appTextilsoft.controller("estoqueDetalheController", function($scope, $http,
 		$routeParams) {
 
 	$scope.estoqueDetalhe = {};
-	
+	$scope.idestoque = 0;
 	var url = 'http://localhost:8080/Textilsoft/rest/estoque/';
 
 		$http.get(url + $routeParams.id).then(function(response) {

@@ -2,12 +2,13 @@ appTextilsoft.controller("compraDetalheController", function($scope, $http,
 		$routeParams) {
 
 	$scope.compraDetalhe = {};
+	$scope.compraDetalhe.valorTotal = {};
 	
 	var url = 'http://localhost:8080/Textilsoft/rest/compras/';
 
 		$http.get(url + $routeParams.id).then(function(response) {
 			$scope.compraDetalhe = response.data;
-			
+			$scope.compraDetalhe.dataVenc = new Date($scope.compraDetalhe.dataVenc);
 			console.log('success - compraDetalheController');
 	
 
@@ -55,6 +56,12 @@ appTextilsoft.controller("compraDetalheController", function($scope, $http,
 		};
 		$scope.procuraCompra = function(compra) {
 			$scope.idexcluir = angular.copy(compra.idCompra);
+		}
+		
+		$scope.calculaTotal = function() {
+			
+			var total = $scope.compraDetalhe.qtdCompra * $scope.compraDetalhe.produtoFornecedor.valorProdForn;
+			$scope.compraDetalhe.valorTotal = total.toFixed(2);
 		}
 
 });

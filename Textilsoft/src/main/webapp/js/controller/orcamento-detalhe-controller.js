@@ -5,7 +5,7 @@ appTextilsoft.controller("orcamentoDetalheController", function($scope, $http,
 	$scope.valorCor = 0;
 	$scope.valorMaterial = 0;
 	$scope.valorEstampa = 0;
-
+	$scope.idOrcamento =0;
 	
 	var url = 'http://localhost:8080/Textilsoft/rest/orcamentos/';
 

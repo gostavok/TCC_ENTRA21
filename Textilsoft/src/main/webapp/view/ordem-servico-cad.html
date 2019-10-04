@@ -39,7 +39,7 @@
 	<div class="form-group col-md-2" ng-class="{'has-error': ordemServicoForm.qtdServico.$error.required && submitted}">
 		<label for="campo1">Quantidade</label>
 		<span ng-class="error" ng-show="ordemServicoForm.qtdServico.$error.required"> *</span>
-		<input type="text" class="form-control" name="qtdServico" placeholder="Quantidade"
+		<input type="number" class="form-control" name="qtdServico" placeholder="Quantidade"
 			ng-model="ordemServico.qtdServico"
 			ng-change="calculoTotal()" required>
 	</div>
@@ -49,7 +49,7 @@
 			ng-model="ordemServico.servicoFornecedor.valorServForn" readonly>
 	</div>
 	<div class="form-group col-md-2">
-		<label for="campo1">Valor Total</label> <input type="number"
+		<label for="campo1">Valor Total</label> <input type="text"
 			class="form-control" placeholder="Valor total" 
 			ng-model="ordemServico.valorTotalOrdemServico" readonly>
 	</div>
