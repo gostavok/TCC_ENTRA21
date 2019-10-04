@@ -49,23 +49,19 @@
   	  <div class="col-md-12">
 		<button type="submit" class="btn btn-primary" ng-click="updatePedido()">Atualizar</button>
 		<button type="button" class="btn btn-default" onClick="history.go(-1)">Voltar</button>
-    	</div>
+    		</div>
     </div>
  </form>
-
-
-</div>
-
  	
  	<br>
  
- 	<div style="margin-top:5%; background-color:#c79f9f; border-radius: 30px; 
-    border: solid;">
+ 	<div id="produtos" style="display: block; margin-top:3%; background-color: #d3e8c8; border-radius: 30px; 
+    border: solid; width: 90%; margin-left: 5%;">
  		
     	<div>
-    		<h4 style="margin-left: 5%;">Informações sobre o pedido:</h4>
-    		<p style="margin-left: 5%;">Quantidade de produtos: {{pedido.qtdProd}}</p>
-    		<p style="margin-left: 5%;">Valor total: {{pedido.valorTotalPedido}}</p>
+    		<h4 style="margin-left: 2%;">Informa&ccedil&ethes sobre o pedido:</h4>
+    		<p style="margin-left: 2%;">Quantidade de produtos: {{pedido.qtdProd}}</p>
+    		<p style="margin-left: 2%;">Valor total: R$ {{pedido.valorTotalPedido | number: 2 }}</p>
     	</div>
 
 
@@ -90,10 +86,9 @@
  	</div>
  	
  	</div>
- 	</div>
  	
  	<div id="produtos">
- 	<div id="list" class="row" >
+ 	<div id="list" class="row" style="margin-top: 1%;" >
     <div class="table-responsive col-md-12">
      
         <table class="table col-md-12">
@@ -114,19 +109,18 @@
 		<td> {{produtopedido.produto.valorProduto}}</td>
 		<td class="actions">
 		  <a class="btn btn-danger btn-xs"  type="button" ng-click = "deletarprodutopedido(produtopedido)" data-toggle="modal" data-target="#delete-modal">Excluir</a>
-		</td>		
-				
+		</td>			
 	</tr>
-		
+	
 	
 	</tbody>
 	
 </table>
-	
+
 </div>
 </div>
  	</div>
  	
- 	
+</div>
  
 </div>

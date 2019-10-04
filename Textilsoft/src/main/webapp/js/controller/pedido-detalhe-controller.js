@@ -49,6 +49,7 @@ appTextilsoft.controller("pedidoDetalheController", function($scope, $http, $rou
 			url : url + 'pedidos/',
 			data : $scope.pedido
 		}).then(function(response) {
+			alert("Atualizado");
 			console.log('Atualizado');
 		} , function(response) {
 			console.log('Nao atualizou');
