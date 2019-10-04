@@ -1,4 +1,4 @@
-<h3 class="page-header">Adicionar fornecedor</h3>
+<h2 class="page-header"><strong>Cadastro de fornecedor</strong></h2>
 <br>
 <ng-form name="fornecedorForm" id= "fornecedorForm">
 <div class = "row">
@@ -42,8 +42,8 @@
 		</div>
 	
 		<div class="form-group col-md-2">
-			<label for="campo1">Cep</label>
-			<input type="text" class= "form-control" data-mask="99999-999" clean="true" placeholder="Cep" ng-model="fornecedor.cepFornecedor">
+			<label for="campo1">CEP</label>
+			<input type="text" class= "form-control" name = "cep" data-mask="99999-999" clean="true" placeholder="99999-999" ng-model="fornecedor.cepFornecedor">
 		</div>
 		<div class="form-group col-md-3" ng-class="{'has-error': fornecedorForm.endereco.$error.required && submitted}">
 			<label for="campo1">Endereço</label>

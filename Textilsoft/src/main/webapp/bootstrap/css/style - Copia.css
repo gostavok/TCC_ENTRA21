@@ -85,95 +85,48 @@
         background-color: #222;
         /*background-color: #5A6B7D;*/
         bottom: 0;
-        color: #fff;
         overflow-x: hidden;
         padding-bottom: 40px;
         paddin-right: 100px;
     }
-    .navbar-inverse .navbar-nav>li>a{   
-    font-size: 15px;
-    color: #fff;    
-    }
-	
-	.span-padding{
-	padding-left: 10px;
-	
-	}
-	.side-nav>ul>li{
-	color: #fff;
-	}
+
     .side-nav>li>a {
-     	color: #fff;
         width: 225px;
         border-bottom: 1px rgba(0,0,0,.3) solid;
     }
-    
-    
- 
 
     .side-nav li a:hover,
     .side-nav li a:focus {
-  		color: #fff; 
         outline: none;
-        background-color: #2d3e51 !important;
+        background-color: #1a242f !important;
     }
 }
 
 .side-nav>li>ul {
-	color: #fff;
-    padding: 0;  
+    padding: 0;
     border-bottom: 1px rgba(0,0,0,.3) solid;
 }
 
-
-/*Fundo da li dentro dos modulos*/
 .side-nav>li>ul>li>a {
-    display: block;    
-    background-color: #2c2c2c!important;     
-    border-bottom: 1px rgba(0,0,0,.3) solid;
+    display: block;
     padding: 10px 15px 10px 38px;
     text-decoration: none;
-    list-style-type: none;
     /*color: #999;*/
     color: #fff;    
 }
-
-
-.side-nav>li>ul>li>ul>li>a{
-    display: block;    
-      list-style-type: none;
-   	 padding: 10px 0px 10px 60px;
-   	  border-bottom: 1px rgba(0,0,0,.3) solid;
-   	 margin-left: -40px;
-     text-decoration: none;
-    /*color: #999;*/
-    color: #fff;    
-}
-
-.side-nav>li>ul>li>ul>li>a:hover{
-	 background-color: #555555!important;  
-	}
-.side-nav>li>ul>li>ul {
-	 background-color: #353535!important;     
-	 list-style-type: none;
-}
-
 
 .side-nav>li>ul>li>a:hover {
-	background-color: #555555!important;
     color: #fff;
 }
 
 .navbar .nav > li > a > .label {
   -webkit-border-radius: 50%;
   -moz-border-radius: 50%;
-   list-style-type: none;
   border-radius: 50%;
   position: absolute;
   top: 14px;
   right: 6px;
-  color: #fff;
-  font-size: 15px;
+  font-size: 10px;
   font-weight: normal;
   min-width: 15px;
   min-height: 15px;
@@ -203,7 +156,7 @@
 .with-nav-tabs.panel-default .nav-tabs > li > a,
 .with-nav-tabs.panel-default .nav-tabs > li > a:hover,
 .with-nav-tabs.panel-default .nav-tabs > li > a:focus {
-    color: #fff;
+    color: #777;
 }
 .with-nav-tabs.panel-default .nav-tabs > .open > a,
 .with-nav-tabs.panel-default .nav-tabs > .open > a:hover,
