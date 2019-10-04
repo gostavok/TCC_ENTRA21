@@ -23,11 +23,11 @@
            <thead>
                <tr>
                    <th class="col-md-1">ID</th>
-                   <th class="col-md-3">Descrição</th>
+                   <th class="col-md-2">Descrição</th>
                    <th class="col-md-1">Cor</th>
-                   <th class="col-md-1">Material</th>
-                   <th class="col-md-1">Estampa</th>
-                   <th class="col-md-2">valor</th>
+                   <th class="col-md-2">Material</th>
+                   <th class="col-md-2">Estampa</th>
+                   <th class="col-md-1">Valor</th>
                    <th class="actions col-md-3">Ações</th>
                </tr>
            </thead>
@@ -35,9 +35,9 @@
                <tr ng-repeat="produto in listaProduto">
                    <td>{{ produto.idProduto }}</td>
                    <td>{{ produto.descProduto }}</td>
-                   <td>{{ produto.corProduto.idCor }}</td>
-                   <td>{{ produto.materialProduto.idMaterial }}</td>
-                   <td>{{ produto.estampaProduto.idEstampa }}</td>
+                   <td>{{ produto.corProduto.nmCor }}</td>
+                   <td>{{ produto.materialProduto.nmMaterial }}</td>
+                   <td>{{ produto.estampaProduto.codEstampa }}</td>
                    <td>R${{ produto.valorProduto | number: 2}}</td>
                    <td class="actions">
                        <a class="btn btn-danger btn-xs"  type="button" ng-click = "procuraProduto(produto.idProduto)" data-toggle="modal" data-target="#delete-modal">Excluir</a>
