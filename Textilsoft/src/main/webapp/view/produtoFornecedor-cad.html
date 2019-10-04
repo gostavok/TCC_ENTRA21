@@ -1,0 +1,47 @@
+<h3 class="page-header">Adicionar produto de Fornecedor</h3>
+<br>
+<div class = "row">
+	<div class="form-group col-md-1">
+		<label for="campo1">ID</label>
+		<input type="text" class= "form-control" placeholder="ID" ng-model="produtoFornecedor.idProdForn" style="width: 50px" readonly>
+	</div>
+	<div class="form-group col-md-3">
+		<label for="campo1">Nome do produto</label>
+		<input type="text"  class= "form-control"  placeholder="Nome do produto" ng-model="produtoFornecedor.nmProdForn">
+	</div>
+	<div class="form-group col-md-3">
+		<label for="campo1">Descri&ccedil;&atilde;o</label>
+		<input type="text"  class= "form-control"  placeholder="Descri&ccedil;&atilde;o" ng-model="produtoFornecedor.descProdForn">
+	</div>
+	<div class="form-group col-md-3">
+			<label for="campo1">Valor</label>
+			<input type="number" class= "form-control" placeholder="Valor" ng-model="produtoFornecedor.valorProdForn">
+		</div>
+	<div class="form-group col-md-2">
+		<label for="campo1">Unidade de medida</label>
+		<select class="form-control" ng-model="produtoFornecedor.undMedidaProdForn">
+			<option value="Quilos">Quilos</option>
+			<option value="Metros">Metros</option>
+			<option value="Unitario">Unitario</option>
+			</select>
+	</div>
+		
+		<div class="form-group col-md-2">
+			<label for="campo1">Fornecedor</label>
+			<input type="text" class= "form-control" placeholder="ID Fornecedor" ng-model="produtoFornecedor.fornecedor.idFornecedor" ng-blur="listarNomeFornecedor(produtoFornecedor.fornecedor.idFornecedor)">
+		</div>
+		<div class="form-group col-md-2">
+			<label for="campo1">Nome Fornecedor</label>
+			<input type="text" class= "form-control" placeholder="Nome" ng-model="produtoFornecedor.fornecedor.nmFornecedor" readonly>
+		</div>
+		
+	
+<form> 
+  <hr /> 
+	<div id="actions" class="row" style="margin-bottom:12px">
+  	  <div class="col-md-12">
+		<button type="submit" class="btn btn-primary" ng-click="salvarProdutoFornecedor()" style="margin-left:12px">Salvar</button>
+		<button type="button" class="btn btn-default" onClick="history.go(-1)">Voltar</button>
+    	</div>
+    </div>
+ </form>

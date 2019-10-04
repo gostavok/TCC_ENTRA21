@@ -1,0 +1,36 @@
+<meta charset="utf-8">
+
+<h3 class="page-header">Criar Venda</h3>
+<div>
+	<a class="btn btn-info" href="venda-pedido-cad/{{addPedido.idVenda}}" style="margin-right: 12px">Adicionar Pedido &agrave; Venda #{{addPedido.idVenda}}</a>
+</div>
+<br>
+<div class="row">
+	<div class="form-group col-md-1">
+		<label for="campo1">ID </label> <input type="text" class="form-control"
+			placeholder="ID" ng-model="exibeId.idVenda" style="width: 50px"
+			readonly>
+	</div>
+	<div class="form-group col-md-2">
+		<label for="campo1">Data de Emiss&atilde;o</label> <input type="date"
+			class="form-control" placeholder="Data de Emiss&atilde;o"
+			ng-model="dataEmissao" readonly>
+	</div>
+	<div class="form-group col-md-2">
+		<label for="campo1">Data de Pagamento</label> <input type="date"
+			ng-model="venda.dataPagamento" 
+			class="form-control" name="data" id="data" />
+	</div>
+
+</div>
+
+<form>
+	<hr />
+	<div id="actions" class="row" style="margin-bottom: 12px">
+		<div class="col-md-12">
+			<button type="submit" class="btn btn-primary" ng-click="salvarVenda()" style="margin-left: 12px">Salvar</button>			
+			<button type="button" class="btn btn-default" onClick="history.go(-1)">Voltar</button>					
+		</div>
+	</div>
+</form>
+</div>

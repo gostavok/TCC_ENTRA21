@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html ng-app="appTextilsoft">
+
+<head>
+
+	<meta charset="utf-8">
+	<script src="./angular/angular.min.js"></script>
+	<script src="./angular/angular-route.min.js"></script>
+	<script src="./angular/ngMask.min.js"></script>
+	<script src="./js/app.js"></script>
+
+	<script src="./js/controller/main-controller.js"></script>
+	<script src="./js/controller/produto-controller.js"></script>
+	<script src="./js/controller/produto-detalhe-controller.js"></script>
+	<script src="./js/controller/cor-controller.js"></script>
+	<script src="./js/controller/cor-detalhe-controller.js"></script>
+	<script src="./js/controller/material-detalhe-controller.js"></script>
+	<script src="./js/controller/material-controller.js"></script>
+	<script src="./js/controller/fornecedor-controller.js"></script>
+	<script src="./js/controller/fornecedor-detalhe-controller.js"></script>
+	<script src="./js/controller/cliente-controller.js"></script>
+	<script src="./js/controller/cliente-detalhe-controller.js"></script>
+	<script src="./js/controller/estoque-controller.js"></script>
+	<script src="./js/controller/estoque-detalhe-controller.js"></script>
+	<script src="./js/controller/contapagar-controller.js"></script>
+	<script src="./js/controller/contapagar-detalhe-controller.js"></script>
+	<script src="./js/controller/ordem-servico-controller.js"></script>
+	<script src="./js/controller/ordem-servico-detalhe-controller.js"></script>
+	<script src="./js/controller/produto-fornecedor-controller.js"></script>
+	<script src="./js/controller/produto-fornecedor-detalhe-controller.js"></script>
+	<script src="./js/controller/servico-fornecedor-controller.js"></script>
+	<script src="./js/controller/servico-fornecedor-detalhe-controller.js"></script>
+	<script src="./js/controller/estampa-detalhe-controller.js"></script>
+	<script src="./js/controller/estampa-controller.js"></script>	
+	<script src="./js/controller/orcamento-detalhe-controller.js"></script>
+	<script src="./js/controller/orcamento-controller.js"></script>	
+	<script src="./js/controller/pedido-detalhe-controller.js"></script>
+	<script src="./js/controller/pedido-controller.js"></script>
+	<script src="./js/controller/venda-controller.js"></script>
+	<script src="./js/controller/venda-pedido-controller.js"></script>
+	<script src="./js/controller/venda-pedido-detalhe-controller.js"></script>
+	<script src="./js/controller/compra-detalhe-controller.js"></script>
+	<script src="./js/controller/compra-controller.js"></script>
+	<script src="./js/controller/conta-receber-controller.js"></script>
+	<script src="./js/controller/conta-receber-detalhe-controller.js"></script>
+
+	<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+	<link href="bootstrap/css/style.css" rel="stylesheet">
+	
+	
+	<script src="./bootstrap/js/jquery.min.js"></script>
+	<script src="./bootstrap/js/bootstrap.min.js"></script>
+
+
+	<base href="/Textilsoft/">
+	<title>Textilsoft ERP</title>
+
+</head>
+
+<body ng-controller="mainController">
+
+<div id="throbber" style="display: none; min-height: 120px;"></div>
+	<div id="noty-holder"></div>
+	<div id="wrapper">
+		<!-- Navigation -->
+		<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+			<!-- Brand and toggle get grouped for better mobile display -->
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+					<span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span> <span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="/Textilsoft/"> <img
+					src="./images/logo.png" class="img-responsive img" alt="Textilsoft">
+			</a>
+			</div>
+
+
+
+			<!-- Top Menu Items -->
+			<ul class="nav navbar-right top-nav">
+				
+				<li class="dropdown"><a href="/Textilsoft/" >Início <b
+							class="fa fa-angle-down"></b></a>				
+				</li>
+
+			</ul>
+
+			<div class="collapse navbar-collapse navbar-ex1-collapse">
+				<ul class="nav navbar-nav side-nav">					
+					<li><a href="" data-toggle="collapse" data-target="#submenu-16"><i class="fa fa-fw fa-search glyphicon glyphicon-list-alt"></i><span class= "span-padding "></span> Cadastro
+						<i class="fa fa-fw fa-angle-down pull-right"></i></a>
+						<ul id="submenu-16" class="collapse">
+					<li><a href="" data-toggle="collapse" data-target="#submenu-3"><i class="fa fa-fw fa-search"></i>Fornecedor
+						<i class="fa fa-fw fa-angle-down pull-right"></i></a>
+						<ul id="submenu-3" class="collapse">
+							 <li> <a href="fornecedores-cad"> Cadastro</a></li>						
+							<li><a href="fornecedores-lista"> Consulta </a></li>
+						</ul>
+					</li>
+					<li><a href="" data-toggle="collapse" data-target="#submenu-4"><i class="fa fa-fw fa-search"></i>Cliente
+						<i class="fa fa-fw fa-angle-down pull-right"></i></a>
+						<ul id="submenu-4" class="collapse" >
+							  <li ><a href="clientes-cad"> Cadastro</a></li>
+							<li><a href="clientes-lista"> Consulta</a></li>			
+						</ul>
+					</li>
+					<li><a href="" data-toggle="collapse" data-target="#submenu-6"><i class="fa fa-fw fa-search"></i>Produto fornecedor
+						<i class="fa fa-fw fa-angle-down pull-right"></i></a>
+						<ul id="submenu-6" class="collapse">
+							<li><a href="produtoFornecedor-cad"> Cadastro</a></li>
+							<li><a href="produtoFornecedor-lista">	Consulta</a></li>
+						</ul>
+					</li>
+			
+					<li><a href="" data-toggle="collapse" data-target="#submenu-7"><i class="fa fa-fw fa-search"></i>Serviço fornecedor
+						<i class="fa fa-fw fa-angle-down pull-right"></i></a>
+						<ul id="submenu-7" class="collapse" >
+							<li><a href="servicoFornecedor-cad"> Cadastro</a></li>
+							<li><a href="servicoFornecedor-lista">	Consulta</a></li>	
+						</ul>
+					</li>
+				</ul>
+				</li>
+	
+	
+					<li><a href="" data-toggle="collapse" data-target="#submenu-5"><i class="fa fa-fw fa-search glyphicon glyphicon-link"></i>
+					<span class = "span-padding">Produto</span>
+						<i class="fa fa-fw fa-angle-down pull-right"></i></a>
+						<ul id="submenu-5" class="collapse">
+							<li><a href="produto-cad">  Cadastro</a></li>
+							<li><a href="produto-list"> Consulta</a></li>
+							<li><a href="cor-list"> Cor</a></li>
+							<li><a href="material-list"> Material</a></li>
+							<li><a href="estampa-list"> Estampa</a></li>
+						</ul>
+					</li>
+
+					<li><a href="" data-toggle="collapse" data-target="#submenu-10"><i class="fa fa-fw fa-search glyphicon glyphicon-shopping-cart"></i><span class= "span-padding"> Compra</span>  
+						<i class="fa fa-fw fa-angle-down pull-right"></i></a>
+							<ul id="submenu-10" class="collapse">
+					<li><a href="compra-cad">  Cadastro</a></li>		
+					<li><a href="compra-list"> Consulta</a></li>				
+					</ul>
+					</li>
+
+					<li><a href="" data-toggle="collapse" data-target="#submenu-2"><i class="fa fa-fw fa-search glyphicon glyphicon-briefcase
+					"></i><span class= "span-padding"> Estoque</span>
+						<i class="fa fa-fw fa-angle-down pull-right"></i></a>
+						<ul id="submenu-2" class="collapse">		
+							<li><a href="estoque-cad"> Cadastro</a></li>
+							<li><a href="estoque-lista">  Consulta</a></li>
+						</ul>
+					</li>																															
+					
+					<li><a href="" data-toggle="collapse" data-target="#submenu-9"><i class="fa fa-fw fa-search glyphicon glyphicon-piggy-bank"></i>
+					<span class = "span-padding">Orçamento</span>
+						<i class="fa fa-fw fa-angle-down pull-right"></i></a>
+							<ul id="submenu-9" class="collapse">
+					<li><a href="orcamento-cad">  Cadastro</a></li>		
+					<li><a href="orcamento-list">  Consulta</a></li>				
+					</ul>
+					</li>
+
+				<li><a href="" data-toggle="collapse" data-target="#submenu-8"><i class="fa fa-fw fa-search glyphicon glyphicon-paperclip"></i>
+				<span class= "span-padding">Ordem Serviço</span>
+					<i class="fa fa-fw fa-angle-down pull-right"></i></a>
+					<ul id="submenu-8" class="collapse">		
+						<li><a href="ordem-servico-cad"> </i>  Cadastro</a></li>
+						<li><a href="ordem-servico-lista"> </i>  Consulta</a></li>
+					</ul>
+				</li>	
+				
+		
+				
+		
+		
+				<li><a href="" data-toggle="collapse" data-target="#submenu-11"><i class="fa fa-fw fa-search glyphicon glyphicon-credit-card
+				"></i><span class = "span-padding"> Pedido</span> 
+						<i class="fa fa-fw fa-angle-down pull-right"></i></a>
+						<ul id="submenu-11" class="collapse">					
+					<li><a href="pedido-cad">   Cadastro</a></li>		
+				<li><a href="pedido-list">   Consulta</a></li>	
+
+					</ul>
+					
+				<li><a href="" data-toggle="collapse" data-target="#submenu-12"><i class="fa fa-fw fa-search glyphicon glyphicon-usd"></i>
+				<span class= "span-padding">Venda</span>
+						<i class="fa fa-fw fa-angle-down pull-right"></i></a>
+						<ul id="submenu-12" class="collapse">					
+					<li><a href="venda-cad">   Cadastro</a></li>		
+					<li><a href="venda-lista">   Consulta</a></li>					
+						</ul>				
+				</li>
+												
+				<li><a href="" data-toggle="collapse" data-target="#submenu-17"><i class="fa fa-fw fa-search glyphicon glyphicon-stats"></i>
+					<span class = "span-padding">Financeiro</span>
+						<i class="fa fa-fw fa-angle-down pull-right"></i></a>
+						<ul id="submenu-17" class="collapse">
+					<li><a href="" data-toggle="collapse" data-target="#submenu-18"><i class="fa fa-fw fa-search"></i>Contas Pagar
+						<i class="fa fa-fw fa-angle-down pull-right"></i></a>
+						<ul id="submenu-18" class="collapse">
+							  <li><a href="conta-pagar-cad">	  Cadastro</a></li>
+							<li><a href="conta-pagar-lista">	Consulta</a></li>
+						</ul>
+					</li>							
+			
+					<li><a href="" data-toggle="collapse" data-target="#submenu-19"><i class="fa fa-fw fa-search"></i>Contas Receber
+						<i class="fa fa-fw fa-angle-down pull-right"></i></a>
+						<ul id="submenu-19" class="collapse">							
+							<li><a href="conta-receber-lista">	Consulta</a></li>	
+						</ul>
+					</li>
+				</ul>
+				</li>
+				</ul>				
+						
+			</div>		
+		</nav>
+
+		
+
+
+		<div id="page-wrapper" >
+			<div ng-view="ng-view" class="container-fluid" id="shadow">
+	
+				
+					<div class="container-fluid" ng-view="ng-view"></div>
+			
+				<!-- /.row -->
+			</div>
+		
+		</div>
+		<!-- /#page-wrapper -->
+	</div>
+
+		
+
+
+
+
+
+
+</body>
+
+</html>

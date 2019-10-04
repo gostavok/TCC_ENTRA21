@@ -1,0 +1,79 @@
+<h2 class="page-header"><strong>Cadastro de fornecedor</strong></h2>
+<br>
+<ng-form name="fornecedorForm" id= "fornecedorForm">
+<div class = "row">
+	<div class="form-group col-md-1">
+		<label for="campo1">ID</label>
+		<input type="text" class= "form-control" placeholder="ID" ng-model="fornecedor.idFornecedor" style="width: 50px" readonly>
+	</div>
+	<div class="form-group col-md-3" ng-class="{'has-error': fornecedorForm.nome.$error.required && submitted}">
+		<label for="campo1">Razão social</label>
+		<span ng-class="error" ng-show="fornecedorForm.nome.$error.required"> *</span>
+		<input type="text"  class= "form-control" name= "nome"  placeholder="Razão social" ng-model="fornecedor.nmFornecedor" required>
+	</div>
+	<div ng-class="{'has-error': fornecedorForm.cnpj.$invalid && submitted}" class="form-group col-md-3">
+		<label for="campo1">CNPJ</label>
+		<span ng-class="error" ng-show="fornecedorForm.cnpj.$error.required"> *</span>
+		<input type="text" name= "cnpj" class= "form-control" mask="99.999.999/9999-99"  placeholder="99.999.999/9999-99" ng-model="fornecedor.cnpjFornecedor" ng-minlength="14" required>
+	</div>
+	<div ng-class="{'has-error': fornecedorForm.email.$invalid && submitted}" class="form-group col-md-3" >
+			<label for="campo1">E-mail</label>
+			<span ng-class="error" ng-show="fornecedorForm.email.$error.required"> *</span>
+			<input type="email" class= "form-control" name= "email" placeholder="example@domain.com" ng-model="fornecedor.emailFornecedor" required>
+			
+		</div >
+	<div class="form-group col-md-2">
+		<label for="campo1">Data cadastro</label>
+		<input type="text"  class= "form-control"  placeholder="Data cadastro" ng-model="dataAtual" readonly>
+	</div>
+		
+		<div class="form-group col-md-2" ng-class="{'has-error': fornecedorForm.telefone1.$invalid  && submitted}" >
+			<label for="campo1">Telefone 1</label>
+			<span ng-class="error" ng-show="fornecedorForm.telefone1.$error.required"> *</span>
+			<input type="tel" name= "telefone1"  class= "form-control" data-mask="(99) 9?9999-9999" clean="true" placeholder="Telefone" ng-model="fornecedor.telFornecedor" maxlength="15" required="required">
+		</div>
+		<div class="form-group col-md-2">
+			<label for="campo1">Telefone 2</label>
+			<input type="text" class= "form-control" data-mask="(99) 9?9999-9999" clean="true" placeholder="Telefone" ng-model="fornecedor.tel2Fornecedor" maxlength="15">
+		</div>
+		<div class="form-group col-md-2">
+			<label for="campo1">Complementos</label>
+			<input type="text" class= "form-control" placeholder="Complementos" ng-model="fornecedor.compFornecedor">
+		</div>
+	
+		<div class="form-group col-md-2">
+			<label for="campo1">CEP</label>
+			<input type="text" class= "form-control" name = "cep" data-mask="99999-999" clean="true" placeholder="99999-999" ng-model="fornecedor.cepFornecedor">
+		</div>
+		<div class="form-group col-md-3" ng-class="{'has-error': fornecedorForm.endereco.$error.required && submitted}">
+			<label for="campo1">Endereço</label>
+			<span ng-class="error" ng-show="fornecedorForm.endereco.$error.required"> *</span>
+			<input type="text" name= "endereco" class= "form-control" placeholder="Endereço" ng-model="fornecedor.endFornecedor" required>
+		</div>
+		<div class="form-group col-md-2" ng-class="{'has-error': fornecedorForm.bairro.$error.required && submitted}">
+			<label for="campo1">Bairro</label>
+			<span ng-class="error" ng-show="fornecedorForm.bairro.$error.required"> *</span>
+			<input type="text" class= "form-control" name= "bairro" placeholder="Bairro" ng-model="fornecedor.bairroFornecedor" required>
+		</div>
+		<div class="form-group col-md-2" ng-class="{'has-error': fornecedorForm.cidade.$error.required && submitted}">
+			<label for="campo1">Cidade</label>
+			<span ng-class="error" ng-show="fornecedorForm.cidade.$error.required"> *</span>
+			<input type="text" class= "form-control" name ="cidade" placeholder="Cidade" ng-model="fornecedor.cidadeFornecedor" required>
+		</div>
+		<div class="form-group col-md-2"  ng-class="{'has-error': fornecedorForm.estado.$error.required && submitted}">
+			<label for="campo1">Estado</label>
+			<span ng-class="error" ng-show="fornecedorForm.estado.$error.required"> *</span>
+			<input type="text" class= "form-control" name= "estado" placeholder="Estado" ng-model="fornecedor.estadoFornecedor" required>
+		</div>
+	
+
+  <hr /> 
+	<div id="actions" class="row" style="margin-bottom:12px">
+  	  <div class="col-md-12">
+		<input type="submit" name = "salvar" class="btn btn-primary" ng-click="salvarFornecedor(fornecedorForm.$valid)" value= "Salvar" style="margin-left:12px">
+		<button type="button" class="btn btn-default" onClick="history.go(-1)">Voltar</button>
+    	</div>
+    </div>
+
+</div>
+</ng-form>

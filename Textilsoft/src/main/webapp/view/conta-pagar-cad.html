@@ -1,0 +1,45 @@
+<h3 class="page-header">Adicionar nova conta a pagar</h3> 	
+<div class = "row">
+	<div class="form-group col-md-1">
+		<label for="campo1">ID</label>
+		<input type="text" class= "form-control" placeholder="ID" ng-model="contaPagar.idContaPagar" style="width: 50px" readonly>
+	</div>
+	<div class="form-group col-md-3">
+		<label for="campo1">Descrição</label>
+		<input type="text" class= "form-control" placeholder="Descrição" ng-model="contaPagar.descContaPagar">
+	</div>
+	<div class="form-group col-md-2">
+		<label for="campo1">Complemento</label>
+		<input type="text" class= "form-control" placeholder="Complemento" ng-model="contaPagar.complemento">
+	</div>
+	<div class="form-group col-md-2">
+		<label for="campo1">Valor</label>
+		<input type="number"  class= "form-control"  placeholder="Valor" ng-model="contaPagar.valorContaPagar">
+	</div>
+	<div class="form-group col-md-2">
+		<label for="campo1">Data de Vencimento</label>
+		<input type="date" ng-model="contaPagar.dataVencimento" class= "form-control" placeholder="Data"/>
+	</div>
+	<div class="form-group col-md-2">
+		<label for="campo1">Situação da fatura</label>
+		<select class= "form-control"  ng-model="contaPagar.statusContaPagar" id= "contaPagar.statusContaPagar">
+			<option value= "Pendente">Pendente</option>
+			<option value = "Atrasado">Atrasado</option>
+			<option value = "Pago">Pago</option>			
+		</select>
+	</div>
+
+
+
+	
+	
+<form> 
+  <hr /> 
+	<div id="actions" class="row" style="margin-bottom:12px" >
+  	  <div class="col-md-12">
+		<button type="submit" class="btn btn-primary" ng-click="salvarContaPagar()" style="margin-left:12px">Salvar</button>
+		<button type="button" class="btn btn-default" onClick="history.go(-1)">Voltar</button>
+    	</div>
+    </div>
+ </form>
+</div>

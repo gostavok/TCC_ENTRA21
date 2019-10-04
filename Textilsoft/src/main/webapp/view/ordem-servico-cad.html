@@ -1,0 +1,94 @@
+<meta charset="utf-8">
+
+<h3 class="page-header">Criar Ordem de Servi&ccedil;o</h3>
+<br>
+<hr><hr>
+<ng-form name="ordemServicoForm" id= "ordemServicoForm">
+<div class="row">
+	<div class="form-group col-md-1">
+		<label for="campo1">ID</label> <input type="text" class="form-control"
+			placeholder="ID" ng-model="ordemServico.idOrdem" style="width: 50px"
+			readonly>
+	</div>
+	<div class="form-group col-md-2" ng-class="{'has-error': ordemServicoForm.idFornecedor.$error.required && submitted}">
+		<label for="campo1">ID do Fornecedor</label>
+		<span ng-class="error" ng-show="ordemServicoForm.idFornecedor.$error.required"> *</span>
+		<input type="text"	class="form-control" name= "idFornecedor" placeholder="ID Fornecedor" 
+		ng-model="ordemServico.fornecedor.idFornecedor" 
+		ng-change="listarFornecedor(ordemServico.fornecedor.idFornecedor)" required>
+	</div>
+	<div class="form-group col-md-9">
+		<label for="campo1">Fornecedor</label> <input type="text"
+			class="form-control" placeholder="Fornecedor"
+			ng-model="ordemServico.fornecedor.nmFornecedor" readonly>
+	</div>
+</div>
+<div class="row">
+	<div class="form-group col-md-2" ng-class="{'has-error': ordemServicoForm.servicoFornecedor.idServForn.$error.required && submitted}">
+		<label for="campo1">ID do Servi&ccedil;o</label> 
+		<span ng-class="error" ng-show="ordemServicoForm.servicoFornecedor.idServForn.$error.required"> *</span>
+		<input type="text"	class="form-control" name="servicoFornecedor.idServForn" placeholder="ID Servi&ccedil;o"
+			ng-model="ordemServico.servicoFornecedor.idServForn" 
+			ng-change="listarServicoFornecedor(ordemServico.servicoFornecedor.idServForn)" required>
+	</div>
+	<div class="form-group col-md-4">
+		<label for="campo1">Descri&ccedil;&atilde;o Servi&ccedil;o</label> <input type="text"
+			class="form-control"
+			ng-model="ordemServico.servicoFornecedor.nmServForn" readonly>
+	</div>
+	<div class="form-group col-md-2" ng-class="{'has-error': ordemServicoForm.qtdServico.$error.required && submitted}">
+		<label for="campo1">Quantidade</label>
+		<span ng-class="error" ng-show="ordemServicoForm.qtdServico.$error.required"> *</span>
+		<input type="number" class="form-control" name="qtdServico" placeholder="Quantidade"
+			ng-model="ordemServico.qtdServico"
+			ng-change="calculoTotal()" required>
+	</div>
+	<div class="form-group col-md-2">
+		<label for="campo1">Valor Servi&ccedil;o</label> <input type="number"
+			class="form-control" placeholder="Valor Servi&ccedil;o" 
+			ng-model="ordemServico.servicoFornecedor.valorServForn" readonly>
+	</div>
+	<div class="form-group col-md-2">
+		<label for="campo1">Valor Total</label> <input type="text"
+			class="form-control" placeholder="Valor total" 
+			ng-model="ordemServico.valorTotalOrdemServico" readonly>
+	</div>
+
+</div>
+<div class="row">
+
+	<div class="form-group col-md-2">
+		<label for="campo1">Data de Emiss&atilde;o</label> <input type="text"
+			class="form-control" placeholder="Data de Emiss&atilde;o"  
+			ng-model="dataEmissao" readonly>
+	</div>
+	<div class="form-group col-md-2">
+		<label for="campo1">Data de Entrega</label> <input type="date"
+			ng-model="ordemServico.dataEntregaOrdemServico" 
+			class="form-control" name="data" id="data" />
+	</div>
+	<div class="form-group col-md-2">
+		<label for="campo1">Status</label> <select class="form-control"
+			ng-model="ordemServico.statusOrdem"
+			id="ordemServico.statusOrdem">
+			<option value="Aberto">Aberto</option>
+			<option value="Fechado">Fechado</option>
+			<option value="Pendente">Pendente</option>
+		</select>
+	</div>
+
+
+</div>
+
+<form>
+	<hr />
+	<div id="actions" class="row" style="margin-bottom: 12px">
+		<div class="col-md-12">
+			<button type="submit" class="btn btn-primary"
+				ng-click="salvarOrdemServico(ordemServicoForm.$valid)" style="margin-left: 12px">Salvar</button>
+			<button type="button" class="btn btn-default"
+				onClick="history.go(-1)">Voltar</button>
+		</div>
+	</div>
+</form>
+</div>

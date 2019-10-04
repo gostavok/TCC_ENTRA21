@@ -1,0 +1,72 @@
+<meta charset="utf-8">
+<h2 class="page-header"><strong>Cadastro de cliente</strong></h2>
+<br>
+<div class = "row">
+	<div class="form-group col-md-1">
+		<label for="campo1">ID</label>
+		<input type="text" class= "form-control" placeholder="ID" ng-model="cliente.idCliente" style="width: 50px" disabled>
+	</div>
+	<div class="form-group col-md-3">
+		<label for="campo1">Razão social</label>
+		<input type="text"  class= "form-control" placeholder="Razão social" ng-model="cliente.nmCliente">
+	</div>
+	<div class="form-group col-md-3">
+		<label for="campo1">CNPJ</label>
+		<input type="text"  class= "form-control"  mask="99.999.999/9999-99"  placeholder="99.999.999/9999-99"  ng-model="cliente.cnpjCliente">
+	</div>
+	
+		<div class="form-group col-md-2">
+			<label for="campo1">Telefone 1</label>
+			<input type="text" class= "form-control"  data-mask="(99) 9?9999-9999" clean="true"placeholder="Telefone 1" ng-model="cliente.telCliente1">
+		</div>
+		<div class="form-group col-md-2">
+			<label for="campo1">Telefone 2</label>
+			<input type="text" class= "form-control"  data-mask="(99) 9?9999-9999" clean="true" placeholder="Telefone 2" ng-model="cliente.telCliente2">
+		</div>
+		<div class="form-group col-md-3">
+			<label for="campo1">E-mail</label>
+			<input type="email" name= "email" class= "form-control" placeholder="example@domain.com"  ng-model="cliente.emailCliente">
+		</div>
+	<div class="form-group col-md-2">
+		<label for="campo1">CEP</label>
+		<input type="text"  class= "form-control" data-mask="99999-999" clean="true" placeholder="CEP" ng-model="cliente.cepCliente">
+	</div>
+	<div class="form-group col-md-3">
+
+			<label for="campo1">Endereço</label>
+			<input type="text" class= "form-control" placeholder="Endereço" ng-model="cliente.endCliente">
+
+		</div>
+	<div class="form-group col-md-2">
+		<label for="campo1">Complemento</label>
+		<input type="text"  class= "form-control"  placeholder="Complemento" ng-model="cliente.compCliente">
+	</div>
+	
+	<div class="form-group col-md-2">
+		<label for="campo1">Bairro</label>
+		<input type="text"  class= "form-control"  placeholder="Bairro" ng-model="cliente.bairroCliente">
+	</div>
+		
+		<div class="form-group col-md-2">
+			<label for="campo1">Cidade</label>
+			<input type="text" class= "form-control" placeholder="Cidade" ng-model="cliente.cidadeCliente" >
+		</div>
+		<div class="form-group col-md-2">
+			<label for="campo1">Estado</label>
+			<input type="text" class= "form-control" placeholder="Estado" ng-model="cliente.estadoCliente">
+		</div>		
+	
+		
+	
+		
+	
+<form> 
+  <hr /> 
+	<div id="actions" class="row" style="margin-bottom:12px">
+  	  <div class="col-md-12">
+		<button type="submit" class="btn btn-primary" ng-click="salvarCliente()" style="margin-left:12px">Salvar</button>
+		<button type="button" class="btn btn-default" onClick="history.go(-1)">Voltar</button>
+    	</div>
+    </div>
+ </form>
+</div>

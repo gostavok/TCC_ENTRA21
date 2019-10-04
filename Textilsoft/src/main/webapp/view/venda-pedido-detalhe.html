@@ -1,0 +1,97 @@
+<meta charset="utf-8">
+
+
+<h3 class="page-header">Visualizar Venda #{{vendapedido.venda.idVenda}}</h3>
+<br>
+<div class="row">
+	<div class="form-group col-md-1">
+		<p><strong>ID Venda</strong></p>	
+		<p>{{vendapedido.venda.idVenda}}</p>
+	</div>
+	<div class="form-group col-md-2">
+		<p><strong>Valor total</strong></p>
+			<p>R$ {{vendapedido.venda.valorTotal | number: 2}}</p>
+	</div>
+	<div class="form-group col-md-2">
+			<p><strong>Data Venda</strong></p>
+				<p>{{vendapedido.venda.dataVenda | date: 'dd/MM/yyyy'}}</p>
+	
+	</div>
+	<div class="form-group col-md-2">
+			<p><strong>Data Pagamento</strong></p>
+				<p>{{vendapedido.venda.dataPagamento | date: 'dd/MM/yyyy'}}</p>
+	
+		</div>		
+
+</div>
+
+
+<div id="pedidos">
+<hr>
+	<div id="list" class="row">
+		<div class="table-responsive col-md-12">
+
+			<table class="table col-md-12">
+				<thead>
+					<tr>
+						<th class="col-md-1">ID Pedido</th>
+						<th class="col-md-3">Cliente</th>
+						<th class="col-md-2">Valor</th>
+						<th class="col-md-2">Data Pedido</th>
+						<th class="col-md-2">Status</th>
+					</tr>
+				</thead>
+				<tbody>
+
+					<tr ng-repeat="vendapedido in vendapedidos">
+
+						<td>{{vendapedido.pedido.idPedido}}</td>
+						<td>{{vendapedido.pedido.cliente.nmCliente}}</td>
+						<td>R${{vendapedido.pedido.valorTotalPedido | number: 2}}</td>
+						<td>{{vendapedido.pedido.dataPedido| date: 'dd/MM/yyyy'}}</td>
+						<td>{{vendapedido.pedido.statusPedido}}</td>
+						
+						<td class="actions">
+						<a class="btn btn-danger btn-xs" type="button" ng-click="procuraVendaPedido(vendapedido)"	data-toggle="modal" data-target="#delete-modal">Excluir</a> 
+						<a class="btn btn-success btn-xs" href="pedido/{{vendapedido.pedido.idPedido}}">Detalhe</a>
+						</td>	
+
+					</tr>
+
+
+				</tbody>
+
+			</table>
+
+		</div>
+		
+		<div class="modal fade" id="delete-modal" tabindex="-1" role="dialog"
+			aria-labelledby="modalLabel">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal"
+							aria-label="Fechar">
+							<span aria-hidden="true">&times;</span>
+						</button>
+						<h4 class="modal-title" id="modalLabel">Excluir Item</h4>
+					</div>
+					<div class="modal-body">Deseja realmente excluir este item?</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-primary" ng-click="deletarvendapedido(vendapedido)" data-dismiss="modal">Sim</button>
+						<button type="button" class="btn btn-default" data-dismiss="modal">N&atilde;o</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+	</div>
+</div>
+
+
+<div id="actions" class="row" style="margin-top:15px">
+ 	<div class="col-md-12" style="margin-top:15px">
+		<a class="btn btn-default " type="button" onClick="history.go(-1)">Voltar</a>
+		
+ 	</div>
+</div>

@@ -1,0 +1,31 @@
+<h3 class="page-header">Alterar Status da Conta</h3>
+<br>
+<div class = "row">
+	<div class="form-group col-md-1">
+		<label for="campo1">ID</label>
+		<input type="text" class= "form-control" placeholder="ID" ng-model="contaReceberDetalhe.idContaReceber" style="width: 50px" readonly>
+	</div>
+	<div class="form-group col-md-3">
+		<label for="campo2">Venda</label>
+		<input type="text"  class= "form-control"  placeholder="Venda" ng-model="contaReceberDetalhe.venda.idVenda" readonly>
+	</div>
+	<div class="form-group col-md-2">
+		<label for="campo1">Status</label>
+		<select class= "form-control"  ng-model="contaReceberDetalhe.statusContaReceber" id= "contaReceberDetalhe.statusContaReceber">
+			<option value= "Pendente">Pendente</option>
+			<option value = "Atrasado">Atrasado</option>
+			<option value = "Pago">Pago</option>			
+		</select>
+	</div>
+	
+	
+<form> 
+  <hr /> 
+	<div id="actions" class="row" style="margin-bottom:12px">
+  	  <div class="col-md-12">
+		<button type="submit" class="btn btn-primary" ng-click="updateContaReceber()" style="margin-left:12px">Salvar</button>
+		<button type="button" class="btn btn-default" onClick="history.go(-1)">Voltar</button>
+    	</div>
+    </div>
+ </form>
+</div>
