@@ -21,6 +21,7 @@ Tecnologias:
   - HTML
   - Bootstrap
   - Rest
+  - Docker
  
  Ferramentas:
   - Git
@@ -31,3 +32,13 @@ Tecnologias:
   - Trello
   - Lucidchat
   - Pencil
+
+Para abrir e iniciar o projeto utilize o Eclipse, seguindo os passos:
+- file -> import... -> Existing Maven Projects
+- requirimento: tenha um servidor de aplicação configurado no seu Eclipse
+- na classe main (/Textilsoft/src/main/java/br/com/textilsoft/MyApplication.java) 
+  - Run as -> Run on Server
+
+Comando para subir o banco já com script de população:
+- iniciar banco com logs: `docker-compose up`
+- iniciar banco sem logs: `docker-compose up -d`
