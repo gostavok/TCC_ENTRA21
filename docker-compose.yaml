@@ -1,0 +1,32 @@
+version: '3.7'
+
+services:
+
+  db:
+    image: mariadb:10.5
+    container_name: mudi_mariadb
+    volumes:
+      - ./databaseTCC.sql:/docker-entrypoint-initdb.d/databaseTCC.sql
+      - ./populaCliente.sql:/docker-entrypoint-initdb.d/populaCliente.sql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: textilsoft      
+    ports:
+      - "3306:3306"
+    networks:
+      - backend
+
+  adminer:
+    image: adminer
+    container_name: mudi_adminer
+    restart: always
+    ports:
+      - 8081:8080
+    networks:
+      - backend
+
+networks:     
+  backend:
+    driver: bridge
+    name: mudi_network 
