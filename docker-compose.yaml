@@ -26,7 +26,16 @@ services:
     networks:
       - backend
 
+  app:    
+    image: ruiblaese/projeto-felipe:latest
+    networks: 
+      - backend
+    ports: 
+      - "8080:8080"
+    depends_on: 
+       - db
+
 networks:     
   backend:
     driver: bridge
-    name: mudi_network 
+    name: backend 
